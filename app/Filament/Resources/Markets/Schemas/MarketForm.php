@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Markets\Schemas;
 
+use App\Core\Support\TimezoneCatalog;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -53,18 +54,15 @@ class MarketForm
                 Select::make('timezone')
                     ->label('Zona waktu')
                     ->options(
-                        collect(timezone_identifiers_list())
-                            ->mapWithKeys(
-                                fn (string $timezone): array => [
-                                    $timezone => $timezone,
-                                ]
-                            )
-                            ->all()
+                        fn (): array => TimezoneCatalog::options()
                     )
                     ->default('Asia/Jakarta')
                     ->searchable()
                     ->required()
-                    ->native(false),
+                    ->native(false)
+                    ->helperText(
+                        'Daftar mengikuti seluruh timezone IANA yang tersedia pada server.'
+                    ),
 
                 TextInput::make('sort_order')
                     ->label('Urutan')
