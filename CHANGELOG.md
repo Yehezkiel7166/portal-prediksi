@@ -58,3 +58,10 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Duplicate market and date combinations are rejected.
 - Publication timestamps are managed automatically.
 - Prediction administration is restricted to admins.
+## Sprint 04 - Markets Module
+
+- Added centralized market master data.
+- Added Market model, migration, factory, and seeder.
+- Added Market administration through Filament.
+- Added market normalization and validation action.
+- Added automated feature tests and sprint documentation.
