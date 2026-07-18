@@ -186,3 +186,10 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Refreshed the generated-banner preview after successful generation.
 - Added success and failure notifications.
 - Added Shio page-action rendering and contract tests.
+
+## Core Update 02.1 — Event Infrastructure Foundation
+
+- Added the application event service provider.
+- Registered Laravel-native event infrastructure explicitly.
+- Added provider and dispatcher integration tests.
+- Documented event architecture rules.
