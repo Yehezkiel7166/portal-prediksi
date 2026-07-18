@@ -38,3 +38,23 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Production migration completed.
 - Admin routes active.
 - Full test suite passed: 10 tests and 28 assertions.
+
+## Sprint 03 — Prediction Module
+
+### Added
+
+- Modular Prediction domain.
+- Predictions database table.
+- Prediction model and factory.
+- Centralized create/update action.
+- Filament Prediction CRUD resource.
+- Search, filtering, badges, and bulk deletion.
+- Prediction feature and authorization tests.
+- Sprint 03 technical documentation.
+
+### Verified
+
+- Prediction values are normalized before saving.
+- Duplicate market and date combinations are rejected.
+- Publication timestamps are managed automatically.
+- Prediction administration is restricted to admins.
