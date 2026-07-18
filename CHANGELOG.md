@@ -82,3 +82,25 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - PHPUnit menggunakan database testing yang terisolasi.
 - Production database tidak dapat digunakan saat menjalankan test.
 
+
+---
+
+## Core Update 01.4
+
+### Added
+
+- Core `Clock` contract for application-wide time abstraction.
+- Immutable production clock implementation through `SystemClock`.
+- Singleton service-container binding for `Clock`.
+- Feature tests for resolution, immutable output, and singleton behavior.
+- ADR-0003 documenting the clock abstraction decision.
+
+### Compatibility
+
+- Existing modules remain unchanged.
+- Clock adoption will be performed incrementally in separate updates.
+
+### Validation
+
+- Clock module: 3 tests, 3 assertions.
+- Full suite: 32 tests, 68 assertions.
