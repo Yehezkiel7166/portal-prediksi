@@ -207,3 +207,22 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Dispatches the event when banner source fields are updated.
 - Prevents recursive dispatch from generated banner path updates.
 - Adds event dispatch regression tests.
+
+## Sprint 06.1 — Public Frontend Foundation
+
+### Added
+
+- Added dedicated Frontend namespace.
+- Added HomeController.
+- Added reusable frontend layout.
+- Added reusable header.
+- Added reusable footer.
+- Added public homepage.
+- Added named route `home`.
+- Added frontend feature test.
+
+### Verified
+
+- Homepage rendered through HomeController.
+- Public layout separated from Laravel welcome page.
+- Full test suite passed (66 tests, 158 assertions).
