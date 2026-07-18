@@ -176,3 +176,13 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Added title, date-range, Shio-name, and number rendering.
 - Added generated-banner model persistence.
 - Added generation, replacement, validation, and storage tests.
+
+## Shio Update 04.3 — Banner Page Action
+
+- Added a Generate Banner action to the Shio period edit page.
+- Disabled generation when no template is selected.
+- Added confirmation before replacing an existing generated banner.
+- Connected the Filament page to the reusable banner generation engine.
+- Refreshed the generated-banner preview after successful generation.
+- Added success and failure notifications.
+- Added Shio page-action rendering and contract tests.

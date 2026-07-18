@@ -34,7 +34,8 @@ class ShioResourceAccessTest extends TestCase
             ->get('/admin/shio-periods/create')
             ->assertOk()
             ->assertSee('Template Banner')
-            ->assertSee('Banner Hasil');
+            ->assertSee('Banner Hasil')
+            ->assertDontSee('Generate Banner');
     }
 
     public function test_admin_can_open_shio_edit_form(): void
@@ -44,13 +45,17 @@ class ShioResourceAccessTest extends TestCase
             'email_verified_at' => now(),
         ]);
 
-        $period = ShioPeriod::factory()->create();
+        $period = ShioPeriod::factory()->create([
+            'banner_template' =>
+                'shio/banner-templates/template.png',
+        ]);
 
         $this->actingAs($admin)
             ->get("/admin/shio-periods/{$period->getKey()}/edit")
             ->assertOk()
             ->assertSee('Template Banner')
-            ->assertSee('Banner Hasil');
+            ->assertSee('Banner Hasil')
+            ->assertSee('Generate Banner');
     }
 
     public function test_regular_user_cannot_open_shio_resource(): void
