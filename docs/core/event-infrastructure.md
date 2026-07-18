@@ -20,3 +20,9 @@ successful database commit.
 
 `GenerateShioBannerListener` delegates banner creation to the existing
 `GenerateShioBannerAction` and skips periods without a banner template.
+
+## Period Dispatch Rules
+
+Shio periods dispatch `ShioChanged` after creation or when banner source
+fields change. Updates that only write `generated_banner` are ignored to
+prevent recursive banner generation.

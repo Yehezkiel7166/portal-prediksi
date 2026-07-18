@@ -3,9 +3,11 @@
 namespace Tests\Feature\Shio;
 
 use App\Domains\Shio\Actions\GenerateShioBannerAction;
+use App\Domains\Shio\Events\ShioChanged;
 use App\Domains\Shio\Models\ShioNumber;
 use App\Domains\Shio\Models\ShioPeriod;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Storage;
 use RuntimeException;
 use Tests\TestCase;
@@ -13,6 +15,13 @@ use Tests\TestCase;
 class GenerateShioBannerActionTest extends TestCase
 {
     use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        Event::fake([ShioChanged::class]);
+    }
 
     public function test_action_generates_png_and_updates_period(): void
     {

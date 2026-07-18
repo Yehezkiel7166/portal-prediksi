@@ -3,16 +3,25 @@
 namespace Tests\Feature\Shio;
 
 use App\Domains\Shio\Actions\GenerateShioBannerAction;
+use App\Domains\Shio\Events\ShioChanged;
 use App\Domains\Shio\Models\ShioPeriod;
 use App\Filament\Resources\ShioPeriods\Pages\EditShioPeriod;
 use Filament\Actions\Action;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use ReflectionMethod;
 use Tests\TestCase;
 
 class ShioBannerPageActionTest extends TestCase
 {
     use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        Event::fake([ShioChanged::class]);
+    }
 
     public function test_edit_page_registers_generate_banner_action(): void
     {

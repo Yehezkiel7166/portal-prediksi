@@ -2,14 +2,23 @@
 
 namespace Tests\Feature\Shio;
 
+use App\Domains\Shio\Events\ShioChanged;
 use App\Domains\Shio\Models\ShioPeriod;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class ShioResourceAccessTest extends TestCase
 {
     use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        Event::fake([ShioChanged::class]);
+    }
 
     public function test_admin_can_open_shio_resource(): void
     {

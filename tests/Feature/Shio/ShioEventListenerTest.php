@@ -9,11 +9,19 @@ use App\Domains\Shio\Models\ShioPeriod;
 use Illuminate\Contracts\Events\ShouldDispatchAfterCommit;
 use Illuminate\Contracts\Events\ShouldHandleEventsAfterCommit;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class ShioEventListenerTest extends TestCase
 {
     use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        Event::fake([ShioChanged::class]);
+    }
 
     public function test_shio_changed_dispatches_after_commit(): void
     {

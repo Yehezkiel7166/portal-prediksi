@@ -200,3 +200,10 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Added the after-commit banner generation listener.
 - Registered the Shio event and listener explicitly.
 - Added listener delegation and template guard tests.
+
+## Core Update 02.2B — Shio Period Dispatch
+
+- Dispatches `ShioChanged` when a Shio period is created.
+- Dispatches the event when banner source fields are updated.
+- Prevents recursive dispatch from generated banner path updates.
+- Adds event dispatch regression tests.
