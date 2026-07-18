@@ -6,6 +6,7 @@ use App\Domains\Shio\Models\ShioPeriod;
 use App\Filament\Resources\ShioPeriods\Pages\CreateShioPeriod;
 use App\Filament\Resources\ShioPeriods\Pages\EditShioPeriod;
 use App\Filament\Resources\ShioPeriods\Pages\ListShioPeriods;
+use App\Filament\Resources\ShioPeriods\RelationManagers\ShioNumbersRelationManager;
 use App\Filament\Resources\ShioPeriods\Schemas\ShioPeriodForm;
 use App\Filament\Resources\ShioPeriods\Tables\ShioPeriodsTable;
 use BackedEnum;
@@ -45,6 +46,13 @@ class ShioPeriodResource extends Resource
     public static function table(Table $table): Table
     {
         return ShioPeriodsTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            ShioNumbersRelationManager::class,
+        ];
     }
 
     public static function getPages(): array

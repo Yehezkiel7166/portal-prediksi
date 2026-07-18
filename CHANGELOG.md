@@ -150,3 +150,10 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Administrator can access Shio resource.
 - Regular users cannot access Shio resource.
 - Full application test suite passed.
+
+## Shio Update 03 — Shio Numbers Management
+
+- Added embedded Shio number management to each Shio calendar period.
+- Added create, edit, delete, bulk delete, search, sorting, and reordering.
+- Added JSON-backed number input using Filament tags.
+- Added relation manager registration, rendering, and owner-period scope tests.
