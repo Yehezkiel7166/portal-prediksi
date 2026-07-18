@@ -135,3 +135,18 @@ All notable changes to Portal Prediksi CMS will be documented here.
 
 - Shio period can contain multiple shio number mappings.
 - Full application test suite passed.
+
+## Shio Admin Resource
+
+### Added
+
+- Added Filament Shio management resource.
+- Added Shio period CRUD administration.
+- Added Shio resource access protection.
+- Added Shio resource feature tests.
+
+### Verified
+
+- Administrator can access Shio resource.
+- Regular users cannot access Shio resource.
+- Full application test suite passed.
