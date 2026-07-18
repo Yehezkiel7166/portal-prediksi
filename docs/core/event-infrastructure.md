@@ -12,3 +12,11 @@ Portal Prediksi CMS uses Laravel native events for reusable domain workflows.
 ## Next Step
 
 Add a Shio after-commit event and listener for automatic banner regeneration.
+
+## Shio Event Foundation
+
+`ShioChanged` carries the affected period and dispatches only after a
+successful database commit.
+
+`GenerateShioBannerListener` delegates banner creation to the existing
+`GenerateShioBannerAction` and skips periods without a banner template.

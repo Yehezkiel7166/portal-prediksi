@@ -11,5 +11,9 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array<class-string, array<int, class-string>>
      */
-    protected $listen = [];
+    protected $listen = [
+        \App\Domains\Shio\Events\ShioChanged::class => [
+            \App\Domains\Shio\Listeners\GenerateShioBannerListener::class,
+        ],
+    ];
 }

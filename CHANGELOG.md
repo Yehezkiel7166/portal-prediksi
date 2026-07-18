@@ -193,3 +193,10 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Registered Laravel-native event infrastructure explicitly.
 - Added provider and dispatcher integration tests.
 - Documented event architecture rules.
+
+## Core Update 02.2A — Shio Event Foundation
+
+- Added the after-commit `ShioChanged` domain event.
+- Added the after-commit banner generation listener.
+- Registered the Shio event and listener explicitly.
+- Added listener delegation and template guard tests.
