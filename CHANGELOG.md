@@ -65,3 +65,20 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Added Market administration through Filament.
 - Added market normalization and validation action.
 - Added automated feature tests and sprint documentation.
+
+---
+
+## Core Update 01.3
+
+### Added
+
+- Global PHPUnit Test Database Guard.
+- SQLite in-memory test isolation.
+- Test Environment Isolation Feature Test.
+- ADR-0002 Core Test Isolation.
+
+### Result
+
+- PHPUnit menggunakan database testing yang terisolasi.
+- Production database tidak dapat digunakan saat menjalankan test.
+
