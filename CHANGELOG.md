@@ -166,3 +166,13 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Added template preview and a read-only generated-banner preview field.
 - Added Shio create-form and edit-form rendering tests.
 - Reused the existing banner columns without modifying old migrations.
+
+## Shio Update 04.2 — Banner Generation Engine
+
+- Added a reusable Shio banner generation domain action.
+- Added JPEG, PNG, and WebP template decoding through GD.
+- Added template-directory, existence, format, and dimension validation.
+- Added deterministic PNG generation under `shio/generated`.
+- Added title, date-range, Shio-name, and number rendering.
+- Added generated-banner model persistence.
+- Added generation, replacement, validation, and storage tests.
