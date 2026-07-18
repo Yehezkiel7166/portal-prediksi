@@ -3,8 +3,9 @@
 namespace App\Filament\Resources\ShioPeriods\Schemas;
 
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class ShioPeriodForm
@@ -35,14 +36,39 @@ class ShioPeriodForm
                     ->required()
                     ->native(false),
 
-                TextInput::make('banner_template')
+                FileUpload::make('banner_template')
                     ->label('Template Banner')
-                    ->maxLength(255),
+                    ->helperText(
+                        'Unggah template JPG, PNG, atau WebP maksimal 10 MB.'
+                    )
+                    ->image()
+                    ->acceptedFileTypes([
+                        'image/jpeg',
+                        'image/png',
+                        'image/webp',
+                    ])
+                    ->maxSize(10240)
+                    ->disk('public')
+                    ->directory('shio/banner-templates')
+                    ->visibility('public')
+                    ->preventFilePathTampering()
+                    ->openable()
+                    ->downloadable()
+                    ->columnSpanFull(),
 
-                TextInput::make('generated_banner')
-                    ->label('Banner Generated')
-                    ->maxLength(255)
-                    ->disabled(),
+                FileUpload::make('generated_banner')
+                    ->label('Banner Hasil')
+                    ->helperText(
+                        'Banner ini akan dibuat otomatis pada update generator.'
+                    )
+                    ->image()
+                    ->disk('public')
+                    ->visibility('public')
+                    ->openable()
+                    ->downloadable()
+                    ->disabled()
+                    ->dehydrated(false)
+                    ->columnSpanFull(),
 
                 Select::make('status')
                     ->label('Status')

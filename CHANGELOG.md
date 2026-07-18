@@ -157,3 +157,12 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Added create, edit, delete, bulk delete, search, sorting, and reordering.
 - Added JSON-backed number input using Filament tags.
 - Added relation manager registration, rendering, and owner-period scope tests.
+
+## Shio Update 04.1 — Banner Template Foundation
+
+- Replaced the manual Shio banner-template path with a secure image upload.
+- Added JPEG, PNG, and WebP validation with a 10 MB size limit.
+- Stored templates under the public `shio/banner-templates` directory.
+- Added template preview and a read-only generated-banner preview field.
+- Added Shio create-form and edit-form rendering tests.
+- Reused the existing banner columns without modifying old migrations.

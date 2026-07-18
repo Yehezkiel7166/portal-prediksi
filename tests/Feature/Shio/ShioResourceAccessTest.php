@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Shio;
 
+use App\Domains\Shio\Models\ShioPeriod;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -20,6 +21,36 @@ class ShioResourceAccessTest extends TestCase
         $this->actingAs($admin)
             ->get('/admin/shio-periods')
             ->assertOk();
+    }
+
+    public function test_admin_can_open_shio_create_form(): void
+    {
+        $admin = User::factory()->create([
+            'is_admin' => true,
+            'email_verified_at' => now(),
+        ]);
+
+        $this->actingAs($admin)
+            ->get('/admin/shio-periods/create')
+            ->assertOk()
+            ->assertSee('Template Banner')
+            ->assertSee('Banner Hasil');
+    }
+
+    public function test_admin_can_open_shio_edit_form(): void
+    {
+        $admin = User::factory()->create([
+            'is_admin' => true,
+            'email_verified_at' => now(),
+        ]);
+
+        $period = ShioPeriod::factory()->create();
+
+        $this->actingAs($admin)
+            ->get("/admin/shio-periods/{$period->getKey()}/edit")
+            ->assertOk()
+            ->assertSee('Template Banner')
+            ->assertSee('Banner Hasil');
     }
 
     public function test_regular_user_cannot_open_shio_resource(): void
