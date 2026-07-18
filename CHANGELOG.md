@@ -104,3 +104,19 @@ All notable changes to Portal Prediksi CMS will be documented here.
 
 - Clock module: 3 tests, 3 assertions.
 - Full suite: 32 tests, 68 assertions.
+
+## Core Update 01.5 - Prediction Clock Adoption
+
+### Changed
+
+- Injected the application `Clock` contract into `UpsertPredictionAction`.
+- Replaced direct publication-time access with `Clock::now()`.
+
+### Tests
+
+- Added a deterministic Prediction publishing test using a test Clock binding.
+- Verified the Prediction module and complete application test suite.
+
+### Documentation
+
+- Added ADR-0004 for Prediction Clock adoption.

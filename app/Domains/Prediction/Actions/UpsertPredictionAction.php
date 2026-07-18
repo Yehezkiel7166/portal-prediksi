@@ -2,6 +2,7 @@
 
 namespace App\Domains\Prediction\Actions;
 
+use App\Core\Contracts\Clock;
 use App\Domains\Prediction\Models\Prediction;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -10,6 +11,10 @@ use Illuminate\Validation\Rule;
 
 class UpsertPredictionAction
 {
+    public function __construct(
+        private readonly Clock $clock,
+    ) {}
+
     public function execute(
         ?Prediction $prediction,
         array $data,
@@ -46,7 +51,7 @@ class UpsertPredictionAction
         $data['notes'] = $this->nullableTrim($data['notes'] ?? null);
 
         if ($data['status'] === Prediction::STATUS_PUBLISHED) {
-            $data['published_at'] ??= now();
+            $data['published_at'] ??= $this->clock->now();
         } else {
             $data['published_at'] = null;
         }
