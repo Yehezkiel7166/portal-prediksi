@@ -120,3 +120,18 @@ All notable changes to Portal Prediksi CMS will be documented here.
 ### Documentation
 
 - Added ADR-0004 for Prediction Clock adoption.
+
+## Shio Foundation
+
+### Added
+
+- Added Shio domain foundation.
+- Added shio periods management structure.
+- Added shio numbers mapping structure.
+- Added ShioPeriod and ShioNumber domain models.
+- Added Shio factories and relationship tests.
+
+### Verified
+
+- Shio period can contain multiple shio number mappings.
+- Full application test suite passed.
