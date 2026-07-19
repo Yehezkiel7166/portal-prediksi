@@ -55,7 +55,16 @@
                 </li>
 
                 <li>
-                    <span class="text-slate-300">Data Result</span>
+                    <a
+                        href="{{ route('results.index') }}"
+                        @class([
+                            'transition hover:text-amber-300',
+                            'text-amber-400' => request()->routeIs('results.*'),
+                            'text-slate-300' => ! request()->routeIs('results.*'),
+                        ])
+                    >
+                        Data Result
+                    </a>
                 </li>
             </ul>
         </nav>

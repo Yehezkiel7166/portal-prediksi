@@ -3,6 +3,7 @@
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PredictionDetailController;
 use App\Http\Controllers\Frontend\PredictionsController;
+use App\Http\Controllers\Frontend\ResultsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -19,3 +20,6 @@ Route::get(
         'predictionDate' => '\d{4}-\d{2}-\d{2}',
     ])
     ->name('predictions.show');
+
+Route::get('/data-result', ResultsController::class)
+    ->name('results.index');
