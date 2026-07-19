@@ -7,6 +7,10 @@
     <title>@yield('title', config('app.name'))</title>
     <meta name="description" content="@yield('description', 'Portal informasi prediksi, hasil pasaran, live draw, dan kalender shio.')">
 
+    @hasSection('metadata')
+        @yield('metadata')
+    @endif
+
     @fonts
 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))

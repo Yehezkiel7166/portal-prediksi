@@ -3,6 +3,7 @@
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PredictionDetailController;
 use App\Http\Controllers\Frontend\PredictionsController;
+use App\Http\Controllers\Frontend\ResultDetailController;
 use App\Http\Controllers\Frontend\ResultsController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,13 @@ Route::get(
 
 Route::get('/data-result', ResultsController::class)
     ->name('results.index');
+
+Route::get(
+    '/data-result/{marketSlug}/{resultDate}',
+    ResultDetailController::class,
+)
+    ->where([
+        'marketSlug' => '[a-z0-9]+(?:-[a-z0-9]+)*',
+        'resultDate' => '\d{4}-\d{2}-\d{2}',
+    ])
+    ->name('results.show');
