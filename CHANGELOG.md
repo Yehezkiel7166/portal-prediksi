@@ -325,3 +325,8 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Frontend prediction tests: PASS
 - Full test suite: 84 tests / 230 assertions PASS
 
+
+## Shio UI Fix
+
+- Restored Create button on the Shio listing page.
+- Added regression test to ensure the Create action remains available.
