@@ -341,3 +341,28 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Result Create page now delegates persistence to UpsertResultAction.
 - Result Edit page now delegates persistence to UpsertResultAction.
 - Result module now follows the same architecture as Market and Prediction.
+
+## Sprint 07.1 — Promotion Foundation
+
+### Added
+
+- Added the Promotion domain model and database foundation.
+- Added `UpsertPromotionAction` for persistence and validation.
+- Added upload, direct URL, and HTTPS embed media-source foundations.
+- Added focal-point presets without manual media-size controls.
+- Added draft, published, and archived publication states.
+- Added Promotion Filament resource, form, table, and CRUD pages.
+- Added Promotion factory and feature tests.
+- Added Promotion module technical documentation.
+
+### Security
+
+- Promotion embeds accept URL fields only.
+- Raw JavaScript and arbitrary script input are not supported.
+- Provider whitelist and embed sanitization remain isolated to the
+  Promotion Media sprint.
+
+### Validation
+
+- Promotion module tests: PASS.
+- Full test suite: PASS.
