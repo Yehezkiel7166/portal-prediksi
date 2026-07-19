@@ -20,7 +20,7 @@ final class PublicPredictionListingTest extends TestCase
             ->assertOk()
             ->assertViewIs('frontend.predictions.index')
             ->assertSee('Prediksi Togel Terbaru')
-            ->assertSee('Belum ada prediksi yang diterbitkan');
+            ->assertSee('Tidak ada prediksi yang ditemukan');
 
         $this->assertSame(
             PredictionsController::class,

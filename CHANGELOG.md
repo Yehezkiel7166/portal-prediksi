@@ -282,3 +282,25 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Draft, archived, and future-scheduled Predictions remain hidden.
 - Predictions from inactive Markets remain hidden.
 - Market relationships are eager-loaded to prevent N+1 queries.
+
+## Sprint 06.2C — Public Prediction Filtering
+
+### Added
+
+- Added validated Market and date filters to the public Prediction listing.
+- Added `PredictionIndexRequest` for public query normalization and validation.
+- Added active and ordered Market options to the filter form.
+- Added filter-aware empty states and matching-result totals.
+- Added frontend tests for Market, date, combined filtering, validation, and pagination.
+- Added Sprint 06.2C technical documentation.
+
+### Changed
+
+- Public Prediction pagination now preserves active query parameters.
+- Public Prediction queries now apply optional filters through conditional clauses.
+
+### Validation
+
+- Market filters must reference an active Market slug.
+- Date filters must use the `YYYY-MM-DD` format.
+- Invalid filters redirect to the clean Prediction listing with validation errors.
