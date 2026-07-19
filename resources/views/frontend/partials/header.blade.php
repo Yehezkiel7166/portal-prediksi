@@ -7,20 +7,45 @@
         <nav aria-label="Navigasi utama">
             <ul class="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium">
                 <li>
-                    <a href="{{ route('home') }}" class="text-amber-400">Home</a>
+                    <a
+                        href="{{ route('home') }}"
+                        @class([
+                            'transition hover:text-amber-300',
+                            'text-amber-400' => request()->routeIs('home'),
+                            'text-slate-300' => ! request()->routeIs('home'),
+                        ])
+                    >
+                        Home
+                    </a>
                 </li>
+
                 <li>
                     <span class="text-slate-300">Live Draw</span>
                 </li>
+
                 <li>
-                    <span class="text-slate-300">Prediksi Togel</span>
+                    <a
+                        href="{{ route('predictions.index') }}"
+                        @class([
+                            'transition hover:text-amber-300',
+                            'text-amber-400' => request()->routeIs('predictions.*'),
+                            'text-slate-300' => ! request()->routeIs('predictions.*'),
+                        ])
+                    >
+                        Prediksi Togel
+                    </a>
                 </li>
+
                 <li>
                     <span class="text-slate-300">Slot Gacor</span>
                 </li>
+
                 <li>
                     <details class="relative">
-                        <summary class="cursor-pointer text-slate-300">Alat Togel</summary>
+                        <summary class="cursor-pointer text-slate-300 transition hover:text-amber-300">
+                            Alat Togel
+                        </summary>
+
                         <div class="mt-3 w-48 rounded-lg border border-slate-700 bg-slate-900 p-3">
                             <p class="py-1 text-slate-300">Buku Mimpi</p>
                             <p class="py-1 text-slate-300">Kalkulator Shio</p>
@@ -28,6 +53,7 @@
                         </div>
                     </details>
                 </li>
+
                 <li>
                     <span class="text-slate-300">Data Result</span>
                 </li>

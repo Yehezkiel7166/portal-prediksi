@@ -258,3 +258,27 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Market module passed: 8 tests, 13 assertions.
 - Result module passed: 7 tests, 9 assertions.
 - Full test suite passed: 67 tests, 160 assertions.
+
+## Sprint 06.2A — Public Prediction Listing
+
+### Added
+
+- Added the public `/prediksi-togel` route.
+- Added the frontend Prediction listing controller.
+- Added a responsive public Prediction listing view.
+- Added an empty state when no published Prediction is available.
+- Added twelve-record pagination.
+- Added frontend feature tests for publication visibility, ordering, and pagination.
+- Added Sprint 06.2A technical documentation.
+
+### Changed
+
+- Connected the public `Prediksi Togel` navigation item to the listing route.
+- Added active-state styling to Home and Prediction navigation links.
+
+### Publication Rules
+
+- Only published Predictions with an effective publication timestamp are shown.
+- Draft, archived, and future-scheduled Predictions remain hidden.
+- Predictions from inactive Markets remain hidden.
+- Market relationships are eager-loaded to prevent N+1 queries.
