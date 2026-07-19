@@ -27,7 +27,7 @@ class EditPromotion extends EditRecord
         /** @var Promotion $record */
 
         return app(UpsertPromotionAction::class)
-            ->execute($record, $data);
+            ->execute($data, $record);
     }
 
     protected function getSavedNotificationTitle(): ?string

@@ -16,7 +16,7 @@ class CreatePromotion extends CreateRecord
     protected function handleRecordCreation(array $data): Model
     {
         return app(UpsertPromotionAction::class)
-            ->execute(null, $data);
+            ->execute($data);
     }
 
     protected function getCreatedNotificationTitle(): ?string

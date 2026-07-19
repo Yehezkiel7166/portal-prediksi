@@ -366,3 +366,11 @@ All notable changes to Portal Prediksi CMS will be documented here.
 
 - Promotion module tests: PASS.
 - Full test suite: PASS.
+
+## Promotion Filament Persistence Fix
+
+### Fixed
+
+- Corrected Promotion Create and Edit page argument order when delegating
+  persistence to `UpsertPromotionAction`.
+- Added regression coverage for Promotion create and edit pages.
