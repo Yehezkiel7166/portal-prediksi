@@ -330,3 +330,8 @@ All notable changes to Portal Prediksi CMS will be documented here.
 
 - Restored Create button on the Shio listing page.
 - Added regression test to ensure the Create action remains available.
+
+## Shio Listing UX
+
+- Added Generate Banner action directly on the Shio listing page.
+- Listing now allows quick banner generation without opening the edit page.
