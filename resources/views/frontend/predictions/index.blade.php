@@ -142,7 +142,15 @@
                         </p>
 
                         <h2 class="mt-1 text-xl font-bold text-amber-400">
-                            {{ $prediction->market->name }}
+                            <a
+                                href="{{ route('predictions.show', [
+                                    'marketSlug' => $prediction->market->slug,
+                                    'predictionDate' => $prediction->prediction_date->format('Y-m-d'),
+                                ]) }}"
+                                class="transition hover:text-amber-300"
+                            >
+                                {{ $prediction->market->name }}
+                            </a>
                         </h2>
                     </div>
 
@@ -185,6 +193,16 @@
                         </p>
                     </div>
                 @endif
+
+                <a
+                    href="{{ route('predictions.show', [
+                        'marketSlug' => $prediction->market->slug,
+                        'predictionDate' => $prediction->prediction_date->format('Y-m-d'),
+                    ]) }}"
+                    class="mt-6 inline-flex items-center justify-center rounded-lg border border-amber-400 px-5 py-3 text-sm font-semibold text-amber-400 transition hover:bg-amber-400 hover:text-slate-950"
+                >
+                    Lihat Detail
+                </a>
 
                 <p class="mt-auto pt-6 text-xs text-slate-500">
                     Diterbitkan

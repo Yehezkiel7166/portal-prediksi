@@ -304,3 +304,24 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Market filters must reference an active Market slug.
 - Date filters must use the `YYYY-MM-DD` format.
 - Invalid filters redirect to the clean Prediction listing with validation errors.
+
+## Sprint 06.3A - Public Prediction Detail
+
+### Added
+- Public prediction detail route:
+  `/prediksi-togel/{marketSlug}/{predictionDate}`
+- Frontend PredictionDetailController.
+- Public prediction detail Blade view.
+- Detail links from prediction listing.
+- Feature tests covering:
+  - route registration
+  - published prediction rendering
+  - draft prediction returns 404
+  - future publication returns 404
+  - inactive market returns 404
+  - invalid slug/date returns 404
+
+### Validation
+- Frontend prediction tests: PASS
+- Full test suite: 84 tests / 230 assertions PASS
+
