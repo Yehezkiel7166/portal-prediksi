@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Domains\Market\Models\Market;
 use App\Domains\Prediction\Models\Prediction;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -15,9 +16,7 @@ class PredictionFactory extends Factory
     public function definition(): array
     {
         return [
-            'market' => strtoupper(
-                fake()->unique()->lexify('market-????')
-            ),
+            'market_id' => Market::factory(),
             'prediction_date' => fake()->dateTimeBetween(
                 'today',
                 '+30 days'

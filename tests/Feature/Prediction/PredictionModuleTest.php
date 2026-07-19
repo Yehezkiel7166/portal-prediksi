@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Prediction;
 
+use App\Domains\Market\Models\Market;
 use App\Domains\Prediction\Actions\UpsertPredictionAction;
 use App\Domains\Prediction\Models\Prediction;
 use App\Models\User;
@@ -15,8 +16,10 @@ class PredictionModuleTest extends TestCase
 
     public function test_action_creates_a_normalized_draft_prediction(): void
     {
+        $market = Market::factory()->create();
+
         $prediction = app(UpsertPredictionAction::class)->execute(null, [
-            'market' => ' singapore ',
+            'market_id' => $market->id,
             'prediction_date' => '2026-07-19',
             'predicted_numbers' => ' 1234 5678 ',
             'status' => Prediction::STATUS_DRAFT,
@@ -25,19 +28,23 @@ class PredictionModuleTest extends TestCase
 
         $this->assertDatabaseHas('predictions', [
             'id' => $prediction->id,
-            'market' => 'SINGAPORE',
+            'market_id' => $market->id,
             'prediction_date' => '2026-07-19 00:00:00',
             'predicted_numbers' => '1234 5678',
             'status' => Prediction::STATUS_DRAFT,
             'notes' => 'Catatan admin',
             'published_at' => null,
         ]);
+
+        $this->assertTrue($prediction->market->is($market));
     }
 
     public function test_published_prediction_receives_publication_time(): void
     {
+        $market = Market::factory()->create();
+
         $prediction = app(UpsertPredictionAction::class)->execute(null, [
-            'market' => 'Hongkong',
+            'market_id' => $market->id,
             'prediction_date' => '2026-07-19',
             'predicted_numbers' => '1111 2222',
             'status' => Prediction::STATUS_PUBLISHED,
@@ -54,15 +61,17 @@ class PredictionModuleTest extends TestCase
 
     public function test_action_updates_an_existing_prediction(): void
     {
+        $market = Market::factory()->create();
+
         $prediction = Prediction::factory()->create([
-            'market' => 'SYDNEY',
+            'market_id' => $market->id,
             'prediction_date' => '2026-07-19',
         ]);
 
         $updated = app(UpsertPredictionAction::class)->execute(
             $prediction,
             [
-                'market' => 'Sydney',
+                'market_id' => $market->id,
                 'prediction_date' => '2026-07-19',
                 'predicted_numbers' => '9999 8888',
                 'status' => Prediction::STATUS_ARCHIVED,
@@ -78,15 +87,17 @@ class PredictionModuleTest extends TestCase
 
     public function test_same_market_cannot_exist_twice_on_same_date(): void
     {
+        $market = Market::factory()->create();
+
         Prediction::factory()->create([
-            'market' => 'SINGAPORE',
+            'market_id' => $market->id,
             'prediction_date' => '2026-07-19',
         ]);
 
         $this->expectException(ValidationException::class);
 
         app(UpsertPredictionAction::class)->execute(null, [
-            'market' => 'singapore',
+            'market_id' => $market->id,
             'prediction_date' => '2026-07-19',
             'predicted_numbers' => '1234',
             'status' => Prediction::STATUS_DRAFT,
@@ -96,13 +107,15 @@ class PredictionModuleTest extends TestCase
 
     public function test_same_market_can_exist_on_different_dates(): void
     {
+        $market = Market::factory()->create();
+
         Prediction::factory()->create([
-            'market' => 'SINGAPORE',
+            'market_id' => $market->id,
             'prediction_date' => '2026-07-19',
         ]);
 
         $prediction = app(UpsertPredictionAction::class)->execute(null, [
-            'market' => 'singapore',
+            'market_id' => $market->id,
             'prediction_date' => '2026-07-20',
             'predicted_numbers' => '5678',
             'status' => Prediction::STATUS_DRAFT,
@@ -111,8 +124,21 @@ class PredictionModuleTest extends TestCase
 
         $this->assertDatabaseHas('predictions', [
             'id' => $prediction->id,
-            'market' => 'SINGAPORE',
+            'market_id' => $market->id,
             'prediction_date' => '2026-07-20 00:00:00',
+        ]);
+    }
+
+    public function test_prediction_requires_an_existing_market(): void
+    {
+        $this->expectException(ValidationException::class);
+
+        app(UpsertPredictionAction::class)->execute(null, [
+            'market_id' => 999999,
+            'prediction_date' => '2026-07-19',
+            'predicted_numbers' => '1234',
+            'status' => Prediction::STATUS_DRAFT,
+            'notes' => null,
         ]);
     }
 

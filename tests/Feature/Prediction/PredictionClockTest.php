@@ -3,6 +3,7 @@
 namespace Tests\Feature\Prediction;
 
 use App\Core\Contracts\Clock;
+use App\Domains\Market\Models\Market;
 use App\Domains\Prediction\Actions\UpsertPredictionAction;
 use App\Domains\Prediction\Models\Prediction;
 use Carbon\CarbonImmutable;
@@ -35,8 +36,10 @@ class PredictionClockTest extends TestCase
             },
         );
 
+        $market = Market::factory()->create();
+
         $prediction = app(UpsertPredictionAction::class)->execute(null, [
-            'market' => 'Hongkong',
+            'market_id' => $market->id,
             'prediction_date' => '2026-07-19',
             'predicted_numbers' => '1111 2222',
             'status' => Prediction::STATUS_PUBLISHED,

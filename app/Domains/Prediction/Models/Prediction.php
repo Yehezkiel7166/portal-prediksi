@@ -2,10 +2,12 @@
 
 namespace App\Domains\Prediction\Models;
 
+use App\Domains\Market\Models\Market;
 use Database\Factories\PredictionFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Prediction extends Model
 {
@@ -19,7 +21,7 @@ class Prediction extends Model
     public const STATUS_ARCHIVED = 'archived';
 
     protected $fillable = [
-        'market',
+        'market_id',
         'prediction_date',
         'predicted_numbers',
         'status',
@@ -38,6 +40,11 @@ class Prediction extends Model
     protected static function newFactory(): PredictionFactory
     {
         return PredictionFactory::new();
+    }
+
+    public function market(): BelongsTo
+    {
+        return $this->belongsTo(Market::class);
     }
 
     public function scopePublished(Builder $query): Builder

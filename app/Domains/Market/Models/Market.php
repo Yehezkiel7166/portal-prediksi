@@ -2,10 +2,13 @@
 
 namespace App\Domains\Market\Models;
 
+use App\Domains\Prediction\Models\Prediction;
+use App\Domains\Result\Models\Result;
 use Database\Factories\MarketFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Market extends Model
 {
@@ -33,6 +36,16 @@ class Market extends Model
     protected static function newFactory(): MarketFactory
     {
         return MarketFactory::new();
+    }
+
+    public function predictions(): HasMany
+    {
+        return $this->hasMany(Prediction::class);
+    }
+
+    public function results(): HasMany
+    {
+        return $this->hasMany(Result::class);
     }
 
     public function scopeActive(Builder $query): Builder

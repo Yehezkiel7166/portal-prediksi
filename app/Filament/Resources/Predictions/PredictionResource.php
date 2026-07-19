@@ -26,7 +26,7 @@ class PredictionResource extends Resource
 
     protected static ?string $pluralModelLabel = 'prediksi';
 
-    protected static ?string $recordTitleAttribute = 'market';
+    protected static ?string $recordTitleAttribute = 'id';
 
     protected static ?int $navigationSort = 10;
 

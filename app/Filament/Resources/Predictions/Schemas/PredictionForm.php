@@ -7,7 +7,6 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class PredictionForm
@@ -16,11 +15,19 @@ class PredictionForm
     {
         return $schema
             ->components([
-                TextInput::make('market')
+                Select::make('market_id')
                     ->label('Pasaran')
-                    ->placeholder('Contoh: SINGAPORE')
+                    ->relationship(
+                        name: 'market',
+                        titleAttribute: 'name',
+                        modifyQueryUsing: fn ($query) => $query
+                            ->orderBy('sort_order')
+                            ->orderBy('name')
+                    )
+                    ->searchable()
+                    ->preload()
                     ->required()
-                    ->maxLength(100)
+                    ->native(false)
                     ->columnSpan(1),
 
                 DatePicker::make('prediction_date')

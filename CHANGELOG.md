@@ -226,3 +226,35 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Homepage rendered through HomeController.
 - Public layout separated from Laravel welcome page.
 - Full test suite passed (66 tests, 158 assertions).
+
+## Prediction Update 01 — Market Relation
+
+### Changed
+
+- Replaced the legacy Prediction `market` string with `market_id`.
+- Added the Prediction-to-Market `belongsTo` relationship.
+- Added the Market-to-Prediction `hasMany` relationship.
+- Updated Prediction validation to require an existing Market.
+- Changed duplicate protection to use Market ID and prediction date.
+- Replaced the Prediction market text input with a searchable Market selector.
+- Updated the Prediction table to display the related Market name.
+- Updated the Prediction factory and feature tests for Market relationships.
+
+### Database
+
+- Added a new migration without changing previously executed migrations.
+- Added the `predictions.market_id` foreign key.
+- Replaced the legacy market/date unique index.
+- Removed the duplicated Prediction market string.
+- No production backfill was required because the Prediction table was empty.
+
+### Documentation
+
+- Added `PREDICTION-UPDATE-01-MARKET-RELATION.md`.
+
+### Verified
+
+- Prediction module passed: 9 tests, 16 assertions.
+- Market module passed: 8 tests, 13 assertions.
+- Result module passed: 7 tests, 9 assertions.
+- Full test suite passed: 67 tests, 160 assertions.

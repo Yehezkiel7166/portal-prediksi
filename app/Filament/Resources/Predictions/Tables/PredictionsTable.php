@@ -17,7 +17,7 @@ class PredictionsTable
         return $table
             ->defaultSort('prediction_date', 'desc')
             ->columns([
-                TextColumn::make('market')
+                TextColumn::make('market.name')
                     ->label('Pasaran')
                     ->searchable()
                     ->sortable()

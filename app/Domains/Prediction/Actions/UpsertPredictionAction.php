@@ -6,7 +6,6 @@ use App\Core\Contracts\Clock;
 use App\Domains\Prediction\Models\Prediction;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class UpsertPredictionAction
@@ -41,8 +40,6 @@ class UpsertPredictionAction
 
     private function normalize(array $data): array
     {
-        $data['market'] = Str::upper(trim((string) ($data['market'] ?? '')));
-
         $data['predicted_numbers'] = trim(
             (string) ($data['predicted_numbers'] ?? '')
         );
@@ -64,11 +61,11 @@ class UpsertPredictionAction
         array $data,
     ): array {
         return [
-            'market' => [
+            'market_id' => [
                 'required',
-                'string',
-                'max:100',
-                Rule::unique('predictions', 'market')
+                'integer',
+                Rule::exists('markets', 'id'),
+                Rule::unique('predictions', 'market_id')
                     ->where(
                         fn ($query) => $query->whereDate(
                             'prediction_date',
