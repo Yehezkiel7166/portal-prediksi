@@ -335,3 +335,9 @@ All notable changes to Portal Prediksi CMS will be documented here.
 
 - Added Generate Banner action directly on the Shio listing page.
 - Listing now allows quick banner generation without opening the edit page.
+
+## Result Architecture
+
+- Result Create page now delegates persistence to UpsertResultAction.
+- Result Edit page now delegates persistence to UpsertResultAction.
+- Result module now follows the same architecture as Market and Prediction.
