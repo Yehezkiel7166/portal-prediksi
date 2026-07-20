@@ -43,3 +43,14 @@ Route::get('/promosi', PromotionsController::class)
 Route::get('/promosi/{slug}', PromotionDetailController::class)
     ->where('slug', '[a-z0-9]+(?:-[a-z0-9]+)*')
     ->name('promotions.show');
+
+Route::get(
+    '/blog',
+    \App\Http\Controllers\Frontend\BlogsController::class
+)->name('blog.index');
+
+Route::get(
+    '/blog/{slug}',
+    \App\Http\Controllers\Frontend\BlogDetailController::class
+)->where('slug', '[A-Za-z0-9-]+')
+    ->name('blog.show');
