@@ -1,0 +1,116 @@
+{
+    "schema_version": 1,
+    "project": {
+        "name": "Portal Prediksi CMS",
+        "repository": "https://github.com/Yehezkiel7166/portal-prediksi",
+        "primary_branch": "main",
+        "source_of_truth": "git_repository"
+    },
+    "baseline": {
+        "commit": "dbc3b17",
+        "subject": "feat(live-draw): add hls stream player",
+        "working_tree": "clean_before_repository_foundation",
+        "origin_synchronized": true
+    },
+    "runtime": {
+        "php": "8.3",
+        "laravel": "13.20.0",
+        "filament": "5.7",
+        "database": "mysql",
+        "queue": "database",
+        "frontend_build": "vite"
+    },
+    "implemented_domains": [
+        "Core",
+        "Market",
+        "Prediction",
+        "Result",
+        "Shio",
+        "Promotion",
+        "Blog",
+        "LiveDraw"
+    ],
+    "implemented_frontend": [
+        "Home",
+        "LiveDraw",
+        "PredictionListing",
+        "PredictionDetail",
+        "ResultListing",
+        "ResultDetail",
+        "PromotionListing",
+        "PromotionDetail",
+        "BlogListing",
+        "BlogDetail"
+    ],
+    "scheduled_tasks": [
+        {
+            "command": "system:scheduler-heartbeat",
+            "frequency": "every_five_minutes",
+            "without_overlapping": true
+        },
+        {
+            "command": "live-draw:update-status",
+            "frequency": "every_minute",
+            "without_overlapping": true
+        }
+    ],
+    "completed_capabilities": [
+        "scheduler_heartbeat",
+        "admin_access",
+        "market_management",
+        "prediction_management",
+        "result_management",
+        "shio_management",
+        "shio_banner_generation",
+        "promotion_management",
+        "blog_management",
+        "live_draw_management",
+        "live_draw_status_automation",
+        "latest_result_resolver",
+        "hls_stream_player"
+    ],
+    "repository_foundation": {
+        "status": "completed",
+        "required_documents": [
+            "README.md",
+            "PROJECT_MANIFEST.md",
+            "PROJECT_STATE.json",
+            "START_HERE.md",
+            "AI_HANDOVER.md",
+            "ROADMAP.md",
+            "ARCHITECTURE.md",
+            "SECURITY.md",
+            "DEPLOYMENT.md",
+            "MIGRATION.md",
+            "BACKUP_RECOVERY.md",
+            "TESTING.md"
+        ],
+        "completed_date": "2026-07-20"
+    },
+    "known_limitations": [
+        "Repository CI workflow has not been verified",
+        "Deployment is not yet automated by repository pipeline",
+        "Backup automation is not implemented in the repository",
+        "Centralized site settings are not yet implemented",
+        "Centralized responsive media management is not yet implemented"
+    ],
+    "next_recommended_phase": {
+        "id": "site_configuration_foundation",
+        "name": "Site Configuration Foundation",
+        "objective": "Centralize site identity, branding, SEO, navigation, footer, contact, and operational configuration.",
+        "status": "planned"
+    },
+    "mandatory_workflow": [
+        "Inspect",
+        "Design",
+        "Patch",
+        "Syntax Check",
+        "Module Test",
+        "Full Test",
+        "Documentation",
+        "Git Clean",
+        "Commit",
+        "Push",
+        "Audit"
+    ]
+}

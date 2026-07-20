@@ -1,0 +1,199 @@
+# Project Roadmap
+
+Roadmap ini menggambarkan urutan pengembangan Portal Prediksi CMS berdasarkan kondisi repository aktual.
+
+Repository dan implementasi tetap menjadi sumber kebenaran utama apabila roadmap tidak lagi sesuai.
+
+## Status Legend
+
+- Completed: implementasi, test, dokumentasi, commit, dan push selesai.
+- In Progress: sedang dikerjakan dan belum boleh dianggap selesai.
+- Planned: belum dimulai.
+- Conditional: hanya dikerjakan setelah inspeksi membuktikan kebutuhan.
+
+## Completed Foundation
+
+- Laravel 13 application foundation.
+- Filament admin panel and admin access control.
+- Scheduler heartbeat and cron runner support.
+- Application clock and shared Core infrastructure.
+- Domain event foundation.
+
+## Completed Domains
+
+- Market management.
+- Prediction management.
+- Result management.
+- Shio periods and number management.
+- Shio banner templates and generation.
+- Promotion management.
+- Blog management.
+- Live Draw management.
+
+## Completed Public Frontend
+
+- Public frontend layout.
+- Home page.
+- Prediction listing and detail.
+- Result listing and detail.
+- Promotion listing and detail.
+- Blog listing and detail.
+- Live Draw listing.
+- HLS stream playback.
+
+## In Progress
+
+### Repository Foundation
+
+Objective: make the repository sufficient to continue the project without historical chat context.
+
+Required outputs:
+
+- `README.md`
+- `START_HERE.md`
+- `PROJECT_MANIFEST.md`
+- `PROJECT_STATE.json`
+- `AI_HANDOVER.md`
+- `ROADMAP.md`
+- `ARCHITECTURE.md`
+- `SECURITY.md`
+- `DEPLOYMENT.md`
+- `MIGRATION.md`
+- `BACKUP_RECOVERY.md`
+- `TESTING.md`
+- ADR for repository Single Source of Truth policy.
+
+Completion requires full test suite, commit, push, remote synchronization, and clean working tree.
+
+## Next Recommended Phase
+
+### Site Configuration Foundation
+
+Planned capabilities:
+
+- centralized site identity;
+- site name and public branding;
+- default SEO metadata;
+- contact and social links;
+- frontend navigation configuration;
+- footer configuration;
+- operational settings that should not be hardcoded.
+
+Requirements:
+
+- settings must be editable from admin;
+- defaults must remain safe when settings are absent;
+- secrets must remain in environment configuration;
+- settings must be cached safely;
+- tests must cover fallback behavior.
+
+## Planned Media Foundation
+
+Objective: provide centralized, responsive, and secure media handling.
+
+Planned capabilities:
+
+- upload source;
+- direct image URL source;
+- approved embed provider source where required;
+- focal point and alignment selection;
+- automatic responsive sizes;
+- automatic ratio and crop presets;
+- thumbnail generation;
+- provider whitelist;
+- embed sanitization;
+- media validation and fallback behavior.
+
+Admin must not manually manage pixel dimensions, breakpoints, or technical transformation settings.
+
+## Planned Frontend Completion
+
+Conditional tasks after Site Configuration and Media Foundation:
+
+- improve home page composition;
+- implement remaining navigation destinations;
+- add reusable frontend sections;
+- improve responsive presentation;
+- improve empty states and fallback states;
+- audit public metadata and canonical behavior;
+- add structured data where justified.
+
+Do not create placeholder routes or unsupported content types without implementation and tests.
+
+## Planned Operational Improvements
+
+- continuous integration workflow;
+- automated test execution for pull requests or pushes;
+- production deployment checklist validation;
+- backup automation documentation and verification;
+- queue worker monitoring;
+- scheduler monitoring;
+- log rotation and storage review;
+- application health checks.
+
+## Planned Security Improvements
+
+- dependency vulnerability review;
+- upload and external media threat review;
+- content sanitization review;
+- authorization audit across Filament resources;
+- rate limiting review;
+- production header review;
+- secret rotation procedures;
+- backup access controls.
+
+## Planned Quality Improvements
+
+- test coverage audit by domain;
+- duplicate query and business logic review;
+- database index review based on actual query patterns;
+- N+1 query audit;
+- accessibility audit;
+- responsive layout audit;
+- performance profiling after realistic data volume is available.
+
+## Conditional Future Features
+
+These features require explicit business requirements before implementation:
+
+- Slot Gacor content management.
+- Alat Togel tools.
+- configurable public menu builder.
+- additional content modules.
+- public API.
+- multi-language content.
+- notification delivery.
+- external data integrations.
+
+Do not infer detailed behavior for these features from menu labels alone.
+
+## Sprint Selection Rules
+
+The next sprint must:
+
+- start from repository inspection;
+- solve one clear objective;
+- avoid repeating completed work;
+- identify dependencies and migration impact;
+- include tests and documentation;
+- end with one commit and clean working tree.
+
+Priority order:
+
+1. finish work already marked In Progress;
+2. resolve verified defects or production risks;
+3. complete foundations needed by multiple modules;
+4. implement approved business features;
+5. perform conditional optimization only after measurement.
+
+## Roadmap Maintenance
+
+Update this file when:
+
+- a planned phase starts;
+- a sprint is completed;
+- priorities change;
+- a new dependency or risk is discovered;
+- implementation proves an assumption incorrect.
+
+Keep `PROJECT_STATE.json`, `PROJECT_MANIFEST.md`, sprint documentation, and this roadmap consistent.

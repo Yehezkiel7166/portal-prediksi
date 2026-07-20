@@ -4,6 +4,31 @@ All notable changes to Portal Prediksi CMS will be documented here.
 
 ## [Unreleased]
 
+## Sprint A — Repository Foundation
+
+### Added
+
+- Repository Foundation documentation.
+- Machine-readable project state.
+- Project manifest and AI handover rules.
+- Architecture, security, deployment, migration, backup, recovery, and testing standards.
+- Repository Single Source of Truth ADR.
+- Repository Foundation sprint documentation.
+
+### Changed
+
+- Rebuilt README as the repository entry point.
+- Marked Repository Foundation as completed.
+- Set Site Configuration Foundation as the next recommended phase.
+
+### Verified
+
+- Foundation documents validated.
+- PROJECT_STATE JSON validated.
+- Full automated test suite executed.
+- Git repository audited before commit and push.
+
+
 ### Added
 
 - Laravel 13 application foundation
