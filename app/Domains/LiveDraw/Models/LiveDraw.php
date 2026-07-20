@@ -91,4 +91,119 @@ class LiveDraw extends Model
             ->orderBy('title')
             ->orderBy('id');
     }
+
+    public function isLive(): bool
+    {
+        return $this->status === self::STATUS_LIVE;
+    }
+
+    public function publicEmbedUrl(): ?string
+    {
+        if (
+            ! $this->isLive()
+            || $this->stream_type !== self::STREAM_TYPE_IFRAME
+            || blank($this->source_url)
+        ) {
+            return null;
+        }
+
+        return match ($this->provider) {
+            self::PROVIDER_YOUTUBE => $this->youtubeEmbedUrl(),
+            self::PROVIDER_VIMEO => $this->vimeoEmbedUrl(),
+            default => null,
+        };
+    }
+
+    private function youtubeEmbedUrl(): ?string
+    {
+        $url = (string) $this->source_url;
+        $host = strtolower((string) parse_url($url, PHP_URL_HOST));
+        $path = trim((string) parse_url($url, PHP_URL_PATH), '/');
+        $videoId = null;
+
+        if (in_array($host, ['youtu.be', 'www.youtu.be'], true)) {
+            $videoId = explode('/', $path)[0] ?? null;
+        }
+
+        if (
+            in_array(
+                $host,
+                [
+                    'youtube.com',
+                    'www.youtube.com',
+                    'm.youtube.com',
+                    'youtube-nocookie.com',
+                    'www.youtube-nocookie.com',
+                ],
+                true,
+            )
+        ) {
+            parse_str(
+                (string) parse_url($url, PHP_URL_QUERY),
+                $query,
+            );
+
+            $videoId = $query['v'] ?? null;
+
+            if (str_starts_with($path, 'embed/')) {
+                $videoId = explode('/', $path)[1] ?? null;
+            }
+
+            if (str_starts_with($path, 'shorts/')) {
+                $videoId = explode('/', $path)[1] ?? null;
+            }
+        }
+
+        if (
+            ! is_string($videoId)
+            || ! preg_match('/^[A-Za-z0-9_-]{6,32}$/', $videoId)
+        ) {
+            return null;
+        }
+
+        return 'https://www.youtube-nocookie.com/embed/'.$videoId;
+    }
+
+    private function vimeoEmbedUrl(): ?string
+    {
+        $url = (string) $this->source_url;
+        $host = strtolower((string) parse_url($url, PHP_URL_HOST));
+
+        if (
+            ! in_array(
+                $host,
+                [
+                    'vimeo.com',
+                    'www.vimeo.com',
+                    'player.vimeo.com',
+                ],
+                true,
+            )
+        ) {
+            return null;
+        }
+
+        $segments = array_values(
+            array_filter(
+                explode(
+                    '/',
+                    trim(
+                        (string) parse_url($url, PHP_URL_PATH),
+                        '/',
+                    ),
+                ),
+            ),
+        );
+
+        $videoId = end($segments);
+
+        if (
+            ! is_string($videoId)
+            || ! preg_match('/^\d{5,20}$/', $videoId)
+        ) {
+            return null;
+        }
+
+        return 'https://player.vimeo.com/video/'.$videoId;
+    }
 }

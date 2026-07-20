@@ -20,7 +20,16 @@
                 </li>
 
                 <li>
-                    <span class="text-slate-300">Live Draw</span>
+                    <a
+                        href="{{ route('live-draw.index') }}"
+                        @class([
+                            'transition hover:text-amber-300',
+                            'text-amber-400' => request()->routeIs('live-draw.*'),
+                            'text-slate-300' => ! request()->routeIs('live-draw.*'),
+                        ])
+                    >
+                        Live Draw
+                    </a>
                 </li>
 
                 <li>

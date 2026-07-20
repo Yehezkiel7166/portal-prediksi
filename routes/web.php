@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Frontend\BlogDetailController;
+use App\Http\Controllers\Frontend\BlogsController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\LiveDrawController;
 use App\Http\Controllers\Frontend\PredictionDetailController;
 use App\Http\Controllers\Frontend\PredictionsController;
 use App\Http\Controllers\Frontend\PromotionDetailController;
@@ -10,6 +13,9 @@ use App\Http\Controllers\Frontend\ResultsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
+
+Route::get('/live-draw', LiveDrawController::class)
+    ->name('live-draw.index');
 
 Route::get('/prediksi-togel', PredictionsController::class)
     ->name('predictions.index');
@@ -44,13 +50,9 @@ Route::get('/promosi/{slug}', PromotionDetailController::class)
     ->where('slug', '[a-z0-9]+(?:-[a-z0-9]+)*')
     ->name('promotions.show');
 
-Route::get(
-    '/blog',
-    \App\Http\Controllers\Frontend\BlogsController::class
-)->name('blog.index');
+Route::get('/blog', BlogsController::class)
+    ->name('blog.index');
 
-Route::get(
-    '/blog/{slug}',
-    \App\Http\Controllers\Frontend\BlogDetailController::class
-)->where('slug', '[A-Za-z0-9-]+')
+Route::get('/blog/{slug}', BlogDetailController::class)
+    ->where('slug', '[A-Za-z0-9-]+')
     ->name('blog.show');
