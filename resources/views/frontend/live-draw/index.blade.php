@@ -208,10 +208,31 @@
                     @elseif (
                         $liveDraw->isLive()
                         && $liveDraw->stream_type === 'hls'
+                        && filled($liveDraw->source_url)
                     )
-                        <div class="mt-6 rounded-xl border border-amber-400/30 bg-amber-950/20 p-5 text-sm leading-6 text-amber-200">
-                            Siaran HLS sedang aktif. Pemutar HLS akan tersedia
-                            pada tahap pengembangan berikutnya.
+                        <div class="mt-6 overflow-hidden rounded-xl border border-slate-700 bg-black">
+                            <video
+                                data-hls-player
+                                data-hls-source="{{ $liveDraw->source_url }}"
+                                data-hls-fallback="hls-fallback-{{ $liveDraw->id }}"
+                                class="aspect-video h-auto w-full bg-black"
+                                controls
+                                playsinline
+                                preload="metadata"
+                                aria-label="Live Draw {{ $liveDraw->market->name }}"
+                            >
+                                Browser Anda tidak mendukung pemutar video.
+                            </video>
+
+                            <div
+                                id="hls-fallback-{{ $liveDraw->id }}"
+                                class="hidden border-t border-amber-400/30 bg-amber-950/30 p-5 text-sm leading-6 text-amber-200"
+                                role="alert"
+                            >
+                                Siaran HLS tidak dapat diputar pada browser ini.
+                                Silakan gunakan browser terbaru atau coba kembali
+                                beberapa saat lagi.
+                            </div>
                         </div>
                     @elseif ($liveDraw->status === 'scheduled')
                         <div class="mt-6 rounded-xl border border-amber-400/30 bg-amber-950/20 p-5 text-sm leading-6 text-amber-200">
