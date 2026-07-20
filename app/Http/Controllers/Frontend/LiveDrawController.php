@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Domains\LiveDraw\Models\LiveDraw;
+use App\Domains\Result\Support\LatestResultResolver;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 
 final class LiveDrawController extends Controller
 {
-    public function __invoke(): View
-    {
+    public function __invoke(
+        LatestResultResolver $resolver,
+    ): View {
         $liveDraws = LiveDraw::query()
             ->select([
                 'id',
@@ -40,7 +42,13 @@ final class LiveDrawController extends Controller
                 'market:id,name,slug,code,timezone,is_active,sort_order',
             ])
             ->ordered()
-            ->get();
+            ->get()
+            ->each(function (LiveDraw $liveDraw) use ($resolver): void {
+                $liveDraw->setRelation(
+                    'latestResult',
+                    $resolver->forMarketId($liveDraw->market_id),
+                );
+            });
 
         return view('frontend.live-draw.index', [
             'liveDraws' => $liveDraws,
