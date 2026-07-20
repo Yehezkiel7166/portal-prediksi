@@ -374,3 +374,18 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Corrected Promotion Create and Edit page argument order when delegating
   persistence to `UpsertPromotionAction`.
 - Added regression coverage for Promotion create and edit pages.
+
+## Sprint 07.2 — Public Promotion Frontend
+
+### Added
+
+- Added public Promotion listing at `/promosi`.
+- Added public Promotion detail at `/promosi/{slug}`.
+- Added responsive upload and direct-URL image rendering.
+- Added embed rendering foundation on Promotion detail pages.
+- Added canonical and Open Graph metadata.
+- Added public Promotion feature tests.
+
+### Validation
+
+- Public Promotion module tests: 5 tests / 17 assertions PASS.
