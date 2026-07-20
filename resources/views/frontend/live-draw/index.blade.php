@@ -61,6 +61,7 @@
 
             @php
                 $embedUrl = $liveDraw->publicEmbedUrl();
+                $latestResult = $liveDraw->latestResult;
 
                 $statusLabel = match ($liveDraw->status) {
                     'live' => 'Sedang Live',
@@ -235,6 +236,49 @@
                         <div class="mt-6 rounded-xl border border-slate-700 bg-slate-950 p-5 text-sm leading-6 text-slate-400">
                             Siaran live draw sedang tidak tersedia.
                         </div>
+                    @endif
+
+                    @if (! $liveDraw->isLive() && $latestResult !== null)
+                        <section
+                            class="mt-6 rounded-xl border border-sky-400/30 bg-sky-950/20 p-5"
+                            aria-label="Hasil terbaru {{ $liveDraw->market->name }}"
+                        >
+                            <div class="flex flex-wrap items-start justify-between gap-4">
+                                <div>
+                                    <p class="text-xs font-semibold uppercase tracking-widest text-sky-300">
+                                        Hasil terbaru
+                                    </p>
+
+                                    <p class="mt-2 text-sm text-slate-400">
+                                        {{ \Carbon\Carbon::parse($latestResult->result_date)->format('d-m-Y') }}
+                                    </p>
+                                </div>
+
+                                <a
+                                    href="{{ route('results.index', [
+                                        'market' => $liveDraw->market->slug,
+                                    ]) }}"
+                                    class="text-sm font-semibold text-sky-300 transition hover:text-sky-200"
+                                >
+                                    Lihat Data Result
+                                </a>
+                            </div>
+
+                            <a
+                                href="{{ route('results.index', [
+                                    'market' => $liveDraw->market->slug,
+                                ]) }}"
+                                class="mt-5 block rounded-lg border border-sky-400/20 bg-slate-950 px-5 py-4 text-center transition hover:border-sky-300/50"
+                            >
+                                <span class="block text-xs font-semibold uppercase tracking-widest text-slate-500">
+                                    Nomor keluar
+                                </span>
+
+                                <span class="mt-2 block text-3xl font-bold tracking-[0.25em] text-white">
+                                    {{ $latestResult->winning_numbers }}
+                                </span>
+                            </a>
+                        </section>
                     @endif
 
                     @if (filled($liveDraw->footer))
