@@ -414,3 +414,19 @@ All notable changes to Portal Prediksi CMS will be documented here.
 ### Validation
 
 - Public Promotion module tests: 5 tests / 17 assertions PASS.
+
+## Sprint B — Repository Consistency Audit
+
+### Changed
+
+- Added current verified Git state to `PROJECT_STATE.json`.
+- Recorded Repository Foundation commit and test result.
+- Updated AI handover state from in-progress to completed.
+- Documented the distinction between historical baseline and current repository HEAD.
+
+### Verified
+
+- Branch `main` synchronized with `origin/main`.
+- No tracked sensitive credential files detected.
+- No tracked files larger than 5 MB detected.
+- Repository documentation consistency validated.
