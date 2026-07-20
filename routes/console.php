@@ -11,3 +11,7 @@ Artisan::command('inspire', function (): void {
 Schedule::command('system:scheduler-heartbeat')
     ->everyFiveMinutes()
     ->withoutOverlapping();
+
+Schedule::command('live-draw:update-status')
+    ->everyMinute()
+    ->withoutOverlapping();
