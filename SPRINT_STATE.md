@@ -17,22 +17,22 @@ This is the canonical current sprint summary. Detailed, immutable sprint evidenc
 - Sprint A Repository Foundation
 - Sprint B Repository Consistency Audit
 
-## Current Sprint
+## Next Planned Sprint
 
-- Sprint: Phase 0.3A — Canonical Repository Synchronization
-- Status: in progress
-- Completion: canonical repository inspection complete; documentation synchronization in progress
+- Sprint: Phase 0.3B — Canonical Repository Validation
+- Status: planned
+- Completion: Phase 0.3A synchronization completed at commit `45c4e5d`; Phase 0.3B has not started.
 
-## Active Tasks
+## Planned Tasks
 
-- Synchronize canonical documentation with the verified completion state of Phase 0.2.
-- Record commit `5185ad7`, clean repository state, remote synchronization, and successful GitHub Actions verification.
-- Run canonical consistency, JSON, Markdown-link, governance, test, and Git validation.
-- Complete Phase 0.3A documentation, commit, push, and verify final repository synchronization.
+- Inspect repository evidence for any remaining canonical validation gap.
+- Preserve the verified Phase 0.3A completion state at commit `45c4e5d`.
+- Extend deterministic validation only where repository evidence identifies a real remaining gap.
+- Keep Feature Freeze active and avoid application behavior changes.
 
 ## Pending Tasks
 
-- Phase 0.3B: strengthen canonical repository validation only where repository evidence identifies a remaining gap.
+- Complete Phase 0.3B only after a verified remaining governance gap is identified.
 - Expand application test/build CI only in a separately approved repository automation phase.
 - Begin Site Configuration Foundation only after Feature Freeze is explicitly lifted for that sprint.
 
@@ -47,8 +47,8 @@ Phase 0.3B — Canonical Repository Validation: extend deterministic validation 
 
 ## Resume Instructions
 
-1. Continue Phase 0.3A only after reviewing the current working tree and the canonical synchronization diff.
+1. Begin Phase 0.3B only after confirming branch, HEAD, synchronization, and a clean or fully understood working tree.
 2. Read [PROJECT_STATE.md](PROJECT_STATE.md), [REPOSITORY_RULES.md](REPOSITORY_RULES.md), and [WORKFLOW.md](WORKFLOW.md).
 3. Review [the Phase 0.1 record](docs/sprints/PHASE-0-1-REPOSITORY-GOVERNANCE.md) and [the completed Phase 0.2 record](docs/sprints/PHASE-0-2-REPOSITORY-GOVERNANCE-AUTOMATION.md).
-4. Validate canonical documentation, run `composer repository:audit` and the full test suite, then complete documentation before commit.
+4. Inspect existing validation coverage before adding any new deterministic check.
 5. Keep Feature Freeze in force: canonical documentation and repository validation only unless a separate product-approved sprint authorizes behavior changes.

@@ -6,9 +6,10 @@ This is the canonical human-readable project state. [PROJECT_STATE.json](PROJECT
 
 - Status: active; Feature Freeze applies outside the approved repository-governance phase.
 - Current phase: Phase 0 — Repository Foundation and Governance.
-- Current milestone: Phase 0.3 — Canonical Repository Synchronization.
+- Completed milestone: Phase 0.3A — Canonical Repository Synchronization.
+- Next planned milestone: Phase 0.3B — Canonical Repository Validation.
 - Repository authority: Git repository on `main`.
-- Last verified repository commit: `5185ad7` (`chore(repository): automate governance audit`), synchronized with `origin/main`.
+- Last verified repository commit: `45c4e5d` (`docs(repository): synchronize canonical repository state`), synchronized with `origin/main`.
 
 ## Completed Modules
 
@@ -24,9 +25,9 @@ This is the canonical human-readable project state. [PROJECT_STATE.json](PROJECT
 
 ## Work State
 
-### In Progress
+### Completed
 
-- Phase 0.3A canonical repository synchronization.
+- Phase 0.3A canonical repository synchronization completed.
 
 ### Pending
 
@@ -55,4 +56,4 @@ This is the canonical human-readable project state. [PROJECT_STATE.json](PROJECT
 3. Read [SPRINT_STATE.md](SPRINT_STATE.md), [REPOSITORY_RULES.md](REPOSITORY_RULES.md), and [WORKFLOW.md](WORKFLOW.md).
 4. Review [ARCHITECTURE.md](ARCHITECTURE.md), the [ADR index](docs/architecture/README.md), and the relevant sprint records.
 5. Do not begin feature work while Feature Freeze applies or while repository evidence conflicts.
-6. Begin Phase 0.3A canonical repository synchronization, keeping repository documentation aligned with the verified repository state.
+6. Begin Phase 0.3B canonical repository validation only if repository evidence identifies a remaining governance gap.

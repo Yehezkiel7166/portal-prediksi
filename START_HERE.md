@@ -32,16 +32,19 @@ Jangan melakukan patch apabila:
 Baca secara berurutan:
 
 1. `PROJECT_STATE.md`
-2. `PROJECT_MANIFEST.md`
-3. `PROJECT_STATE.json` (machine-readable compatibility artifact)
-4. `AI_HANDOVER.md`
-5. `ARCHITECTURE.md`
-6. `ROADMAP.md`
-7. `SECURITY.md`
-8. `TESTING.md`
-9. `CHANGELOG.md`
-10. Dokumentasi dalam `docs/sprints/`
-11. ADR dalam `docs/architecture/`
+2. `PROJECT_STATE.json` (machine-readable compatibility artifact)
+3. `SPRINT_STATE.md`
+4. `PROJECT_MANIFEST.md`
+5. `AI_HANDOVER.md`
+6. `ARCHITECTURE.md`
+7. `ROADMAP.md`
+8. `SECURITY.md`
+9. `TESTING.md`
+10. `CHANGELOG.md`
+11. Dokumentasi dalam `docs/sprints/`
+12. ADR dalam `docs/architecture/`
+
+Gunakan `PROJECT_STATE.md`, `PROJECT_STATE.json`, dan `SPRINT_STATE.md` untuk menentukan fase aktif, fase selesai, serta pekerjaan berikutnya. Jangan mengambil status fase dari dokumen historis atau riwayat chat.
 
 ## Inspect Before Patch
 
