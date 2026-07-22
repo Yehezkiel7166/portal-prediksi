@@ -135,3 +135,9 @@ Read in order:
 5. docs/sprints/PHASE-1-1-EDPF-REPOSITORY-ALIGNMENT.md
 
 Repository alignment has priority over feature implementation.
+
+6. docs/governance/MASTER_PROMPT_TRACEABILITY.md
+
+7. docs/governance/MASTER_PROMPT_CANONICAL_MAP.md
+
+8. docs/governance/MASTER_PROMPT_ALIGNMENT_CHECKLIST.md

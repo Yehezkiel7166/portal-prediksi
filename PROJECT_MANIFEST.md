@@ -183,3 +183,19 @@ Official implementation principle:
 > Build for many, release for one.
 
 <!-- /MASTER-PROMPT-V2-ALIGNMENT -->
+
+---
+
+## Canonical Governance
+
+Master Prompt Traceability
+
+- docs/governance/MASTER_PROMPT_TRACEABILITY.md
+
+Canonical Map
+
+- docs/governance/MASTER_PROMPT_CANONICAL_MAP.md
+
+Alignment Checklist
+
+- docs/governance/MASTER_PROMPT_ALIGNMENT_CHECKLIST.md
