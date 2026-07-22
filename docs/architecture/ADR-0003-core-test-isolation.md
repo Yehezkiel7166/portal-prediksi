@@ -1,4 +1,4 @@
-# ADR-0002 - Core Test Isolation
+# ADR-0003 - Core Test Isolation
 
 ## Status
 

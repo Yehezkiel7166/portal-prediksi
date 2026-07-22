@@ -99,6 +99,7 @@ The Repository Foundation must contain:
 - `PROJECT_MANIFEST.md`
 - `PROJECT_STATE.md`
 - `PROJECT_STATE.json` (machine-readable compatibility artifact)
+- `SPRINT_STATE.md`
 - `AI_HANDOVER.md`
 - `ROADMAP.md`
 - `ARCHITECTURE.md`

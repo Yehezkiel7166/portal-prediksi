@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+set -uo pipefail
+
+ROOT_DIR="$(git rev-parse --show-toplevel 2>/dev/null || true)"
+
+if [ -z "$ROOT_DIR" ]; then
+    echo "[FAIL] Perintah harus dijalankan di dalam Git repository." >&2
+    exit 1
+fi
+
+cd "$ROOT_DIR"
+
+echo "Repository Governance Audit"
+echo "Repository: $ROOT_DIR"
+echo
+
+checks=(
+    "scripts/repository/check-merge-markers.sh"
+    "scripts/repository/check-adrs.sh"
+    "scripts/repository/check-secrets-and-paths.sh"
+    "scripts/repository/check-markdown-links.sh"
+    "scripts/repository/check-manifest.sh"
+)
+
+total_checks=0
+failed_checks=0
+
+for check in "${checks[@]}"; do
+    total_checks=$((total_checks + 1))
+
+    if [ ! -x "$check" ]; then
+        echo "[FAIL] Check tidak ditemukan atau tidak executable: $check" >&2
+        failed_checks=$((failed_checks + 1))
+        echo
+        continue
+    fi
+
+    if ! "$check"; then
+        failed_checks=$((failed_checks + 1))
+    fi
+
+    echo
+done
+
+passed_checks=$((total_checks - failed_checks))
+
+echo "Governance audit summary"
+echo "Total checks : $total_checks"
+echo "Passed       : $passed_checks"
+echo "Failed       : $failed_checks"
+
+if [ "$failed_checks" -gt 0 ]; then
+    echo "[FAIL] Repository governance audit gagal." >&2
+    exit 1
+fi
+
+echo "[PASS] Semua governance checks lulus."

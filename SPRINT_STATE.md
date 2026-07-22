@@ -19,21 +19,21 @@ This is the canonical current sprint summary. Detailed, immutable sprint evidenc
 
 ## Current Sprint
 
-- Sprint: Phase 0.1 — Repository Governance Refactoring
-- Status: documentation and validation phase
-- Completion: 90% before final validation, commit, push, and repository audit
+- Sprint: Phase 0.2 — Repository Governance Automation
+- Status: implementation and canonical documentation synchronization
+- Completion: local implementation and validation complete; pending final documentation, commit, push, and remote CI verification
 
 ## Active Tasks
 
-- Validate all first-party Markdown links and canonical manifest links.
-- Run required Laravel, Composer, and frontend validation.
-- Review scope and sensitive/generated paths.
-- Commit, safely push, and audit final synchronization.
+- Synchronize canonical project state and sprint documentation with Phase 0.2 implementation.
+- Record deterministic repository checks and GitHub Actions workflow evidence.
+- Run final Composer, shell syntax, governance, and Git validation.
+- Commit, safely push, verify GitHub Actions, and audit final synchronization.
 
 ## Pending Tasks
 
-- Phase 0.2: add repeatable governance checks for Markdown links, ADR uniqueness, manifest coverage, merge markers, secret/path exclusions, and canonical-state consistency.
-- Define and verify repository CI using those checks.
+- Phase 0.3: strengthen canonical repository validation and documentation-state consistency where justified by repository evidence.
+- Verify the repository governance workflow on GitHub after push.
 - Begin Site Configuration Foundation only after Feature Freeze is explicitly lifted for that sprint.
 
 ## Blocked Tasks
@@ -43,12 +43,12 @@ This is the canonical current sprint summary. Detailed, immutable sprint evidenc
 
 ## Next Implementation Candidate
 
-Phase 0.2 — Repository Governance Automation: turn Phase 0.1 audit rules into deterministic local/CI checks without changing application behavior.
+Phase 0.3 — Canonical Repository Validation: extend deterministic validation only where repository evidence identifies a remaining governance gap, without changing application behavior.
 
 ## Resume Instructions
 
-1. Verify Phase 0.1 is committed, pushed, and clean.
+1. Continue Phase 0.2 only after reviewing the current working tree and understanding all uncommitted changes.
 2. Read [PROJECT_STATE.md](PROJECT_STATE.md), [REPOSITORY_RULES.md](REPOSITORY_RULES.md), and [WORKFLOW.md](WORKFLOW.md).
-3. Review [the Phase 0.1 record](docs/sprints/PHASE-0-1-REPOSITORY-GOVERNANCE.md) for limitations and exact Phase 0.2 scope.
-4. Inspect existing Composer/NPM scripts and CI configuration before designing automation.
+3. Review [the Phase 0.1 record](docs/sprints/PHASE-0-1-REPOSITORY-GOVERNANCE.md) and the Phase 0.2 sprint record once created.
+4. Run `composer repository:audit`, validate the workflow and shell scripts, then complete documentation before commit.
 5. Keep Feature Freeze in force: automation and documentation only unless a separate product-approved sprint authorizes behavior changes.

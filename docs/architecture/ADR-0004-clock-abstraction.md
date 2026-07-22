@@ -1,4 +1,4 @@
-# ADR-0003 - Clock Abstraction
+# ADR-0004 - Clock Abstraction
 
 ## Status
 

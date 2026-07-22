@@ -83,7 +83,9 @@
             "DEPLOYMENT.md",
             "MIGRATION.md",
             "BACKUP_RECOVERY.md",
-            "TESTING.md"
+            "TESTING.md",
+            "PROJECT_STATE.md",
+            "SPRINT_STATE.md"
         ],
         "completed_date": "2026-07-20",
         "commit": "21e2243",
@@ -94,16 +96,16 @@
         }
     },
     "known_limitations": [
-        "Repository CI workflow has not been verified",
+        "Repository CI workflow exists but has not yet been verified after push",
         "Deployment is not yet automated by repository pipeline",
         "Backup automation is not implemented in the repository",
         "Centralized site settings are not yet implemented",
         "Centralized responsive media management is not yet implemented"
     ],
     "next_recommended_phase": {
-        "id": "site_configuration_foundation",
-        "name": "Site Configuration Foundation",
-        "objective": "Centralize site identity, branding, SEO, navigation, footer, contact, and operational configuration.",
+        "id": "phase_0_3_canonical_repository_validation",
+        "name": "Phase 0.3 — Canonical Repository Validation",
+        "objective": "Extend deterministic repository validation only where repository evidence identifies a remaining governance gap.",
         "status": "planned"
     },
     "mandatory_workflow": [
@@ -120,9 +122,35 @@
         "Audit"
     ],
     "repository": {
-        "current_commit": "21e2243",
+        "current_commit": "c3208f2",
         "branch": "main",
         "remote_tracking_branch": "origin/main",
-        "synchronization_state": "synchronized"
+        "synchronization_state": "synchronized_at_phase_start",
+        "working_tree": "modified_for_phase_0_2"
+    },
+    "repository_governance": {
+        "phase": "Phase 0.2",
+        "name": "Repository Governance Automation",
+        "status": "in_progress",
+        "baseline_commit": "c3208f2",
+        "local_validation": {
+            "composer_configuration": "passed",
+            "shell_syntax": "passed",
+            "governance_checks": {
+                "total": 5,
+                "passed": 5,
+                "failed": 0
+            }
+        },
+        "capabilities": [
+            "merge_conflict_marker_check",
+            "adr_filename_heading_and_uniqueness_check",
+            "secret_and_private_path_check",
+            "markdown_local_link_check",
+            "repository_manifest_check",
+            "composer_audit_command",
+            "github_actions_repository_audit_workflow"
+        ],
+        "remote_ci_verification": "pending"
     }
 }

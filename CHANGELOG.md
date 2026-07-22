@@ -4,6 +4,34 @@ All notable changes to Portal Prediksi CMS will be documented here.
 
 ## [Unreleased]
 
+## Phase 0.2 — Repository Governance Automation
+
+### Added
+
+- Unified repository governance audit entry point.
+- Deterministic merge-conflict marker validation.
+- ADR filename, heading, identifier, and uniqueness validation.
+- Secret-file and private-path validation.
+- First-party Markdown local-link validation.
+- Repository manifest validation.
+- Composer `repository:audit` command.
+- GitHub Actions repository audit workflow.
+- Phase 0.2 sprint documentation.
+
+### Changed
+
+- Synchronized canonical project, sprint, manifest, and handover documentation with Phase 0.2.
+- Normalized ADR filenames and headings into a unique sequential series.
+- Set Phase 0.3 — Canonical Repository Validation as the next recommended phase.
+
+### Verified
+
+- Composer configuration validation passed.
+- Shell syntax validation passed for repository governance scripts.
+- Repository governance audit passed with 5 checks and 0 failures.
+- Git whitespace validation passed.
+- Product behavior and database schema remained unchanged.
+
 ## Sprint A — Repository Foundation
 
 ### Added

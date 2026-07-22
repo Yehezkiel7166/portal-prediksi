@@ -1,4 +1,4 @@
-# ADR-0004: Prediction Publishing Uses the Application Clock
+# ADR-0005: Prediction Publishing Uses the Application Clock
 
 ## Status
 

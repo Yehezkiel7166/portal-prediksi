@@ -1,4 +1,4 @@
-# ADR-0001: Update-Safe Domain Evolution
+# ADR-0002: Update-Safe Domain Evolution
 
 ## Status
 
