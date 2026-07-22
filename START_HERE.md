@@ -121,3 +121,17 @@ Sprint selesai hanya apabila:
 - commit dan push berhasil;
 - working tree bersih;
 - audit akhir tidak menemukan ketidaksesuaian.
+
+---
+
+# MASTER PROMPT V2 EXECUTION ORDER
+
+Read in order:
+
+1. PROJECT_MANIFEST.md
+2. PROJECT_CONSTITUTION.md
+3. PROJECT_STATE.md
+4. docs/product/FEATURE_FREEZE_V1.md
+5. docs/sprints/PHASE-1-1-EDPF-REPOSITORY-ALIGNMENT.md
+
+Repository alignment has priority over feature implementation.

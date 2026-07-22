@@ -5,11 +5,11 @@ This is the canonical human-readable project state. [PROJECT_STATE.json](PROJECT
 ## Project Status
 
 - Status: active; Feature Freeze applies outside the approved repository-governance phase.
-- Current phase: Phase 0 — Repository Foundation and Governance.
-- Completed milestone: Phase 0.3A — Canonical Repository Synchronization.
-- Next planned milestone: Phase 0.3B — Canonical Repository Validation.
+- Current phase: Phase 1 — EDPF Repository Alignment.
+- Completed milestone: Phase 0.3B — Canonical Repository Validation.
+- Next planned milestone: Phase 1.1 — EDPF Constitution and Feature Freeze Alignment.
 - Repository authority: Git repository on `main`.
-- Last verified repository commit: `45c4e5d` (`docs(repository): synchronize canonical repository state`), synchronized with `origin/main`.
+- Last verified repository commit: `a8a77a4` (`docs(repository): canonical repository validation baseline`), synchronized with `origin/main`.
 
 ## Completed Modules
 
@@ -28,10 +28,11 @@ This is the canonical human-readable project state. [PROJECT_STATE.json](PROJECT
 ### Completed
 
 - Phase 0.3A canonical repository synchronization completed.
+- Phase 0.3B canonical repository validation completed at repository baseline `a8a77a4`.
 
 ### Pending
 
-- Phase 0.3B canonical repository validation.
+- Phase 1.1 EDPF repository alignment.
 - Site Configuration Foundation.
 - Centralized responsive media management.
 - Application test/build CI expansion and deployment automation.
@@ -56,4 +57,7 @@ This is the canonical human-readable project state. [PROJECT_STATE.json](PROJECT
 3. Read [SPRINT_STATE.md](SPRINT_STATE.md), [REPOSITORY_RULES.md](REPOSITORY_RULES.md), and [WORKFLOW.md](WORKFLOW.md).
 4. Review [ARCHITECTURE.md](ARCHITECTURE.md), the [ADR index](docs/architecture/README.md), and the relevant sprint records.
 5. Do not begin feature work while Feature Freeze applies or while repository evidence conflicts.
-6. Begin Phase 0.3B canonical repository validation only if repository evidence identifies a remaining governance gap.
+6. Begin Phase 1.1 EDPF Repository Alignment.
+7. Read docs\/product\/FEATURE_FREEZE_V1.md.
+8. Read docs\/sprints\/PHASE-1-1-EDPF-REPOSITORY-ALIGNMENT.md.
+9. Repository evolution remains the highest priority until Master Prompt v2.0 alignment is complete.

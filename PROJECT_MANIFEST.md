@@ -163,3 +163,23 @@ The repository can replace historical chat context only when:
 - documentation changes are committed and pushed;
 - local branch matches `origin/main` and required repository governance CI passes;
 - final working tree is clean.
+
+<!-- MASTER-PROMPT-V2-ALIGNMENT -->
+
+## Repository Direction
+
+This repository follows the Enterprise Digital Platform Framework (EDPF).
+
+Priority order:
+
+1. Repository alignment with Master Prompt v2.0.
+2. Five-brand-compatible platform foundation.
+3. Brand #1 production.
+4. Brand #2–#5 activation.
+5. Enterprise expansion.
+
+Official implementation principle:
+
+> Build for many, release for one.
+
+<!-- /MASTER-PROMPT-V2-ALIGNMENT -->
