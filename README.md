@@ -59,11 +59,15 @@ Developer atau AI yang melanjutkan proyek wajib membaca:
 
 1. `START_HERE.md`
 2. `PROJECT_STATE.md`
-3. `PROJECT_MANIFEST.md`
-4. `PROJECT_STATE.json` (machine-readable compatibility artifact)
-5. `AI_HANDOVER.md`
-6. `ARCHITECTURE.md`
-7. `ROADMAP.md`
+3. `PROJECT_STATE.json` (machine-readable compatibility artifact)
+4. `SPRINT_STATE.md`
+5. `PROJECT_MANIFEST.md`
+6. `AI_HANDOVER.md`
+7. `ARCHITECTURE.md`
+8. `ROADMAP.md`
+9. `SECURITY.md`
+10. `TESTING.md`
+11. `CHANGELOG.md`
 
 ## Development Workflow
 
