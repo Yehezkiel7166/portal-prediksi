@@ -97,7 +97,8 @@ The Repository Foundation must contain:
 - `README.md`
 - `START_HERE.md`
 - `PROJECT_MANIFEST.md`
-- `PROJECT_STATE.json`
+- `PROJECT_STATE.md`
+- `PROJECT_STATE.json` (machine-readable compatibility artifact)
 - `AI_HANDOVER.md`
 - `ROADMAP.md`
 - `ARCHITECTURE.md`
@@ -140,7 +141,7 @@ The Repository Foundation must contain:
 
 ## Current Known Gaps
 
-- Repository Foundation documentation is still being completed.
+- Repository Foundation documentation has been completed and is maintained as the canonical project documentation.
 - Continuous integration has not yet been verified.
 - Deployment is not yet automated through a repository pipeline.
 - Backup automation is not implemented in the repository.
@@ -152,7 +153,8 @@ The Repository Foundation must contain:
 The repository can replace historical chat context only when:
 
 - all Repository Foundation documents exist and agree with implementation;
-- project status is machine-readable;
+- canonical project status documentation is established (`PROJECT_STATE.md`);
+- machine-readable compatibility state (`PROJECT_STATE.json`) is synchronized;
 - architecture and operational procedures are documented;
 - syntax validation passes;
 - relevant module tests pass;

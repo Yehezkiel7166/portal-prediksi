@@ -19,6 +19,18 @@ Repository dan implementasi tetap menjadi sumber kebenaran utama apabila roadmap
 - Application clock and shared Core infrastructure.
 - Domain event foundation.
 
+### Repository Foundation
+
+Completed capabilities:
+
+- canonical repository entry documentation;
+- canonical human-readable project state in `PROJECT_STATE.md`;
+- machine-readable compatibility state in `PROJECT_STATE.json`;
+- project manifest and AI handover rules;
+- architecture and operational documentation;
+- repository Single Source of Truth ADR;
+- sprint documentation, validation evidence, commit, push, and remote synchronization.
+
 ## Completed Domains
 
 - Market management.
@@ -42,28 +54,6 @@ Repository dan implementasi tetap menjadi sumber kebenaran utama apabila roadmap
 - HLS stream playback.
 
 ## In Progress
-
-### Repository Foundation
-
-Objective: make the repository sufficient to continue the project without historical chat context.
-
-Required outputs:
-
-- `README.md`
-- `START_HERE.md`
-- `PROJECT_MANIFEST.md`
-- `PROJECT_STATE.json`
-- `AI_HANDOVER.md`
-- `ROADMAP.md`
-- `ARCHITECTURE.md`
-- `SECURITY.md`
-- `DEPLOYMENT.md`
-- `MIGRATION.md`
-- `BACKUP_RECOVERY.md`
-- `TESTING.md`
-- ADR for repository Single Source of Truth policy.
-
-Completion requires full test suite, commit, push, remote synchronization, and clean working tree.
 
 ## Next Recommended Phase
 
@@ -196,4 +186,4 @@ Update this file when:
 - a new dependency or risk is discovered;
 - implementation proves an assumption incorrect.
 
-Keep `PROJECT_STATE.json`, `PROJECT_MANIFEST.md`, sprint documentation, and this roadmap consistent.
+Keep `PROJECT_STATE.md`, `PROJECT_STATE.json`, `PROJECT_MANIFEST.md`, sprint documentation, and this roadmap consistent.

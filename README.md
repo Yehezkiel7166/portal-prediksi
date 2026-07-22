@@ -58,11 +58,12 @@ Admin resources:
 Developer atau AI yang melanjutkan proyek wajib membaca:
 
 1. `START_HERE.md`
-2. `PROJECT_STATE.json`
+2. `PROJECT_STATE.md`
 3. `PROJECT_MANIFEST.md`
-4. `AI_HANDOVER.md`
-5. `ARCHITECTURE.md`
-6. `ROADMAP.md`
+4. `PROJECT_STATE.json` (machine-readable compatibility artifact)
+5. `AI_HANDOVER.md`
+6. `ARCHITECTURE.md`
+7. `ROADMAP.md`
 
 ## Development Workflow
 
@@ -99,4 +100,6 @@ php artisan test
 - `SECURITY.md`
 - `TESTING.md`
 
-Status proyek tersedia pada `PROJECT_STATE.json` dan `PROJECT_MANIFEST.md`.
+Status proyek kanonis tersedia pada `PROJECT_STATE.md`.
+
+`PROJECT_STATE.json` dipertahankan sebagai machine-readable compatibility artifact dan harus selalu konsisten dengan `PROJECT_STATE.md`.

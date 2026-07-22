@@ -31,16 +31,17 @@ Jangan melakukan patch apabila:
 
 Baca secara berurutan:
 
-1. `PROJECT_STATE.json`
+1. `PROJECT_STATE.md`
 2. `PROJECT_MANIFEST.md`
-3. `AI_HANDOVER.md`
-4. `ARCHITECTURE.md`
-5. `ROADMAP.md`
-6. `SECURITY.md`
-7. `TESTING.md`
-8. `CHANGELOG.md`
-9. Dokumentasi dalam `docs/sprints/`
-10. ADR dalam `docs/architecture/`
+3. `PROJECT_STATE.json` (machine-readable compatibility artifact)
+4. `AI_HANDOVER.md`
+5. `ARCHITECTURE.md`
+6. `ROADMAP.md`
+7. `SECURITY.md`
+8. `TESTING.md`
+9. `CHANGELOG.md`
+10. Dokumentasi dalam `docs/sprints/`
+11. ADR dalam `docs/architecture/`
 
 ## Inspect Before Patch
 
@@ -90,7 +91,8 @@ Perbarui dokumen berikut bila relevan:
 
 - dokumentasi fitur atau sprint;
 - `CHANGELOG.md`;
-- `PROJECT_STATE.json`;
+- `PROJECT_STATE.md`;
+- `PROJECT_STATE.json` (compatibility artifact bila diperlukan);
 - `PROJECT_MANIFEST.md`;
 - `ROADMAP.md`;
 - ADR untuk keputusan arsitektur penting.
