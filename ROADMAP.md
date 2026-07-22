@@ -29,7 +29,7 @@ Completed capabilities:
 - project manifest and AI handover rules;
 - architecture and operational documentation;
 - repository Single Source of Truth ADR;
-- sprint documentation, validation evidence, commit, push, and remote synchronization.
+- sprint documentation, validation evidence, commit, push, remote synchronization, deterministic governance checks, and verified GitHub Actions repository audit.
 
 ## Completed Domains
 
@@ -55,7 +55,28 @@ Completed capabilities:
 
 ## In Progress
 
+### Phase 0.3A — Canonical Repository Synchronization
+
+Current scope:
+
+- synchronize canonical repository documentation with the verified completion state of Phase 0.2;
+- record commit `5185ad7` as the Phase 0.2 completion commit;
+- record successful GitHub Actions repository audit verification;
+- keep Feature Freeze active;
+- make no application behavior changes.
+
 ## Next Recommended Phase
+
+### Phase 0.3B — Canonical Repository Validation
+
+Objective: extend deterministic repository validation only where repository evidence identifies a remaining governance gap.
+
+Constraints:
+
+- no application behavior changes;
+- no duplicate validation without repository evidence;
+- preserve Feature Freeze;
+- complete with tests, documentation, commit, push, remote verification, and a clean working tree.
 
 ### Site Configuration Foundation
 
@@ -112,8 +133,8 @@ Do not create placeholder routes or unsupported content types without implementa
 
 ## Planned Operational Improvements
 
-- continuous integration workflow;
-- automated test execution for pull requests or pushes;
+- application test/build CI expansion beyond the verified repository governance audit workflow;
+- automated application test execution for pull requests or pushes;
 - production deployment checklist validation;
 - backup automation documentation and verification;
 - queue worker monitoring;

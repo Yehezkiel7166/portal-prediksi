@@ -96,15 +96,15 @@
         }
     },
     "known_limitations": [
-        "Repository CI workflow exists but has not yet been verified after push",
         "Deployment is not yet automated by repository pipeline",
         "Backup automation is not implemented in the repository",
         "Centralized site settings are not yet implemented",
-        "Centralized responsive media management is not yet implemented"
+        "Centralized responsive media management is not yet implemented",
+        "Application test/build CI is not yet implemented"
     ],
     "next_recommended_phase": {
-        "id": "phase_0_3_canonical_repository_validation",
-        "name": "Phase 0.3 — Canonical Repository Validation",
+        "id": "phase_0_3b_canonical_repository_validation",
+        "name": "Phase 0.3B — Canonical Repository Validation",
         "objective": "Extend deterministic repository validation only where repository evidence identifies a remaining governance gap.",
         "status": "planned"
     },
@@ -122,17 +122,18 @@
         "Audit"
     ],
     "repository": {
-        "current_commit": "c3208f2",
+        "current_commit": "5185ad7",
         "branch": "main",
         "remote_tracking_branch": "origin/main",
-        "synchronization_state": "synchronized_at_phase_start",
-        "working_tree": "modified_for_phase_0_2"
+        "synchronization_state": "synchronized",
+        "working_tree": "modified_for_phase_0_3a"
     },
     "repository_governance": {
         "phase": "Phase 0.2",
         "name": "Repository Governance Automation",
-        "status": "in_progress",
+        "status": "completed",
         "baseline_commit": "c3208f2",
+        "completion_commit": "5185ad7",
         "local_validation": {
             "composer_configuration": "passed",
             "shell_syntax": "passed",
@@ -140,6 +141,11 @@
                 "total": 5,
                 "passed": 5,
                 "failed": 0
+            },
+            "full_test_suite": {
+                "tests": 174,
+                "assertions": 480,
+                "status": "passed"
             }
         },
         "capabilities": [
@@ -151,6 +157,20 @@
             "composer_audit_command",
             "github_actions_repository_audit_workflow"
         ],
-        "remote_ci_verification": "pending"
+        "remote_ci_verification": "passed"
+    },
+    "canonical_repository_synchronization": {
+        "phase": "Phase 0.3A",
+        "name": "Canonical Repository Synchronization",
+        "status": "in_progress",
+        "baseline_commit": "5185ad7",
+        "scope": [
+            "PROJECT_STATE.md",
+            "SPRINT_STATE.md",
+            "PROJECT_STATE.json",
+            "AI_HANDOVER.md",
+            "PROJECT_MANIFEST.md",
+            "ROADMAP.md"
+        ]
     }
 }

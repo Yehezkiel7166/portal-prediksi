@@ -143,8 +143,8 @@ The Repository Foundation must contain:
 ## Current Known Gaps
 
 - Repository Foundation documentation has been completed and is maintained as the canonical project documentation.
-- Continuous integration has not yet been verified.
-- Deployment is not yet automated through a repository pipeline.
+- Repository governance CI is implemented and verified through GitHub Actions.
+- Application test/build CI expansion and deployment automation are not yet implemented.
 - Backup automation is not implemented in the repository.
 - Centralized site settings are not yet implemented.
 - Centralized responsive media management is not yet implemented.
@@ -161,5 +161,5 @@ The repository can replace historical chat context only when:
 - relevant module tests pass;
 - full test suite passes;
 - documentation changes are committed and pushed;
-- local branch matches `origin/main`;
+- local branch matches `origin/main` and required repository governance CI passes;
 - final working tree is clean.
