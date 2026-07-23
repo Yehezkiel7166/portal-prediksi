@@ -2,6 +2,8 @@
 
 namespace App\Domains\Result\Models;
 
+use App\Domains\Brand\Concerns\BelongsToBrand;
+
 use App\Domains\Market\Models\Market;
 use Database\Factories\ResultFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Result extends Model
 {
+    use BelongsToBrand;
     use HasFactory;
 
     protected $fillable = [

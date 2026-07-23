@@ -2,6 +2,8 @@
 
 namespace App\Domains\Prediction\Models;
 
+use App\Domains\Brand\Concerns\BelongsToBrand;
+
 use App\Domains\Market\Models\Market;
 use Database\Factories\PredictionFactory;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Prediction extends Model
 {
+    use BelongsToBrand;
     /** @use HasFactory<PredictionFactory> */
     use HasFactory;
 

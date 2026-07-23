@@ -2,6 +2,8 @@
 
 namespace App\Domains\Promotion\Models;
 
+use App\Domains\Brand\Concerns\BelongsToBrand;
+
 use Database\Factories\PromotionFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
 {
+    use BelongsToBrand;
     /** @use HasFactory<PromotionFactory> */
     use HasFactory;
 

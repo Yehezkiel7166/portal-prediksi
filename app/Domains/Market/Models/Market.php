@@ -2,6 +2,8 @@
 
 namespace App\Domains\Market\Models;
 
+use App\Domains\Brand\Concerns\BelongsToBrand;
+
 use App\Domains\Prediction\Models\Prediction;
 use App\Domains\Result\Models\Result;
 use Database\Factories\MarketFactory;
@@ -12,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Market extends Model
 {
+    use BelongsToBrand;
     /** @use HasFactory<MarketFactory> */
     use HasFactory;
 

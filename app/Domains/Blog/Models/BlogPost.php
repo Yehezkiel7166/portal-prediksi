@@ -2,6 +2,8 @@
 
 namespace App\Domains\Blog\Models;
 
+use App\Domains\Brand\Concerns\BelongsToBrand;
+
 use Database\Factories\BlogPostFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BlogPost extends Model
 {
+    use BelongsToBrand;
     /** @use HasFactory<BlogPostFactory> */
     use HasFactory;
 
