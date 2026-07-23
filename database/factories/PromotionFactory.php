@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Domains\Brand\Models\Brand;
 use App\Domains\Promotion\Models\Promotion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -18,6 +19,7 @@ class PromotionFactory extends Factory
         $title = fake()->unique()->sentence(4);
 
         return [
+            'brand_id' => Brand::factory(),
             'title' => $title,
             'slug' => Str::slug($title).'-'.fake()->unique()->numerify('####'),
             'excerpt' => fake()->sentence(),

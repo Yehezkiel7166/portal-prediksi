@@ -13,6 +13,19 @@ class ResultFactory extends Factory
 {
     protected $model = Result::class;
 
+    public function configure(): static
+    {
+        return $this->afterMaking(function (Result $result): void {
+            if ($result->market_id === null) {
+                return;
+            }
+
+            $result->brand_id = Market::query()
+                ->find($result->market_id)
+                ?->brand_id;
+        });
+    }
+
     public function definition(): array
     {
         return [

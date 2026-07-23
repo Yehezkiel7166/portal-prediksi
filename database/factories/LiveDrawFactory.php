@@ -14,6 +14,19 @@ class LiveDrawFactory extends Factory
 {
     protected $model = LiveDraw::class;
 
+    public function configure(): static
+    {
+        return $this->afterMaking(function (LiveDraw $liveDraw): void {
+            if ($liveDraw->market_id === null) {
+                return;
+            }
+
+            $liveDraw->brand_id = Market::query()
+                ->find($liveDraw->market_id)
+                ?->brand_id;
+        });
+    }
+
     public function definition(): array
     {
         $title = fake()->unique()->city().' Live Draw';

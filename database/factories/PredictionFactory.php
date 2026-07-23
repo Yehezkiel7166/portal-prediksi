@@ -13,6 +13,19 @@ class PredictionFactory extends Factory
 {
     protected $model = Prediction::class;
 
+    public function configure(): static
+    {
+        return $this->afterMaking(function (Prediction $prediction): void {
+            if ($prediction->market_id === null) {
+                return;
+            }
+
+            $prediction->brand_id = Market::query()
+                ->find($prediction->market_id)
+                ?->brand_id;
+        });
+    }
+
     public function definition(): array
     {
         return [

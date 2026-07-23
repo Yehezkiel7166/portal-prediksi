@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Domains\Brand\Models\Brand;
 use App\Domains\Market\Models\Market;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -18,6 +19,7 @@ class MarketFactory extends Factory
         $name = fake()->unique()->city();
 
         return [
+            'brand_id' => Brand::factory(),
             'code' => strtoupper(fake()->unique()->lexify('???')),
             'name' => $name,
             'slug' => Str::slug($name).'-'.fake()->unique()->numberBetween(1, 9999),
