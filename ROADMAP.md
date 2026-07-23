@@ -209,3 +209,33 @@ Update this file when:
 - implementation proves an assumption incorrect.
 
 Keep `PROJECT_STATE.md`, `PROJECT_STATE.json`, `PROJECT_MANIFEST.md`, sprint documentation, and this roadmap consistent.
+
+<!-- BRAND-1-BASELINE-START -->
+
+## Mandatory Brand 1 Completion Gate
+
+Before multi-brand production activation, complete and validate the Brand 1 baseline defined in:
+
+- `docs/product/BRAND_1_FRONTEND_BASELINE.md`
+
+Required capability groups:
+
+1. Complete public navigation and responsive frontend.
+2. Live Draw, Result, and Prediction regression stability.
+3. Slot Gacor / RTP.
+4. Bukti Jackpot.
+5. Keluhan ticket workflow.
+6. Panduan content workflow.
+7. Jadwal Togel.
+8. BBFS Generator.
+9. Buku Mimpi.
+10. Paito Togel Warna.
+11. Konversi Angka SGP.
+12. Tabel Shio.
+13. Complete Filament administration.
+14. Scheduler, queue, cache, event, audit, SEO, backup, and health automation.
+15. Brand 1 production-readiness test suite.
+
+Multi-brand is an extension milestone after this gate, not a replacement for it.
+
+<!-- BRAND-1-BASELINE-END -->

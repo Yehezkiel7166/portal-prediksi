@@ -61,3 +61,15 @@ This is the canonical human-readable project state. [PROJECT_STATE.json](PROJECT
 7. Read docs\/product\/FEATURE_FREEZE_V1.md.
 8. Read docs\/sprints\/PHASE-1-1-EDPF-REPOSITORY-ALIGNMENT.md.
 9. Repository evolution remains the highest priority until Master Prompt v2.0 alignment is complete.
+
+---
+
+## Result Validation Baseline
+
+The repository follows RESULT_VALIDATION_POLICY.md.
+
+Duplicate result values are permitted.
+
+Only duplicate draw identities require administrator validation.
+
+Correction history is mandatory.

@@ -199,3 +199,42 @@ Canonical Map
 Alignment Checklist
 
 - docs/governance/MASTER_PROMPT_ALIGNMENT_CHECKLIST.md
+
+<!-- BRAND-1-BASELINE-START -->
+
+## Brand 1 Baseline Manifest
+
+The repository recognizes `docs/product/BRAND_1_FRONTEND_BASELINE.md` as the canonical complete feature baseline for the default trial brand.
+
+Mandatory Brand 1 capability groups:
+
+- Home;
+- Live Draw;
+- Result;
+- Prediction;
+- Slot Gacor / RTP;
+- Jackpot Proof;
+- Promotion;
+- Complaint;
+- Guide;
+- Lottery Tool Suite;
+- administration;
+- automation;
+- SEO;
+- cache;
+- queue;
+- scheduler;
+- audit;
+- backup;
+- operational monitoring.
+
+The Lottery Tool Suite consists of:
+
+- Jadwal Togel;
+- BBFS Generator;
+- Buku Mimpi;
+- Paito Togel Warna;
+- Konversi Angka SGP;
+- Tabel Shio.
+
+<!-- BRAND-1-BASELINE-END -->

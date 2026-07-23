@@ -270,3 +270,17 @@ Feature Freeze v1.0 cannot be completed until:
 - repository documentation and implementation remain synchronized.
 
 <!-- EDPF-FEATURE-FREEZE-ALIGNMENT-END -->
+
+---
+
+## Result Validation
+
+Result numbers are NOT unique.
+
+The same number may exist across different draw dates, markets and brands.
+
+Duplicate detection MUST use draw identity instead of result value.
+
+Administrator confirmation is required before replacing an existing draw.
+
+All corrections MUST be audited.
