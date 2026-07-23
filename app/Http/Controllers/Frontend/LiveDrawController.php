@@ -14,6 +14,7 @@ final class LiveDrawController extends Controller
         LatestResultResolver $resolver,
     ): View {
         $liveDraws = LiveDraw::query()
+            ->forCurrentBrand()
             ->select([
                 'id',
                 'market_id',
