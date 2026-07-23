@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Frontend;
 
+use App\Domains\Brand\Models\Brand;
 use App\Domains\Blog\Models\BlogPost;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -103,4 +104,83 @@ class PublicBlogFrontendTest extends TestCase
         $this->get('/blog/artikel-tidak-ada')
             ->assertNotFound();
     }
+
+    public function test_listing_only_displays_blog_posts_for_the_current_brand(): void
+    {
+        config()->set('brand.default_code', 'brand-a');
+
+        $brandA = Brand::factory()->create([
+            'code' => 'brand-a',
+            'name' => 'Brand A',
+            'slug' => 'brand-a',
+            'is_active' => true,
+        ]);
+
+        $brandB = Brand::factory()->create([
+            'code' => 'brand-b',
+            'name' => 'Brand B',
+            'slug' => 'brand-b',
+            'is_active' => true,
+        ]);
+
+        BlogPost::factory()
+            ->published()
+            ->create([
+                'brand_id' => $brandA->id,
+                'title' => 'CURRENT-BRAND-BLOG',
+                'slug' => 'current-brand-blog',
+            ]);
+
+        BlogPost::factory()
+            ->published()
+            ->create([
+                'brand_id' => $brandB->id,
+                'title' => 'OTHER-BRAND-BLOG',
+                'slug' => 'other-brand-blog',
+            ]);
+
+        $this->get('/blog')
+            ->assertOk()
+            ->assertSee('CURRENT-BRAND-BLOG')
+            ->assertDontSee('OTHER-BRAND-BLOG');
+    }
+
+
+    public function test_detail_does_not_display_blog_post_from_another_brand(): void
+    {
+        config()->set('brand.default_code', 'brand-a');
+
+        $brandA = Brand::factory()->create([
+            'code' => 'brand-a',
+            'name' => 'Brand A',
+            'slug' => 'brand-a',
+            'is_active' => true,
+        ]);
+
+        $brandB = Brand::factory()->create([
+            'code' => 'brand-b',
+            'name' => 'Brand B',
+            'slug' => 'brand-b',
+            'is_active' => true,
+        ]);
+
+        BlogPost::factory()
+            ->published()
+            ->create([
+                'brand_id' => $brandA->id,
+                'slug' => 'artikel-brand-a',
+            ]);
+
+        BlogPost::factory()
+            ->published()
+            ->create([
+                'brand_id' => $brandB->id,
+                'slug' => 'artikel-brand-b',
+                'title' => 'OTHER BRAND BLOG',
+            ]);
+
+        $this->get('/blog/artikel-brand-b')
+            ->assertNotFound();
+    }
+
 }

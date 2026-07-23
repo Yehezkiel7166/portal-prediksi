@@ -11,6 +11,7 @@ final class BlogDetailController extends Controller
     public function __invoke(string $slug): View
     {
         $blogPost = BlogPost::query()
+            ->forCurrentBrand()
             ->select([
                 'id',
                 'title',

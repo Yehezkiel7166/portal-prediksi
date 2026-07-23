@@ -3,6 +3,7 @@
 namespace App\Domains\Blog\Models;
 
 use App\Domains\Brand\Concerns\BelongsToBrand;
+use App\Domains\Brand\Support\BrandContext;
 
 use Database\Factories\BlogPostFactory;
 use Illuminate\Database\Eloquent\Builder;
@@ -55,6 +56,20 @@ class BlogPost extends Model
         return BlogPostFactory::new();
     }
 
+
+    public function scopeForCurrentBrand(Builder $query): Builder
+    {
+        $brand = app(BrandContext::class)->get();
+
+        if ($brand === null) {
+            return $query;
+        }
+
+        return $query->where(
+            $this->qualifyColumn('brand_id'),
+            $brand->id,
+        );
+    }
     public function scopePublished(Builder $query): Builder
     {
         return $query
