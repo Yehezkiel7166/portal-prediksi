@@ -2,6 +2,8 @@
 
 namespace App\Domains\Brand\Models;
 
+use Database\Factories\BrandFactory;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,4 +28,12 @@ class Brand extends Model
         'sort_order' => 'integer',
         'settings' => 'array',
     ];
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory(): BrandFactory
+    {
+        return BrandFactory::new();
+    }
 }
