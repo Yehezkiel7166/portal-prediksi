@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Domains\Brand\Contracts\BrandResolver;
 use App\Domains\Brand\Support\BrandContext;
-use App\Domains\Brand\Support\DefaultBrandResolver;
+use App\Domains\Brand\Support\DatabaseBrandResolver;
 use Illuminate\Support\ServiceProvider;
 
 class BrandServiceProvider extends ServiceProvider
@@ -16,7 +16,7 @@ class BrandServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             BrandResolver::class,
-            DefaultBrandResolver::class,
+            DatabaseBrandResolver::class,
         );
 
         $this->app->scoped(

@@ -3,18 +3,21 @@
 namespace Tests\Feature\Brand;
 
 use App\Domains\Brand\Contracts\BrandResolver;
+use App\Domains\Brand\Models\Brand;
 use App\Domains\Brand\Support\BrandContext;
-use App\Domains\Brand\Support\DefaultBrandResolver;
+use App\Domains\Brand\Support\DatabaseBrandResolver;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class BrandContainerBindingTest extends TestCase
 {
-    public function test_brand_resolver_contract_uses_default_resolver(): void
+    use RefreshDatabase;
+
+    public function test_brand_resolver_contract_uses_database_resolver(): void
     {
         $resolver = app(BrandResolver::class);
 
-        $this->assertInstanceOf(DefaultBrandResolver::class, $resolver);
-        $this->assertNull($resolver->resolve());
+        $this->assertInstanceOf(DatabaseBrandResolver::class, $resolver);
     }
 
     public function test_brand_resolver_is_shared_by_the_container(): void
@@ -23,6 +26,31 @@ class BrandContainerBindingTest extends TestCase
         $second = app(BrandResolver::class);
 
         $this->assertSame($first, $second);
+    }
+
+    public function test_bound_resolver_resolves_the_active_canonical_brand(): void
+    {
+        $brand = Brand::factory()->create([
+            'code' => 'DEFAULT',
+            'is_active' => true,
+        ]);
+
+        $resolved = app(BrandResolver::class)->resolve();
+
+        $this->assertNotNull($resolved);
+        $this->assertTrue($brand->is($resolved));
+    }
+
+    public function test_bound_resolver_returns_null_without_canonical_brand(): void
+    {
+        Brand::factory()->create([
+            'code' => 'OTHER',
+            'is_active' => true,
+        ]);
+
+        $this->assertNull(
+            app(BrandResolver::class)->resolve()
+        );
     }
 
     public function test_brand_context_is_shared_within_the_current_scope(): void
@@ -39,7 +67,7 @@ class BrandContainerBindingTest extends TestCase
     {
         $first = app(BrandContext::class);
 
-        $first->set(new \App\Domains\Brand\Models\Brand([
+        $first->set(new Brand([
             'code' => 'DEFAULT',
             'name' => 'Default Brand',
             'slug' => 'default',
