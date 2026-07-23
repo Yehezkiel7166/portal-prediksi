@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Market;
 
+use App\Domains\Brand\Support\BrandContext;
+use App\Domains\Brand\Models\Brand;
 use App\Domains\Market\Actions\UpsertMarketAction;
 use App\Domains\Market\Models\Market;
 use App\Models\User;
@@ -162,5 +164,48 @@ class MarketModuleTest extends TestCase
         $this->actingAs($user)
             ->get('/admin/markets')
             ->assertForbidden();
+    }
+
+    public function test_action_assigns_context_brand_when_creating_market(): void
+    {
+        $brand = Brand::factory()->create();
+
+        app(BrandContext::class)->set($brand);
+
+        $market = app(UpsertMarketAction::class)->execute(null, [
+            'code' => 'BRD',
+            'name' => 'Brand Market',
+            'slug' => 'brand-market',
+            'timezone' => 'Asia/Jakarta',
+            'is_active' => true,
+            'sort_order' => 1,
+            'notes' => null,
+        ]);
+
+        $this->assertSame($brand->id, $market->brand_id);
+    }
+
+    public function test_updating_market_does_not_move_it_to_context_brand(): void
+    {
+        $originalBrand = Brand::factory()->create();
+        $contextBrand = Brand::factory()->create();
+
+        $market = Market::factory()->create([
+            'brand_id' => $originalBrand->id,
+        ]);
+
+        app(BrandContext::class)->set($contextBrand);
+
+        $updated = app(UpsertMarketAction::class)->execute($market, [
+            'code' => $market->code,
+            'name' => 'Updated Market',
+            'slug' => $market->slug,
+            'timezone' => $market->timezone,
+            'is_active' => true,
+            'sort_order' => 1,
+            'notes' => null,
+        ]);
+
+        $this->assertSame($originalBrand->id, $updated->brand_id);
     }
 }

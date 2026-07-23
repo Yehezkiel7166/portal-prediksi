@@ -3,6 +3,7 @@
 namespace App\Domains\Blog\Actions;
 
 use App\Domains\Blog\Models\BlogPost;
+use App\Domains\Brand\Support\BrandContext;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -10,6 +11,11 @@ use Illuminate\Validation\Rule;
 
 class UpsertBlogPostAction
 {
+    public function __construct(
+        private readonly BrandContext $brandContext,
+    ) {
+    }
+
     /**
      * @param array<string, mixed> $data
      */
@@ -17,7 +23,14 @@ class UpsertBlogPostAction
         array $data,
         ?BlogPost $blogPost = null,
     ): BlogPost {
+        $isCreating = $blogPost === null;
         $blogPost ??= new BlogPost();
+
+        if ($isCreating) {
+            $blogPost->brand_id = $this->brandContext
+                ->get()
+                ?->getKey();
+        }
 
         $data['title'] = trim((string) ($data['title'] ?? ''));
         $data['slug'] = Str::slug(

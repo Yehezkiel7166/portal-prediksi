@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Result;
 
+use App\Domains\Brand\Models\Brand;
 use App\Domains\Market\Models\Market;
 use App\Domains\Result\Actions\UpsertResultAction;
 use App\Domains\Result\Models\Result;
@@ -113,5 +114,46 @@ class ResultModuleTest extends TestCase
             'id' => $result->id,
             'market_id' => $marketB->id,
         ]);
+    }
+
+    public function test_action_assigns_market_brand_to_result(): void
+    {
+        $brand = Brand::factory()->create();
+
+        $market = Market::factory()->create([
+            'brand_id' => $brand->id,
+        ]);
+
+        $result = app(UpsertResultAction::class)->execute(null, [
+            'market_id' => $market->id,
+            'result_date' => '2026-07-21',
+            'winning_numbers' => '1234',
+            'notes' => null,
+        ]);
+
+        $this->assertSame($brand->id, $result->brand_id);
+    }
+
+    public function test_changing_result_market_updates_its_brand(): void
+    {
+        $originalMarket = Market::factory()->create();
+        $newMarket = Market::factory()->create();
+
+        $result = Result::factory()->create([
+            'market_id' => $originalMarket->id,
+            'result_date' => '2026-07-21',
+        ]);
+
+        $updated = app(UpsertResultAction::class)->execute(
+            $result,
+            [
+                'market_id' => $newMarket->id,
+                'result_date' => '2026-07-21',
+                'winning_numbers' => '5678',
+                'notes' => null,
+            ],
+        );
+
+        $this->assertSame($newMarket->brand_id, $updated->brand_id);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Domains\LiveDraw\Actions;
 
 use App\Core\Support\TimezoneCatalog;
 use App\Domains\LiveDraw\Models\LiveDraw;
+use App\Domains\Market\Models\Market;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -140,6 +141,11 @@ class UpsertLiveDrawAction
             $liveDraw,
             $validated,
         ): LiveDraw {
+            $market = Market::query()
+                ->findOrFail($validated['market_id']);
+
+            $liveDraw->brand_id = $market->brand_id;
+
             $liveDraw->fill(
                 Arr::only($validated, $liveDraw->getFillable())
             );

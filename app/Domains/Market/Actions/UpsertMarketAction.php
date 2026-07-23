@@ -2,6 +2,7 @@
 
 namespace App\Domains\Market\Actions;
 
+use App\Domains\Brand\Support\BrandContext;
 use App\Domains\Market\Models\Market;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -10,6 +11,11 @@ use Illuminate\Validation\Rule;
 
 class UpsertMarketAction
 {
+    public function __construct(
+        private readonly BrandContext $brandContext,
+    ) {
+    }
+
     public function execute(
         ?Market $market,
         array $data,
@@ -25,7 +31,14 @@ class UpsertMarketAction
             $market,
             $validated,
         ): Market {
+            $isCreating = $market === null;
             $market ??= new Market;
+
+            if ($isCreating) {
+                $market->brand_id = $this->brandContext
+                    ->get()
+                    ?->getKey();
+            }
 
             $market->fill($validated);
             $market->save();

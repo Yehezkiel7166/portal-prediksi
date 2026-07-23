@@ -2,6 +2,7 @@
 
 namespace App\Domains\Result\Actions;
 
+use App\Domains\Market\Models\Market;
 use App\Domains\Result\Models\Result;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -26,6 +27,10 @@ class UpsertResultAction
         ): Result {
             $result ??= new Result();
 
+            $market = Market::query()
+                ->findOrFail($validated['market_id']);
+
+            $result->brand_id = $market->brand_id;
             $result->fill($validated);
             $result->save();
 

@@ -3,6 +3,7 @@
 namespace App\Domains\Prediction\Actions;
 
 use App\Core\Contracts\Clock;
+use App\Domains\Market\Models\Market;
 use App\Domains\Prediction\Models\Prediction;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -31,6 +32,10 @@ class UpsertPredictionAction
         ): Prediction {
             $prediction ??= new Prediction;
 
+            $market = Market::query()
+                ->findOrFail($validated['market_id']);
+
+            $prediction->brand_id = $market->brand_id;
             $prediction->fill($validated);
             $prediction->save();
 

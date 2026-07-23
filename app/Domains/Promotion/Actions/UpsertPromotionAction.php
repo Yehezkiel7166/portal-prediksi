@@ -2,6 +2,7 @@
 
 namespace App\Domains\Promotion\Actions;
 
+use App\Domains\Brand\Support\BrandContext;
 use App\Domains\Promotion\Models\Promotion;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
@@ -10,12 +11,24 @@ use Illuminate\Validation\Rule;
 
 class UpsertPromotionAction
 {
+    public function __construct(
+        private readonly BrandContext $brandContext,
+    ) {
+    }
+
     /**
      * @param array<string, mixed> $data
      */
     public function execute(array $data, ?Promotion $promotion = null): Promotion
     {
+        $isCreating = $promotion === null;
         $promotion ??= new Promotion();
+
+        if ($isCreating) {
+            $promotion->brand_id = $this->brandContext
+                ->get()
+                ?->getKey();
+        }
 
         $data['title'] = trim((string) ($data['title'] ?? ''));
         $data['slug'] = Str::slug(
