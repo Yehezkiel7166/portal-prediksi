@@ -273,3 +273,384 @@ After Version 1.0 is completed:
 - Create Version 1.1 roadmap.
 - Re-evaluate priorities.
 - Update architectural documentation before expanding functionality.
+
+---
+
+<!-- MASTER-PROMPT-V2-MILESTONE-ROADMAP-START -->
+# Master Prompt v2.0 — Milestone-Based Product Roadmap
+
+Status: Active
+
+This roadmap supplements the existing phase roadmap by adding explicit product
+milestones and exit criteria.
+
+The existing implementation phases remain useful as execution groupings, but
+product release decisions are governed by the milestones below.
+
+## Roadmap Principles
+
+- Repository First
+- Documentation First
+- Architecture Before Implementation
+- Build for Many
+- Release for One
+- Stabilize Before Expansion
+- Configuration Before Duplication
+- Tests Before Production Acceptance
+- No Repository Fork per Brand
+
+## Milestone A — Repository Foundation
+
+### Objective
+
+Establish the repository as the Single Source of Truth.
+
+### Required Outcomes
+
+- Project Constitution established
+- Project Manifest established
+- Project State established
+- Documentation Governance established
+- Canonical Map established
+- Registries established
+- Architecture baseline established
+- ADR process established
+- Sprint governance established
+- Test governance established
+
+### Exit Criteria
+
+- canonical document hierarchy is valid;
+- no competing source of truth exists;
+- repository rules govern implementation;
+- documentation conflicts have an escalation path.
+
+## Milestone A1 — Multi-Brand Foundation
+
+### Objective
+
+Create the shared technical foundation for multiple brands before expanding
+business modules.
+
+### Required Outcomes
+
+- Brand UUID
+- Brand model
+- Brand Context
+- Domain resolution
+- Unknown-host safe failure
+- Brand-aware authentication
+- Owner access
+- Brand Super Admin access
+- Brand-to-market authorization
+- Brand-aware persistence
+- Brand-aware factories
+- Brand-aware service boundaries
+- Brand-aware cache strategy
+- Brand-aware queues
+- Brand-aware scheduler
+- Brand-aware media ownership
+- Audit context
+- Five-brand-compatible data foundation
+
+### Exit Criteria
+
+- Brand #1 can resolve from its domain;
+- unknown hosts do not resolve to Brand #1;
+- cross-brand reads fail safely;
+- cross-brand writes fail safely;
+- brand-aware factories generate valid records;
+- queue jobs preserve Brand Context;
+- scheduled execution preserves Brand Context;
+- Owner and Brand Admin scopes are tested.
+
+## Milestone B — Brand #1 Ready
+
+### Objective
+
+Deliver a complete and operational Brand #1 experience on top of the shared
+multi-brand foundation.
+
+### Mandatory Modules
+
+- Market
+- Prediction
+- Result
+- Shio
+- Promotion
+- Blog
+- Live Draw
+- Slot Gacor / RTP
+- Jackpot Proof
+- Complaint
+- Guide
+
+### Mandatory Lottery Tools
+
+- BBFS Generator
+- Buku Mimpi
+- Paito
+- Jadwal
+- Konversi Toto
+
+### Mandatory Automation
+
+- Live Draw automation
+- Result automation
+- Prediction automation
+- RTP automation
+- Scheduler
+- Queue
+- Retry handling
+- Failure logging
+- Execution history
+- Health checks
+- Brand and market context preservation
+
+### Mandatory Product Surfaces
+
+- Owner panel
+- Brand administration panel
+- Brand #1 public frontend
+- Approved route ownership
+- Brand navigation
+- Brand metadata
+- Brand sitemap behavior
+- Brand canonical URL behavior
+- Operational visibility
+- Audit visibility
+- Automation health visibility
+
+### Exit Criteria
+
+- all mandatory modules are registered;
+- all mandatory capabilities are registered;
+- all mandatory features are registered;
+- all mandatory routes are registered;
+- architecture and ADR requirements are complete;
+- automated test suites pass;
+- Brand #1 frontend acceptance passes;
+- cross-brand isolation passes;
+- brand-to-market authorization passes;
+- scheduler and queue isolation pass;
+- automation recovery behavior passes;
+- SEO ownership passes;
+- no mandatory capability depends on hard-coded Brand #1 logic.
+
+## Milestone B1 — Brand #1 Stabilization
+
+### Objective
+
+Prove that Brand #1 is reliable in production-like operation before activating
+additional brands.
+
+### Stabilization Areas
+
+- Domain resolution
+- Authentication
+- Authorization
+- Database isolation
+- Cache isolation
+- Queue reliability
+- Scheduler reliability
+- Automation reliability
+- Failure recovery
+- Audit completeness
+- Media ownership
+- SEO behavior
+- Frontend stability
+- Performance
+- Backup and restore
+- Operational runbooks
+
+### Exit Criteria
+
+- no unresolved critical isolation defect;
+- no unresolved critical authorization defect;
+- no unresolved critical automation defect;
+- production error behavior is understood;
+- health checks are operational;
+- recovery procedures are documented;
+- backup and restore are verified;
+- regression suite remains green;
+- Brand #1 acceptance is formally recorded.
+
+## Milestone C — Brand #2 Activation
+
+### Objective
+
+Validate that the system supports another brand without application or repository
+forking.
+
+### Activation Method
+
+Brand #2 must be activated using configuration and approved data provisioning.
+
+### Exit Criteria
+
+- Brand #2 uses the same codebase;
+- Brand #2 uses the same migrations;
+- Brand #2 resolves through its own domain;
+- Brand #2 has isolated content;
+- Brand #2 has authorized market access;
+- Brand #2 has isolated cache behavior;
+- Brand #2 has isolated media;
+- Brand #2 has isolated queue and scheduler context;
+- Brand #1 behavior remains unchanged;
+- no hard-coded Brand #2 condition is introduced.
+
+## Milestone C1 — Brand #3 Through Brand #5 Activation
+
+### Objective
+
+Validate the five-brand-compatible foundation.
+
+### Exit Criteria
+
+- five brands can coexist;
+- every brand has independent domain configuration;
+- every brand has independent navigation and SEO configuration;
+- every brand has explicit market authorization;
+- cross-brand isolation remains valid;
+- automation remains context-safe;
+- operational monitoring can distinguish brands;
+- new activation requires configuration rather than code duplication.
+
+## Milestone D — Enterprise Operations
+
+### Objective
+
+Strengthen platform-wide administration and observability after multi-brand
+validation.
+
+### Candidate Scope
+
+- Platform health dashboard
+- Queue monitor
+- Scheduler monitor
+- Automation execution dashboard
+- Failure and retry dashboard
+- Media management
+- Advanced audit review
+- Cross-brand operational reporting
+- Configuration validation
+- Deployment readiness controls
+- Backup and recovery operations
+
+Candidate scope must be registered before implementation.
+
+## Milestone E — Integration Expansion
+
+### Objective
+
+Add approved integrations without weakening module boundaries or tenancy.
+
+### Candidate Scope
+
+- External result sources
+- External Live Draw sources
+- Telegram integration
+- Webhook integrations
+- Extended analytics
+- Public or partner APIs
+- Mobile API
+
+Every integration must define:
+
+- ownership;
+- authentication;
+- authorization;
+- rate limits;
+- failure behavior;
+- retries;
+- idempotency;
+- observability;
+- brand and market context;
+- data retention.
+
+## Milestone F — Intelligence Expansion
+
+### Objective
+
+Introduce AI-assisted capabilities only after the deterministic platform and
+automation foundation are stable.
+
+### Candidate Scope
+
+- AI prediction assistance
+- AI RTP assistance
+- AI article assistance
+- AI content recommendations
+- AI operational anomaly detection
+
+AI capabilities must remain assistive unless a later approved requirement grants
+autonomous authority.
+
+AI output must not bypass:
+
+- authorization;
+- validation;
+- publication workflow;
+- audit logging;
+- Brand Context;
+- Market Context;
+- human approval where required.
+
+## Dependency Rules
+
+Milestones must follow this dependency order:
+
+Repository Foundation
+↓
+Multi-Brand Foundation
+↓
+Brand #1 Ready
+↓
+Brand #1 Stabilization
+↓
+Brand #2 Activation
+↓
+Brand #3 Through Brand #5 Activation
+↓
+Enterprise Operations
+↓
+Integration Expansion
+↓
+Intelligence Expansion
+
+Later milestones may not be used to justify incomplete exit criteria in earlier
+milestones.
+
+## Sprint Mapping Rule
+
+Each implementation sprint must declare:
+
+- roadmap milestone;
+- feature IDs;
+- capability IDs;
+- module IDs;
+- affected architecture documents;
+- relevant ADRs;
+- acceptance criteria;
+- required automated tests;
+- brand-isolation impact;
+- market-authorization impact;
+- operational impact;
+- documentation updates.
+
+A sprint without canonical traceability is not implementation-ready.
+
+## Roadmap Change Control
+
+Roadmap changes require:
+
+1. repository-recorded rationale;
+2. registry impact review;
+3. Feature Freeze impact review;
+4. architecture impact review;
+5. dependency review;
+6. test impact review;
+7. production impact review.
+
+Conversation history alone does not modify the roadmap.
+<!-- MASTER-PROMPT-V2-MILESTONE-ROADMAP-END -->

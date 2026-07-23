@@ -284,3 +284,341 @@ Duplicate detection MUST use draw identity instead of result value.
 Administrator confirmation is required before replacing an existing draw.
 
 All corrections MUST be audited.
+
+---
+
+<!-- MASTER-PROMPT-V2-PRODUCT-FREEZE-START -->
+# Master Prompt v2.0 — Product Freeze Alignment
+
+Status: Active
+
+Authority: Master Prompt v2.0
+
+Scope: Milestone B — Brand #1 Ready
+
+This amendment extends the existing Feature Freeze without replacing valid
+requirements already defined in this document.
+
+## Freeze Interpretation
+
+The platform is developed as a reusable multi-brand system but released and
+validated first through Brand #1.
+
+The governing delivery principle is:
+
+Build for Many.
+
+Release for One.
+
+Validate Brand #1.
+
+Stabilize Brand #1.
+
+Activate additional brands through configuration.
+
+A functioning administration panel alone does not satisfy Brand #1 Ready.
+
+## Mandatory Platform Foundation
+
+The following platform capabilities are mandatory before Milestone B may be
+accepted:
+
+- Owner-level platform control
+- Brand Super Admin
+- Stable Brand UUID
+- Brand Context resolution
+- Dynamic domain resolution
+- Safe unknown-host handling
+- Brand-scoped authorization
+- Brand-to-market authorization
+- Brand-aware persistence
+- Brand-aware cache behavior
+- Brand-aware media ownership
+- Brand-aware queue execution
+- Brand-aware scheduler execution
+- Audit logging
+- Five-brand-compatible foundation
+- Configuration-driven brand activation
+
+Unknown hostnames must fail safely.
+
+Unknown hostnames must never silently resolve to Brand #1.
+
+## Mandatory Brand #1 Modules
+
+The following modules are mandatory for Brand #1 Ready:
+
+### Operational and Business Modules
+
+- Live Draw
+- Result
+- Prediction
+- Market
+- Shio
+
+### Content Modules
+
+- Promotion
+- Blog
+- Jackpot Proof
+- Complaint
+- Guide
+
+### RTP Module
+
+- Slot Gacor / RTP
+- RTP publication
+- RTP scheduling
+- RTP rotation
+- RTP history
+- Brand-specific visibility
+- Automation integration
+
+## Mandatory Lottery Tools
+
+The following lottery tools are mandatory:
+
+- BBFS Generator
+- Buku Mimpi
+- Paito
+- Shio
+- Jadwal
+- Konversi Toto
+
+Implementation may use separate modules, shared reference capabilities, or
+shared engines with brand-specific configuration, according to the canonical
+architecture and Module Registry.
+
+## Mandatory Operational Automation
+
+Core non-AI automation is part of the mandatory product scope.
+
+It includes:
+
+- Live Draw automation
+- Result automation
+- Prediction automation
+- RTP automation
+- Scheduler
+- Queue execution
+- Retry policy
+- Failure logging
+- Execution history
+- Health checks
+- Idempotency protection
+- Brand Context preservation
+- Market Context preservation
+- Authorization enforcement
+- Operational recovery visibility
+
+Automation is not considered complete when it merely triggers a command.
+
+Each automated process must provide:
+
+1. Explicit ownership
+2. Scheduled or event-driven execution definition
+3. Idempotent behavior where applicable
+4. Retry behavior
+5. Terminal failure handling
+6. Structured logging
+7. Execution history
+8. Health status
+9. Brand isolation
+10. Market isolation where applicable
+11. Automated tests
+
+## Data Ownership Freeze
+
+### Brand-Owned Data
+
+The following data is brand-owned unless a later ADR explicitly establishes a
+different model:
+
+- Blog content
+- Promotion content
+- Complaint records
+- Guide content
+- Jackpot Proof content
+- Brand SEO configuration
+- Brand navigation configuration
+- Brand media
+- Brand presentation settings
+- Brand RTP presentation and visibility configuration
+
+Brand-owned records must not be readable or writable across brands without
+Owner-level authorization.
+
+### Market-Owned Data
+
+The following data is market-owned:
+
+- Result
+- Prediction
+- Live Draw operational data
+- Draw schedule
+- Market timezone
+- Market operational status
+- Result source configuration
+- Live Draw source configuration
+
+A brand may consume market-owned data only through an explicit brand-to-market
+authorization relationship.
+
+### Shared Reference Data
+
+The following may be shared when they contain no brand-specific ownership:
+
+- Shio reference mappings
+- Buku Mimpi reference data
+- Deterministic conversion tables
+
+Shared reference data must remain controlled, deterministic, and versioned where
+changes may affect published output.
+
+### Shared Engines with Brand Configuration
+
+The following may use a shared application engine:
+
+- BBFS generation
+- Paito generation
+- Number conversion
+- Scheduling
+- Automation orchestration
+
+Availability, presentation, SEO, defaults, and brand-visible behavior must remain
+configurable per brand.
+
+## Brand #1 Frontend Freeze
+
+Brand #1 frontend must expose all mandatory modules and tools through approved
+navigation and route ownership.
+
+Frontend completion includes:
+
+- Brand-resolved domain access
+- Brand-specific identity
+- Brand-specific metadata
+- Brand-specific navigation
+- Brand-specific canonical URLs
+- Brand-specific structured data where applicable
+- Public visibility rules
+- Publication status rules
+- Empty-state behavior
+- Failure-state behavior
+- Responsive behavior
+- Accessibility baseline
+- Search-engine crawl controls
+- Sitemap ownership
+- Cache isolation
+
+A backend feature without an approved frontend or API exposure path is not
+automatically considered product-complete.
+
+## Required Acceptance Criteria
+
+Milestone B may be accepted only when:
+
+- all mandatory modules are registered;
+- all mandatory capabilities are registered;
+- all mandatory routes are registered;
+- module ownership is documented;
+- dependencies are documented;
+- architecture is aligned;
+- required ADRs are accepted;
+- sprints are completed;
+- automated tests pass;
+- cross-brand isolation passes;
+- brand-to-market authorization passes;
+- unknown-host safety passes;
+- queue context preservation passes;
+- scheduler context preservation passes;
+- cache isolation passes;
+- media ownership passes;
+- audit logging passes;
+- automation recovery behavior passes;
+- frontend visibility passes;
+- SEO ownership passes;
+- Brand #1 operational acceptance passes.
+
+## Brand #1 Stabilization Gate
+
+Brand #2 must not be activated immediately after initial Brand #1 feature
+completion.
+
+Brand #1 must first pass stabilization covering:
+
+- regression stability;
+- production error review;
+- queue and scheduler reliability;
+- automation failure recovery;
+- domain-resolution reliability;
+- cache behavior;
+- media access;
+- authorization;
+- SEO behavior;
+- operational observability;
+- backup and restore verification;
+- documented production runbooks.
+
+## Brand #2 Through Brand #5 Activation Rule
+
+Additional brands must be activated through configuration and approved data
+provisioning.
+
+Activation must not require:
+
+- application forks;
+- repository forks;
+- duplicated module implementations;
+- duplicated migrations;
+- hard-coded brand conditions;
+- hard-coded Brand #1 defaults.
+
+Brand activation should primarily require:
+
+- brand record creation;
+- domain configuration;
+- brand-market authorization;
+- theme or presentation configuration;
+- SEO configuration;
+- navigation configuration;
+- content provisioning;
+- feature availability configuration.
+
+## Explicitly Deferred Capabilities
+
+The following capabilities remain outside mandatory Brand #1 scope until
+approved through Feature Freeze change control:
+
+- AI prediction assistance
+- AI RTP assistance
+- AI article assistance
+- Referral
+- Cashback
+- Telegram integration
+- Expanded analytics
+- Mobile API
+- Public REST API
+- Marketplace capabilities
+
+Core automation must not be incorrectly deferred merely because AI-assisted
+automation is deferred.
+
+## Change Control
+
+Any addition, removal, or ownership change affecting mandatory Brand #1 scope
+requires:
+
+1. Idea Registry update
+2. Capability Registry update
+3. Feature Registry update
+4. Module Registry update
+5. Architecture review
+6. ADR when architectural significance exists
+7. Roadmap impact review
+8. Sprint impact review
+9. Test impact review
+10. Feature Freeze approval
+
+Implementation alone does not modify this freeze.
+<!-- MASTER-PROMPT-V2-PRODUCT-FREEZE-END -->
