@@ -1244,3 +1244,58 @@ This registry is governed by:
 - docs/product/FEATURE_FREEZE_V1.md
 
 No idea may override approved architecture without following the Architecture Decision Record and Change Management processes.
+
+---
+
+<!-- MASTER-PROMPT-V2-IDEA-REGISTRY-START -->
+# Master Prompt v2.0 — Registered Product Ideas
+
+Status: Active
+
+The entries below record the approved ideas discussed during Repository Alignment.
+They do not replace earlier valid registry entries.
+
+## Mandatory Brand #1 Ideas
+
+| Idea ID | Idea | Classification | Ownership | Status |
+|---|---|---|---|---|
+| MP2-IDEA-001 | Complete Brand #1 frontend and administration experience | Product | Brand and Platform | Approved |
+| MP2-IDEA-002 | Slot Gacor / RTP management and publication | Operations | Brand-configured | Approved |
+| MP2-IDEA-003 | Jackpot Proof publishing and moderation | Content | Brand-owned | Approved |
+| MP2-IDEA-004 | Complaint workflow and case tracking | Workflow | Brand-owned | Approved |
+| MP2-IDEA-005 | Guide publishing and navigation | Content | Brand-owned | Approved |
+| MP2-IDEA-006 | BBFS deterministic generator | Lottery Tool | Shared engine with brand configuration | Approved |
+| MP2-IDEA-007 | Buku Mimpi search and reference content | Lottery Tool | Shared reference or brand content | Approved |
+| MP2-IDEA-008 | Paito generation from confirmed Result data | Lottery Tool | Shared engine | Approved |
+| MP2-IDEA-009 | Market draw schedule and timezone management | Operations | Market-owned | Approved |
+| MP2-IDEA-010 | Deterministic Toto conversion tools | Lottery Tool | Shared engine | Approved |
+| MP2-IDEA-011 | Core operational automation framework | Platform Operations | Shared platform | Approved |
+| MP2-IDEA-012 | Automation execution history and health visibility | Platform Operations | Shared platform | Approved |
+| MP2-IDEA-013 | Configuration-driven activation for Brand #2 through Brand #5 | Multi-Brand | Platform | Approved |
+| MP2-IDEA-014 | Brand #1 stabilization gate before additional brand activation | Governance | Platform | Approved |
+| MP2-IDEA-015 | Media ownership and isolation per brand | Platform | Brand-owned | Approved |
+| MP2-IDEA-016 | Brand-aware cache, queue, and scheduler execution | Platform | Shared platform | Approved |
+
+## Approved Future Ideas
+
+| Idea ID | Idea | Classification | Status |
+|---|---|---|---|
+| MP2-IDEA-F001 | Telegram integration | Integration | Future |
+| MP2-IDEA-F002 | Expanded analytics | Analytics | Future |
+| MP2-IDEA-F003 | Mobile API | Integration | Future |
+| MP2-IDEA-F004 | Public or partner REST API | Integration | Future |
+| MP2-IDEA-F005 | Referral capability | Commercial | Future |
+| MP2-IDEA-F006 | Cashback capability | Commercial | Future |
+| MP2-IDEA-F007 | Marketplace capability | Platform Expansion | Future |
+
+## Explicitly Deferred AI Ideas
+
+| Idea ID | Idea | Classification | Status |
+|---|---|---|---|
+| MP2-IDEA-AI001 | AI prediction assistance | Intelligence | Deferred |
+| MP2-IDEA-AI002 | AI RTP assistance | Intelligence | Deferred |
+| MP2-IDEA-AI003 | AI article assistance | Intelligence | Deferred |
+| MP2-IDEA-AI004 | AI operational anomaly detection | Intelligence | Deferred |
+
+AI-assisted ideas do not replace mandatory deterministic automation.
+<!-- MASTER-PROMPT-V2-IDEA-REGISTRY-END -->

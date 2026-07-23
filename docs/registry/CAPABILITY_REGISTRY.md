@@ -367,3 +367,86 @@ Referenced by:
 - DECISION_REGISTRY.md
 
 This document is part of the permanent Project Knowledge Base.
+
+---
+
+<!-- MASTER-PROMPT-V2-CAPABILITY-REGISTRY-START -->
+# Master Prompt v2.0 — Capability Registry Alignment
+
+Status: Active
+
+## Multi-Brand Platform Capabilities
+
+| Capability ID | Capability | Owner | Required Milestone | Status |
+|---|---|---|---|---|
+| MP2-CAP-001 | Resolve Brand Context from approved hostname | Platform / Brand | A1 | Mandatory |
+| MP2-CAP-002 | Fail safely for unknown hostname | Platform / Brand | A1 | Mandatory |
+| MP2-CAP-003 | Manage platform through Owner Context | Platform / Owner | A1 | Mandatory |
+| MP2-CAP-004 | Restrict Brand Admin to assigned brands | Platform / Authorization | A1 | Mandatory |
+| MP2-CAP-005 | Authorize brand access to markets | Platform / Market | A1 | Mandatory |
+| MP2-CAP-006 | Preserve Brand Context in database operations | Platform / Persistence | A1 | Mandatory |
+| MP2-CAP-007 | Preserve Brand Context in cache keys | Platform / Cache | A1 | Mandatory |
+| MP2-CAP-008 | Preserve Brand Context in queued jobs | Platform / Queue | A1 | Mandatory |
+| MP2-CAP-009 | Preserve brand and market context in scheduled jobs | Platform / Scheduler | A1 | Mandatory |
+| MP2-CAP-010 | Enforce brand-aware media ownership | Platform / Media | A1 | Mandatory |
+| MP2-CAP-011 | Record actor, brand, market, and action in audit history | Platform / Audit | A1 | Mandatory |
+| MP2-CAP-012 | Activate additional brands through configuration | Platform / Brand | C | Mandatory |
+
+## Mandatory Business and Content Capabilities
+
+| Capability ID | Capability | Owner Module | Required Milestone | Status |
+|---|---|---|---|---|
+| MP2-CAP-101 | Manage markets and market operational configuration | Market | B | Mandatory |
+| MP2-CAP-102 | Manage draw schedules and market timezones | Market | B | Mandatory |
+| MP2-CAP-103 | Create, publish, correct, and audit Results | Result | B | Mandatory |
+| MP2-CAP-104 | Create, generate, schedule, and publish Predictions | Prediction | B | Mandatory |
+| MP2-CAP-105 | Operate Live Draw sessions and source configuration | Live Draw | B | Mandatory |
+| MP2-CAP-106 | Manage Shio reference mappings | Shio | B | Mandatory |
+| MP2-CAP-107 | Publish brand-owned Promotions | Promotion | B | Mandatory |
+| MP2-CAP-108 | Publish brand-owned Blog content | Blog | B | Mandatory |
+| MP2-CAP-109 | Publish and rotate Slot Gacor / RTP entries | RTP | B | Mandatory |
+| MP2-CAP-110 | Publish and moderate Jackpot Proof records | Jackpot Proof | B | Mandatory |
+| MP2-CAP-111 | Manage Complaint lifecycle | Complaint | B | Mandatory |
+| MP2-CAP-112 | Publish brand-owned Guide content | Guide | B | Mandatory |
+
+## Mandatory Lottery Tool Capabilities
+
+| Capability ID | Capability | Owner Module | Required Milestone | Status |
+|---|---|---|---|---|
+| MP2-CAP-201 | Generate BBFS output deterministically | BBFS | B | Mandatory |
+| MP2-CAP-202 | Search and display Buku Mimpi reference data | Buku Mimpi | B | Mandatory |
+| MP2-CAP-203 | Generate Paito from confirmed Results | Paito | B | Mandatory |
+| MP2-CAP-204 | Display Shio reference output | Shio | B | Mandatory |
+| MP2-CAP-205 | Display market schedules using market timezone | Market | B | Mandatory |
+| MP2-CAP-206 | Convert Toto numbers deterministically | Converter | B | Mandatory |
+
+## Mandatory Automation Capabilities
+
+| Capability ID | Capability | Owner | Required Milestone | Status |
+|---|---|---|---|---|
+| MP2-CAP-301 | Schedule automation definitions | Automation | B | Mandatory |
+| MP2-CAP-302 | Dispatch automation through queues | Automation / Queue | B | Mandatory |
+| MP2-CAP-303 | Retry recoverable execution failures | Automation | B | Mandatory |
+| MP2-CAP-304 | Record terminal execution failures | Automation / Audit | B | Mandatory |
+| MP2-CAP-305 | Preserve automation execution history | Automation | B | Mandatory |
+| MP2-CAP-306 | Report automation health status | Automation / Operations | B | Mandatory |
+| MP2-CAP-307 | Execute Live Draw automation | Live Draw / Automation | B | Mandatory |
+| MP2-CAP-308 | Execute Result automation idempotently | Result / Automation | B | Mandatory |
+| MP2-CAP-309 | Execute Prediction automation | Prediction / Automation | B | Mandatory |
+| MP2-CAP-310 | Execute RTP rotation automation | RTP / Automation | B | Mandatory |
+| MP2-CAP-311 | Prevent duplicate automation effects | Automation | B | Mandatory |
+| MP2-CAP-312 | Isolate automation by brand and market | Automation / Brand / Market | B | Mandatory |
+
+## Future and Deferred Capabilities
+
+| Capability ID | Capability | Status |
+|---|---|---|
+| MP2-CAP-F001 | Telegram notification integration | Future |
+| MP2-CAP-F002 | Expanded cross-brand analytics | Future |
+| MP2-CAP-F003 | Mobile API delivery | Future |
+| MP2-CAP-F004 | Public or partner REST API delivery | Future |
+| MP2-CAP-AI001 | AI prediction assistance | Deferred |
+| MP2-CAP-AI002 | AI RTP assistance | Deferred |
+| MP2-CAP-AI003 | AI article assistance | Deferred |
+| MP2-CAP-AI004 | AI operational anomaly detection | Deferred |
+<!-- MASTER-PROMPT-V2-CAPABILITY-REGISTRY-END -->
