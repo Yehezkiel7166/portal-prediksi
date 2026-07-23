@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Frontend;
 
+use App\Domains\Brand\Models\Brand;
 use App\Domains\Market\Models\Market;
 use App\Domains\Result\Models\Result;
 use App\Http\Controllers\Frontend\ResultDetailController;
@@ -123,4 +124,52 @@ final class PublicResultDetailTest extends TestCase
             'resultDate' => '2026-07-20',
         ]))->assertNotFound();
     }
+
+    public function test_detail_does_not_display_result_from_another_brand(): void
+    {
+        config()->set('brand.default_code', 'brand-a');
+
+        $brandA = Brand::factory()->create([
+            'code' => 'brand-a',
+            'name' => 'Brand A',
+            'slug' => 'brand-a',
+            'is_active' => true,
+        ]);
+
+        $brandB = Brand::factory()->create([
+            'code' => 'brand-b',
+            'name' => 'Brand B',
+            'slug' => 'brand-b',
+            'is_active' => true,
+        ]);
+
+        Market::factory()->create([
+            'brand_id' => $brandA->id,
+            'name' => 'Current Brand Market',
+            'slug' => 'current-brand-market',
+            'code' => 'CBM',
+            'is_active' => true,
+        ]);
+
+        $otherBrandMarket = Market::factory()->create([
+            'brand_id' => $brandB->id,
+            'name' => 'Other Brand Market',
+            'slug' => 'other-brand-market',
+            'code' => 'OBM',
+            'is_active' => true,
+        ]);
+
+        Result::factory()->create([
+            'brand_id' => $brandB->id,
+            'market_id' => $otherBrandMarket->id,
+            'result_date' => '2026-07-20',
+            'winning_numbers' => 'OTHER-BRAND-DETAIL',
+        ]);
+
+        $this->get(route('results.show', [
+            'marketSlug' => 'other-brand-market',
+            'resultDate' => '2026-07-20',
+        ]))->assertNotFound();
+    }
+
 }

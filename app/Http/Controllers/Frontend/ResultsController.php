@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Domains\Brand\Support\BrandContext;
 use App\Domains\Market\Models\Market;
 use App\Domains\Result\Models\Result;
 use App\Http\Controllers\Controller;
@@ -14,8 +15,14 @@ final class ResultsController extends Controller
     public function __invoke(ResultIndexRequest $request): View
     {
         $filters = $request->filters();
+        $brand = app(BrandContext::class)->get();
 
         $markets = Market::query()
+            ->when(
+                $brand !== null,
+                fn (Builder $query): Builder =>
+                    $query->where('brand_id', $brand->id),
+            )
             ->active()
             ->ordered()
             ->get([
@@ -26,6 +33,7 @@ final class ResultsController extends Controller
             ]);
 
         $results = Result::query()
+            ->forCurrentBrand()
             ->select([
                 'id',
                 'market_id',

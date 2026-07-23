@@ -14,6 +14,7 @@ final class ResultDetailController extends Controller
         string $resultDate,
     ): View {
         $result = Result::query()
+            ->forCurrentBrand()
             ->select([
                 'id',
                 'market_id',
