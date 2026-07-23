@@ -861,3 +861,184 @@ The Portal Prediksi CMS architecture is founded upon the following principles:
 - Predictable Change Management
 
 These principles apply to every module, package, service, and future enhancement within the repository.
+
+---
+
+<!-- MASTER-PROMPT-V2-ARCHITECTURE-ALIGNMENT-START -->
+# Master Prompt v2.0 Architecture Alignment
+
+Status: Active
+
+This amendment extends the existing architecture rules. It does not replace
+valid architecture definitions already present in this document.
+
+## Multi-Brand Runtime Context
+
+Every brand-sensitive execution must operate with an explicit Brand Context.
+
+Every market-sensitive execution must operate with an explicit Market Context.
+
+Context may be established through:
+
+- approved hostname resolution;
+- authenticated administration scope;
+- an explicit application-service argument;
+- a queue job payload;
+- a scheduled execution definition;
+- an approved command option.
+
+Context must remain stable during one request, command, job, or scheduled
+execution.
+
+Unknown or inactive hostnames must fail closed. They must never silently resolve
+to Brand #1.
+
+## Ownership Model
+
+Platform-owned data includes shared platform security, configuration, audit,
+queue, scheduler, and automation infrastructure.
+
+Brand-owned data includes brand content, brand configuration, brand media,
+navigation, SEO configuration, complaints, guides, promotions, blog content,
+and jackpot proof records.
+
+Market-owned data includes markets, draw schedules, results, predictions, live
+draw operational state, and approved source configuration.
+
+Shared reference data may include deterministic Shio, Buku Mimpi, and conversion
+reference definitions.
+
+Shared engines may provide BBFS, Paito, conversion, scheduling, and automation,
+but shared engines must not create shared ownership of brand data.
+
+## Brand-to-Market Authorization
+
+A brand may access market-owned data only through an explicit authorization
+relationship.
+
+Authorization must be enforced for:
+
+- Result;
+- Prediction;
+- Live Draw;
+- Paito;
+- market schedules;
+- market-specific automation.
+
+Possession of a market identifier is not sufficient authorization.
+
+## Persistence and Query Isolation
+
+Brand-owned records must carry explicit brand ownership.
+
+Market-owned records must carry explicit market ownership.
+
+Brand and market isolation must not depend only on controller filters.
+
+Isolation must be enforced through appropriate combinations of:
+
+- policies;
+- application services;
+- repositories;
+- query scopes;
+- database constraints;
+- foreign keys;
+- automated tests.
+
+## Cache Context
+
+Brand-sensitive cache keys must include Brand Context.
+
+Market-sensitive cache keys must include Market Context.
+
+Cache entries affected by both contexts must include both identifiers.
+
+Data cached for one brand or market must never be returned under another
+context.
+
+## Queue Context
+
+Queue jobs requiring brand-sensitive behavior must carry a stable brand
+identifier.
+
+Queue jobs requiring market-sensitive behavior must carry a stable market
+identifier.
+
+A job must reconstruct and validate its required context before invoking the
+owning module.
+
+Queue jobs must not depend on request-session state.
+
+## Scheduler Context
+
+The scheduler discovers due work but must not duplicate business rules owned by
+modules.
+
+Scheduled definitions must identify, where applicable:
+
+- owning module;
+- brand;
+- market;
+- timezone;
+- cadence;
+- overlap policy;
+- retry behavior;
+- idempotency expectations;
+- failure behavior.
+
+## Automation Boundary
+
+Automation is a shared orchestration capability.
+
+Automation may coordinate Result, Prediction, Live Draw, and RTP through their
+public application contracts.
+
+Automation must not directly modify another module's persistence model or
+duplicate another module's business rules.
+
+Automation execution must preserve brand and market context and provide:
+
+- retries;
+- terminal failure handling;
+- execution history;
+- health state;
+- structured logging;
+- idempotency support.
+
+## Module Boundary Additions
+
+The mandatory architecture also recognizes:
+
+- RTP as an operational module;
+- Jackpot Proof as brand-owned content;
+- Complaint as a brand-owned workflow;
+- Guide as brand-owned content;
+- BBFS as a deterministic lottery tool;
+- Buku Mimpi as an approved reference module;
+- Paito as Result-derived presentation;
+- Converter as a deterministic conversion module;
+- Automation as shared orchestration;
+- Media as storage infrastructure;
+- SEO as reusable presentation infrastructure.
+
+Media does not own the lifecycle of business records referencing media.
+
+SEO does not own the originating business or content records.
+
+## Mandatory Isolation Tests
+
+Architecture-sensitive test coverage must include:
+
+- hostname resolution;
+- unknown-host rejection;
+- Brand Context lifecycle;
+- Market Context lifecycle;
+- cross-brand read isolation;
+- cross-brand write isolation;
+- brand-to-market authorization;
+- cache isolation;
+- queue context reconstruction;
+- scheduler context reconstruction;
+- automation idempotency;
+- automation retry and terminal failure behavior.
+<!-- MASTER-PROMPT-V2-ARCHITECTURE-ALIGNMENT-END -->
