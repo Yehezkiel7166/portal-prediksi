@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Domains\Brand\Support\BrandContext;
 use App\Domains\Market\Models\Market;
 use App\Domains\Prediction\Models\Prediction;
 use App\Http\Controllers\Controller;
@@ -14,8 +15,14 @@ final class PredictionsController extends Controller
     public function __invoke(PredictionIndexRequest $request): View
     {
         $filters = $request->filters();
+        $brand = app(BrandContext::class)->get();
 
         $markets = Market::query()
+            ->when(
+                $brand !== null,
+                fn (Builder $query): Builder =>
+                    $query->where('brand_id', $brand->id),
+            )
             ->active()
             ->ordered()
             ->get([
@@ -26,6 +33,7 @@ final class PredictionsController extends Controller
             ]);
 
         $predictions = Prediction::query()
+            ->forCurrentBrand()
             ->select([
                 'id',
                 'market_id',

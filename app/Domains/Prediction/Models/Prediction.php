@@ -3,6 +3,7 @@
 namespace App\Domains\Prediction\Models;
 
 use App\Domains\Brand\Concerns\BelongsToBrand;
+use App\Domains\Brand\Support\BrandContext;
 
 use App\Domains\Market\Models\Market;
 use Database\Factories\PredictionFactory;
@@ -63,7 +64,21 @@ class Prediction extends Model
         return $query->whereDate('prediction_date', $date);
     }
 
-    public static function statusOptions(): array
+    
+    public function scopeForCurrentBrand(Builder $query): Builder
+    {
+        $brand = app(BrandContext::class)->get();
+
+        if ($brand === null) {
+            return $query;
+        }
+
+        return $query->where(
+            $this->qualifyColumn('brand_id'),
+            $brand->id,
+        );
+    }
+public static function statusOptions(): array
     {
         return [
             self::STATUS_DRAFT => 'Draft',
