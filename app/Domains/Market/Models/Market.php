@@ -3,7 +3,7 @@
 namespace App\Domains\Market\Models;
 
 use App\Domains\Brand\Concerns\BelongsToBrand;
-
+use App\Domains\Brand\Support\BrandContext;
 use App\Domains\Prediction\Models\Prediction;
 use App\Domains\Result\Models\Result;
 use Database\Factories\MarketFactory;
@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Market extends Model
 {
     use BelongsToBrand;
+
     /** @use HasFactory<MarketFactory> */
     use HasFactory;
 
@@ -49,6 +50,16 @@ class Market extends Model
     public function results(): HasMany
     {
         return $this->hasMany(Result::class);
+    }
+
+    public function scopeForCurrentBrand(Builder $query): Builder
+    {
+        $brand = app(BrandContext::class)->get();
+
+        return $query->when(
+            $brand !== null,
+            fn (Builder $query): Builder => $query->where('brand_id', $brand->id),
+        );
     }
 
     public function scopeActive(Builder $query): Builder
