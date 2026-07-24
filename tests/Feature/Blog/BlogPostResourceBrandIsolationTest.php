@@ -37,4 +37,32 @@ final class BlogPostResourceBrandIsolationTest extends TestCase
             $blogPostIds,
         );
     }
+    public function test_resource_query_cannot_resolve_blog_post_from_another_brand(): void
+    {
+        $currentBrand = Brand::factory()->create();
+        $otherBrand = Brand::factory()->create();
+
+        $currentBlogPost = BlogPost::factory()->create([
+            'brand_id' => $currentBrand->id,
+        ]);
+
+        $otherBlogPost = BlogPost::factory()->create([
+            'brand_id' => $otherBrand->id,
+        ]);
+
+        app(BrandContext::class)->set($currentBrand);
+
+        $this->assertSame(
+            $currentBlogPost->id,
+            BlogPostResource::getEloquentQuery()
+                ->findOrFail($currentBlogPost->id)
+                ->id,
+        );
+
+        $this->assertNull(
+            BlogPostResource::getEloquentQuery()
+                ->find($otherBlogPost->id),
+        );
+    }
+
 }

@@ -37,4 +37,32 @@ final class PromotionResourceBrandIsolationTest extends TestCase
             $promotionIds,
         );
     }
+    public function test_resource_query_cannot_resolve_promotion_from_another_brand(): void
+    {
+        $currentBrand = Brand::factory()->create();
+        $otherBrand = Brand::factory()->create();
+
+        $currentPromotion = Promotion::factory()->create([
+            'brand_id' => $currentBrand->id,
+        ]);
+
+        $otherPromotion = Promotion::factory()->create([
+            'brand_id' => $otherBrand->id,
+        ]);
+
+        app(BrandContext::class)->set($currentBrand);
+
+        $this->assertSame(
+            $currentPromotion->id,
+            PromotionResource::getEloquentQuery()
+                ->findOrFail($currentPromotion->id)
+                ->id,
+        );
+
+        $this->assertNull(
+            PromotionResource::getEloquentQuery()
+                ->find($otherPromotion->id),
+        );
+    }
+
 }

@@ -46,4 +46,40 @@ final class LiveDrawResourceBrandIsolationTest extends TestCase
             $liveDrawIds,
         );
     }
+    public function test_resource_query_cannot_resolve_live_draw_from_another_brand(): void
+    {
+        $currentBrand = Brand::factory()->create();
+        $otherBrand = Brand::factory()->create();
+
+        $currentMarket = Market::factory()->create([
+            'brand_id' => $currentBrand->id,
+        ]);
+
+        $otherMarket = Market::factory()->create([
+            'brand_id' => $otherBrand->id,
+        ]);
+
+        $currentLiveDraw = LiveDraw::factory()->create([
+            'market_id' => $currentMarket->id,
+        ]);
+
+        $otherLiveDraw = LiveDraw::factory()->create([
+            'market_id' => $otherMarket->id,
+        ]);
+
+        app(BrandContext::class)->set($currentBrand);
+
+        $this->assertSame(
+            $currentLiveDraw->id,
+            LiveDrawResource::getEloquentQuery()
+                ->findOrFail($currentLiveDraw->id)
+                ->id,
+        );
+
+        $this->assertNull(
+            LiveDrawResource::getEloquentQuery()
+                ->find($otherLiveDraw->id),
+        );
+    }
+
 }
