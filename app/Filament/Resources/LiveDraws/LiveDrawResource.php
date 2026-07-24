@@ -12,6 +12,7 @@ use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class LiveDrawResource extends Resource
 {
@@ -31,6 +32,12 @@ class LiveDrawResource extends Resource
     protected static ?int $navigationSort = 30;
 
     protected static ?string $slug = 'live-draws';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->forCurrentBrand();
+    }
 
     public static function getNavigationGroup(): ?string
     {
