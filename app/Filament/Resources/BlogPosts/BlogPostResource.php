@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class BlogPostResource extends Resource
 {
@@ -28,6 +29,12 @@ class BlogPostResource extends Resource
     protected static ?string $pluralModelLabel = 'Blog';
 
     protected static ?int $navigationSort = 50;
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->forCurrentBrand();
+    }
 
     public static function form(Schema $schema): Schema
     {
