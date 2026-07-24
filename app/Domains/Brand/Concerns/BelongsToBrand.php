@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait BelongsToBrand
 {
+    use UsesBrandScope;
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
