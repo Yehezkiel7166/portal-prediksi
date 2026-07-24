@@ -11,7 +11,7 @@ final class PromotionsController extends Controller
     public function __invoke(): View
     {
         $promotions = Promotion::query()
-            ->forCurrentBrand()
+            
             ->select([
                 'id',
                 'title',

@@ -41,7 +41,7 @@ class ResultResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
-            ->forCurrentBrand();
+            ;
     }
 
     public static function form(Schema $schema): Schema

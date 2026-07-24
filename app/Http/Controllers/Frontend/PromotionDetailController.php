@@ -11,7 +11,7 @@ final class PromotionDetailController extends Controller
     public function __invoke(string $slug): View
     {
         $promotion = Promotion::query()
-            ->forCurrentBrand()
+            
             ->select([
                 'id',
                 'title',

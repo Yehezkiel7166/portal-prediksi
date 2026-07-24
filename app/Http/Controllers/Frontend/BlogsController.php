@@ -11,7 +11,7 @@ final class BlogsController extends Controller
     public function __invoke(): View
     {
         $blogPosts = BlogPost::query()
-            ->forCurrentBrand()
+            
             ->select([
                 'id',
                 'title',
