@@ -104,3 +104,21 @@ Immediate next execution stage: Days 1–3 baseline verification and blocker reg
 
 This entry records documentation and planning state only. Individual capabilities retain their implementation status until code and tests provide verification evidence.
 <!-- PROJECT-BRAIN-V1-END -->
+
+<!-- MASTER-PROMPT-V2-1-SYNC-2026-07-24-STATE-START -->
+
+## Master Prompt v2.1 Project State
+
+- Canonical prompt: docs/governance/MASTER_PROMPT_V2_1.md
+- Master Prompt v2.0 diwarisi sepenuhnya.
+- Target delivery aktif: 90 hari.
+- Owner dan Brand memiliki administration context terpisah.
+- Owner mengelola Theme, Homepage Template, Widget, provider global, dan game global.
+- Brand mengelola SEO, konten, Slot Gacor, RTP, Panduan, dan Keluhan.
+- Panduan adalah konten publik Brand kepada pengunjung.
+- Keluhan adalah laporan pengunjung kepada Brand.
+- SEO mendukung MANUAL, AUTO, dan HYBRID.
+- Seluruh otomatisasi aktif Master Prompt v2.0 tetap berlaku.
+- Sinkronisasi dokumentasi tidak berarti seluruh engine sudah diimplementasikan.
+- Tahap berikutnya adalah audit kode terhadap Master Prompt v2.1.
+<!-- MASTER-PROMPT-V2-1-SYNC-2026-07-24-STATE-END -->

@@ -207,3 +207,28 @@ The expanded capability inventory, priorities, and lifecycle statuses are mainta
 
 This registry remains authoritative for existing registered implementation identifiers. The Project Brain catalog adds product-wide capabilities and future ideas without falsely marking them implemented. Status meanings are defined in the catalog and `docs/project-brain/KNOWLEDGE_MAINTENANCE.md`.
 <!-- PROJECT-BRAIN-V1-END -->
+
+<!-- MASTER-PROMPT-V2-1-SYNC-2026-07-24-FEATURES-START -->
+
+# Master Prompt v2.1 Feature Alignment
+
+| ID | Feature | Priority | Status |
+|---|---|---|---|
+| MP21-F001 | Dedicated Owner Panel | Critical | PLANNED |
+| MP21-F002 | Isolated Brand Panel | Critical | PARTIALLY_IMPLEMENTED |
+| MP21-F003 | Theme Registry | High | PLANNED |
+| MP21-F004 | Homepage Template Registry | Critical | PLANNED |
+| MP21-F005 | Widget Registry | Critical | PLANNED |
+| MP21-F006 | Global Provider Catalog | Critical | PLANNED |
+| MP21-F007 | Global Game Catalog | Critical | PLANNED |
+| MP21-F008 | Brand Slot Gacor | Critical | PLANNED |
+| MP21-F009 | RTP Snapshot and History | Critical | PLANNED |
+| MP21-F010 | Public Guide Center | High | PLANNED |
+| MP21-F011 | Visitor Complaint Workflow | High | PLANNED |
+| MP21-F012 | Manual SEO | Critical | PLANNED |
+| MP21-F013 | Hybrid SEO | Critical | PLANNED |
+| MP21-F014 | Automatic SEO | High | PLANNED |
+| MP21-F015 | SERP Intelligence | High | PLANNED |
+| MP21-F016 | Automation Engine | High | PLANNED |
+| MP21-F017 | Brand 1 Production Homepage | Critical | PLANNED |
+<!-- MASTER-PROMPT-V2-1-SYNC-2026-07-24-FEATURES-END -->

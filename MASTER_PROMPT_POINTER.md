@@ -1,3 +1,10 @@
-# Master Prompt Pointer
+# MASTER PROMPT POINTER
 
-Canonical Master Prompt v2.0 file: `MASTER_PROMPT_V2.md`
+Current canonical prompt:
+docs/governance/MASTER_PROMPT_V2_1.md
+
+Inherited source:
+MASTER_PROMPT_V2.md
+
+Target:
+90 DAYS

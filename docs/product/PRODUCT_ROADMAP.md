@@ -735,3 +735,70 @@ These specifications MUST NOT be used to justify an unrestricted page builder,
 unsafe arbitrary code, uncontrolled AI publishing, or premature multi-brand
 production activation.
 <!-- END BRAND-1-ARCHITECTURE-FOUNDATIONS -->
+
+<!-- MASTER-PROMPT-V2-1-SYNC-2026-07-24-ROADMAP-START -->
+
+# Master Prompt v2.1 — 90-Day Roadmap
+
+## Hari 1–15
+
+- Sinkronisasi Project Brain.
+- Audit repository dan implementation gap.
+- Audit Owner Panel dan Brand Panel.
+- Audit Brand Context dan isolation.
+- Finalisasi role and permission matrix.
+- Finalisasi database blueprint.
+- Finalisasi API blueprint.
+
+## Hari 16–35
+
+- Dedicated Owner Panel.
+- Brand Panel isolation.
+- Theme Registry.
+- Homepage Template Registry.
+- Widget Registry.
+- Brand 1 production homepage.
+
+## Hari 36–55
+
+- Global provider catalog.
+- Global game catalog.
+- Brand Slot Gacor.
+- RTP snapshots.
+- Jam gacor dan pola.
+- Scheduler dan expiration.
+- Audit history.
+
+## Hari 56–70
+
+- Public Guide Engine.
+- Visitor Complaint Engine.
+- Customer-service workflow.
+- Notifications.
+- Attachments.
+- Spam and abuse protection.
+- Brand reporting.
+
+## Hari 71–82
+
+- Manual SEO.
+- Hybrid SEO.
+- Keyword Registry.
+- SERP provider contract.
+- SEO recommendations.
+- Approval and rollback.
+- Sitemap automation.
+- Internal-link automation.
+
+## Hari 83–90
+
+- Full regression.
+- Security audit.
+- Brand isolation audit.
+- Responsive audit.
+- Performance audit.
+- Backup and restore test.
+- Production readiness.
+- Final documentation.
+- Commit and push.
+<!-- MASTER-PROMPT-V2-1-SYNC-2026-07-24-ROADMAP-END -->
