@@ -654,3 +654,53 @@ Roadmap changes require:
 
 Conversation history alone does not modify the roadmap.
 <!-- MASTER-PROMPT-V2-MILESTONE-ROADMAP-END -->
+
+<!-- BEGIN BRAND-1-LISTING-PRESENTATION -->
+## Brand 1 Frontend Listing Presentation
+
+Brand 1 frontend completion includes reusable Card View and List View support
+for applicable public listing modules.
+
+Implementation MUST include:
+
+- reusable display-mode toggle;
+- module-specific card and list renderers;
+- responsive desktop, tablet, and mobile behavior;
+- safe visitor preference persistence;
+- unchanged filtering, sorting, pagination, SEO, cache, authorization, and
+  brand isolation;
+- automated component and feature regression tests.
+
+This capability MUST be stable before multi-brand production activation.
+<!-- END BRAND-1-LISTING-PRESENTATION -->
+
+<!-- BEGIN SEO-ENGINE-ROADMAP -->
+## SEO Engine and SERP Operations
+
+Brand 1 completion includes implementation of the canonical
+[SEO Engine Specification](SEO_ENGINE_SPECIFICATION.md).
+
+Delivery MUST cover:
+
+1. SEO data model and manual locks;
+2. brand and module templates;
+3. evergreen title and description resolution;
+4. slug and canonical management;
+5. robots and sitemap automation;
+6. redirect management;
+7. structured data;
+8. Open Graph and social metadata;
+9. SERP preview;
+10. SEO audit checks;
+11. internal linking;
+12. optional verified indexing integration;
+13. optional verified SERP monitoring;
+14. cache, queue, event, scheduler, and audit behavior;
+15. complete regression and production verification.
+
+Implementation MUST prioritize stable canonical pages over daily title or slug
+mutation.
+
+Automation MUST fill missing or invalid unlocked values, but MUST preserve
+valid manually approved locked values.
+<!-- END SEO-ENGINE-ROADMAP -->

@@ -238,3 +238,21 @@ The Lottery Tool Suite consists of:
 - Tabel Shio.
 
 <!-- BRAND-1-BASELINE-END -->
+
+<!-- BEGIN SEO-ENGINE-MANIFEST -->
+## SEO Engine Canonical Documents
+
+- `docs/product/SEO_ENGINE_SPECIFICATION.md`
+- `docs/product/BRAND_1_FRONTEND_BASELINE.md`
+- `docs/sprints/BRAND-1-FRONTEND-COMPLETION.md`
+- `MASTER_PROMPT_POINTER.md`
+
+These documents define:
+
+- Brand 1 SEO automation;
+- SERP operations;
+- evergreen title behavior;
+- manual SEO locks;
+- Card View and List View behavior;
+- AI technical operating responsibility.
+<!-- END SEO-ENGINE-MANIFEST -->

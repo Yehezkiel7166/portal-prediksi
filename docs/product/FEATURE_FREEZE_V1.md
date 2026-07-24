@@ -622,3 +622,35 @@ requires:
 
 Implementation alone does not modify this freeze.
 <!-- MASTER-PROMPT-V2-PRODUCT-FREEZE-END -->
+
+<!-- BEGIN APPROVED-LISTING-PRESENTATION-BASELINE -->
+## Approved Brand 1 Listing Presentation Baseline
+
+The approved Brand 1 frontend baseline includes Card View and List View for
+applicable public listing modules.
+
+While Feature Freeze remains active:
+
+- documentation may record this requirement;
+- application implementation requires an explicitly approved frontend
+  completion sprint;
+- the requirement MUST NOT authorize unrelated frontend redesign;
+- existing frontend behavior MUST remain stable until implementation is
+  authorized.
+<!-- END APPROVED-LISTING-PRESENTATION-BASELINE -->
+
+<!-- BEGIN APPROVED-SEO-ENGINE-BASELINE -->
+## Approved SEO Engine Baseline
+
+The approved Brand 1 product baseline includes the behavior defined in
+`docs/product/SEO_ENGINE_SPECIFICATION.md`.
+
+While Feature Freeze remains active:
+
+- this specification may be recorded and validated;
+- application implementation requires an explicitly approved sprint;
+- stable existing SEO behavior MUST remain unchanged;
+- no automated process may rewrite valid manually approved SEO values;
+- recurring pages MUST NOT introduce automatic daily title or slug mutation;
+- this approval MUST NOT authorize unrelated redesign or product expansion.
+<!-- END APPROVED-SEO-ENGINE-BASELINE -->

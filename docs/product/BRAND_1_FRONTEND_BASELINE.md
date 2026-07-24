@@ -432,3 +432,145 @@ Multi-brand production activation is prohibited until Brand 1 passes the complet
 Future brands MUST extend the stable Brand 1 architecture.
 
 Multi-brand development MUST NOT remove, bypass, or reduce Brand 1 functionality.
+
+<!-- BEGIN BRAND-1-LISTING-DISPLAY-MODES -->
+## Frontend Listing Display Modes
+
+Every applicable Brand 1 frontend listing MUST support two presentation modes:
+
+1. Card View
+2. List View
+
+The requirement applies, where structurally appropriate, to:
+
+- Live Draw;
+- Data Result;
+- Prediction;
+- Slot Gacor / RTP;
+- Jackpot Proof;
+- Promotion;
+- Guide;
+- Blog;
+- Lottery Schedule;
+- Dream Book;
+- Color Paito.
+
+Interactive tools that do not present reusable listing output are not required
+to expose a display-mode toggle.
+
+### Card View
+
+Card View MUST support:
+
+- responsive grid presentation;
+- image or thumbnail where available;
+- title;
+- summary where applicable;
+- relevant metadata;
+- status indicator where applicable;
+- primary action or detail link;
+- accessible keyboard navigation;
+- consistent empty, loading, and failure states.
+
+### List View
+
+List View MUST support:
+
+- compact vertical presentation;
+- image or thumbnail where available;
+- title;
+- summary where applicable;
+- relevant metadata;
+- status indicator where applicable;
+- primary action or detail link;
+- accessible keyboard navigation;
+- consistent empty, loading, and failure states.
+
+### Display Preference
+
+The frontend MUST preserve the visitor's selected display mode through a safe
+client-side preference mechanism such as localStorage or a first-party cookie.
+
+The stored preference:
+
+- MUST NOT contain sensitive information;
+- MUST NOT change the underlying query;
+- MUST NOT bypass publication or brand visibility rules;
+- MUST fall back safely when unavailable or invalid;
+- SHOULD be reusable between compatible listing pages where appropriate.
+
+Each module MAY define its own default display mode.
+
+### Behavioral Consistency
+
+Switching between Card View and List View MUST NOT change:
+
+- canonical query results;
+- brand isolation;
+- publication visibility;
+- filtering;
+- sorting;
+- pagination;
+- canonical URL;
+- SEO metadata;
+- cache identity;
+- authorization;
+- result ordering.
+
+Only presentation behavior may change.
+
+### Shared Listing Architecture
+
+Applicable modules SHOULD use reusable frontend listing behavior for:
+
+- display-mode toggle;
+- filter controls;
+- sort controls;
+- pagination;
+- empty state;
+- loading state;
+- failure state;
+- responsive behavior;
+- accessibility;
+- preference persistence.
+
+Module-specific renderers MAY determine the content shown in each Card View or
+List View item.
+<!-- END BRAND-1-LISTING-DISPLAY-MODES -->
+
+<!-- BEGIN BRAND-1-SEO-ENGINE -->
+## Mandatory SEO and SERP Engine
+
+Brand 1 MUST implement the canonical behavior defined in
+[SEO_ENGINE_SPECIFICATION.md](SEO_ENGINE_SPECIFICATION.md).
+
+Brand 1 SEO completion includes:
+
+- stable evergreen SEO titles;
+- independently resolved display title, SEO title, H1, navigation label,
+  breadcrumb label, social title, slug, and canonical URL;
+- manual lock protection for approved SEO values;
+- module-level and brand-level SEO templates;
+- safe meta-description generation;
+- automatic canonical URLs;
+- automatic robots directives;
+- automatic sitemap generation;
+- managed redirects;
+- safe structured data;
+- Open Graph and social metadata;
+- SERP preview;
+- deterministic SEO auditing;
+- sensible internal linking;
+- optional verified indexing integration;
+- optional verified SERP monitoring;
+- cache, queue, event, scheduler, and audit compatibility;
+- brand isolation;
+- automated tests.
+
+Recurring pages MUST NOT automatically append the current date to their SEO
+title or slug unless that date is part of the canonical page identity.
+
+Automation MUST preserve valid manually approved and locked values.
+
+SEO automation MUST NOT promise rankings or fabricate indexing data.
+<!-- END BRAND-1-SEO-ENGINE -->
