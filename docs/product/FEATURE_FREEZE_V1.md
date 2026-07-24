@@ -654,3 +654,25 @@ While Feature Freeze remains active:
 - recurring pages MUST NOT introduce automatic daily title or slug mutation;
 - this approval MUST NOT authorize unrelated redesign or product expansion.
 <!-- END APPROVED-SEO-ENGINE-BASELINE -->
+
+<!-- BEGIN APPROVED-ARCHITECTURE-FOUNDATIONS -->
+## Approved Architecture Foundation Specifications
+
+The repository records the following approved Brand 1 architecture baselines:
+
+- Site Configuration Engine;
+- Media Engine;
+- Menu Engine;
+- Banner Engine;
+- Widget Engine;
+- AI Content Engine;
+- AI Governance.
+
+While Feature Freeze remains active:
+
+- canonical specifications may be documented and validated;
+- application implementation requires an explicitly approved sprint;
+- documentation MUST NOT silently activate new production behavior;
+- existing application behavior MUST remain stable;
+- unrelated scope expansion remains prohibited.
+<!-- END APPROVED-ARCHITECTURE-FOUNDATIONS -->

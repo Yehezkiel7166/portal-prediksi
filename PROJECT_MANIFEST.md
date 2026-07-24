@@ -256,3 +256,20 @@ These documents define:
 - Card View and List View behavior;
 - AI technical operating responsibility.
 <!-- END SEO-ENGINE-MANIFEST -->
+
+<!-- BEGIN BRAND-1-ARCHITECTURE-SPECIFICATIONS -->
+## Brand 1 Architecture Specifications
+
+Canonical specifications:
+
+- `docs/product/SITE_CONFIGURATION_ENGINE_SPECIFICATION.md`
+- `docs/product/MEDIA_ENGINE_SPECIFICATION.md`
+- `docs/product/MENU_ENGINE_SPECIFICATION.md`
+- `docs/product/BANNER_ENGINE_SPECIFICATION.md`
+- `docs/product/WIDGET_ENGINE_SPECIFICATION.md`
+- `docs/product/SEO_ENGINE_SPECIFICATION.md`
+- `docs/product/AI_CONTENT_ENGINE_SPECIFICATION.md`
+- `docs/product/AI_GOVERNANCE_SPECIFICATION.md`
+
+These documents define Brand 1 architecture before full implementation.
+<!-- END BRAND-1-ARCHITECTURE-SPECIFICATIONS -->

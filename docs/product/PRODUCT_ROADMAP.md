@@ -704,3 +704,34 @@ mutation.
 Automation MUST fill missing or invalid unlocked values, but MUST preserve
 valid manually approved locked values.
 <!-- END SEO-ENGINE-ROADMAP -->
+
+<!-- BEGIN BRAND-1-ARCHITECTURE-FOUNDATIONS -->
+## Brand 1 Architecture Foundations
+
+Before full Brand 1 frontend implementation, the canonical architecture MUST
+include:
+
+1. Site Configuration Engine;
+2. Media Engine;
+3. Menu Engine;
+4. Banner Engine;
+5. Widget Engine;
+6. AI Content Engine;
+7. AI Governance.
+
+Canonical specifications:
+
+- `SITE_CONFIGURATION_ENGINE_SPECIFICATION.md`
+- `MEDIA_ENGINE_SPECIFICATION.md`
+- `MENU_ENGINE_SPECIFICATION.md`
+- `BANNER_ENGINE_SPECIFICATION.md`
+- `WIDGET_ENGINE_SPECIFICATION.md`
+- `AI_CONTENT_ENGINE_SPECIFICATION.md`
+- `AI_GOVERNANCE_SPECIFICATION.md`
+
+Implementation MUST remain incremental.
+
+These specifications MUST NOT be used to justify an unrestricted page builder,
+unsafe arbitrary code, uncontrolled AI publishing, or premature multi-brand
+production activation.
+<!-- END BRAND-1-ARCHITECTURE-FOUNDATIONS -->

@@ -574,3 +574,23 @@ Automation MUST preserve valid manually approved and locked values.
 
 SEO automation MUST NOT promise rankings or fabricate indexing data.
 <!-- END BRAND-1-SEO-ENGINE -->
+
+<!-- BEGIN BRAND-1-FOUNDATION-DEPENDENCIES -->
+## Brand 1 Foundation Dependencies
+
+Brand 1 frontend implementation MUST align with:
+
+- Site Configuration Engine;
+- Media Engine;
+- Menu Engine;
+- Banner Engine;
+- Widget Engine;
+- SEO Engine;
+- AI Content Engine where enabled;
+- AI Governance.
+
+The public frontend MUST NOT depend on AI availability for core rendering.
+
+The frontend MUST continue operating safely when optional AI integrations are
+disabled or unavailable.
+<!-- END BRAND-1-FOUNDATION-DEPENDENCIES -->

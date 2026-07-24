@@ -162,3 +162,35 @@ The sprint is complete only when:
 No additional production brand may be activated before Brand 1 passes this
 complete stability gate.
 <!-- END BRAND-1-FRONTEND-COMPLETION-PLAN -->
+
+<!-- BEGIN ARCHITECTURE-FOUNDATION-PHASE -->
+## Architecture Foundation Phase
+
+Before application implementation begins, the sprint MUST inspect and map the
+canonical specifications for:
+
+- Site Configuration;
+- Media;
+- Menu;
+- Banner;
+- Widget composition;
+- SEO;
+- optional AI assistance;
+- AI repository governance.
+
+Recommended implementation sequence:
+
+1. Site Configuration data model;
+2. Media foundation;
+3. Menu foundation;
+4. Banner management;
+5. Shared frontend layout;
+6. controlled Widget composition;
+7. SEO Engine;
+8. optional AI assistance;
+9. production stability gate.
+
+AI Content Engine implementation is optional for initial Brand 1 production.
+
+Core CMS operation MUST NOT require an external AI provider.
+<!-- END ARCHITECTURE-FOUNDATION-PHASE -->
