@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Blog;
 
-use App\Domains\Brand\Support\BrandContext;
-use App\Domains\Brand\Models\Brand;
 use App\Domains\Blog\Actions\UpsertBlogPostAction;
 use App\Domains\Blog\Models\BlogPost;
+use App\Domains\Brand\Models\Brand;
+use App\Domains\Brand\Support\BrandContext;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
@@ -16,6 +16,10 @@ class BlogModuleTest extends TestCase
 
     public function test_action_creates_normalized_blog_post(): void
     {
+        $brand = Brand::factory()->create();
+
+        app(BrandContext::class)->set($brand);
+
         $post = app(UpsertBlogPostAction::class)->execute([
             'title' => '  Panduan Prediksi Togel  ',
             'slug' => '',

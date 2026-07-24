@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Market;
 
-use App\Domains\Brand\Support\BrandContext;
 use App\Domains\Brand\Models\Brand;
+use App\Domains\Brand\Support\BrandContext;
 use App\Domains\Market\Actions\UpsertMarketAction;
 use App\Domains\Market\Models\Market;
 use App\Models\User;
@@ -17,6 +17,10 @@ class MarketModuleTest extends TestCase
 
     public function test_action_creates_a_normalized_market(): void
     {
+        $brand = Brand::factory()->create();
+
+        app(BrandContext::class)->set($brand);
+
         $market = app(UpsertMarketAction::class)->execute(null, [
             'code' => ' sgp ',
             'name' => ' Singapore ',

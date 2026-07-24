@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Promotion;
 
-use App\Domains\Brand\Support\BrandContext;
 use App\Domains\Brand\Models\Brand;
+use App\Domains\Brand\Support\BrandContext;
 use App\Domains\Promotion\Actions\UpsertPromotionAction;
 use App\Domains\Promotion\Models\Promotion;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,6 +16,10 @@ class PromotionModuleTest extends TestCase
 
     public function test_action_creates_normalized_promotion(): void
     {
+        $brand = Brand::factory()->create();
+
+        app(BrandContext::class)->set($brand);
+
         $promotion = app(UpsertPromotionAction::class)->execute([
             'title' => '  Promo Hadiah Utama  ',
             'slug' => '',
