@@ -12,6 +12,7 @@ use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class PredictionResource extends Resource
 {
@@ -35,6 +36,12 @@ class PredictionResource extends Resource
     public static function getNavigationGroup(): ?string
     {
         return 'Konten Prediksi';
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->forCurrentBrand();
     }
 
     public static function form(Schema $schema): Schema
