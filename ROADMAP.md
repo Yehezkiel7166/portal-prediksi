@@ -239,3 +239,26 @@ Required capability groups:
 Multi-brand is an extension milestone after this gate, not a replacement for it.
 
 <!-- BRAND-1-BASELINE-END -->
+<!-- PROJECT-BRAIN-V1-START -->
+## Active Delivery Overlay — Brand 1 Maximum 30-Day Window
+
+The detailed active plan is maintained in `docs/delivery/BRAND-1-30-DAY-PLAN.md`.
+
+- Days 1–3: baseline, dependency/security review, blocker register.
+- Days 4–8: Brand Context, isolation, configuration, theme, menu.
+- Days 9–12: SEO and responsive media foundation.
+- Days 13–17: authorization and security hardening.
+- Days 18–21: queue, scheduler, monitoring, backup, restore, rollback.
+- Days 22–25: regression, performance, responsive/accessibility, dependency triage.
+- Days 26–28: staging release candidate and production-gate rehearsal.
+- Days 29–30: controlled production release and stabilization.
+
+Deadline: 2026-08-23. P0 security, data-integrity, backup, migration, or release failures block deployment.
+
+After Brand 1:
+
+1. optimization and hardening;
+2. Owner Panel;
+3. Brand 2–5 activation;
+4. controlled enterprise capabilities such as Brand Wizard, extension API, trusted plugins, installer/updater, marketplace, and advanced AI assistance.
+<!-- PROJECT-BRAIN-V1-END -->

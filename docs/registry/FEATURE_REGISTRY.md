@@ -200,3 +200,10 @@ Status: Active
 | MP2-FEAT-AI003 | AI article assistance | Deferred |
 | MP2-FEAT-AI004 | AI operational anomaly detection | Deferred |
 <!-- MASTER-PROMPT-V2-FEATURE-REGISTRY-END -->
+<!-- PROJECT-BRAIN-V1-START -->
+## Project Brain Feature Registry Pointer — 2026-07-24
+
+The expanded capability inventory, priorities, and lifecycle statuses are maintained in `docs/project-brain/FEATURE_CATALOG.md`.
+
+This registry remains authoritative for existing registered implementation identifiers. The Project Brain catalog adds product-wide capabilities and future ideas without falsely marking them implemented. Status meanings are defined in the catalog and `docs/project-brain/KNOWLEDGE_MAINTENANCE.md`.
+<!-- PROJECT-BRAIN-V1-END -->

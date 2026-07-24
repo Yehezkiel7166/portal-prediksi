@@ -210,3 +210,10 @@ Feature Freeze tetap berlaku. Jangan memulai sprint fitur baru selama Phase 0.3B
 - Completed milestone: Phase 0.3A — Canonical Repository Synchronization
 - Next planned milestone: Phase 0.3B — Canonical Repository Validation
 - Next recommended phase: Phase 0.3B — Canonical Repository Validation
+<!-- PROJECT-BRAIN-V1-START -->
+## Project Brain Handover
+
+Before continuing work, read `docs/project-brain/README.md` and its canonical document list. The current top priority is Brand 1 production readiness within the 2026-07-24 to 2026-08-23 window. Do not let Owner Panel, marketplace, plugins, installer/updater, advanced AI, or Brand 2–5 implementation delay mandatory Brand 1 production gates.
+
+Do not rely on chat history as implementation state. Use the latest repository snapshot, branch, commit, tests, and diff. The owner expects complete copy-paste-ready PowerShell or Bash instructions.
+<!-- PROJECT-BRAIN-V1-END -->

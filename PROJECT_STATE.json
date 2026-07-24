@@ -176,5 +176,23 @@
         ],
         "completion_commit": "45c4e5d",
         "completed_date": "2026-07-22"
+    },
+    "project_brain": {
+        "version": "1.0",
+        "effective_date": "2026-07-24",
+        "status": "integrated_documentation_foundation",
+        "entry_point": "docs/project-brain/README.md",
+        "brand_1_delivery_window": {
+            "start": "2026-07-24",
+            "deadline": "2026-08-23"
+        },
+        "delivery_order": [
+            "brand_1_production_readiness",
+            "brand_1_optimization_and_hardening",
+            "owner_panel",
+            "brand_2_to_5_activation",
+            "enterprise_expansion"
+        ],
+        "security_release_gate": true
     }
 }

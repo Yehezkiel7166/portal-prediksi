@@ -56,3 +56,18 @@ Stop implementation when repository evidence conflicts with requirements, an arc
 ## Product-Decision Boundaries
 
 Implementation must stop for decisions that change business rules, public behavior, data ownership or retention, security posture, supported integrations, destructive migration strategy, feature priority, or release acceptance criteria. Technical details within an approved design may be resolved by the technical lead when they preserve documented behavior and architecture.
+<!-- PROJECT-BRAIN-V1-START -->
+## Copy-Paste Operations Standard
+
+The Project Owner primarily executes prepared commands. Every operational instruction must:
+
+- state whether it runs in Windows PowerShell or Linux SSH;
+- be complete and directly copy-pasteable;
+- use known paths and ports when already established;
+- validate branch, commit, and working tree before patching;
+- use `git apply --check` before `git apply`;
+- stop after an error rather than continuing to commit;
+- verify diff, tests, build, documentation, and Git status before push.
+
+Known SSH port is `<SSH_PORT>`; repository path is `<PROJECT_ROOT>`. Secrets, absolute hosting paths, usernames, and passwords must never be committed to the repository.
+<!-- PROJECT-BRAIN-V1-END -->

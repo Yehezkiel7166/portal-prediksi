@@ -73,3 +73,34 @@ Duplicate result values are permitted.
 Only duplicate draw identities require administrator validation.
 
 Correction history is mandatory.
+<!-- PROJECT-BRAIN-V1-START -->
+## Project Brain Integration — 2026-07-24
+
+Status: Documentation foundation integrated into the current repository snapshot.
+
+Current product priority:
+
+1. Brand 1 production readiness no later than 2026-08-23, subject to mandatory release gates.
+2. Brand 1 optimization and hardening.
+3. Owner Panel.
+4. Brand 2–5 activation.
+
+Canonical planning and governance additions:
+
+- `docs/project-brain/README.md`
+- `docs/project-brain/MASTER_VISION.md`
+- `docs/project-brain/WORKING_MODEL.md`
+- `docs/project-brain/PROJECT_DECISIONS.md`
+- `docs/project-brain/SYSTEM_BLUEPRINT.md`
+- `docs/project-brain/FEATURE_CATALOG.md`
+- `docs/project-brain/IDEA_BACKLOG.md`
+- `docs/project-brain/KNOWLEDGE_MAINTENANCE.md`
+- `docs/delivery/BRAND-1-30-DAY-PLAN.md`
+- `docs/delivery/BRAND-1-PRODUCTION-GATE.md`
+- `docs/security/THREAT_MODEL.md`
+- `docs/security/SECURITY_CONTROL_MATRIX.md`
+
+Immediate next execution stage: Days 1–3 baseline verification and blocker register, followed by Brand Context, brand isolation, site configuration, SEO/media, security, operations, quality, staging, and production gates.
+
+This entry records documentation and planning state only. Individual capabilities retain their implementation status until code and tests provide verification evidence.
+<!-- PROJECT-BRAIN-V1-END -->

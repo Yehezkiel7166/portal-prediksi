@@ -273,3 +273,34 @@ Canonical specifications:
 
 These documents define Brand 1 architecture before full implementation.
 <!-- END BRAND-1-ARCHITECTURE-SPECIFICATIONS -->
+<!-- PROJECT-BRAIN-V1-START -->
+## Project Brain v1
+
+Effective 2026-07-24, the repository also serves as the permanent project knowledge system. Canonical entry point: `docs/project-brain/README.md`.
+
+Project Brain includes:
+
+- product mission and long-term vision;
+- collaboration and command-delivery model;
+- project-level decisions;
+- multi-brand system blueprint;
+- full feature and idea catalogs;
+- Brand 1 maximum 30-day production plan;
+- production gate;
+- threat model and security control matrix;
+- knowledge-maintenance rules.
+
+### Current delivery order
+
+1. Brand 1 production readiness.
+2. Brand 1 optimization and hardening.
+3. Owner Panel.
+4. Brand 2–5 activation.
+5. Enterprise expansion.
+
+Target Brand 1 completion window: 2026-07-24 through 2026-08-23. Critical security, data-integrity, backup, migration, and release controls may not be waived to meet the date.
+
+### Working environment
+
+The owner primarily executes prepared copy-paste commands through Windows PowerShell and Linux SSH. Repository operations must identify the correct shell, use complete commands, validate state, and stop on failure.
+<!-- PROJECT-BRAIN-V1-END -->

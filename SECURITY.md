@@ -273,3 +273,31 @@ Lakukan security review ketika:
 - database root account untuk aplikasi;
 - backup dalam public directory;
 - mengabaikan authorization karena halaman sudah tersembunyi.
+<!-- PROJECT-BRAIN-V1-START -->
+## Project Brain Security Baseline — 2026-07-24
+
+Security is a Brand 1 production gate and an architectural concern across HTTP, administration, persistence, queue, scheduler, cache, storage, SEO, deployment, and operations.
+
+Canonical additions:
+
+- `docs/security/THREAT_MODEL.md`
+- `docs/security/SECURITY_CONTROL_MATRIX.md`
+- `docs/delivery/BRAND-1-PRODUCTION-GATE.md`
+
+Mandatory P0 controls include:
+
+- explicit Brand Context;
+- brand-scoped policies and queries;
+- cross-brand regression tests;
+- guarded privileged attributes;
+- authentication and session hardening;
+- safe upload and remote media handling;
+- secrets and log protection;
+- sensitive-action audit records;
+- dependency review;
+- backup automation and successful restore rehearsal;
+- queue failure visibility and scheduler heartbeat;
+- production debug disabled and secure environment configuration.
+
+The broad `is_admin` access pattern is transitional and is not sufficient for production multi-brand authorization. Policies and brand-scoped role/permission assignments are required before release.
+<!-- PROJECT-BRAIN-V1-END -->

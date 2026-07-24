@@ -1299,3 +1299,10 @@ They do not replace earlier valid registry entries.
 
 AI-assisted ideas do not replace mandatory deterministic automation.
 <!-- MASTER-PROMPT-V2-IDEA-REGISTRY-END -->
+<!-- PROJECT-BRAIN-V1-START -->
+## Project Brain Idea Registry Pointer — 2026-07-24
+
+The complete current strategic backlog is maintained in `docs/project-brain/IDEA_BACKLOG.md` and grouped into SEO/discovery, content operations, brand platform, Owner operations, AI assistance, ecosystem, and infrastructure.
+
+Ideas do not enter implementation merely by being listed. They require architecture review, dependency mapping, security assessment, roadmap placement, and test/release criteria. Explicitly deferred or prohibited concepts are also preserved to prevent accidental reintroduction.
+<!-- PROJECT-BRAIN-V1-END -->

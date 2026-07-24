@@ -286,3 +286,23 @@ Referenced by:
 - ADR_REGISTRY.md
 
 This document is part of the permanent Project Knowledge Base.
+<!-- PROJECT-BRAIN-V1-START -->
+## Project Brain Decisions — 2026-07-24
+
+Canonical project-level decisions are recorded in `docs/project-brain/PROJECT_DECISIONS.md`.
+
+Registered decisions:
+
+- PD-001: Brand 1 → hardening → Owner Panel → Brand 2–5 → enterprise expansion.
+- PD-002: Build multi-brand compatible, release Brand 1 first.
+- PD-003: Repository is the permanent Project Brain.
+- PD-004: Append-first and preserve history.
+- PD-005: Security is a release gate.
+- PD-006: Replace transitional broad admin access with brand-scoped policies/permissions.
+- PD-007: Automation must be observable, retry-safe, and brand-aware.
+- PD-008: AI remains assistive and cannot bypass sensitive approvals.
+- PD-009: Future extensions require trusted packages, compatibility, permissions, audit, and rollback.
+- PD-010: Brand 1 maximum delivery deadline is 2026-08-23 without waiving critical gates.
+- PD-011: Commands are delivered in copy-paste-ready shell-specific blocks.
+- PD-012: Repository completion claims require baseline and diff verification.
+<!-- PROJECT-BRAIN-V1-END -->
