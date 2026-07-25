@@ -169,10 +169,10 @@ final class PublicResultListingTest extends TestCase
 
     public function test_listing_only_displays_results_for_the_current_brand(): void
     {
-        config()->set('brand.default_code','brand-a');
 
         $brandA=Brand::factory()->create([
             'code'=>'brand-a',
+            'domain' => 'brand-a.test',
             'name'=>'Brand A',
             'slug'=>'brand-a',
             'is_active'=>true,
@@ -215,7 +215,7 @@ final class PublicResultListingTest extends TestCase
             'winning_numbers'=>'OTHER-BRAND-RESULT',
         ]);
 
-        $this->get(route('results.index'))
+        $this->get('http://brand-a.test'.parse_url(route('results.index'), PHP_URL_PATH))
             ->assertOk()
             ->assertSee('CURRENT-BRAND-RESULT')
             ->assertSee('Market Brand A')

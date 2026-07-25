@@ -162,10 +162,10 @@ final class PublicLiveDrawTest extends TestCase
 
     public function test_page_only_displays_live_draws_for_the_current_brand(): void
     {
-        config()->set('brand.default_code', 'brand-a');
 
         $brandA = Brand::factory()->create([
             'code' => 'brand-a',
+            'domain' => 'brand-a.test',
             'name' => 'Brand A',
             'slug' => 'brand-a',
             'is_active' => true,
@@ -200,7 +200,7 @@ final class PublicLiveDrawTest extends TestCase
             'title' => 'OTHER BRAND LIVE DRAW',
         ]);
 
-        $this->get(route('live-draw.index'))
+        $this->get('http://brand-a.test'.parse_url(route('live-draw.index'), PHP_URL_PATH))
             ->assertOk()
             ->assertSee('CURRENT BRAND LIVE DRAW')
             ->assertDontSee('OTHER BRAND LIVE DRAW');

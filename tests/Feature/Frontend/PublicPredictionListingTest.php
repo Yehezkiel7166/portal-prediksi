@@ -190,10 +190,10 @@ final class PublicPredictionListingTest extends TestCase
 
     public function test_listing_only_displays_predictions_for_the_current_brand(): void
     {
-        config()->set('brand.default_code', 'brand-a');
 
         $brandA = Brand::factory()->create([
             'code' => 'brand-a',
+            'domain' => 'brand-a.test',
             'name' => 'Brand A',
             'slug' => 'brand-a',
             'is_active' => true,
@@ -240,7 +240,7 @@ final class PublicPredictionListingTest extends TestCase
             'published_at' => now()->subMinute(),
         ]);
 
-        $this->get(route('predictions.index'))
+        $this->get('http://brand-a.test'.parse_url(route('predictions.index'), PHP_URL_PATH))
             ->assertOk()
             ->assertSee('CURRENT-BRAND-PREDICTION')
             ->assertSee('Market Brand A')

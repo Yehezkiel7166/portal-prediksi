@@ -102,10 +102,10 @@ class PublicPromotionFrontendTest extends TestCase
 
     public function test_listing_only_displays_promotions_for_the_current_brand(): void
     {
-        config()->set('brand.default_code', 'brand-a');
 
         $brandA = Brand::factory()->create([
             'code' => 'brand-a',
+            'domain' => 'brand-a.test',
             'name' => 'Brand A',
             'slug' => 'brand-a',
             'is_active' => true,
@@ -134,7 +134,7 @@ class PublicPromotionFrontendTest extends TestCase
                 'slug' => 'other-brand-promotion',
             ]);
 
-        $this->get(route('promotions.index'))
+        $this->get('http://brand-a.test'.parse_url(route('promotions.index'), PHP_URL_PATH))
             ->assertOk()
             ->assertSee('CURRENT-BRAND-PROMOTION')
             ->assertDontSee('OTHER-BRAND-PROMOTION');
@@ -142,10 +142,10 @@ class PublicPromotionFrontendTest extends TestCase
 
     public function test_detail_does_not_display_promotion_from_another_brand(): void
     {
-        config()->set('brand.default_code', 'brand-a');
 
         Brand::factory()->create([
             'code' => 'brand-a',
+            'domain' => 'brand-a.test',
             'name' => 'Brand A',
             'slug' => 'brand-a',
             'is_active' => true,
@@ -166,7 +166,7 @@ class PublicPromotionFrontendTest extends TestCase
                 'slug' => 'other-brand-promotion',
             ]);
 
-        $this->get(route('promotions.show', 'other-brand-promotion'))
+        $this->get('http://brand-a.test'.parse_url(route('promotions.show', 'other-brand-promotion'), PHP_URL_PATH))
             ->assertNotFound();
     }
 

@@ -107,10 +107,10 @@ class PublicBlogFrontendTest extends TestCase
 
     public function test_listing_only_displays_blog_posts_for_the_current_brand(): void
     {
-        config()->set('brand.default_code', 'brand-a');
 
         $brandA = Brand::factory()->create([
             'code' => 'brand-a',
+            'domain' => 'brand-a.test',
             'name' => 'Brand A',
             'slug' => 'brand-a',
             'is_active' => true,
@@ -139,7 +139,7 @@ class PublicBlogFrontendTest extends TestCase
                 'slug' => 'other-brand-blog',
             ]);
 
-        $this->get('/blog')
+        $this->get('http://brand-a.test'.parse_url('/blog', PHP_URL_PATH))
             ->assertOk()
             ->assertSee('CURRENT-BRAND-BLOG')
             ->assertDontSee('OTHER-BRAND-BLOG');
@@ -148,10 +148,10 @@ class PublicBlogFrontendTest extends TestCase
 
     public function test_detail_does_not_display_blog_post_from_another_brand(): void
     {
-        config()->set('brand.default_code', 'brand-a');
 
         $brandA = Brand::factory()->create([
             'code' => 'brand-a',
+            'domain' => 'brand-a.test',
             'name' => 'Brand A',
             'slug' => 'brand-a',
             'is_active' => true,
@@ -179,7 +179,7 @@ class PublicBlogFrontendTest extends TestCase
                 'title' => 'OTHER BRAND BLOG',
             ]);
 
-        $this->get('/blog/artikel-brand-b')
+        $this->get('http://brand-a.test'.parse_url('/blog/artikel-brand-b', PHP_URL_PATH))
             ->assertNotFound();
     }
 

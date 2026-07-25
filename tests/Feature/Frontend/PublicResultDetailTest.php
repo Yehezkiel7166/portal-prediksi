@@ -127,10 +127,10 @@ final class PublicResultDetailTest extends TestCase
 
     public function test_detail_does_not_display_result_from_another_brand(): void
     {
-        config()->set('brand.default_code', 'brand-a');
 
         $brandA = Brand::factory()->create([
             'code' => 'brand-a',
+            'domain' => 'brand-a.test',
             'name' => 'Brand A',
             'slug' => 'brand-a',
             'is_active' => true,
@@ -166,10 +166,10 @@ final class PublicResultDetailTest extends TestCase
             'winning_numbers' => 'OTHER-BRAND-DETAIL',
         ]);
 
-        $this->get(route('results.show', [
+        $this->get('http://brand-a.test'.parse_url(route('results.show', [
             'marketSlug' => 'other-brand-market',
             'resultDate' => '2026-07-20',
-        ]))->assertNotFound();
+        ]), PHP_URL_PATH))->assertNotFound();
     }
 
 }
