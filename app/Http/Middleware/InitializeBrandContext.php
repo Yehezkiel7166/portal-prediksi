@@ -16,7 +16,7 @@ class InitializeBrandContext
 
     public function handle(Request $request, Closure $next): Response
     {
-        $this->initializer->initialize();
+        $this->initializer->initialize($request);
 
         return $next($request);
     }

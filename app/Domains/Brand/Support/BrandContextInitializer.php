@@ -4,6 +4,7 @@ namespace App\Domains\Brand\Support;
 
 use App\Domains\Brand\Contracts\BrandResolver;
 use App\Domains\Brand\Models\Brand;
+use Illuminate\Http\Request;
 
 class BrandContextInitializer
 {
@@ -13,9 +14,9 @@ class BrandContextInitializer
     ) {
     }
 
-    public function initialize(): ?Brand
+    public function initialize(?Request $request = null): ?Brand
     {
-        $brand = $this->resolver->resolve();
+        $brand = $this->resolver->resolve($request);
 
         $this->context->set($brand);
 

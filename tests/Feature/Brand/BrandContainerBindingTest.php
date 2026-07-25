@@ -15,24 +15,25 @@ class BrandContainerBindingTest extends TestCase
 
     public function test_brand_resolver_contract_uses_database_resolver(): void
     {
-        $resolver = app(BrandResolver::class);
-
-        $this->assertInstanceOf(DatabaseBrandResolver::class, $resolver);
+        $this->assertInstanceOf(
+            DatabaseBrandResolver::class,
+            app(BrandResolver::class)
+        );
     }
 
     public function test_brand_resolver_is_shared_by_the_container(): void
     {
-        $first = app(BrandResolver::class);
-        $second = app(BrandResolver::class);
-
-        $this->assertSame($first, $second);
+        $this->assertSame(
+            app(BrandResolver::class),
+            app(BrandResolver::class)
+        );
     }
 
     public function test_bound_resolver_resolves_the_active_canonical_brand(): void
     {
         $brand = Brand::factory()->create([
-            'code' => 'DEFAULT',
-            'is_active' => true,
+            'is_primary' => true,
+            'is_active'  => true,
         ]);
 
         $resolved = app(BrandResolver::class)->resolve();
@@ -44,8 +45,8 @@ class BrandContainerBindingTest extends TestCase
     public function test_bound_resolver_returns_null_without_canonical_brand(): void
     {
         Brand::factory()->create([
-            'code' => 'OTHER',
-            'is_active' => true,
+            'is_primary' => false,
+            'is_active'  => true,
         ]);
 
         $this->assertNull(
@@ -55,35 +56,34 @@ class BrandContainerBindingTest extends TestCase
 
     public function test_brand_context_is_shared_within_the_current_scope(): void
     {
-        $first = app(BrandContext::class);
-        $second = app(BrandContext::class);
+        $a = app(BrandContext::class);
+        $b = app(BrandContext::class);
 
-        $this->assertSame($first, $second);
-        $this->assertFalse($first->has());
-        $this->assertNull($first->get());
+        $this->assertSame($a, $b);
+        $this->assertFalse($a->has());
+        $this->assertNull($a->get());
     }
 
-    public function test_brand_context_is_fresh_after_scoped_instances_are_flushed(): void
+    public function test_brand_context_is_fresh_after_scope_flush(): void
     {
-        $first = app(BrandContext::class);
+        $ctx = app(BrandContext::class);
 
-        $first->set(new Brand([
-            'code' => 'DEFAULT',
-            'name' => 'Default Brand',
-            'slug' => 'default',
-            'domain' => 'example.test',
-            'is_active' => true,
-            'sort_order' => 0,
+        $ctx->set(new Brand([
+            'code'       => 'DEFAULT',
+            'name'       => 'Default',
+            'slug'       => 'default',
+            'domain'     => 'example.test',
+            'is_primary' => true,
+            'is_active'  => true,
         ]));
 
-        $this->assertTrue($first->has());
+        $this->assertTrue($ctx->has());
 
         app()->forgetScopedInstances();
 
-        $second = app(BrandContext::class);
+        $fresh = app(BrandContext::class);
 
-        $this->assertNotSame($first, $second);
-        $this->assertFalse($second->has());
-        $this->assertNull($second->get());
+        $this->assertFalse($fresh->has());
+        $this->assertNull($fresh->get());
     }
 }

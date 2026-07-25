@@ -31,7 +31,9 @@ class GlobalBrandContextMiddlewareTest extends TestCase
     {
         Brand::factory()->create([
             'code' => 'DEFAULT',
+            'domain' => 'localhost',
             'is_active' => true,
+            'is_primary' => true,
         ]);
 
         $this->get('/__global-brand-context-test')

@@ -17,8 +17,9 @@ class BrandFactory extends Factory
             'code' => strtoupper(fake()->unique()->lexify('BRAND???')),
             'name' => fake()->company(),
             'slug' => $slug,
-            'domain' => $slug . '.test',
+            'domain' => $slug.'.test',
             'is_active' => true,
+            'is_primary' => false,
             'sort_order' => 0,
             'settings' => [],
         ];
