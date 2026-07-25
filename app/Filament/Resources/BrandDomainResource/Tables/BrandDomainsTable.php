@@ -10,6 +10,7 @@ use App\Domains\Domain\Actions\VerifyBrandDomain;
 use App\Domains\Domain\Enums\DomainType;
 use App\Domains\Domain\Enums\DomainVerificationStatus;
 use App\Domains\Domain\Models\BrandDomain;
+use App\Filament\Resources\BrandDomainResource;
 use App\Filament\Resources\BrandDomainResource\Actions\DomainTypeOptions;
 use Filament\Actions\Action;
 use Filament\Actions\BulkAction;
@@ -24,6 +25,7 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Throwable;
@@ -245,6 +247,19 @@ final class BrandDomainsTable
                         },
                     ),
 
+                Action::make('healthTimeline')
+                    ->label('Health Timeline')
+                    ->icon('heroicon-o-clock')
+                    ->color('info')
+                    ->url(
+                        static fn (
+                            BrandDomain $record,
+                        ): string => BrandDomainResource::getUrl(
+                            'health-history',
+                            ['record' => $record],
+                        ),
+                    ),
+
                 Action::make('viewChecks')
                     ->label('Detail Pemeriksaan')
                     ->icon('heroicon-o-clipboard-document-check')
@@ -262,7 +277,7 @@ final class BrandDomainsTable
                     ->modalContent(
                         static function (
                             BrandDomain $record,
-                        ): \Illuminate\Contracts\View\View {
+                        ): View {
                             return view(
                                 'filament.resources.brand-domain.verification-checks',
                                 [
@@ -495,20 +510,15 @@ final class BrandDomainsTable
         DomainVerificationStatus|string|null $status,
     ): string {
         return match (self::resolveVerificationStatus($status)) {
-            DomainVerificationStatus::Healthy =>
-                'heroicon-o-check-circle',
+            DomainVerificationStatus::Healthy => 'heroicon-o-check-circle',
 
-            DomainVerificationStatus::Warning =>
-                'heroicon-o-exclamation-triangle',
+            DomainVerificationStatus::Warning => 'heroicon-o-exclamation-triangle',
 
-            DomainVerificationStatus::Critical =>
-                'heroicon-o-x-circle',
+            DomainVerificationStatus::Critical => 'heroicon-o-x-circle',
 
-            DomainVerificationStatus::Unknown =>
-                'heroicon-o-question-mark-circle',
+            DomainVerificationStatus::Unknown => 'heroicon-o-question-mark-circle',
 
-            null =>
-                'heroicon-o-clock',
+            null => 'heroicon-o-clock',
         };
     }
 

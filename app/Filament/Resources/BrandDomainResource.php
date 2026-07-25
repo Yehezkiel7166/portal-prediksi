@@ -9,6 +9,7 @@ use App\Domains\Domain\Models\BrandDomain;
 use App\Filament\Resources\BrandDomainResource\Pages\CreateBrandDomain;
 use App\Filament\Resources\BrandDomainResource\Pages\EditBrandDomain;
 use App\Filament\Resources\BrandDomainResource\Pages\ListBrandDomains;
+use App\Filament\Resources\BrandDomainResource\Pages\ManageBrandDomainHealthHistory;
 use App\Filament\Resources\BrandDomainResource\Schemas\BrandDomainForm;
 use App\Filament\Resources\BrandDomainResource\Tables\BrandDomainsTable;
 use BackedEnum;
@@ -83,6 +84,7 @@ final class BrandDomainResource extends Resource
             'index' => ListBrandDomains::route('/'),
             'create' => CreateBrandDomain::route('/create'),
             'edit' => EditBrandDomain::route('/{record}/edit'),
+            'health-history' => ManageBrandDomainHealthHistory::route('/{record}/health-history'),
         ];
     }
 }
