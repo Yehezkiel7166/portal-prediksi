@@ -11,6 +11,7 @@ use Database\Factories\BrandDomainFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class BrandDomain extends Model
 {
@@ -44,6 +45,7 @@ class BrandDomain extends Model
             'sort_order' => 'integer',
             'settings' => 'array',
             'verification_status' => DomainVerificationStatus::class,
+
             'verification_score' => 'integer',
             'verification_checks' => 'array',
             'verified_at' => 'immutable_datetime',
@@ -56,6 +58,25 @@ class BrandDomain extends Model
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    /**
+     * @return HasMany<BrandDomainHealthHistory, $this>
+     */
+    public function healthHistories(): HasMany
+    {
+        return $this->hasMany(
+            BrandDomainHealthHistory::class,
+            'brand_domain_id',
+        )->latest('verified_at');
+    }
+
+    /**
+     * @return HasMany<BrandDomainHealthHistory, $this>
+     */
+    public function healthHistory(): HasMany
+    {
+        return $this->healthHistories();
     }
 
     protected static function newFactory(): BrandDomainFactory

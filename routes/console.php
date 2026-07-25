@@ -20,3 +20,9 @@ Schedule::command('domain:verify')
     ->hourly()
     ->withoutOverlapping()
     ->onOneServer();
+
+Schedule::command(
+    'domain:prune-health-history --days=90',
+)
+    ->dailyAt('02:30')
+    ->withoutOverlapping();
