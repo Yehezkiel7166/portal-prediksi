@@ -95,3 +95,21 @@ Exit criteria: production gate passed, operational owner accepts release, no act
 ## Scope control
 
 During this 30-day window, the following do not block Brand 1 unless required by current implementation: marketplace, plugin ecosystem, billing, mobile app, advanced AI automation, distributed infrastructure, or full Owner Panel.
+
+<!-- CURRENT-DIRECTION-START -->
+## Superseded Notice
+
+Status: **Superseded on 2026-07-25**
+
+This plan is retained only for historical traceability.
+
+Active replacement:
+
+- `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
+
+Canonical dates:
+
+- project start: 2026-07-16;
+- Brand 1 usable deadline: 2026-07-30;
+- overall project deadline: 2026-10-14.
+<!-- CURRENT-DIRECTION-END -->

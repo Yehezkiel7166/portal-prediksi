@@ -59,3 +59,21 @@ Decision: Operational instructions are delivered as copy-paste-ready PowerShell 
 ## PD-012 — Source verification
 
 Decision: No claim that repository changes are complete is valid until the change is produced against the latest supplied baseline and verified by diff or repository commands.
+
+<!-- CURRENT-DIRECTION-START -->
+## Canonical Direction — 2026-07-25
+
+- Project started on 2026-07-16.
+- Brand 1 usable deadline is 2026-07-30.
+- Overall project deadline is 2026-10-14.
+- Brand 1 contains exactly 10 main modules and 6 lottery tools.
+- Brand 1 is completed before Owner Panel and Brand 2–5.
+- Domain Management is implemented through Commit 14B.
+- The former active 30-day Brand 1 plan is superseded.
+- Every sprint requires repository synchronization and CTO crosscheck.
+
+Canonical reference:
+
+- `docs/governance/CURRENT_DIRECTION.md`
+- `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
+<!-- CURRENT-DIRECTION-END -->

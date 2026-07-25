@@ -304,3 +304,21 @@ Target Brand 1 completion window: 2026-07-24 through 2026-08-23. Critical securi
 
 The owner primarily executes prepared copy-paste commands through Windows PowerShell and Linux SSH. Repository operations must identify the correct shell, use complete commands, validate state, and stop on failure.
 <!-- PROJECT-BRAIN-V1-END -->
+
+<!-- CURRENT-DIRECTION-START -->
+## Canonical Direction — 2026-07-25
+
+- Project started on 2026-07-16.
+- Brand 1 usable deadline is 2026-07-30.
+- Overall project deadline is 2026-10-14.
+- Brand 1 contains exactly 10 main modules and 6 lottery tools.
+- Brand 1 is completed before Owner Panel and Brand 2–5.
+- Domain Management is implemented through Commit 14B.
+- The former active 30-day Brand 1 plan is superseded.
+- Every sprint requires repository synchronization and CTO crosscheck.
+
+Canonical reference:
+
+- `docs/governance/CURRENT_DIRECTION.md`
+- `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
+<!-- CURRENT-DIRECTION-END -->

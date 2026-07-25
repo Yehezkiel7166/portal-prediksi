@@ -52,3 +52,21 @@ Phase 0.3B — Canonical Repository Validation: extend deterministic validation 
 3. Review [the Phase 0.1 record](docs/sprints/PHASE-0-1-REPOSITORY-GOVERNANCE.md) and [the completed Phase 0.2 record](docs/sprints/PHASE-0-2-REPOSITORY-GOVERNANCE-AUTOMATION.md).
 4. Inspect existing validation coverage before adding any new deterministic check.
 5. Keep Feature Freeze in force: canonical documentation and repository validation only unless a separate product-approved sprint authorizes behavior changes.
+
+<!-- CURRENT-DIRECTION-START -->
+## Canonical Direction — 2026-07-25
+
+- Project started on 2026-07-16.
+- Brand 1 usable deadline is 2026-07-30.
+- Overall project deadline is 2026-10-14.
+- Brand 1 contains exactly 10 main modules and 6 lottery tools.
+- Brand 1 is completed before Owner Panel and Brand 2–5.
+- Domain Management is implemented through Commit 14B.
+- The former active 30-day Brand 1 plan is superseded.
+- Every sprint requires repository synchronization and CTO crosscheck.
+
+Canonical reference:
+
+- `docs/governance/CURRENT_DIRECTION.md`
+- `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
+<!-- CURRENT-DIRECTION-END -->

@@ -33,7 +33,7 @@ Known environment:
 - SSH host: `145.79.14.226`.
 - SSH port: `65002`.
 - SSH user: `u339134899`.
-- Repository path: `/home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi`.
+- Repository path: `<PROJECT_ROOT>`.
 
 Credentials must never be placed in repository documentation, shell history examples, patches, or chat responses.
 

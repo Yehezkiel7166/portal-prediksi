@@ -194,5 +194,17 @@
             "enterprise_expansion"
         ],
         "security_release_gate": true
+    },
+    "canonical_direction": {
+        "project_start": "2026-07-16",
+        "brand_1_usable_deadline": "2026-07-30",
+        "overall_project_deadline": "2026-10-14",
+        "brand_1_usable_days": 14,
+        "overall_project_days": 90,
+        "main_modules": 10,
+        "lottery_tools": 6,
+        "brand_1_before_owner_panel": true,
+        "repository_crosscheck_every_sprint": true,
+        "active_plan": "docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md"
     }
 }
