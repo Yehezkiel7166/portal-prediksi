@@ -2,9 +2,11 @@
 
 namespace App\Domains\Brand\Models;
 
+use App\Domains\Domain\Models\BrandDomain;
 use Database\Factories\BrandFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Brand extends Model
 {
@@ -31,6 +33,16 @@ class Brand extends Model
             'sort_order' => 'integer',
             'settings' => 'array',
         ];
+    }
+
+    /**
+     * Registered frontend, admin, API, asset, and preview domains.
+     *
+     * @return HasMany<BrandDomain, $this>
+     */
+    public function domains(): HasMany
+    {
+        return $this->hasMany(BrandDomain::class);
     }
 
     protected static function newFactory(): BrandFactory
