@@ -235,3 +235,24 @@ Canonical reference:
 - `docs/governance/CURRENT_DIRECTION.md`
 - `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
 <!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-15A-HANDOVER-START -->
+## Sprint 15A Handover
+
+The active baseline is commit `b702ef326147456d0e98ebb1ca8fbd4881f31d72`
+on branch `feat/domain-management-foundation`.
+
+Sprint 15A synchronizes repository knowledge only. It does not implement new
+application behavior.
+
+Read before continuing:
+
+1. `docs/governance/CURRENT_DIRECTION.md`
+2. `docs/governance/MASTER_PROMPT_V2_0_TO_V2_1_INHERITANCE.md`
+3. `docs/project-brain/CANONICAL_REQUIREMENTS.md`
+4. `docs/registry/LIFECYCLE_MODEL.md`
+5. `PROJECT_STATE.json`
+6. `docs/sprints/SPRINT-15A-REPOSITORY-BRAIN-CANONICAL-SYNC.md`
+
+Next planned work is Sprint 15B Implementation Truth Audit.
+<!-- SPRINT-15A-HANDOVER-END -->

@@ -70,3 +70,21 @@ Canonical reference:
 - `docs/governance/CURRENT_DIRECTION.md`
 - `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
 <!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-15A-STATE-START -->
+## Active Sprint — Sprint 15A
+
+Name: Repository Brain Canonical Synchronization
+Status: In Progress
+Baseline: `b702ef326147456d0e98ebb1ca8fbd4881f31d72`
+
+Current scope:
+
+- Master Prompt v2.0–v2.1 inheritance;
+- canonical project requirements;
+- registry lifecycle;
+- superseded delivery decisions;
+- machine-readable project-state synchronization.
+
+Application behavior is unchanged.
+<!-- SPRINT-15A-STATE-END -->

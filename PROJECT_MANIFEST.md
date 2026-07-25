@@ -322,3 +322,21 @@ Canonical reference:
 - `docs/governance/CURRENT_DIRECTION.md`
 - `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
 <!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-15A-REPOSITORY-BRAIN-START -->
+## Repository Brain Canonical Documents
+
+The following documents are canonical:
+
+- `docs/governance/MASTER_PROMPT_V2_0_TO_V2_1_INHERITANCE.md`
+- `docs/project-brain/CANONICAL_REQUIREMENTS.md`
+- `docs/registry/LIFECYCLE_MODEL.md`
+- `docs/governance/CURRENT_DIRECTION.md`
+- `docs/registry/IMPLEMENTATION_STATUS.md`
+
+Master Prompt v2.1 extends v2.0. Historical requirements remain active unless
+explicitly superseded by a registered decision.
+
+Feature status must be based on implementation evidence, not documentation
+existence.
+<!-- SPRINT-15A-REPOSITORY-BRAIN-END -->

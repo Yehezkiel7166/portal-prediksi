@@ -50,7 +50,17 @@ Decision: Plugin, marketplace, installer, updater, extension API, and theme-pack
 
 ## PD-010 — Thirty-day Brand 1 window
 
-Decision: Brand 1 is planned for completion no later than 2026-08-23. The plan is a maximum delivery window, not permission to waive critical gates.
+Status: SUPERSEDED by PD-013.
+
+Historical decision: Brand 1 was previously planned for completion no later than 2026-08-23.
+
+## PD-013 — Fourteen-day Brand 1 usable target
+
+Status: ACTIVE.
+
+Decision: Project work started on 2026-07-16. Brand 1 must reach usable status by 2026-07-30. The overall project target is 2026-10-14.
+
+Reason: The user corrected the actual project start date and confirmed Brand 1 must be completed before Owner Panel work.
 
 ## PD-011 — Command delivery
 

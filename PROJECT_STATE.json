@@ -1,9 +1,9 @@
 {
-    "schema_version": 1,
+    "schema_version": 2,
     "project": {
         "name": "Portal Prediksi CMS",
         "repository": "https://github.com/Yehezkiel7166/portal-prediksi",
-        "primary_branch": "main",
+        "primary_branch": "feat/domain-management-foundation",
         "source_of_truth": "git_repository"
     },
     "baseline": {
@@ -103,32 +103,31 @@
         "Application test/build CI is not yet implemented"
     ],
     "next_recommended_phase": {
-        "id": "phase_0_3b_canonical_repository_validation",
-        "name": "Phase 0.3B — Canonical Repository Validation",
-        "objective": "Extend deterministic repository validation only where repository evidence identifies a remaining governance gap.",
+        "id": "sprint_15b_implementation_truth_audit",
+        "name": "Sprint 15B — Implementation Truth Audit",
+        "objective": "Crosscheck every registered feature and capability against code, tests, routes, migrations, commands, and documentation.",
         "status": "planned"
     },
     "mandatory_workflow": [
-        "Inspect",
-        "Design",
-        "Patch",
-        "Syntax Check",
-        "Module Test",
-        "Full Test",
-        "Documentation",
-        "Git Clean",
-        "Commit",
-        "Push",
-        "Audit"
+        "INSPECT",
+        "SYNC",
+        "RED",
+        "GREEN",
+        "REGRESSION",
+        "AUDIT",
+        "CTO_CROSSCHECK",
+        "COMMIT",
+        "PUSH",
+        "REMOTE_VERIFY"
     ],
     "repository": {
-        "branch": "main",
-        "remote_tracking_branch": "origin/main",
+        "branch": "feat/domain-management-foundation",
+        "remote_tracking_branch": "origin/feat/domain-management-foundation",
         "synchronization_state": "synchronized",
-        "last_verified_commit": "45c4e5d",
+        "last_verified_commit": "b702ef326147456d0e98ebb1ca8fbd4881f31d72",
         "commit_reference_semantics": "last_verified_commit_before_current_documentation_patch",
         "required_final_working_tree": "clean",
-        "required_final_synchronization": "local_matches_origin_main"
+        "required_final_synchronization": "local_matches_origin_feat_domain_management_foundation"
     },
     "repository_governance": {
         "phase": "Phase 0.2",
@@ -178,20 +177,25 @@
         "completed_date": "2026-07-22"
     },
     "project_brain": {
-        "version": "1.0",
-        "effective_date": "2026-07-24",
-        "status": "integrated_documentation_foundation",
+        "version": "2.0",
+        "effective_date": "2026-07-25",
+        "status": "canonical_synchronization_in_progress",
         "entry_point": "docs/project-brain/README.md",
+        "canonical_requirements": "docs/project-brain/CANONICAL_REQUIREMENTS.md",
+        "master_prompt_inheritance": "docs/governance/MASTER_PROMPT_V2_0_TO_V2_1_INHERITANCE.md",
+        "registry_lifecycle": "docs/registry/LIFECYCLE_MODEL.md",
         "brand_1_delivery_window": {
-            "start": "2026-07-24",
-            "deadline": "2026-08-23"
+            "start": "2026-07-16",
+            "deadline": "2026-07-30",
+            "status": "active"
         },
+        "overall_project_deadline": "2026-10-14",
         "delivery_order": [
-            "brand_1_production_readiness",
-            "brand_1_optimization_and_hardening",
+            "brand_1_usable",
+            "brand_1_stabilization_and_hardening",
             "owner_panel",
             "brand_2_to_5_activation",
-            "enterprise_expansion"
+            "multi_brand_operational_hardening"
         ],
         "security_release_gate": true
     },

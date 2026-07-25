@@ -466,3 +466,12 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Superseded the former active 30-day plan.
 - Added mandatory repository crosscheck for every sprint.
 - Recorded Domain Management progress through Commit 14B.
+
+## 2026-07-25 — Sprint 15A Repository Brain Canonical Sync
+
+- Added canonical Master Prompt v2.0 to v2.1 inheritance rules.
+- Added consolidated canonical project requirements.
+- Added registry lifecycle and removal rules.
+- Superseded the obsolete 30-day Brand 1 decision.
+- Synchronized machine-readable branch, dates, workflow, and Project Brain state.
+- Added Sprint 15A audit record.
