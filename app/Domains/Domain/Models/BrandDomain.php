@@ -6,6 +6,7 @@ namespace App\Domains\Domain\Models;
 
 use App\Domains\Brand\Models\Brand;
 use App\Domains\Domain\Enums\DomainType;
+use App\Domains\Domain\Enums\DomainVerificationStatus;
 use Database\Factories\BrandDomainFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,6 +28,10 @@ class BrandDomain extends Model
         'force_https',
         'sort_order',
         'settings',
+        'verification_status',
+        'verification_score',
+        'verification_checks',
+        'verified_at',
     ];
 
     protected function casts(): array
@@ -38,6 +43,10 @@ class BrandDomain extends Model
             'force_https' => 'boolean',
             'sort_order' => 'integer',
             'settings' => 'array',
+            'verification_status' => DomainVerificationStatus::class,
+            'verification_score' => 'integer',
+            'verification_checks' => 'array',
+            'verified_at' => 'immutable_datetime',
         ];
     }
 

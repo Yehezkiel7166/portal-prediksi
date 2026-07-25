@@ -32,13 +32,17 @@ final class VerifyBrandDomain
         }
 
         if (! $domain->is_active) {
-            return new DomainVerificationReport(
+            $report = new DomainVerificationReport(
                 domain: $domain,
                 status: DomainVerificationStatus::Unknown,
                 score: 0,
                 checks: [],
                 verifiedAt: CarbonImmutable::now(),
             );
+
+            $this->persistReport($report);
+
+            return $report;
         }
 
         $checks = [
@@ -47,17 +51,37 @@ final class VerifyBrandDomain
             ...$this->seoVerifier->verify($domain),
         ];
 
-        return new DomainVerificationReport(
+        $report = new DomainVerificationReport(
             domain: $domain,
             status: $this->resolveStatus($checks),
             score: $this->calculateScore($checks),
             checks: $checks,
             verifiedAt: CarbonImmutable::now(),
         );
+
+        $this->persistReport($report);
+
+        return $report;
+    }
+
+    private function persistReport(
+        DomainVerificationReport $report,
+    ): void {
+        $report->domain->forceFill([
+            'verification_status' => $report->status,
+            'verification_score' => $report->score,
+            'verification_checks' => array_map(
+                static fn (DomainVerificationCheck $check): array => $check->toArray(),
+                $report->checks,
+            ),
+            'verified_at' => $report->verifiedAt,
+        ]);
+
+        $report->domain->saveQuietly();
     }
 
     /**
-     * @param  list<DomainVerificationCheck>  $checks
+     * @param list<DomainVerificationCheck> $checks
      */
     private function resolveStatus(
         array $checks,
@@ -85,7 +109,7 @@ final class VerifyBrandDomain
     }
 
     /**
-     * @param  list<DomainVerificationCheck>  $checks
+     * @param list<DomainVerificationCheck> $checks
      */
     private function calculateScore(
         array $checks,

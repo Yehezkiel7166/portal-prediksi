@@ -15,3 +15,8 @@ Schedule::command('system:scheduler-heartbeat')
 Schedule::command('live-draw:update-status')
     ->everyMinute()
     ->withoutOverlapping();
+
+Schedule::command('domain:verify')
+    ->hourly()
+    ->withoutOverlapping()
+    ->onOneServer();
