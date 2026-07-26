@@ -25,7 +25,7 @@
 - [ ] Owner Panel selesai
 - [ ] Brand Panel isolation selesai
 - [ ] Theme Engine selesai
-- [ ] Homepage Engine selesai
+- [x] Homepage Engine selesai
 - [ ] Widget Engine selesai
 - [ ] Slot Catalog selesai
 - [ ] Slot Gacor selesai

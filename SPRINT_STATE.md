@@ -133,3 +133,34 @@ Before any sprint may move to `Completed`:
 Canonical specification:
 `docs/governance/SPRINT_COMPLETION_GATE.md`.
 <!-- SPRINT-COMPLETION-GATE-END -->
+
+<!-- SPRINT-16A-STATE-START -->
+
+## Sprint 16A Completion State
+
+- Sprint: Sprint 16A — Brand 1 Production Homepage
+- Capability: `MP21-F017`
+- Status: Completed pending commit, push, and remote verification
+- Baseline: `e08b97112b838951b94ed63e40ce633533b6e663`
+- Application behavior changes: yes
+- Homepage Engine: IMPLEMENTED
+- Full regression: 421 tests / 1,166 assertions / PASS
+- Governance audit: 7/7 PASS
+- CTO crosscheck: PASS
+
+Implemented scope:
+
+- Brand-scoped homepage aggregation;
+- mandatory public module access;
+- canonical and Open Graph metadata;
+- responsive homepage sections;
+- safe empty states;
+- cross-brand regression coverage.
+
+Next implementation candidate:
+
+Select the highest-priority incomplete Brand 1 capability from the synchronized
+repository evidence. Do not reopen Homepage Engine without a verified defect or
+changed canonical requirement.
+
+<!-- SPRINT-16A-STATE-END -->

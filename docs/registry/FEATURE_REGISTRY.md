@@ -230,7 +230,7 @@ This registry remains authoritative for existing registered implementation ident
 | MP21-F014 | Automatic SEO | High | PLANNED |
 | MP21-F015 | SERP Intelligence | High | PLANNED |
 | MP21-F016 | Automation Engine | High | PLANNED |
-| MP21-F017 | Brand 1 Production Homepage | Critical | PLANNED |
+| MP21-F017 | Brand 1 Production Homepage | Critical | IMPLEMENTED |
 <!-- MASTER-PROMPT-V2-1-SYNC-2026-07-24-FEATURES-END -->
 
 <!-- SPRINT-15C-DOMAIN-TRUTH-START -->

@@ -196,3 +196,49 @@ No application behavior changed during Sprint 15C.
 
 The next active product priority is Brand 1 usable completion under
 `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`.
+
+<!-- SPRINT-16A-PRODUCTION-HOMEPAGE-START -->
+
+## Sprint 16A — Brand 1 Production Homepage
+
+Status: Completed pending commit, push, and remote verification by the current
+Sprint 16A finalization workflow.
+
+Capability:
+
+- `MP21-F017 — Brand 1 Production Homepage`
+- Homepage Engine: `IMPLEMENTED`
+
+Verified implementation:
+
+- Brand-aware homepage content aggregation;
+- explicit Brand isolation for Live Draw, Result, Prediction, Promotion,
+  and Blog;
+- safe empty homepage when Brand Context is unavailable;
+- active Live Draw section;
+- latest Result section;
+- current Prediction section;
+- active Promotion section;
+- latest Article section;
+- access to all ten mandatory Brand 1 public module groups;
+- canonical metadata;
+- Open Graph title, description, and URL;
+- responsive public layout;
+- automated regression coverage.
+
+Validation evidence:
+
+- Dedicated homepage suite: 6 tests / 50 assertions / PASS.
+- Frontend suite: 72 tests / 312 assertions / PASS.
+- Full project suite: 421 tests / 1,166 assertions / PASS.
+- Permanent Sprint Completion Gate: PASS.
+- Repository governance audit: 7/7 PASS.
+
+Routes, migrations, commands, scheduler, queue, configuration, and dependencies
+were not changed.
+
+Homepage placeholders do not mark their backing engines as complete. Slot
+Gacor / RTP, Jackpot Proof, Complaint, Guide, Theme Engine, Widget Engine,
+and incomplete Lottery Tool modules retain their existing statuses.
+
+<!-- SPRINT-16A-PRODUCTION-HOMEPAGE-END -->

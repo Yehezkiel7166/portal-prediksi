@@ -4,6 +4,34 @@ All notable changes to Portal Prediksi CMS will be documented here.
 
 ## [Unreleased]
 
+### Sprint 16A — Brand 1 Production Homepage
+
+#### Added
+
+- Brand-scoped production homepage aggregation.
+- Live Draw, Result, Prediction, Promotion, and Article homepage sections.
+- Access to all mandatory Brand 1 public module groups.
+- Canonical and Open Graph metadata.
+- Safe empty states and null Brand Context fallback.
+- Dedicated production homepage regression and Brand isolation tests.
+
+#### Changed
+
+- Homepage Engine changed from PLANNED to IMPLEMENTED.
+- Frontend layout supports page-specific head metadata through a Blade stack.
+- Project state, registries, roadmap, manifest, handover, and sprint records
+  synchronized with verified implementation truth.
+
+#### Verified
+
+- Dedicated homepage: 6 tests / 50 assertions.
+- Complete frontend: 72 tests / 312 assertions.
+- Full project: 421 tests / 1,166 assertions.
+- Permanent Sprint Completion Gate passed.
+- Repository governance audit passed 7/7.
+- Routes, migrations, commands, scheduler, queue, configuration, and
+  dependencies remained unchanged.
+
 ## Phase 0.2 — Repository Governance Automation
 
 ### Added

@@ -16,6 +16,7 @@
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
+    @stack('head')
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
     @include('frontend.partials.header')

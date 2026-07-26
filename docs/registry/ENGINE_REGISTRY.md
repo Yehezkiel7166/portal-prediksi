@@ -9,7 +9,7 @@
 | Owner Panel | Owner | PLANNED |
 | Brand Panel | Brand | PARTIALLY_IMPLEMENTED |
 | Theme Engine | Owner | PLANNED |
-| Homepage Engine | Owner structure / Brand content | PLANNED |
+| Homepage Engine | Brand 1 production aggregation and public module gateway | IMPLEMENTED |
 | Widget Engine | Owner definitions / Brand instances | PLANNED |
 | Slot Catalog Engine | Owner | PLANNED |
 | Brand Slot Gacor Engine | Brand | PLANNED |

@@ -297,3 +297,25 @@ The next product sprint must select the highest-priority incomplete Brand 1
 capability from implementation evidence. It must not reopen completed Domain
 Management work without a verified regression gap.
 <!-- SPRINT-15C-ROADMAP-END -->
+
+<!-- SPRINT-16A-ROADMAP-START -->
+
+## Sprint 16A Roadmap Update
+
+`MP21-F017 — Brand 1 Production Homepage` is implemented.
+
+The Homepage Engine now provides the verified Brand 1 public aggregation layer
+and gateway to the mandatory public module groups.
+
+This completion does not change the implementation state of Slot Gacor / RTP,
+Jackpot Proof, Complaint, Guide, Theme Engine, Widget Engine, or incomplete
+Lottery Tool modules.
+
+Execution order after Sprint 16A:
+
+1. preserve the implemented Homepage Engine;
+2. select the next highest-priority incomplete Brand 1 capability;
+3. finish Brand 1 before Owner Panel and Brand 2–5;
+4. apply the permanent completion workflow to every sprint.
+
+<!-- SPRINT-16A-ROADMAP-END -->

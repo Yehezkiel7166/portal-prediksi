@@ -361,3 +361,28 @@ remote verification before sprint completion.
 
 - `docs/sprints/SPRINT-15C-REPOSITORY-TRUTH-SYNCHRONIZATION.md`
 <!-- SPRINT-15C-MANIFEST-END -->
+
+<!-- SPRINT-16A-HOMEPAGE-MANIFEST-START -->
+
+## Brand 1 Production Homepage
+
+Capability `MP21-F017` is implemented.
+
+Implementation components:
+
+- `app/Http/Controllers/Frontend/HomeController.php`
+- `resources/views/frontend/home.blade.php`
+- `resources/views/frontend/layouts/app.blade.php`
+- `tests/Feature/Frontend/PublicProductionHomepageTest.php`
+
+The homepage aggregates current-Brand Live Draw, Result, Prediction, Promotion,
+and Blog content. It provides mandatory module access, canonical and Open Graph
+metadata, and safe empty-state behavior.
+
+Verified baseline:
+
+- 421 tests;
+- 1,166 assertions;
+- PASS.
+
+<!-- SPRINT-16A-HOMEPAGE-MANIFEST-END -->

@@ -15,7 +15,7 @@
 | Owner Panel | PLANNED |
 | Brand Panel isolation | PARTIALLY_IMPLEMENTED |
 | Theme Engine | PLANNED |
-| Homepage Engine | PLANNED |
+| Homepage Engine | IMPLEMENTED |
 | Widget Engine | PLANNED |
 | Slot Catalog | PLANNED |
 | Brand Slot Gacor | PLANNED |
@@ -44,7 +44,7 @@
 | Scheduled domain verification | IMPLEMENTED | `domain:verify` scheduler registration |
 | Brand 1 usable completion | IN_PROGRESS | Product modules remain incomplete |
 | Theme Engine | PLANNED | No verified implementation |
-| Homepage Engine | PLANNED | No verified implementation |
+| Homepage Engine | IMPLEMENTED | Brand-scoped production homepage aggregation, SEO metadata, mandatory public module access, safe empty states, and automated regression coverage |
 | Widget Engine | PLANNED | No verified implementation |
 | Slot Gacor / RTP | PLANNED | No verified implementation |
 | Jackpot Proof | PLANNED | No verified implementation |

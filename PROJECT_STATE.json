@@ -40,7 +40,8 @@
         "PromotionListing",
         "PromotionDetail",
         "BlogListing",
-        "BlogDetail"
+        "BlogDetail",
+        "ProductionHomepage"
     ],
     "scheduled_tasks": [
         {
@@ -67,7 +68,8 @@
         "live_draw_management",
         "live_draw_status_automation",
         "latest_result_resolver",
-        "hls_stream_player"
+        "hls_stream_player",
+        "brand_1_production_homepage"
     ],
     "repository_foundation": {
         "status": "completed",
@@ -103,10 +105,10 @@
         "Application test/build CI is not yet implemented"
     ],
     "next_recommended_phase": {
-        "id": "brand_1_usable_completion",
-        "name": "Brand 1 Usable Completion",
-        "objective": "Resume product implementation toward the Brand 1 usable milestone, using repository evidence to select the highest-priority incomplete Brand 1 capability.",
-        "status": "planned_after_sprint_15c"
+        "id": "brand_1_next_incomplete_capability",
+        "name": "Continue Brand 1 Usable Completion",
+        "objective": "Select the next highest-priority incomplete Brand 1 capability from synchronized repository evidence.",
+        "status": "planned_after_sprint_16a"
     },
     "mandatory_workflow": [
         "INSPECT",
@@ -201,7 +203,7 @@
         ],
         "security_release_gate": true,
         "last_synchronized_commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
-        "last_completed_sprint": "Sprint 15B — Permanent Sprint Completion Gate"
+        "last_completed_sprint": "Sprint 16A — Brand 1 Production Homepage"
     },
     "canonical_direction": {
         "project_start": "2026-07-16",
@@ -304,17 +306,58 @@
         }
     ],
     "active_sprint": {
-        "id": "sprint_15c",
-        "name": "Repository Truth Synchronization",
-        "status": "completed",
-        "baseline_commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
-        "behavior_change": false,
-        "objective": "Synchronize canonical project state, sprint state, roadmap, registries, manifest, changelog, and AI handover with the remote-verified repository truth after Sprint 15B.",
+        "id": "sprint_16a",
+        "name": "Brand 1 Production Homepage",
+        "status": "completed_pending_commit_and_remote_verification",
+        "baseline_commit": "e08b97112b838951b94ed63e40ce633533b6e663",
+        "behavior_change": true,
+        "capability_id": "MP21-F017",
+        "objective": "Implement the Brand 1 production homepage with explicit Brand-scoped aggregation, SEO metadata, mandatory public module access, safe empty states, and automated regression coverage.",
         "completed_on": "2026-07-26"
     },
     "delivery": {
         "brand_1_usable_deadline": "2026-07-30",
         "brand_1_usable_days": 14,
         "active_plan": "docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md"
+    },
+    "homepage_engine": {
+        "status": "implemented",
+        "capability_id": "MP21-F017",
+        "sprint": "Sprint 16A",
+        "baseline_commit": "e08b97112b838951b94ed63e40ce633533b6e663",
+        "brand_scoped_content": [
+            "live_draws",
+            "latest_results",
+            "current_predictions",
+            "active_promotions",
+            "latest_articles"
+        ],
+        "public_module_gateway": [
+            "live_draw",
+            "data_result",
+            "prediction",
+            "slot_gacor_rtp",
+            "jackpot_proof",
+            "promotion",
+            "complaint",
+            "guide",
+            "lottery_tools"
+        ],
+        "seo": [
+            "canonical",
+            "open_graph_title",
+            "open_graph_description",
+            "open_graph_url"
+        ],
+        "null_brand_context_behavior": "render_safe_empty_homepage",
+        "verification": {
+            "dedicated_tests": 6,
+            "dedicated_assertions": 50,
+            "frontend_tests": 72,
+            "frontend_assertions": 312,
+            "full_tests": 421,
+            "full_assertions": 1166,
+            "status": "passed"
+        }
     }
 }

@@ -325,3 +325,39 @@ Before starting the next sprint:
 3. select the highest-priority incomplete Brand 1 capability;
 4. preserve the Brand 1 usable deadline of 2026-07-30;
 5. keep Owner Panel and Brand 2–5 after Brand 1 usable completion and stabilization.
+
+<!-- SPRINT-16A-HANDOVER-START -->
+
+## Sprint 16A Completed Handover
+
+Sprint 16A implements `MP21-F017 — Brand 1 Production Homepage`.
+
+Do not recreate or replace the Homepage Engine without proving a verified defect
+or changed canonical requirement.
+
+Verified Homepage Engine evidence:
+
+- explicit Brand-scoped content aggregation;
+- Live Draw, latest Result, current Prediction, Promotion, and Article sections;
+- mandatory Brand 1 module access;
+- canonical and Open Graph metadata;
+- safe null-context empty homepage;
+- cross-brand isolation tests;
+- full project regression: 421 tests / 1,166 assertions / PASS;
+- governance audit: 7/7 PASS.
+
+The following capabilities remain separate and incomplete where indicated by
+their registries:
+
+- Slot Gacor / RTP;
+- Jackpot Proof;
+- Complaint;
+- Guide;
+- Theme Engine;
+- Widget Engine;
+- incomplete Lottery Tool modules.
+
+The next sprint must be selected from synchronized Brand 1 implementation truth.
+Owner Panel and Brand 2–5 remain after Brand 1 completion and stabilization.
+
+<!-- SPRINT-16A-HANDOVER-END -->
