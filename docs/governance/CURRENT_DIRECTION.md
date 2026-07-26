@@ -87,3 +87,25 @@ re-read plus a CTO-level crosscheck before commit.
 No sprint may be declared completed without a `PASS` crosscheck report and
 successful remote verification.
 <!-- SPRINT-COMPLETION-GATE-END -->
+
+<!-- SPRINT-15C-DIRECTION-START -->
+## Current Repository Execution State
+
+- Sprint 15A: completed.
+- Sprint 15B: completed and remote verified at
+  `5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7`.
+- Sprint 15C: active repository truth synchronization.
+- Domain Management: implemented through Sprint 14B.
+- No application behavior is changed during Sprint 15C.
+- After Sprint 15C, implementation returns to Brand 1 usable completion.
+<!-- SPRINT-15C-DIRECTION-END -->
+
+<!-- SPRINT-15C-DIRECTION-COMPLETED -->
+
+## Direction After Sprint 15C
+
+Sprint 15C repository truth synchronization is complete.
+
+Implementation now returns to Brand 1 usable completion. Repository-only
+synchronization work must not displace the highest-priority incomplete Brand 1
+capability unless new verified repository contradictions are found.

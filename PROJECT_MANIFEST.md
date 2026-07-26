@@ -355,3 +355,9 @@ These artifacts enforce repository re-read at sprint start and before commit,
 mandatory CTO crosscheck evidence, commit blocking until a `PASS` decision, and
 remote verification before sprint completion.
 <!-- SPRINT-COMPLETION-GATE-END -->
+
+<!-- SPRINT-15C-MANIFEST-START -->
+## Sprint 15C Artifact
+
+- `docs/sprints/SPRINT-15C-REPOSITORY-TRUTH-SYNCHRONIZATION.md`
+<!-- SPRINT-15C-MANIFEST-END -->

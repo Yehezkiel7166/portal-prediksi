@@ -279,3 +279,49 @@ Do not commit a sprint completion state unless:
 After push, verify local and remote HEAD equality, ahead/behind `0 0`, and a
 clean working tree.
 <!-- SPRINT-COMPLETION-GATE-END -->
+
+<!-- SPRINT-15C-HANDOVER-START -->
+
+## Sprint 15C Handover State
+
+Baseline:
+
+- branch: `feat/domain-management-foundation`;
+- commit: `5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7`;
+- remote synchronized: yes;
+- working tree at sprint start: clean.
+
+Completed:
+
+- Sprint 15B Permanent Sprint Completion Gate;
+- commit, push, and remote verification;
+- governance audit 7/7 PASS;
+- Domain Management regression 169 tests / 512 assertions.
+
+Active:
+
+- Sprint 15C Repository Truth Synchronization;
+- documentation and machine-readable state only;
+- no application behavior changes.
+
+After Sprint 15C:
+
+- inspect synchronized implementation truth;
+- select the highest-priority incomplete Brand 1 capability;
+- preserve Brand 1 before Owner Panel;
+- execute the mandatory completion workflow.
+<!-- SPRINT-15C-HANDOVER-END -->
+
+<!-- SPRINT-15C-HANDOVER-COMPLETED -->
+
+## Sprint 15C Completed Handover
+
+Sprint 15C — Repository Truth Synchronization is complete.
+
+Before starting the next sprint:
+
+1. preserve the completed Sprint 15C repository truth;
+2. do not reopen repository reconciliation without new contradictory evidence;
+3. select the highest-priority incomplete Brand 1 capability;
+4. preserve the Brand 1 usable deadline of 2026-07-30;
+5. keep Owner Panel and Brand 2–5 after Brand 1 usable completion and stabilization.

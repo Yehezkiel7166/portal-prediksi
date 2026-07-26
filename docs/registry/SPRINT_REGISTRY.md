@@ -249,3 +249,30 @@ Referenced by:
 - ADR_REGISTRY.md
 
 This document is part of the permanent Project Knowledge Base.
+
+<!-- SPRINT-15C-REGISTRY-START -->
+
+## Repository Synchronization Sprints
+
+| Internal Sprint | Name | Status | Completion Commit |
+|---|---|---|---|
+| Sprint 15A | Repository Brain Canonical Synchronization | Completed | Recorded in repository history |
+| Sprint 15B | Permanent Sprint Completion Gate | Completed | `5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7` |
+| Sprint 15C | Repository Truth Synchronization | In Progress | Pending completion gate |
+
+Sprint 15C changes documentation, state, registries, and governance truth only.
+It does not change application behavior.
+<!-- SPRINT-15C-REGISTRY-END -->
+
+<!-- SPRINT-15C-REGISTRY-COMPLETED -->
+
+## Sprint 15C Completion Registration
+
+- Sprint: Sprint 15C — Repository Truth Synchronization
+- Status: Completed
+- Completion date: 2026-07-26
+- Behavior change: None
+- Targeted regression: 169 tests, 512 assertions
+- Full regression: 415 tests, 1116 assertions
+- Governance audit: PASS
+- Next phase: Brand 1 Usable Completion

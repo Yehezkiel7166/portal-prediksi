@@ -157,3 +157,42 @@ A sprint cannot be marked completed until its crosscheck report exists under
 
 Commit, push, and remote verification remain separate mandatory gates.
 <!-- SPRINT-COMPLETION-GATE-END -->
+
+<!-- SPRINT-15C-TRUTH-START -->
+## Repository Truth — Sprint 15C
+
+Current verified baseline:
+
+- Branch: `feat/domain-management-foundation`
+- Local and remote verified commit:
+  `5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7`
+- Working tree at Sprint 15C start: clean
+- Ahead/behind at Sprint 15C start: `0/0`
+- Sprint 15B: completed
+- Sprint Completion Gate: active
+- Governance audit: 7/7 PASS
+- Domain Management: implemented through Sprint 14B
+- Domain test inventory: 15 files
+- Latest targeted Domain regression: 169 tests, 512 assertions, PASS
+- Project Brain state: canonical
+
+Active work:
+
+- Sprint 15C — Repository Truth Synchronization
+- Application behavior changes: none
+- Next product priority after Sprint 15C: Brand 1 usable completion
+<!-- SPRINT-15C-TRUTH-END -->
+
+<!-- SPRINT-15C-COMPLETED -->
+
+## Sprint 15C Completion State
+
+Sprint 15C — Repository Truth Synchronization was completed on 2026-07-26.
+
+The canonical repository state, project brain, registries, roadmap, handover,
+manifest, Sprint Completion Gate, and governance audit are synchronized.
+
+No application behavior changed during Sprint 15C.
+
+The next active product priority is Brand 1 usable completion under
+`docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`.

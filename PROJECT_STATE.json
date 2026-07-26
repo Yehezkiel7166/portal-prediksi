@@ -103,10 +103,10 @@
         "Application test/build CI is not yet implemented"
     ],
     "next_recommended_phase": {
-        "id": "sprint_15b_implementation_truth_audit",
-        "name": "Sprint 15B — Implementation Truth Audit",
-        "objective": "Crosscheck every registered feature and capability against code, tests, routes, migrations, commands, and documentation.",
-        "status": "planned"
+        "id": "brand_1_usable_completion",
+        "name": "Brand 1 Usable Completion",
+        "objective": "Resume product implementation toward the Brand 1 usable milestone, using repository evidence to select the highest-priority incomplete Brand 1 capability.",
+        "status": "planned_after_sprint_15c"
     },
     "mandatory_workflow": [
         "INSPECT",
@@ -124,10 +124,12 @@
         "branch": "feat/domain-management-foundation",
         "remote_tracking_branch": "origin/feat/domain-management-foundation",
         "synchronization_state": "synchronized",
-        "last_verified_commit": "b702ef326147456d0e98ebb1ca8fbd4881f31d72",
-        "commit_reference_semantics": "last_verified_commit_before_current_documentation_patch",
+        "last_verified_commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
+        "commit_reference_semantics": "last_remote_verified_commit_before_sprint_15c_truth_sync",
         "required_final_working_tree": "clean",
-        "required_final_synchronization": "local_matches_origin_feat_domain_management_foundation"
+        "required_final_synchronization": "local_matches_origin_feat_domain_management_foundation",
+        "completion_gate": "passed",
+        "governance_audit": "passed"
     },
     "repository_governance": {
         "phase": "Phase 0.2",
@@ -179,7 +181,7 @@
     "project_brain": {
         "version": "2.0",
         "effective_date": "2026-07-25",
-        "status": "canonical_synchronization_in_progress",
+        "status": "canonical",
         "entry_point": "docs/project-brain/README.md",
         "canonical_requirements": "docs/project-brain/CANONICAL_REQUIREMENTS.md",
         "master_prompt_inheritance": "docs/governance/MASTER_PROMPT_V2_0_TO_V2_1_INHERITANCE.md",
@@ -197,7 +199,9 @@
             "brand_2_to_5_activation",
             "multi_brand_operational_hardening"
         ],
-        "security_release_gate": true
+        "security_release_gate": true,
+        "last_synchronized_commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
+        "last_completed_sprint": "Sprint 15B — Permanent Sprint Completion Gate"
     },
     "canonical_direction": {
         "project_start": "2026-07-16",
@@ -255,5 +259,62 @@
             "registries",
             "brand_1_usable_milestone"
         ]
+    },
+    "domain_management": {
+        "status": "implemented",
+        "completion_through": "Sprint 14B",
+        "verified_at_commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
+        "test_files": 15,
+        "latest_targeted_regression": {
+            "tests": 169,
+            "assertions": 512,
+            "status": "passed"
+        },
+        "capabilities": [
+            "multi_domain_registration",
+            "domain_type_engine",
+            "primary_domain_management",
+            "brand_isolation",
+            "legacy_domain_backfill",
+            "domain_verification",
+            "verification_persistence",
+            "dns_http_seo_verification",
+            "domain_health_monitoring",
+            "domain_health_history",
+            "domain_health_timeline_ui",
+            "https_policy",
+            "canonical_url_engine",
+            "robots_directive_engine",
+            "domain_migration",
+            "scheduled_domain_verification",
+            "filament_domain_management"
+        ]
+    },
+    "completed_sprints": [
+        {
+            "id": "sprint_15b",
+            "name": "Permanent Sprint Completion Gate",
+            "status": "completed",
+            "commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
+            "remote_verified": true,
+            "governance_audit": {
+                "passed": 7,
+                "total": 7
+            }
+        }
+    ],
+    "active_sprint": {
+        "id": "sprint_15c",
+        "name": "Repository Truth Synchronization",
+        "status": "completed",
+        "baseline_commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
+        "behavior_change": false,
+        "objective": "Synchronize canonical project state, sprint state, roadmap, registries, manifest, changelog, and AI handover with the remote-verified repository truth after Sprint 15B.",
+        "completed_on": "2026-07-26"
+    },
+    "delivery": {
+        "brand_1_usable_deadline": "2026-07-30",
+        "brand_1_usable_days": 14,
+        "active_plan": "docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md"
     }
 }

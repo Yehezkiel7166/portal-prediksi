@@ -280,3 +280,20 @@ Canonical reference:
 - `docs/governance/CURRENT_DIRECTION.md`
 - `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
 <!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-15C-ROADMAP-START -->
+
+## Post-Sprint 15B Execution Order
+
+Current repository truth:
+
+1. Domain Management is implemented through Sprint 14B.
+2. Sprint 15B Permanent Sprint Completion Gate is completed.
+3. Sprint 15C synchronizes repository truth without application behavior changes.
+4. After Sprint 15C, resume Brand 1 usable implementation.
+5. Owner Panel remains after Brand 1 completion and stabilization.
+
+The next product sprint must select the highest-priority incomplete Brand 1
+capability from implementation evidence. It must not reopen completed Domain
+Management work without a verified regression gap.
+<!-- SPRINT-15C-ROADMAP-END -->

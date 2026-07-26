@@ -17,33 +17,45 @@ This is the canonical current sprint summary. Detailed, immutable sprint evidenc
 - Sprint A Repository Foundation
 - Sprint B Repository Consistency Audit
 
-## Next Planned Sprint
+## Active Sprint
 
-- Sprint: Phase 0.3B — Canonical Repository Validation
-- Status: planned
-- Completion: Phase 0.3A synchronization completed at commit `45c4e5d`; Phase 0.3B has not started.
+- Sprint: Sprint 15C — Repository Truth Synchronization
+- Status: in progress
+- Baseline: `5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7`
+- Application behavior changes: none
+
+## Current Objective
+
+Synchronize repository documentation and machine-readable state with the
+remote-verified implementation truth after Sprint 15B.
 
 ## Planned Tasks
 
-- Inspect repository evidence for any remaining canonical validation gap.
-- Preserve the verified Phase 0.3A completion state at commit `45c4e5d`.
-- Extend deterministic validation only where repository evidence identifies a real remaining gap.
-- Keep Feature Freeze active and avoid application behavior changes.
+- Record Sprint 15B as completed and remote verified.
+- Replace obsolete Phase 0.3B and Sprint 15A active-state references.
+- Record Domain Management as implemented through Sprint 14B.
+- Synchronize project state, sprint state, roadmap, registries, manifest,
+  changelog, current direction, and AI handover.
+- Preserve Brand 1 usable as the next product implementation priority.
+- Run governance, targeted domain regression, full regression, repository
+  re-read, and CTO crosscheck before commit.
 
 ## Pending Tasks
 
-- Complete Phase 0.3B only after a verified remaining governance gap is identified.
-- Expand application test/build CI only in a separately approved repository automation phase.
-- Begin Site Configuration Foundation only after Feature Freeze is explicitly lifted for that sprint.
+- Complete Sprint 15C truth synchronization.
+- Select the next incomplete Brand 1 capability from repository evidence.
+- Resume product behavior implementation only after Sprint 15C passes its
+  mandatory completion gate.
 
 ## Blocked Tasks
 
-- No product task is currently recorded as blocked.
-- Automated deployment and backup verification depend on future repository automation and production operational decisions.
+- No Sprint 15C task is currently blocked.
+- Automated deployment and backup verification remain future operational work.
 
 ## Next Implementation Candidate
 
-Phase 0.3B — Canonical Repository Validation: extend deterministic validation only where repository evidence identifies a remaining governance gap, without changing application behavior.
+Brand 1 Usable Completion: select the highest-priority incomplete Brand 1
+capability using the synchronized implementation registry and delivery plan.
 
 ## Resume Instructions
 
@@ -72,21 +84,35 @@ Canonical reference:
 <!-- CURRENT-DIRECTION-END -->
 
 <!-- SPRINT-15A-STATE-START -->
-## Active Sprint — Sprint 15A
+## Sprint 15A and Sprint 15B Completion State
+
+### Sprint 15A
 
 Name: Repository Brain Canonical Synchronization
-Status: In Progress
-Baseline: `b702ef326147456d0e98ebb1ca8fbd4881f31d72`
+Status: Completed
 
-Current scope:
+### Sprint 15B
 
-- Master Prompt v2.0–v2.1 inheritance;
-- canonical project requirements;
-- registry lifecycle;
-- superseded delivery decisions;
-- machine-readable project-state synchronization.
+Name: Permanent Sprint Completion Gate
+Status: Completed
+Completion commit: `5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7`
+Remote verification: PASS
+Governance audit: 7/7 PASS
 
-Application behavior is unchanged.
+### Active Sprint 15C
+
+Name: Repository Truth Synchronization
+Status: Completed
+Completion date: `2026-07-26`
+Baseline: `5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7`
+
+Scope:
+
+- state truth synchronization;
+- completed sprint truth;
+- Domain Management implementation truth;
+- registry and roadmap synchronization;
+- no application behavior changes.
 <!-- SPRINT-15A-STATE-END -->
 
 <!-- SPRINT-COMPLETION-GATE-START -->
