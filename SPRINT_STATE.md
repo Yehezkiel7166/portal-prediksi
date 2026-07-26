@@ -88,3 +88,22 @@ Current scope:
 
 Application behavior is unchanged.
 <!-- SPRINT-15A-STATE-END -->
+
+<!-- SPRINT-COMPLETION-GATE-START -->
+## Mandatory Completion Gate for Every Sprint
+
+Before any sprint may move to `Completed`:
+
+1. repository start-state inspection must be recorded;
+2. regression must pass;
+3. repository governance audit must pass;
+4. repository must be re-read;
+5. implementation, documentation, roadmap, state, registries, manifest,
+   changelog, and AI handover must be crosschecked;
+6. Brand 1 milestone alignment must be confirmed;
+7. a CTO crosscheck report must record `PASS`;
+8. commit, push, and remote verification must succeed.
+
+Canonical specification:
+`docs/governance/SPRINT_COMPLETION_GATE.md`.
+<!-- SPRINT-COMPLETION-GATE-END -->

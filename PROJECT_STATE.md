@@ -140,3 +140,20 @@ Canonical reference:
 - `docs/governance/CURRENT_DIRECTION.md`
 - `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
 <!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-COMPLETION-GATE-START -->
+## Permanent Sprint Completion Gate
+
+Repository re-read is mandatory at the beginning of every sprint and again
+after regression and audit but before commit.
+
+Every sprint requires a CTO-level crosscheck covering code, tests, routes,
+migrations, commands, scheduler, queue, configuration, security, architecture,
+roadmap, Project State, Sprint State, manifest, changelog, AI handover, active
+sprint evidence, all affected registries, and Brand 1 milestone alignment.
+
+A sprint cannot be marked completed until its crosscheck report exists under
+`docs/sprints/crosschecks/` and records a final decision of `PASS`.
+
+Commit, push, and remote verification remain separate mandatory gates.
+<!-- SPRINT-COMPLETION-GATE-END -->

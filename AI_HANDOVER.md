@@ -256,3 +256,26 @@ Read before continuing:
 
 Next planned work is Sprint 15B Implementation Truth Audit.
 <!-- SPRINT-15A-HANDOVER-END -->
+
+<!-- SPRINT-COMPLETION-GATE-START -->
+## Mandatory AI Continuation Rule
+
+Before continuing any sprint, read the current repository instead of relying on
+chat history.
+
+Before declaring any sprint complete, re-read the repository and perform the
+mandatory CTO crosscheck defined in
+`docs/governance/SPRINT_COMPLETION_GATE.md`.
+
+Do not commit a sprint completion state unless:
+
+- regression and repository audit pass;
+- implementation and documentation are synchronized;
+- affected registries and state artifacts are synchronized;
+- Brand 1 milestone alignment remains correct;
+- a crosscheck report exists under `docs/sprints/crosschecks/`;
+- its final CTO decision is `PASS`.
+
+After push, verify local and remote HEAD equality, ahead/behind `0 0`, and a
+clean working tree.
+<!-- SPRINT-COMPLETION-GATE-END -->

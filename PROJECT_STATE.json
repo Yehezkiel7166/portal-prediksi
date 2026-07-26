@@ -210,5 +210,50 @@
         "brand_1_before_owner_panel": true,
         "repository_crosscheck_every_sprint": true,
         "active_plan": "docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md"
+    },
+    "sprint_completion_gate": {
+        "status": "mandatory",
+        "canonical_specification": "docs/governance/SPRINT_COMPLETION_GATE.md",
+        "crosscheck_directory": "docs/sprints/crosschecks",
+        "crosscheck_template": "docs/sprints/crosschecks/TEMPLATE.md",
+        "repository_reread_at_sprint_start": true,
+        "repository_reread_before_commit": true,
+        "cto_crosscheck_required": true,
+        "crosscheck_report_required": true,
+        "commit_blocked_until_crosscheck_passes": true,
+        "remote_verification_required": true,
+        "workflow": [
+            "INSPECT",
+            "SYNC",
+            "RED",
+            "GREEN",
+            "REGRESSION",
+            "AUDIT",
+            "CTO_CROSSCHECK",
+            "COMMIT",
+            "PUSH",
+            "REMOTE_VERIFY"
+        ],
+        "minimum_crosscheck_scope": [
+            "code",
+            "tests",
+            "routes",
+            "migrations",
+            "commands",
+            "scheduler",
+            "queue",
+            "configuration",
+            "security",
+            "architecture",
+            "roadmap",
+            "project_state",
+            "sprint_state",
+            "manifest",
+            "changelog",
+            "ai_handover",
+            "active_sprint_record",
+            "registries",
+            "brand_1_usable_milestone"
+        ]
     }
 }

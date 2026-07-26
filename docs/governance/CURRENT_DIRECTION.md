@@ -71,3 +71,19 @@ Setiap sprint wajib menyinkronkan:
 - dokumentasi arsitektur yang berkaitan.
 
 Repository wajib dibaca ulang sebelum dan sesudah setiap sprint.
+
+<!-- SPRINT-COMPLETION-GATE-START -->
+## Sprint Completion Enforcement
+
+The mandatory enforcement specification is:
+
+- `docs/governance/SPRINT_COMPLETION_GATE.md`
+- `docs/sprints/crosschecks/TEMPLATE.md`
+- `scripts/repository/check-sprint-completion-gate.sh`
+
+Every sprint begins with a repository re-read and ends with a second repository
+re-read plus a CTO-level crosscheck before commit.
+
+No sprint may be declared completed without a `PASS` crosscheck report and
+successful remote verification.
+<!-- SPRINT-COMPLETION-GATE-END -->

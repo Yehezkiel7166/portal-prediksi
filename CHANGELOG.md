@@ -475,3 +475,17 @@ All notable changes to Portal Prediksi CMS will be documented here.
 - Superseded the obsolete 30-day Brand 1 decision.
 - Synchronized machine-readable branch, dates, workflow, and Project Brain state.
 - Added Sprint 15A audit record.
+
+<!-- SPRINT-COMPLETION-GATE-START -->
+## 2026-07-25 — Permanent Sprint Completion Gate
+
+### Added
+
+- Canonical Sprint Completion Gate governance specification.
+- Mandatory repository re-read at sprint start and before commit.
+- Mandatory CTO-level implementation and documentation crosscheck.
+- Mandatory per-sprint crosscheck report template.
+- Automated repository audit for Sprint Completion Gate enforcement.
+- Commit blocking until the CTO crosscheck result is `PASS`.
+- Mandatory remote verification before sprint completion.
+<!-- SPRINT-COMPLETION-GATE-END -->
