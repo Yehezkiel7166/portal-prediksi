@@ -172,3 +172,20 @@ Latest verified project regression before Sprint 16D:
 
 Sprint 16D changes documentation and machine-readable state only.
 <!-- SPRINT-16D-STATE-END -->
+
+<!-- SPRINT-17A-STATE-START -->
+## Sprint 17A — Complaint Foundation
+
+Baseline: `80005059bb436223ac88096692f59ec2f962ea25`.
+
+Implementation state prepared for repository validation:
+
+- brand-scoped complaint model and persistence;
+- privacy-safe public complaint intake form;
+- Open → Reviewed → Resolved / Rejected admin workflow;
+- CSRF, validation, honeypot, and throttling;
+- no public complaint listing;
+- targeted complaint regression coverage.
+
+Production migration remains an explicit post-deployment operation.
+<!-- SPRINT-17A-STATE-END -->

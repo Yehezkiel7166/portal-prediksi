@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\BlogDetailController;
+use App\Http\Controllers\Frontend\ComplaintController;
 use App\Http\Controllers\Frontend\BlogsController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\JackpotProofDetailController;
@@ -61,6 +62,14 @@ Route::get('/promosi', PromotionsController::class)
 Route::get('/promosi/{slug}', PromotionDetailController::class)
     ->where('slug', '[a-z0-9]+(?:-[a-z0-9]+)*')
     ->name('promotions.show');
+
+
+Route::get('/keluhan', [ComplaintController::class, 'create'])
+    ->name('complaints.create');
+
+Route::post('/keluhan', [ComplaintController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('complaints.store');
 
 Route::get('/blog', BlogsController::class)
     ->name('blog.index');

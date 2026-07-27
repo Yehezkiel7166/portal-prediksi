@@ -86,3 +86,13 @@ Baseline: `f906850d888bc617e697f41a9a8d1837c19001b7`.
 
 Verification baseline: `af99d9a6ab748188698b0cb09c6093d3f81ca891`; 433 tests / 1,204 assertions / governance 7/7 PASS.
 <!-- SPRINT-16D-IMPLEMENTATION-TRUTH-END -->
+
+## Sprint 17A implementation truth
+
+| Capability | Status | Evidence |
+|---|---|---|
+| Complaint domain persistence | IMPLEMENTED | `app/Domains/Complaint`, `database/migrations/2026_07_27_090000_create_complaints_table.php` |
+| Public complaint intake | IMPLEMENTED | `/keluhan`, `ComplaintController`, complaint Blade form |
+| Complaint admin workflow | IMPLEMENTED | `ComplaintResource`, status workflow action |
+| Complaint privacy and abuse controls | IMPLEMENTED | noindex, no public listing, CSRF, honeypot, throttle |
+| Production complaint table | PENDING MIGRATION | migration intentionally executed after source deployment |
