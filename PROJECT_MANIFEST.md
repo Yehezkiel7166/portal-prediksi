@@ -465,3 +465,12 @@ Both tools are deterministic, rate-limited, and do not persist visitor input.
 - Canonical artifacts: `PROJECT_STATE.md`, `PROJECT_STATE.json`, `SPRINT_STATE.md`, `ROADMAP.md`, `CHANGELOG.md`, `AI_HANDOVER.md`, sprint record, and CTO crosscheck.
 - Next candidate: Site Configuration Foundation.
 <!-- SPRINT-18E-END -->
+
+### Site Configuration Foundation
+
+- `app/Domains/SiteConfiguration/Models/SiteConfiguration.php`
+- `app/Domains/SiteConfiguration/Data/ResolvedSiteConfiguration.php`
+- `app/Domains/SiteConfiguration/Support/SiteConfigurationResolver.php`
+- `app/Domains/SiteConfiguration/Actions/UpsertSiteConfiguration.php`
+- `database/migrations/2026_07_27_180000_create_site_configurations_table.php`
+- `tests/Feature/SiteConfiguration/SiteConfigurationFoundationTest.php`

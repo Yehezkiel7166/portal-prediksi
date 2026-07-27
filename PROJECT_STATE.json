@@ -120,15 +120,16 @@
   "known_limitations": [
     "Deployment is not yet automated by repository pipeline",
     "Backup automation is not implemented in the repository",
-    "Centralized site settings are not yet implemented",
     "Centralized responsive media management is not yet implemented",
-    "Application test/build CI is not yet implemented"
+    "Application test/build CI is not yet implemented",
+    "Site configuration administration is not yet implemented",
+    "Site configuration is not yet consumed by the public frontend"
   ],
   "next_recommended_phase": {
-    "id": "site_configuration_foundation",
-    "name": "Site Configuration Foundation",
-    "objective": "Inspect and implement centralized brand-scoped site identity, SEO defaults, contact/social links, navigation, footer, and safe cached fallbacks.",
-    "status": "approved_candidate_pending_inspection"
+    "id": "site_configuration_filament_administration",
+    "name": "Sprint 19A-2 — Site Configuration Filament Administration",
+    "objective": "Provide validated current-brand administration over the completed Site Configuration data foundation.",
+    "status": "blocked_until_sprint_19a_1_completion"
   },
   "mandatory_workflow": [
     "INSPECT",
@@ -327,14 +328,11 @@
     }
   ],
   "active_sprint": {
-    "id": "sprint_18e",
-    "name": "Post-Implementation Truth Synchronization",
-    "status": "implementation_package_prepared_pending_server_validation",
-    "baseline_commit": "20838e11d52af369fcb5b6274d089cecfa57429e",
-    "baseline_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
-    "behavior_change": false,
-    "database_migration_required": false,
-    "objective": "Synchronize canonical repository artifacts with verified Sprint 18D production truth."
+    "id": "sprint_19a_1",
+    "name": "Sprint 19A-1 — Site Configuration Data Foundation",
+    "status": "implementation_prepared_pending_server_validation",
+    "baseline_commit": "1d84f0735ad788aff6b45488cfef9dbc87b222c8",
+    "baseline_tree": "00215be1be0f9a5683fb6ed30b7bcefc2bd9a222"
   },
   "delivery": {
     "brand_1_usable_deadline": "2026-07-30",
@@ -435,7 +433,7 @@
       "no_input_persistence"
     ]
   },
-  "version": "0.18.2",
+  "version": "0.19.0-alpha.1",
   "status": "active",
   "sprint_18d": {
     "name": "Buku Mimpi and Paito Togel Warna",

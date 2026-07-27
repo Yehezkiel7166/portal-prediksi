@@ -19,29 +19,29 @@ This is the canonical current sprint summary. Detailed, immutable sprint evidenc
 
 ## Active Sprint
 
-- Sprint: Sprint 18E — Post-Implementation Truth Synchronization
+- Sprint: Sprint 19A-1 — Site Configuration Data Foundation
 - Status: implementation prepared; completion pending guarded server validation, commit, push, and remote verification
-- Baseline: `20838e11d52af369fcb5b6274d089cecfa57429e`
-- Baseline tree: `b05daff4acad282035e8b171ee53611b22d9eceb`
-- Application behavior changes: none
+- Baseline: `1d84f0735ad788aff6b45488cfef9dbc87b222c8`
+- Baseline tree: `00215be1be0f9a5683fb6ed30b7bcefc2bd9a222`
+- Application behavior changes: persistence and domain-resolution foundation only; no frontend or admin integration
 
 ## Current Objective
 
-Synchronize canonical repository artifacts with verified Sprint 18D production truth, close the mandatory six-tool Brand 1 lottery suite milestone, and select Site Configuration Foundation as the next approved implementation candidate.
+Implement deterministic brand-scoped site configuration persistence, safe fallback resolution, cache invalidation, and regression coverage as the first bounded increment of Site Configuration Foundation.
 
 ## Planned Tasks
 
-- Record Sprint 16A, Sprint 16B, and Sprint 16C as completed.
-- Record Slot Gacor / RTP and Jackpot Proof as implemented.
-- Synchronize project state, roadmap, registry, manifest, changelog, and handover.
-- Run full regression, governance audit, repository re-read, and CTO crosscheck.
-- Commit, push, and remotely verify Sprint 16D.
+- Add the brand-scoped site configuration table and model relationship.
+- Add safe active-configuration resolution and cache invalidation.
+- Add guarded upsert behavior that preserves brand ownership.
+- Add targeted tests and run full regression.
+- Run governance, completion gate, and CTO crosscheck.
+- Commit, push, remotely verify, and restore a clean working tree.
 
 ## Next Implementation Candidate
 
-Sprint 16E — Visitor Complaint Engine, subject to Sprint 16D completion.
+Sprint 19A-2 — Site Configuration Filament Administration, subject to Sprint 19A-1 completion.
 
-<!-- CURRENT-DIRECTION-START -->
 ## Canonical Direction — 2026-07-25
 
 - Project started on 2026-07-16.

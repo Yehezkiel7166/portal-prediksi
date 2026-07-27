@@ -3,10 +3,12 @@
 namespace App\Domains\Brand\Models;
 
 use App\Domains\Domain\Models\BrandDomain;
+use App\Domains\SiteConfiguration\Models\SiteConfiguration;
 use Database\Factories\BrandFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Brand extends Model
 {
@@ -43,6 +45,12 @@ class Brand extends Model
     public function domains(): HasMany
     {
         return $this->hasMany(BrandDomain::class);
+    }
+
+    /** @return HasOne<SiteConfiguration, $this> */
+    public function siteConfiguration(): HasOne
+    {
+        return $this->hasOne(SiteConfiguration::class);
     }
 
     protected static function newFactory(): BrandFactory

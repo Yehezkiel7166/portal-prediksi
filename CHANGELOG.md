@@ -57,3 +57,15 @@
 - Added deterministic digit color mapping and Result-versioned cache keys.
 - Added public navigation, automated tests, and synchronized Sprint 18D documentation.
 - No database migration or duplicate Result persistence was introduced.
+
+## [0.19.0-alpha.1] - 2026-07-27
+
+### Sprint 19A-1 — Site Configuration Data Foundation
+
+- Added one brand-scoped `site_configurations` record per brand.
+- Added centralized site identity, SEO-default, contact, social-link, and footer persistence fields.
+- Added safe resolver fallbacks when no active database configuration exists.
+- Added short-lived cache and explicit cache invalidation after configuration updates.
+- Added a guarded upsert action that cannot move configuration ownership between brands.
+- Added migration, relationship, and feature regression coverage.
+- Kept Filament administration and frontend integration out of this slice; those remain for subsequent Sprint 19A increments.

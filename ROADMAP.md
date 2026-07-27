@@ -398,3 +398,15 @@ Status: documentation-only synchronization prepared from the verified Sprint 18D
 
 Objective: align canonical repository state with production truth and close the Brand 1 lottery-suite milestone without changing application behavior. After synchronization, the next approved implementation candidate is Site Configuration Foundation, subject to repository inspection and RED evidence.
 <!-- SPRINT-18E-END -->
+
+## Sprint 19A Increment Plan
+
+Site Configuration Foundation is intentionally divided into deterministic increments:
+
+1. **Sprint 19A-1 — Data Foundation:** brand-scoped persistence, safe resolver fallback, cache invalidation, and tests.
+2. **Sprint 19A-2 — Filament Administration:** current-brand configuration editing with validation and authorization.
+3. **Sprint 19A-3 — Frontend Integration:** shared identity, SEO defaults, contact/social links, and footer consumption.
+4. **Sprint 19A-4 — Analytics and Structured Metadata:** non-secret identifiers, Open Graph defaults, and justified JSON-LD.
+5. **Sprint 19A-5 — Completion Audit:** full cross-module regression, documentation truth sync, and production-readiness closure.
+
+Each increment must pass the permanent completion gate before the next increment starts.

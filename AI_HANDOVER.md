@@ -415,3 +415,7 @@ Baseline is `2ef3a9c84b6f9a5926009f9c5c97ac7f673dab0f` on `feat/domain-managemen
 
 Baseline is `20838e11d52af369fcb5b6274d089cecfa57429e` with tree `b05daff4acad282035e8b171ee53611b22d9eceb` on `feat/domain-management-foundation`. Sprint 18D is production-validated, committed, pushed, and remotely verified with 470 tests, 1336 assertions, governance audit 7/7, and completion gate PASS. Sprint 18E is documentation-only truth synchronization. No migration or application behavior change is allowed. The next approved implementation candidate is Site Configuration Foundation after a fresh repository inspection.
 <!-- SPRINT-18E-HANDOVER-END -->
+
+## Sprint 19A Increment Boundary
+
+Sprint 19A is split into bounded increments. Sprint 19A-1 introduces only the site-configuration persistence and resolver foundation. Do not claim Filament administration, frontend metadata integration, analytics, Open Graph, JSON-LD, or media upload support until their later increments are implemented and validated. The required Sprint 19A-1 baseline is commit `1d84f0735ad788aff6b45488cfef9dbc87b222c8`, tree `00215be1be0f9a5683fb6ed30b7bcefc2bd9a222`.
