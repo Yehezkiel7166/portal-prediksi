@@ -4,6 +4,10 @@ namespace App\Domains\Complaint\Actions;
 
 use App\Domains\Brand\Support\BrandContext;
 use App\Domains\Complaint\Models\Complaint;
+use App\Domains\Complaint\Models\ComplaintStatusHistory;
+use App\Domains\Complaint\Notifications\NewComplaintSubmitted;
+use App\Models\User;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
@@ -34,6 +38,17 @@ class CreatePublicComplaintAction
             'user_agent' => Str::limit((string) ($data['user_agent'] ?? ''), 1000, ''),
         ]);
         $complaint->save();
+
+        ComplaintStatusHistory::query()->create([
+            'complaint_id' => $complaint->getKey(),
+            'brand_id' => $complaint->brand_id,
+            'from_status' => null,
+            'to_status' => Complaint::STATUS_OPEN,
+            'actor_id' => null,
+        ]);
+
+        $administrators = User::query()->where('is_admin', true)->get();
+        Notification::send($administrators, new NewComplaintSubmitted($complaint->load('brand')));
 
         return $complaint->refresh();
     }

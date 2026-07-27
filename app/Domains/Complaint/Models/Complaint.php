@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Complaint extends Model
 {
@@ -17,13 +18,16 @@ class Complaint extends Model
     use HasFactory;
 
     public const STATUS_OPEN = 'open';
+    public const STATUS_IN_PROGRESS = 'in_progress';
+    /** @deprecated Retained only for compatibility with pre-Sprint 17B records. */
     public const STATUS_REVIEWED = 'reviewed';
     public const STATUS_RESOLVED = 'resolved';
     public const STATUS_REJECTED = 'rejected';
 
     protected $fillable = [
         'reference_code', 'name', 'contact', 'subject', 'message', 'status',
-        'reviewed_at', 'resolved_at', 'handled_by', 'admin_notes', 'source_ip', 'user_agent',
+        'reviewed_at', 'resolved_at', 'handled_by', 'admin_notes', 'admin_response',
+        'responded_at', 'source_ip', 'user_agent',
     ];
 
     protected $hidden = ['source_ip', 'user_agent'];
@@ -33,12 +37,18 @@ class Complaint extends Model
         return [
             'reviewed_at' => 'immutable_datetime',
             'resolved_at' => 'immutable_datetime',
+            'responded_at' => 'immutable_datetime',
         ];
     }
 
     protected static function newFactory(): ComplaintFactory
     {
         return ComplaintFactory::new();
+    }
+
+    public function histories(): HasMany
+    {
+        return $this->hasMany(ComplaintStatusHistory::class)->oldest('id');
     }
 
     public function handler(): BelongsTo

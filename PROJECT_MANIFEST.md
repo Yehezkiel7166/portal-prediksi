@@ -402,3 +402,14 @@ Canonical implementation truth at baseline `af99d9a6ab748188698b0cb09c6093d3f81c
 
 This synchronization introduces no application behavior change.
 <!-- SPRINT-16D-PROJECT-MANIFEST-END -->
+
+<!-- SPRINT-17B-MANIFEST-START -->
+## Sprint 17B Manifest Addition
+
+Complaint workflow implementation now includes:
+- `app/Domains/Complaint/Models/ComplaintStatusHistory.php`;
+- `app/Domains/Complaint/Notifications/NewComplaintSubmitted.php`;
+- `database/migrations/2026_07_27_120000_complete_complaint_workflow.php`;
+- `tests/Feature/Complaint/ComplaintWorkflowTest.php`;
+- Sprint and CTO cross-check records for Sprint 17B.
+<!-- SPRINT-17B-MANIFEST-END -->

@@ -85,3 +85,11 @@ Canonical reference:
 - `docs/governance/CURRENT_DIRECTION.md`
 - `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
 <!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-17B-DECISION-START -->
+## DEC-17B-001 — Complete Complaint Operations Before Starting Guide
+
+Status: Accepted.
+
+Sprint 17B completes the already-started Complaint module before selecting another Brand 1 module. Complaint status history is append-only, public complaint records remain private, and terminal status transitions cannot be reopened through the standard workflow.
+<!-- SPRINT-17B-DECISION-END -->

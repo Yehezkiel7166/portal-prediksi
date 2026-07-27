@@ -1324,3 +1324,10 @@ Canonical reference:
 - `docs/governance/CURRENT_DIRECTION.md`
 - `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
 <!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-17B-IDEA-STATUS-START -->
+## Sprint 17B Idea Status Update
+
+- `MP2-IDEA-004` Complaint workflow and case tracking: IMPLEMENTED for Brand 1 operational baseline.
+- Attachments and public secure tracking remain separate future increments and were not inferred into Sprint 17B.
+<!-- SPRINT-17B-IDEA-STATUS-END -->

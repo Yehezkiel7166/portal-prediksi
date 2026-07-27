@@ -377,3 +377,9 @@ Canonical implementation truth at baseline `af99d9a6ab748188698b0cb09c6093d3f81c
 
 This synchronization introduces no application behavior change.
 <!-- SPRINT-16D-AI-HANDOVER-END -->
+
+<!-- SPRINT-17B-AI-HANDOVER-START -->
+## Sprint 17B Handover
+
+Source baseline is commit `ac0303b5e90b17abf3abc6914783f75f46f2f27f` on `feat/domain-management-foundation`. Sprint 17A is complete and must not be repeated. Sprint 17B completes the complaint operational workflow through guarded transitions, administrator response, history/audit records, timestamps, and administrator notification. Run the supplied Hostinger script to validate, migrate, commit, push, and remotely verify. Do not select the next sprint until that remote verification passes.
+<!-- SPRINT-17B-AI-HANDOVER-END -->

@@ -258,3 +258,14 @@ Canonical implementation truth at baseline `af99d9a6ab748188698b0cb09c6093d3f81c
 
 This synchronization introduces no application behavior change.
 <!-- SPRINT-16D-PROJECT-STATE-END -->
+
+<!-- SPRINT-17B-PROJECT-STATE-START -->
+## Sprint 17B Delivery State
+
+- Current sprint: Sprint 17B — Complaint Workflow Completion.
+- Baseline: `ac0303b5e90b17abf3abc6914783f75f46f2f27f`.
+- Complaint foundation from Sprint 17A is preserved and extended, not repeated.
+- New capabilities: In Progress status, guarded transitions, administrator response, immutable status history, audit attribution, operational timestamps, and administrator notification.
+- Production migration: guarded post-deployment execution is mandatory.
+- Final completion requires server regression, governance audit, Sprint Completion Gate, commit, push, and remote verification.
+<!-- SPRINT-17B-PROJECT-STATE-END -->

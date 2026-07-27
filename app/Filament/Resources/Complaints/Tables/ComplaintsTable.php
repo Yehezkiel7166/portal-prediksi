@@ -23,7 +23,7 @@ final class ComplaintsTable
             ->filters([
                 SelectFilter::make('status')->options([
                     Complaint::STATUS_OPEN => 'Terbuka',
-                    Complaint::STATUS_REVIEWED => 'Ditinjau',
+                    Complaint::STATUS_IN_PROGRESS => 'Sedang ditangani',
                     Complaint::STATUS_RESOLVED => 'Selesai',
                     Complaint::STATUS_REJECTED => 'Ditolak',
                 ]),

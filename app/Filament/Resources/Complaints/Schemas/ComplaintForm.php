@@ -24,11 +24,12 @@ final class ComplaintForm
             Section::make('Penanganan')->schema([
                 Select::make('status')->options([
                     Complaint::STATUS_OPEN => 'Terbuka',
-                    Complaint::STATUS_REVIEWED => 'Ditinjau',
+                    Complaint::STATUS_IN_PROGRESS => 'Sedang ditangani',
                     Complaint::STATUS_RESOLVED => 'Selesai',
                     Complaint::STATUS_REJECTED => 'Ditolak',
                 ])->required(),
-                Textarea::make('admin_notes')->label('Catatan admin')->rows(5)->columnSpanFull(),
+                Textarea::make('admin_response')->label('Respons untuk pengunjung')->helperText('Respons operasional; jangan masukkan rahasia atau data sensitif.')->rows(5)->columnSpanFull(),
+                Textarea::make('admin_notes')->label('Catatan internal')->rows(5)->columnSpanFull(),
             ]),
         ]);
     }

@@ -17,7 +17,7 @@
 | SEO Engine | Brand | PLANNED |
 | SERP Intelligence Engine | Brand | PLANNED |
 | Guide Engine | Brand / Public | PLANNED |
-| Complaint Engine | Visitor / Brand | PLANNED |
+| Complaint Engine | Visitor / Brand | IMPLEMENTED |
 | Prediction Engine | Brand | IMPLEMENTED |
 | Result Engine | Brand | IMPLEMENTED |
 | Promotion Engine | Brand | IMPLEMENTED |

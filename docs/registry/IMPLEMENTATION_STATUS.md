@@ -96,3 +96,16 @@ Verification baseline: `af99d9a6ab748188698b0cb09c6093d3f81ca891`; 433 tests / 1
 | Complaint admin workflow | IMPLEMENTED | `ComplaintResource`, status workflow action |
 | Complaint privacy and abuse controls | IMPLEMENTED | noindex, no public listing, CSRF, honeypot, throttle |
 | Production complaint table | PENDING MIGRATION | migration intentionally executed after source deployment |
+
+<!-- SPRINT-17B-IMPLEMENTATION-TRUTH-START -->
+## Sprint 17B Implementation Truth
+
+| Capability | Verified implementation state | Evidence |
+|---|---|---|
+| Complaint operational workflow | IMPLEMENTED | guarded status transition action and Filament workflow |
+| Administrator response | IMPLEMENTED | `admin_response`, `responded_at`, handler attribution |
+| Complaint status history | IMPLEMENTED | brand-scoped `complaint_status_histories` records |
+| Administrator notification | IMPLEMENTED | mail notification on public submission |
+| Public complaint privacy | IMPLEMENTED | no public listing/tracking endpoint; existing noindex and abuse controls preserved |
+| Production migration | PENDING GUARDED SERVER EXECUTION | Hostinger delivery script |
+<!-- SPRINT-17B-IMPLEMENTATION-TRUTH-END -->

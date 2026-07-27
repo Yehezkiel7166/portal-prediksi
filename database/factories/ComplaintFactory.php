@@ -25,6 +25,8 @@ class ComplaintFactory extends Factory
             'resolved_at' => null,
             'handled_by' => null,
             'admin_notes' => null,
+            'admin_response' => null,
+            'responded_at' => null,
             'source_ip' => '127.0.0.1',
             'user_agent' => 'PHPUnit',
         ];

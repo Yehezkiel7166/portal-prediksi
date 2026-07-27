@@ -189,3 +189,20 @@ Implementation state prepared for repository validation:
 
 Production migration remains an explicit post-deployment operation.
 <!-- SPRINT-17A-STATE-END -->
+
+<!-- SPRINT-17B-STATE-START -->
+## Sprint 17B — Complaint Workflow Completion
+
+Baseline: `ac0303b5e90b17abf3abc6914783f75f46f2f27f`.
+
+Implementation package includes:
+- Open → In Progress → Resolved / Rejected transition policy;
+- administrator responses and internal notes;
+- complaint status history with actor and brand ownership;
+- review, response, and resolution timestamps;
+- administrator email notification;
+- migration of legacy `reviewed` status to `in_progress`;
+- targeted workflow regression tests.
+
+Completion state: prepared for guarded Hostinger validation, commit, push, and remote verification.
+<!-- SPRINT-17B-STATE-END -->

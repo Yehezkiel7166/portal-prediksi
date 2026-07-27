@@ -124,3 +124,9 @@ Current delivery order:
 
 Security is a mandatory production gate. See [`docs/security/THREAT_MODEL.md`](docs/security/THREAT_MODEL.md), [`docs/security/SECURITY_CONTROL_MATRIX.md`](docs/security/SECURITY_CONTROL_MATRIX.md), and [`docs/delivery/BRAND-1-PRODUCTION-GATE.md`](docs/delivery/BRAND-1-PRODUCTION-GATE.md).
 <!-- PROJECT-BRAIN-V1-END -->
+
+<!-- SPRINT-17B-README-START -->
+## Current Delivery State — Sprint 17B
+
+Sprint 17B completes the operational Visitor Complaint workflow with controlled status transitions, administrator responses, immutable status history, handler attribution, timestamps, and administrator notification. Production requires both complaint migrations to run after deployment.
+<!-- SPRINT-17B-README-END -->

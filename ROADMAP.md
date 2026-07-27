@@ -335,3 +335,19 @@ Canonical implementation truth at baseline `af99d9a6ab748188698b0cb09c6093d3f81c
 
 This synchronization introduces no application behavior change.
 <!-- SPRINT-16D-ROADMAP-END -->
+
+<!-- SPRINT-17B-ROADMAP-START -->
+## Sprint 17B — Complaint Workflow Completion
+
+Status: implementation package completed; server regression, commit, push, and remote verification are executed by the guarded Hostinger delivery script.
+
+Delivered scope:
+- Open → In Progress → Resolved / Rejected workflow;
+- administrator response and internal notes;
+- immutable brand-scoped status history;
+- handler, first-response, review, and resolution timestamps;
+- administrator email notification on submission;
+- compatibility migration from legacy `reviewed` to `in_progress`.
+
+Next product selection must be made only after Sprint 17B remote verification and a fresh implementation-truth cross-check.
+<!-- SPRINT-17B-ROADMAP-END -->

@@ -224,7 +224,7 @@ This registry remains authoritative for existing registered implementation ident
 | MP21-F008 | Brand Slot Gacor | Critical | PLANNED |
 | MP21-F009 | RTP Snapshot and History | Critical | PLANNED |
 | MP21-F010 | Public Guide Center | High | PLANNED |
-| MP21-F011 | Visitor Complaint Workflow | High | PLANNED |
+| MP21-F011 | Visitor Complaint Workflow | High | IMPLEMENTED |
 | MP21-F012 | Manual SEO | Critical | PLANNED |
 | MP21-F013 | Hybrid SEO | Critical | PLANNED |
 | MP21-F014 | Automatic SEO | High | PLANNED |
