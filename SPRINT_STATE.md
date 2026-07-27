@@ -206,3 +206,20 @@ Implementation package includes:
 
 Completion state: prepared for guarded Hostinger validation, commit, push, and remote verification.
 <!-- SPRINT-17B-STATE-END -->
+
+<!-- SPRINT-18A-STATE-START -->
+## Sprint 18A — Brand 1 Guide Foundation
+
+Baseline: `53b5a85a53796c1f12b3c37b01d416673798731f`.
+
+Implementation package prepared for guarded server validation:
+
+- brand-scoped Guide model and migration;
+- draft, scheduled publication, published, and archived workflow;
+- public listing and detail routes;
+- Filament administration;
+- SEO metadata and navigation integration;
+- targeted Guide regression coverage.
+
+Completion remains pending migration, full regression, governance audit, CTO crosscheck, commit, push, and remote verification.
+<!-- SPRINT-18A-STATE-END -->

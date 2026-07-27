@@ -351,3 +351,14 @@ Delivered scope:
 
 Next product selection must be made only after Sprint 17B remote verification and a fresh implementation-truth cross-check.
 <!-- SPRINT-17B-ROADMAP-END -->
+
+<!-- SPRINT-18A-ROADMAP-START -->
+## Current Brand 1 Sequence After Sprint 17B
+
+1. Sprint 18A — Public Guide Foundation (implementation package prepared).
+2. Lottery Tool delivery in evidence-based grouped increments.
+3. Brand configuration, SEO, and operational minimum.
+4. Release candidate and Brand 1 usable gate.
+
+Owner Panel and Brand 2–5 remain blocked until Brand 1 passes the usable gate.
+<!-- SPRINT-18A-ROADMAP-END -->

@@ -4,6 +4,8 @@ use App\Http\Controllers\Frontend\BlogDetailController;
 use App\Http\Controllers\Frontend\ComplaintController;
 use App\Http\Controllers\Frontend\BlogsController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\GuideDetailController;
+use App\Http\Controllers\Frontend\GuidesController;
 use App\Http\Controllers\Frontend\JackpotProofDetailController;
 use App\Http\Controllers\Frontend\JackpotProofsController;
 use App\Http\Controllers\Frontend\LiveDrawController;
@@ -70,6 +72,12 @@ Route::get('/keluhan', [ComplaintController::class, 'create'])
 Route::post('/keluhan', [ComplaintController::class, 'store'])
     ->middleware('throttle:5,1')
     ->name('complaints.store');
+
+Route::get('/panduan', GuidesController::class)->name('guides.index');
+
+Route::get('/panduan/{slug}', GuideDetailController::class)
+    ->where('slug', '[a-z0-9]+(?:-[a-z0-9]+)*')
+    ->name('guides.show');
 
 Route::get('/blog', BlogsController::class)
     ->name('blog.index');

@@ -383,3 +383,9 @@ This synchronization introduces no application behavior change.
 
 Source baseline is commit `ac0303b5e90b17abf3abc6914783f75f46f2f27f` on `feat/domain-management-foundation`. Sprint 17A is complete and must not be repeated. Sprint 17B completes the complaint operational workflow through guarded transitions, administrator response, history/audit records, timestamps, and administrator notification. Run the supplied Hostinger script to validate, migrate, commit, push, and remotely verify. Do not select the next sprint until that remote verification passes.
 <!-- SPRINT-17B-AI-HANDOVER-END -->
+
+<!-- SPRINT-18A-HANDOVER-START -->
+## Sprint 18A Guide Foundation Package
+
+Use commit `53b5a85a53796c1f12b3c37b01d416673798731f` as the required baseline. The package implements the next incomplete Brand 1 public module: Guide. Do not declare completion before guarded Hostinger validation and remote verification.
+<!-- SPRINT-18A-HANDOVER-END -->

@@ -16,3 +16,10 @@
 - Added Filament complaint review and resolution workflow.
 - Added validation, honeypot, rate limiting, and feature coverage.
 - Production migration remains a separate guarded operation.
+
+## Unreleased — Sprint 18A Guide Foundation
+
+- Added brand-scoped Guide domain, migration, factory, and publication workflow.
+- Added public Guide listing/detail pages with canonical and Open Graph metadata.
+- Added Filament Guide administration and public navigation integration.
+- Added targeted Guide module, frontend, and access tests.

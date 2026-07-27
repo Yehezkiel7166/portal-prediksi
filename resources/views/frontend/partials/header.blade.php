@@ -87,6 +87,19 @@
 
                 <li>
                     <a
+                        href="{{ route('guides.index') }}"
+                        @class([
+                            'transition hover:text-amber-300',
+                            'text-amber-400' => request()->routeIs('guides.*'),
+                            'text-slate-300' => ! request()->routeIs('guides.*'),
+                        ])
+                    >
+                        Panduan
+                    </a>
+                </li>
+
+                <li>
+                    <a
                         href="{{ route('complaints.create') }}"
                         @class([
                             'transition hover:text-amber-300',

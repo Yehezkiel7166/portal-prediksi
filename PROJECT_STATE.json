@@ -5,7 +5,7 @@
     "repository": "https://github.com/Yehezkiel7166/portal-prediksi",
     "primary_branch": "feat/domain-management-foundation",
     "source_of_truth": "git_repository",
-    "version": "0.17.2"
+    "version": "0.18.0"
   },
   "baseline": {
     "commit": "dbc3b17",
@@ -111,10 +111,10 @@
     "Application test/build CI is not yet implemented"
   ],
   "next_recommended_phase": {
-    "id": "brand_1_next_incomplete_capability",
-    "name": "Continue Brand 1 Usable Completion",
-    "objective": "Select the next highest-priority incomplete Brand 1 capability from synchronized repository evidence.",
-    "status": "planned_after_sprint_16a"
+    "id": "brand_1_lottery_tools",
+    "name": "Continue Brand 1 Lottery Tool Completion",
+    "objective": "After Sprint 18A completion, select the next grouped lottery-tool increment from repository evidence.",
+    "status": "planned_after_sprint_18a"
   },
   "mandatory_workflow": [
     "INSPECT",
@@ -312,12 +312,12 @@
     }
   ],
   "active_sprint": {
-    "id": "sprint_17b",
-    "name": "Complaint Workflow Completion",
-    "status": "prepared_pending_server_validation_commit_push_remote_verification",
-    "baseline_commit": "ac0303b5e90b17abf3abc6914783f75f46f2f27f",
+    "id": "sprint_18a",
+    "name": "Brand 1 Guide Foundation",
+    "status": "implementation_package_prepared_pending_server_validation",
+    "baseline_commit": "53b5a85a53796c1f12b3c37b01d416673798731f",
     "behavior_change": true,
-    "objective": "Complete the Brand 1 complaint operational workflow without repeating Sprint 17A."
+    "objective": "Implement the mandatory Brand 1 public Guide module."
   },
   "delivery": {
     "brand_1_usable_deadline": "2026-07-30",
