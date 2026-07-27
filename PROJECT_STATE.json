@@ -120,10 +120,10 @@
     "Application test/build CI is not yet implemented"
   ],
   "next_recommended_phase": {
-    "id": "brand_1_remaining_lottery_tools",
-    "name": "Continue Remaining Brand 1 Lottery Tools",
-    "objective": "After Sprint 18B completion, implement BBFS Generator and Konversi Angka SGP as the next deterministic tool increment.",
-    "status": "planned_after_sprint_18b"
+    "id": "brand_1_final_lottery_tools",
+    "name": "Complete Final Brand 1 Lottery Tools",
+    "objective": "After Sprint 18C completion, implement Buku Mimpi and Paito Togel Warna using canonical content and confirmed Result data.",
+    "status": "planned_after_sprint_18c"
   },
   "mandatory_workflow": [
     "INSPECT",
@@ -409,5 +409,20 @@
       "administrator_notification"
     ],
     "production_migration": "pending_guarded_server_execution"
+  },
+  "sprint_18c": {
+    "name": "BBFS Generator and Konversi Angka SGP",
+    "baseline_commit": "53968bc1084fadd1e695b23cbe99088567cf551a",
+    "baseline_tree": "79e519d3ce06b51c4d5818c6bf03f2773d70fe3b",
+    "status": "implementation_prepared_pending_server_validation",
+    "database_migration_required": false,
+    "capabilities": [
+      "deterministic_bbfs_generation",
+      "sgp_positional_conversion",
+      "public_forms",
+      "validation",
+      "rate_limiting",
+      "no_input_persistence"
+    ]
   }
 }

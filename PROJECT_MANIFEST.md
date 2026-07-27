@@ -424,3 +424,22 @@ Prepared public routes:
 
 Jadwal Togel uses Market configuration as source of truth. Tabel Shio uses published ShioPeriod and ShioNumber records.
 <!-- SPRINT-18B-END -->
+
+<!-- SPRINT-18C-START -->
+## Sprint 18C Manifest Increment
+
+Prepared public routes:
+
+- `/alat-togel/bbfs-generator`
+- `/alat-togel/konversi-angka-sgp`
+
+Implementation components:
+
+- `app/Domains/Bbfs/Support/BbfsGenerator.php`
+- `app/Domains/Converter/Support/SgpNumberConverter.php`
+- `app/Http/Controllers/Frontend/BbfsGeneratorController.php`
+- `app/Http/Controllers/Frontend/SgpNumberConverterController.php`
+- public views and targeted feature tests under `tests/Feature/LotteryTools`.
+
+Both tools are deterministic, rate-limited, and do not persist visitor input.
+<!-- SPRINT-18C-END -->

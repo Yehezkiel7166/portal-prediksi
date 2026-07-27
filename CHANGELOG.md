@@ -29,3 +29,11 @@
 - Added Market-backed lottery schedule configuration and public status display.
 - Added public current-period Shio table.
 - Added Alat Togel navigation destinations and regression tests.
+
+## Unreleased — Sprint 18C
+
+- Added deterministic BBFS generation for normalized 2–7 unique digits with 2D, 3D, and 4D output.
+- Added deterministic SGP four-digit decomposition into AS, KOP, KEPALA, EKOR, 3D, and 2D.
+- Added public routes, canonical metadata, navigation links, throttling, and validation.
+- Added targeted regression tests and synchronized Sprint 18C documentation.
+- No database migration or visitor-input persistence was introduced.

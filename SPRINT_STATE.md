@@ -232,3 +232,13 @@ Completion remains pending migration, full regression, governance audit, CTO cro
 - Status: implementation package prepared pending server validation.
 - Next candidate after completion: BBFS Generator and Konversi Angka SGP.
 <!-- SPRINT-18B-END -->
+
+<!-- SPRINT-18C-START -->
+## Sprint 18C Current State
+
+- Baseline: `53968bc1084fadd1e695b23cbe99088567cf551a`
+- Objective: complete BBFS Generator and Konversi Angka SGP.
+- Status: implementation package prepared pending server validation.
+- Database migration: none; both tools are stateless.
+- Next candidate after completion: Buku Mimpi and Paito Togel Warna.
+<!-- SPRINT-18C-END -->

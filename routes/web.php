@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\BbfsGeneratorController;
 use App\Http\Controllers\Frontend\BlogDetailController;
 use App\Http\Controllers\Frontend\ComplaintController;
 use App\Http\Controllers\Frontend\BlogsController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Frontend\PromotionDetailController;
 use App\Http\Controllers\Frontend\PromotionsController;
 use App\Http\Controllers\Frontend\ResultDetailController;
 use App\Http\Controllers\Frontend\ResultsController;
+use App\Http\Controllers\Frontend\SgpNumberConverterController;
 use App\Http\Controllers\Frontend\ShioTableController;
 use App\Http\Controllers\Frontend\SlotGacorController;
 use Illuminate\Support\Facades\Route;
@@ -93,3 +95,17 @@ Route::get('/alat-togel/jadwal-togel', LotteryScheduleController::class)
 
 Route::get('/alat-togel/tabel-shio', ShioTableController::class)
     ->name('tools.shio-table');
+
+Route::get('/alat-togel/bbfs-generator', [BbfsGeneratorController::class, 'create'])
+    ->name('tools.bbfs.create');
+
+Route::post('/alat-togel/bbfs-generator', [BbfsGeneratorController::class, 'store'])
+    ->middleware('throttle:20,1')
+    ->name('tools.bbfs.store');
+
+Route::get('/alat-togel/konversi-angka-sgp', [SgpNumberConverterController::class, 'create'])
+    ->name('tools.sgp-converter.create');
+
+Route::post('/alat-togel/konversi-angka-sgp', [SgpNumberConverterController::class, 'store'])
+    ->middleware('throttle:30,1')
+    ->name('tools.sgp-converter.store');

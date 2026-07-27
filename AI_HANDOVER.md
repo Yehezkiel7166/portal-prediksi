@@ -395,3 +395,9 @@ Use commit `53b5a85a53796c1f12b3c37b01d416673798731f` as the required baseline. 
 
 Baseline is `de2ac4da66cddb760c3d1c679d09ec737b5c94b5` on `feat/domain-management-foundation`. Sprint 18B implements Jadwal Togel from Market configuration and confirmed Result data, plus Tabel Shio from the existing Shio domain. Do not mark complete before server validation and remote verification.
 <!-- SPRINT-18B-HANDOVER-END -->
+
+<!-- SPRINT-18C-HANDOVER-START -->
+## Sprint 18C Handover
+
+Baseline is `53968bc1084fadd1e695b23cbe99088567cf551a` on `feat/domain-management-foundation`. Sprint 18C implements BBFS Generator and Konversi Angka SGP as stateless deterministic tools. BBFS is limited by `config/lottery-tools.php`; the converter uses the documented ABCD positional rule. No database migration is required. Do not mark complete before PHP 8.3 targeted regression, full regression, governance audit, commit, push, and remote verification.
+<!-- SPRINT-18C-HANDOVER-END -->

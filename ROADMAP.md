@@ -370,3 +370,13 @@ Status: implementation package prepared pending server validation.
 
 This increment adds the first two public lottery tools using existing canonical Market, Result, and Shio data. After completion, the remaining lottery tools are BBFS Generator, Buku Mimpi, Paito Togel Warna, and Konversi Angka SGP.
 <!-- SPRINT-18B-END -->
+
+<!-- SPRINT-18C-START -->
+## Sprint 18C — BBFS Generator and Konversi Angka SGP
+
+Status: implementation package prepared pending guarded server validation.
+
+This increment adds two stateless deterministic lottery tools. BBFS normalizes 2–7 unique digits and produces ordered 2D, 3D, or 4D permutations without repeated digits. Konversi Angka SGP decomposes an exact four-digit input into AS, KOP, KEPALA, EKOR, 3D, and 2D according to rules shown on the public page.
+
+After completion, the remaining mandatory lottery tools are Buku Mimpi and Paito Togel Warna.
+<!-- SPRINT-18C-END -->
