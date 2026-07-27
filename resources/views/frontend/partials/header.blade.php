@@ -59,6 +59,19 @@
                 </li>
 
                 <li>
+                    <a
+                        href="{{ route('jackpot-proofs.index') }}"
+                        @class([
+                            'transition hover:text-amber-300',
+                            'text-amber-400' => request()->routeIs('jackpot-proofs.*'),
+                            'text-slate-300' => ! request()->routeIs('jackpot-proofs.*'),
+                        ])
+                    >
+                        Bukti Jackpot
+                    </a>
+                </li>
+
+                <li>
                     <details class="relative">
                         <summary class="cursor-pointer text-slate-300 transition hover:text-amber-300">
                             Alat Togel

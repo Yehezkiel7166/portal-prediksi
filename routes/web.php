@@ -3,6 +3,8 @@
 use App\Http\Controllers\Frontend\BlogDetailController;
 use App\Http\Controllers\Frontend\BlogsController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\JackpotProofDetailController;
+use App\Http\Controllers\Frontend\JackpotProofsController;
 use App\Http\Controllers\Frontend\LiveDrawController;
 use App\Http\Controllers\Frontend\PredictionDetailController;
 use App\Http\Controllers\Frontend\PredictionsController;
@@ -46,6 +48,12 @@ Route::get(
 
 Route::get('/slot-gacor', SlotGacorController::class)
     ->name('slot-gacor.index');
+
+Route::get('/bukti-jackpot', JackpotProofsController::class)->name('jackpot-proofs.index');
+
+Route::get('/bukti-jackpot/{slug}', JackpotProofDetailController::class)
+    ->where('slug', '[a-z0-9]+(?:-[a-z0-9]+)*')
+    ->name('jackpot-proofs.show');
 
 Route::get('/promosi', PromotionsController::class)
     ->name('promotions.index');
