@@ -4,6 +4,8 @@ namespace Tests\Feature\Blog;
 
 use App\Domains\Blog\Actions\UpsertBlogPostAction;
 use App\Domains\Blog\Models\BlogPost;
+use App\Domains\Brand\Models\Brand;
+use App\Domains\Brand\Support\BrandContext;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
@@ -14,6 +16,10 @@ class BlogModuleTest extends TestCase
 
     public function test_action_creates_normalized_blog_post(): void
     {
+        $brand = Brand::factory()->create();
+
+        app(BrandContext::class)->set($brand);
+
         $post = app(UpsertBlogPostAction::class)->execute([
             'title' => '  Panduan Prediksi Togel  ',
             'slug' => '',
@@ -143,5 +149,62 @@ class BlogModuleTest extends TestCase
 
         $this->assertCount(1, $results);
         $this->assertTrue($results->contains($published));
+    }
+
+    public function test_action_assigns_context_brand_when_creating_blog_post(): void
+    {
+        $brand = Brand::factory()->create();
+
+        app(BrandContext::class)->set($brand);
+
+        $post = app(UpsertBlogPostAction::class)->execute([
+            'title' => 'Brand Article',
+            'slug' => 'brand-article',
+            'excerpt' => null,
+            'content' => null,
+            'image_source' => BlogPost::IMAGE_SOURCE_UPLOAD,
+            'image_path' => 'blog/brand.jpg',
+            'image_url' => null,
+            'focal_point' => 'center',
+            'status' => BlogPost::STATUS_DRAFT,
+            'published_at' => null,
+            'sort_order' => 0,
+            'seo_title' => null,
+            'seo_description' => null,
+            'notes' => null,
+        ]);
+
+        $this->assertSame($brand->id, $post->brand_id);
+    }
+
+    public function test_updating_blog_post_does_not_move_it_to_context_brand(): void
+    {
+        $originalBrand = Brand::factory()->create();
+        $contextBrand = Brand::factory()->create();
+
+        $post = BlogPost::factory()->create([
+            'brand_id' => $originalBrand->id,
+        ]);
+
+        app(BrandContext::class)->set($contextBrand);
+
+        $updated = app(UpsertBlogPostAction::class)->execute([
+            'title' => 'Updated Article',
+            'slug' => $post->slug,
+            'excerpt' => null,
+            'content' => null,
+            'image_source' => BlogPost::IMAGE_SOURCE_UPLOAD,
+            'image_path' => 'blog/updated-brand.jpg',
+            'image_url' => null,
+            'focal_point' => 'center',
+            'status' => BlogPost::STATUS_DRAFT,
+            'published_at' => null,
+            'sort_order' => 0,
+            'seo_title' => null,
+            'seo_description' => null,
+            'notes' => null,
+        ], $post);
+
+        $this->assertSame($originalBrand->id, $updated->brand_id);
     }
 }

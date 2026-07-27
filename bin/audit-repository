@@ -15,11 +15,13 @@ echo "Repository: $ROOT_DIR"
 echo
 
 checks=(
+    "scripts/repository/check-sprint-completion-gate.sh"
     "scripts/repository/check-merge-markers.sh"
     "scripts/repository/check-adrs.sh"
     "scripts/repository/check-secrets-and-paths.sh"
     "scripts/repository/check-markdown-links.sh"
     "scripts/repository/check-manifest.sh"
+    "scripts/repository/check-current-direction.sh"
 )
 
 total_checks=0

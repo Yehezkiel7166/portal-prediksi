@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Prediction;
 
+use App\Domains\Brand\Models\Brand;
 use App\Domains\Market\Models\Market;
 use App\Domains\Prediction\Actions\UpsertPredictionAction;
 use App\Domains\Prediction\Models\Prediction;
@@ -164,5 +165,48 @@ class PredictionModuleTest extends TestCase
         $this->actingAs($user)
             ->get('/admin/predictions')
             ->assertForbidden();
+    }
+
+    public function test_action_assigns_market_brand_to_prediction(): void
+    {
+        $brand = Brand::factory()->create();
+
+        $market = Market::factory()->create([
+            'brand_id' => $brand->id,
+        ]);
+
+        $prediction = app(UpsertPredictionAction::class)->execute(null, [
+            'market_id' => $market->id,
+            'prediction_date' => '2026-07-21',
+            'predicted_numbers' => '1234',
+            'status' => Prediction::STATUS_DRAFT,
+            'notes' => null,
+        ]);
+
+        $this->assertSame($brand->id, $prediction->brand_id);
+    }
+
+    public function test_changing_prediction_market_updates_its_brand(): void
+    {
+        $originalMarket = Market::factory()->create();
+        $newMarket = Market::factory()->create();
+
+        $prediction = Prediction::factory()->create([
+            'market_id' => $originalMarket->id,
+            'prediction_date' => '2026-07-21',
+        ]);
+
+        $updated = app(UpsertPredictionAction::class)->execute(
+            $prediction,
+            [
+                'market_id' => $newMarket->id,
+                'prediction_date' => '2026-07-21',
+                'predicted_numbers' => '5678',
+                'status' => Prediction::STATUS_DRAFT,
+                'notes' => null,
+            ],
+        );
+
+        $this->assertSame($newMarket->brand_id, $updated->brand_id);
     }
 }

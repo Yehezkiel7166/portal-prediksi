@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Frontend;
 
+use App\Domains\Brand\Models\Brand;
 use App\Domains\Market\Models\Market;
 use App\Domains\Prediction\Models\Prediction;
 use App\Http\Controllers\Frontend\PredictionsController;
@@ -185,5 +186,65 @@ final class PublicPredictionListingTest extends TestCase
             )
             ->assertSee('PREDICTION-13')
             ->assertDontSee('PREDICTION-01');
+    }
+
+    public function test_listing_only_displays_predictions_for_the_current_brand(): void
+    {
+
+        $brandA = Brand::factory()->create([
+            'code' => 'brand-a',
+            'domain' => 'brand-a.test',
+            'name' => 'Brand A',
+            'slug' => 'brand-a',
+            'is_active' => true,
+        ]);
+
+        $brandB = Brand::factory()->create([
+            'code' => 'brand-b',
+            'name' => 'Brand B',
+            'slug' => 'brand-b',
+            'is_active' => true,
+        ]);
+
+        $marketA = Market::factory()->create([
+            'brand_id' => $brandA->id,
+            'name' => 'Market Brand A',
+            'code' => 'BRA',
+            'slug' => 'market-brand-a',
+            'is_active' => true,
+        ]);
+
+        $marketB = Market::factory()->create([
+            'brand_id' => $brandB->id,
+            'name' => 'Market Brand B',
+            'code' => 'BRB',
+            'slug' => 'market-brand-b',
+            'is_active' => true,
+        ]);
+
+        Prediction::factory()->create([
+            'brand_id' => $brandA->id,
+            'market_id' => $marketA->id,
+            'prediction_date' => '2026-07-20',
+            'predicted_numbers' => 'CURRENT-BRAND-PREDICTION',
+            'status' => Prediction::STATUS_PUBLISHED,
+            'published_at' => now()->subMinute(),
+        ]);
+
+        Prediction::factory()->create([
+            'brand_id' => $brandB->id,
+            'market_id' => $marketB->id,
+            'prediction_date' => '2026-07-20',
+            'predicted_numbers' => 'OTHER-BRAND-PREDICTION',
+            'status' => Prediction::STATUS_PUBLISHED,
+            'published_at' => now()->subMinute(),
+        ]);
+
+        $this->get('http://brand-a.test'.parse_url(route('predictions.index'), PHP_URL_PATH))
+            ->assertOk()
+            ->assertSee('CURRENT-BRAND-PREDICTION')
+            ->assertSee('Market Brand A')
+            ->assertDontSee('OTHER-BRAND-PREDICTION')
+            ->assertDontSee('Market Brand B');
     }
 }

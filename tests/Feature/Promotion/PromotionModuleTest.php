@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Promotion;
 
+use App\Domains\Brand\Models\Brand;
+use App\Domains\Brand\Support\BrandContext;
 use App\Domains\Promotion\Actions\UpsertPromotionAction;
 use App\Domains\Promotion\Models\Promotion;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -14,6 +16,10 @@ class PromotionModuleTest extends TestCase
 
     public function test_action_creates_normalized_promotion(): void
     {
+        $brand = Brand::factory()->create();
+
+        app(BrandContext::class)->set($brand);
+
         $promotion = app(UpsertPromotionAction::class)->execute([
             'title' => '  Promo Hadiah Utama  ',
             'slug' => '',
@@ -126,5 +132,60 @@ class PromotionModuleTest extends TestCase
 
         $this->assertCount(1, $results);
         $this->assertTrue($results->contains($published));
+    }
+
+    public function test_action_assigns_context_brand_when_creating_promotion(): void
+    {
+        $brand = Brand::factory()->create();
+
+        app(BrandContext::class)->set($brand);
+
+        $promotion = app(UpsertPromotionAction::class)->execute([
+            'title' => 'Brand Promotion',
+            'slug' => 'brand-promotion',
+            'excerpt' => null,
+            'content' => null,
+            'media_source' => Promotion::MEDIA_SOURCE_UPLOAD,
+            'media_path' => 'promotions/brand.jpg',
+            'media_url' => null,
+            'embed_url' => null,
+            'focal_point' => 'center',
+            'status' => Promotion::STATUS_DRAFT,
+            'published_at' => null,
+            'sort_order' => 0,
+            'notes' => null,
+        ]);
+
+        $this->assertSame($brand->id, $promotion->brand_id);
+    }
+
+    public function test_updating_promotion_does_not_move_it_to_context_brand(): void
+    {
+        $originalBrand = Brand::factory()->create();
+        $contextBrand = Brand::factory()->create();
+
+        $promotion = Promotion::factory()->create([
+            'brand_id' => $originalBrand->id,
+        ]);
+
+        app(BrandContext::class)->set($contextBrand);
+
+        $updated = app(UpsertPromotionAction::class)->execute([
+            'title' => 'Updated Promotion',
+            'slug' => $promotion->slug,
+            'excerpt' => null,
+            'content' => null,
+            'media_source' => Promotion::MEDIA_SOURCE_UPLOAD,
+            'media_path' => 'promotions/updated-brand.jpg',
+            'media_url' => null,
+            'embed_url' => null,
+            'focal_point' => 'center',
+            'status' => Promotion::STATUS_DRAFT,
+            'published_at' => null,
+            'sort_order' => 0,
+            'notes' => null,
+        ], $promotion);
+
+        $this->assertSame($originalBrand->id, $updated->brand_id);
     }
 }

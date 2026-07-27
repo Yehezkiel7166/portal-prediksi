@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Frontend;
 
+use App\Domains\Brand\Models\Brand;
 use App\Domains\LiveDraw\Models\LiveDraw;
 use App\Domains\Market\Models\Market;
 use App\Http\Controllers\Frontend\LiveDrawController;
@@ -158,4 +159,51 @@ final class PublicLiveDrawTest extends TestCase
             ->assertOk()
             ->assertSee(route('live-draw.index'), false);
     }
+
+    public function test_page_only_displays_live_draws_for_the_current_brand(): void
+    {
+
+        $brandA = Brand::factory()->create([
+            'code' => 'brand-a',
+            'domain' => 'brand-a.test',
+            'name' => 'Brand A',
+            'slug' => 'brand-a',
+            'is_active' => true,
+        ]);
+
+        $brandB = Brand::factory()->create([
+            'code' => 'brand-b',
+            'name' => 'Brand B',
+            'slug' => 'brand-b',
+            'is_active' => true,
+        ]);
+
+        $marketA = \App\Domains\Market\Models\Market::factory()->create([
+            'brand_id' => $brandA->id,
+            'is_active' => true,
+        ]);
+
+        $marketB = \App\Domains\Market\Models\Market::factory()->create([
+            'brand_id' => $brandB->id,
+            'is_active' => true,
+        ]);
+
+        LiveDraw::factory()->create([
+            'brand_id' => $brandA->id,
+            'market_id' => $marketA->id,
+            'title' => 'CURRENT BRAND LIVE DRAW',
+        ]);
+
+        LiveDraw::factory()->create([
+            'brand_id' => $brandB->id,
+            'market_id' => $marketB->id,
+            'title' => 'OTHER BRAND LIVE DRAW',
+        ]);
+
+        $this->get('http://brand-a.test'.parse_url(route('live-draw.index'), PHP_URL_PATH))
+            ->assertOk()
+            ->assertSee('CURRENT BRAND LIVE DRAW')
+            ->assertDontSee('OTHER BRAND LIVE DRAW');
+    }
+
 }

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\LiveDraw;
 
+use App\Domains\Brand\Models\Brand;
 use App\Domains\LiveDraw\Actions\UpsertLiveDrawAction;
 use App\Domains\LiveDraw\Models\LiveDraw;
 use App\Domains\Market\Models\Market;
@@ -149,5 +150,68 @@ class LiveDrawModuleTest extends TestCase
 
         $this->assertCount(1, $results);
         $this->assertTrue($results->contains($visible));
+    }
+
+    public function test_action_assigns_market_brand_to_live_draw(): void
+    {
+        $brand = Brand::factory()->create();
+
+        $market = Market::factory()->create([
+            'brand_id' => $brand->id,
+        ]);
+
+        $liveDraw = app(UpsertLiveDrawAction::class)->execute([
+            'market_id' => $market->id,
+            'title' => 'Brand Live Draw',
+            'slug' => 'brand-live-draw',
+            'provider' => LiveDraw::PROVIDER_OFFICIAL,
+            'stream_type' => LiveDraw::STREAM_TYPE_URL,
+            'source_url' => null,
+            'draw_days' => null,
+            'draw_time' => null,
+            'timezone' => 'Asia/Jakarta',
+            'status' => LiveDraw::STATUS_OFFLINE,
+            'headline' => null,
+            'footer' => null,
+            'logo_path' => null,
+            'background_path' => null,
+            'background_focal_point' => 'center',
+            'priority' => 0,
+            'notes' => null,
+        ]);
+
+        $this->assertSame($brand->id, $liveDraw->brand_id);
+    }
+
+    public function test_changing_live_draw_market_updates_its_brand(): void
+    {
+        $originalMarket = Market::factory()->create();
+        $newMarket = Market::factory()->create();
+
+        $liveDraw = LiveDraw::factory()->create([
+            'market_id' => $originalMarket->id,
+        ]);
+
+        $updated = app(UpsertLiveDrawAction::class)->execute([
+            'market_id' => $newMarket->id,
+            'title' => $liveDraw->title,
+            'slug' => $liveDraw->slug,
+            'provider' => LiveDraw::PROVIDER_OFFICIAL,
+            'stream_type' => LiveDraw::STREAM_TYPE_URL,
+            'source_url' => null,
+            'draw_days' => null,
+            'draw_time' => null,
+            'timezone' => 'Asia/Jakarta',
+            'status' => LiveDraw::STATUS_OFFLINE,
+            'headline' => null,
+            'footer' => null,
+            'logo_path' => null,
+            'background_path' => null,
+            'background_focal_point' => 'center',
+            'priority' => 0,
+            'notes' => null,
+        ], $liveDraw);
+
+        $this->assertSame($newMarket->brand_id, $updated->brand_id);
     }
 }

@@ -46,7 +46,29 @@
                 </li>
 
                 <li>
-                    <span class="text-slate-300">Slot Gacor</span>
+                    <a
+                        href="{{ route('slot-gacor.index') }}"
+                        @class([
+                            'transition hover:text-amber-300',
+                            'text-amber-400' => request()->routeIs('slot-gacor.*'),
+                            'text-slate-300' => ! request()->routeIs('slot-gacor.*'),
+                        ])
+                    >
+                        Slot Gacor
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="{{ route('jackpot-proofs.index') }}"
+                        @class([
+                            'transition hover:text-amber-300',
+                            'text-amber-400' => request()->routeIs('jackpot-proofs.*'),
+                            'text-slate-300' => ! request()->routeIs('jackpot-proofs.*'),
+                        ])
+                    >
+                        Bukti Jackpot
+                    </a>
                 </li>
 
                 <li>
