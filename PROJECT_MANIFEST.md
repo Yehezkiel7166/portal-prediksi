@@ -413,3 +413,14 @@ Complaint workflow implementation now includes:
 - `tests/Feature/Complaint/ComplaintWorkflowTest.php`;
 - Sprint and CTO cross-check records for Sprint 17B.
 <!-- SPRINT-17B-MANIFEST-END -->
+
+<!-- SPRINT-18B-START -->
+## Sprint 18B Manifest Increment
+
+Prepared public routes:
+
+- `/alat-togel/jadwal-togel`
+- `/alat-togel/tabel-shio`
+
+Jadwal Togel uses Market configuration as source of truth. Tabel Shio uses published ShioPeriod and ShioNumber records.
+<!-- SPRINT-18B-END -->

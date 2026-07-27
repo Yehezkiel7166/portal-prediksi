@@ -23,3 +23,9 @@
 - Added public Guide listing/detail pages with canonical and Open Graph metadata.
 - Added Filament Guide administration and public navigation integration.
 - Added targeted Guide module, frontend, and access tests.
+
+## Unreleased — Sprint 18B
+
+- Added Market-backed lottery schedule configuration and public status display.
+- Added public current-period Shio table.
+- Added Alat Togel navigation destinations and regression tests.

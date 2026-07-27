@@ -30,7 +30,8 @@
     "Promotion",
     "Blog",
     "LiveDraw",
-    "Complaint"
+    "Complaint",
+    "Guide"
   ],
   "implemented_frontend": [
     "Home",
@@ -43,7 +44,11 @@
     "PromotionDetail",
     "BlogListing",
     "BlogDetail",
-    "ProductionHomepage"
+    "ProductionHomepage",
+    "GuideListing",
+    "GuideDetail",
+    "LotterySchedule",
+    "ShioTable"
   ],
   "scheduled_tasks": [
     {
@@ -75,7 +80,11 @@
     "complaint_public_intake",
     "complaint_operational_workflow",
     "complaint_status_history",
-    "complaint_admin_notification"
+    "complaint_admin_notification",
+    "guide_management",
+    "guide_publication",
+    "lottery_schedule",
+    "public_shio_table"
   ],
   "repository_foundation": {
     "status": "completed",
@@ -111,10 +120,10 @@
     "Application test/build CI is not yet implemented"
   ],
   "next_recommended_phase": {
-    "id": "brand_1_lottery_tools",
-    "name": "Continue Brand 1 Lottery Tool Completion",
-    "objective": "After Sprint 18A completion, select the next grouped lottery-tool increment from repository evidence.",
-    "status": "planned_after_sprint_18a"
+    "id": "brand_1_remaining_lottery_tools",
+    "name": "Continue Remaining Brand 1 Lottery Tools",
+    "objective": "After Sprint 18B completion, implement BBFS Generator and Konversi Angka SGP as the next deterministic tool increment.",
+    "status": "planned_after_sprint_18b"
   },
   "mandatory_workflow": [
     "INSPECT",
@@ -312,12 +321,12 @@
     }
   ],
   "active_sprint": {
-    "id": "sprint_18a",
-    "name": "Brand 1 Guide Foundation",
+    "id": "sprint_18b",
+    "name": "Jadwal Togel and Tabel Shio",
     "status": "implementation_package_prepared_pending_server_validation",
-    "baseline_commit": "53b5a85a53796c1f12b3c37b01d416673798731f",
+    "baseline_commit": "de2ac4da66cddb760c3d1c679d09ec737b5c94b5",
     "behavior_change": true,
-    "objective": "Implement the mandatory Brand 1 public Guide module."
+    "objective": "Expose canonical Market schedules and the current published Shio table for Brand 1."
   },
   "delivery": {
     "brand_1_usable_deadline": "2026-07-30",

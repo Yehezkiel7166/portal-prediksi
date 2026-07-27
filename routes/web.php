@@ -9,12 +9,14 @@ use App\Http\Controllers\Frontend\GuidesController;
 use App\Http\Controllers\Frontend\JackpotProofDetailController;
 use App\Http\Controllers\Frontend\JackpotProofsController;
 use App\Http\Controllers\Frontend\LiveDrawController;
+use App\Http\Controllers\Frontend\LotteryScheduleController;
 use App\Http\Controllers\Frontend\PredictionDetailController;
 use App\Http\Controllers\Frontend\PredictionsController;
 use App\Http\Controllers\Frontend\PromotionDetailController;
 use App\Http\Controllers\Frontend\PromotionsController;
 use App\Http\Controllers\Frontend\ResultDetailController;
 use App\Http\Controllers\Frontend\ResultsController;
+use App\Http\Controllers\Frontend\ShioTableController;
 use App\Http\Controllers\Frontend\SlotGacorController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,3 +87,9 @@ Route::get('/blog', BlogsController::class)
 Route::get('/blog/{slug}', BlogDetailController::class)
     ->where('slug', '[A-Za-z0-9-]+')
     ->name('blog.show');
+
+Route::get('/alat-togel/jadwal-togel', LotteryScheduleController::class)
+    ->name('tools.lottery-schedule');
+
+Route::get('/alat-togel/tabel-shio', ShioTableController::class)
+    ->name('tools.shio-table');

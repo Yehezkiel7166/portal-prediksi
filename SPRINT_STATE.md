@@ -223,3 +223,12 @@ Implementation package prepared for guarded server validation:
 
 Completion remains pending migration, full regression, governance audit, CTO crosscheck, commit, push, and remote verification.
 <!-- SPRINT-18A-STATE-END -->
+
+<!-- SPRINT-18B-START -->
+## Sprint 18B Current State
+
+- Baseline: `de2ac4da66cddb760c3d1c679d09ec737b5c94b5`
+- Objective: complete Jadwal Togel and Tabel Shio.
+- Status: implementation package prepared pending server validation.
+- Next candidate after completion: BBFS Generator and Konversi Angka SGP.
+<!-- SPRINT-18B-END -->

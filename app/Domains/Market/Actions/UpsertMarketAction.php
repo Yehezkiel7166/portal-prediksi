@@ -67,6 +67,18 @@ class UpsertMarketAction
             (string) ($data['timezone'] ?? 'Asia/Jakarta')
         );
 
+        $data['active_days'] = collect($data['active_days'] ?? [])
+            ->map(fn (mixed $day): int => (int) $day)
+            ->filter(fn (int $day): bool => $day >= 1 && $day <= 7)
+            ->unique()
+            ->sort()
+            ->values()
+            ->all();
+        $data['open_time'] = $this->normalizeTime($data['open_time'] ?? null);
+        $data['close_time'] = $this->normalizeTime($data['close_time'] ?? null);
+        $data['result_time'] = $this->normalizeTime($data['result_time'] ?? null);
+        $data['is_holiday'] = (bool) ($data['is_holiday'] ?? false);
+        $data['holiday_note'] = $this->nullableTrim($data['holiday_note'] ?? null);
         $data['is_active'] = (bool) ($data['is_active'] ?? false);
         $data['sort_order'] = (int) ($data['sort_order'] ?? 0);
         $data['notes'] = $this->nullableTrim($data['notes'] ?? null);
@@ -102,6 +114,36 @@ class UpsertMarketAction
                 'max:100',
                 'timezone:all',
             ],
+            'active_days' => [
+                'array',
+            ],
+            'active_days.*' => [
+                'integer',
+                'between:1,7',
+            ],
+            'open_time' => [
+                'nullable',
+                'date_format:H:i',
+            ],
+            'close_time' => [
+                'nullable',
+                'date_format:H:i',
+                'after:open_time',
+            ],
+            'result_time' => [
+                'nullable',
+                'date_format:H:i',
+                'after:close_time',
+            ],
+            'is_holiday' => [
+                'required',
+                'boolean',
+            ],
+            'holiday_note' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
             'is_active' => [
                 'required',
                 'boolean',
@@ -118,6 +160,13 @@ class UpsertMarketAction
                 'max:5000',
             ],
         ];
+    }
+
+    private function normalizeTime(mixed $value): ?string
+    {
+        $value = $this->nullableTrim($value);
+
+        return $value === null ? null : substr($value, 0, 5);
     }
 
     private function nullableTrim(mixed $value): ?string

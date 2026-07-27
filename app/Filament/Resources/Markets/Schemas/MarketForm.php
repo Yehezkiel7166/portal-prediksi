@@ -3,9 +3,11 @@
 namespace App\Filament\Resources\Markets\Schemas;
 
 use App\Core\Support\TimezoneCatalog;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
@@ -63,6 +65,41 @@ class MarketForm
                     ->helperText(
                         'Daftar mengikuti seluruh timezone IANA yang tersedia pada server.'
                     ),
+
+                CheckboxList::make('active_days')
+                    ->label('Hari aktif')
+                    ->options([
+                        1 => 'Senin',
+                        2 => 'Selasa',
+                        3 => 'Rabu',
+                        4 => 'Kamis',
+                        5 => 'Jumat',
+                        6 => 'Sabtu',
+                        7 => 'Minggu',
+                    ])
+                    ->columns(4)
+                    ->columnSpanFull(),
+
+                TimePicker::make('open_time')
+                    ->label('Jam buka')
+                    ->seconds(false),
+
+                TimePicker::make('close_time')
+                    ->label('Jam tutup')
+                    ->seconds(false),
+
+                TimePicker::make('result_time')
+                    ->label('Jam hasil')
+                    ->seconds(false),
+
+                Toggle::make('is_holiday')
+                    ->label('Status libur')
+                    ->default(false),
+
+                TextInput::make('holiday_note')
+                    ->label('Catatan libur')
+                    ->maxLength(255)
+                    ->columnSpanFull(),
 
                 TextInput::make('sort_order')
                     ->label('Urutan')

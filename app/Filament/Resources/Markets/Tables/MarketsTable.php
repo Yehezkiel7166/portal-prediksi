@@ -43,6 +43,22 @@ class MarketsTable
                     ->searchable()
                     ->toggleable(),
 
+                TextColumn::make('open_time')
+                    ->label('Buka')
+                    ->placeholder('—'),
+
+                TextColumn::make('close_time')
+                    ->label('Tutup')
+                    ->placeholder('—'),
+
+                TextColumn::make('result_time')
+                    ->label('Hasil')
+                    ->placeholder('—'),
+
+                IconColumn::make('is_holiday')
+                    ->label('Libur')
+                    ->boolean(),
+
                 IconColumn::make('is_active')
                     ->label('Aktif')
                     ->boolean()

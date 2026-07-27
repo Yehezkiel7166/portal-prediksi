@@ -389,3 +389,9 @@ Source baseline is commit `ac0303b5e90b17abf3abc6914783f75f46f2f27f` on `feat/do
 
 Use commit `53b5a85a53796c1f12b3c37b01d416673798731f` as the required baseline. The package implements the next incomplete Brand 1 public module: Guide. Do not declare completion before guarded Hostinger validation and remote verification.
 <!-- SPRINT-18A-HANDOVER-END -->
+
+<!-- SPRINT-18B-HANDOVER-START -->
+## Sprint 18B Handover
+
+Baseline is `de2ac4da66cddb760c3d1c679d09ec737b5c94b5` on `feat/domain-management-foundation`. Sprint 18B implements Jadwal Togel from Market configuration and confirmed Result data, plus Tabel Shio from the existing Shio domain. Do not mark complete before server validation and remote verification.
+<!-- SPRINT-18B-HANDOVER-END -->

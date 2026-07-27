@@ -23,6 +23,12 @@ class Market extends Model
         'name',
         'slug',
         'timezone',
+        'active_days',
+        'open_time',
+        'close_time',
+        'result_time',
+        'is_holiday',
+        'holiday_note',
         'is_active',
         'sort_order',
         'notes',
@@ -31,6 +37,8 @@ class Market extends Model
     protected function casts(): array
     {
         return [
+            'active_days' => 'array',
+            'is_holiday' => 'boolean',
             'is_active' => 'boolean',
             'sort_order' => 'integer',
         ];

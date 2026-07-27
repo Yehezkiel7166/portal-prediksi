@@ -269,3 +269,9 @@ This synchronization introduces no application behavior change.
 - Production migration: guarded post-deployment execution is mandatory.
 - Final completion requires server regression, governance audit, Sprint Completion Gate, commit, push, and remote verification.
 <!-- SPRINT-17B-PROJECT-STATE-END -->
+
+<!-- SPRINT-18B-START -->
+## Sprint 18B Prepared State
+
+The implementation package adds canonical Market schedule fields, public Jadwal Togel status resolution, and a public current-period Tabel Shio. Completion remains pending server regression, governance audit, migration, commit, push, and remote verification.
+<!-- SPRINT-18B-END -->

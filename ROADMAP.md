@@ -362,3 +362,11 @@ Next product selection must be made only after Sprint 17B remote verification an
 
 Owner Panel and Brand 2–5 remain blocked until Brand 1 passes the usable gate.
 <!-- SPRINT-18A-ROADMAP-END -->
+
+<!-- SPRINT-18B-START -->
+## Sprint 18B — Jadwal Togel and Tabel Shio
+
+Status: implementation package prepared pending server validation.
+
+This increment adds the first two public lottery tools using existing canonical Market, Result, and Shio data. After completion, the remaining lottery tools are BBFS Generator, Buku Mimpi, Paito Togel Warna, and Konversi Angka SGP.
+<!-- SPRINT-18B-END -->
