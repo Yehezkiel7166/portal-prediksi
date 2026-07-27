@@ -474,3 +474,15 @@ Both tools are deterministic, rate-limited, and do not persist visitor input.
 - `app/Domains/SiteConfiguration/Actions/UpsertSiteConfiguration.php`
 - `database/migrations/2026_07_27_180000_create_site_configurations_table.php`
 - `tests/Feature/SiteConfiguration/SiteConfigurationFoundationTest.php`
+
+<!-- SPRINT-19A-2-MANIFEST-START -->
+## Sprint 19A-2 Manifest
+
+- `app/Filament/Resources/SiteConfigurations/SiteConfigurationResource.php`
+- `app/Filament/Resources/SiteConfigurations/Schemas/SiteConfigurationForm.php`
+- `app/Filament/Resources/SiteConfigurations/Tables/SiteConfigurationsTable.php`
+- `app/Filament/Resources/SiteConfigurations/Pages/ListSiteConfigurations.php`
+- `app/Filament/Resources/SiteConfigurations/Pages/CreateSiteConfiguration.php`
+- `app/Filament/Resources/SiteConfigurations/Pages/EditSiteConfiguration.php`
+- `tests/Feature/SiteConfiguration/SiteConfigurationFilamentAdministrationTest.php`
+<!-- SPRINT-19A-2-MANIFEST-END -->

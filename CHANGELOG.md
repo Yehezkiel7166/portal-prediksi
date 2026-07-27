@@ -69,3 +69,13 @@
 - Added a guarded upsert action that cannot move configuration ownership between brands.
 - Added migration, relationship, and feature regression coverage.
 - Kept Filament administration and frontend integration out of this slice; those remain for subsequent Sprint 19A increments.
+
+## [0.19.0-alpha.2] - 2026-07-27
+
+### Sprint 19A-2 — Site Configuration Filament Administration
+
+- Added current-brand-only Filament administration for site configuration.
+- Added validated identity, SEO-default, contact, social-link, and footer forms.
+- Prevented a second configuration record from being created for the active brand.
+- Routed create and edit persistence through the existing guarded upsert action.
+- Added brand-isolation, access-control, page-registration, and singleton regression coverage.

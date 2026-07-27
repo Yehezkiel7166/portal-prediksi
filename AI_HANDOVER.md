@@ -419,3 +419,9 @@ Baseline is `20838e11d52af369fcb5b6274d089cecfa57429e` with tree `b05daff4acad28
 ## Sprint 19A Increment Boundary
 
 Sprint 19A is split into bounded increments. Sprint 19A-1 introduces only the site-configuration persistence and resolver foundation. Do not claim Filament administration, frontend metadata integration, analytics, Open Graph, JSON-LD, or media upload support until their later increments are implemented and validated. The required Sprint 19A-1 baseline is commit `1d84f0735ad788aff6b45488cfef9dbc87b222c8`, tree `00215be1be0f9a5683fb6ed30b7bcefc2bd9a222`.
+
+<!-- SPRINT-19A-2-HANDOVER-START -->
+## Sprint 19A-2 Handover
+
+Sprint 19A-2 adds Filament administration for the current brand's single Site Configuration record. It must be validated on the Hostinger environment before completion. No migration is introduced. After remote verification, continue with Sprint 19A-3 frontend integration.
+<!-- SPRINT-19A-2-HANDOVER-END -->

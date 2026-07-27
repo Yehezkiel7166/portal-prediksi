@@ -266,3 +266,13 @@ Completion remains pending migration, full regression, governance audit, CTO cro
 - Database migration: none.
 - Next approved candidate: Site Configuration Foundation.
 <!-- SPRINT-18E-END -->
+
+<!-- SPRINT-19A-2-START -->
+## Sprint 19A-2 Current State
+
+- Baseline: `bc38fe90a8f8c31d55cde05e4642582a5c8cd415`.
+- Objective: current-brand Site Configuration administration in Filament.
+- Status: implementation package prepared pending guarded server validation.
+- Database migration: none.
+- Next candidate after completion: Sprint 19A-3 Frontend Integration.
+<!-- SPRINT-19A-2-END -->
