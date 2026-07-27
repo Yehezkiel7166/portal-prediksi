@@ -18,8 +18,8 @@
 | Homepage Engine | IMPLEMENTED |
 | Widget Engine | PLANNED |
 | Slot Catalog | PLANNED |
-| Brand Slot Gacor | PLANNED |
-| RTP Engine | PLANNED |
+| Brand Slot Gacor | IMPLEMENTED |
+| RTP Engine | IMPLEMENTED |
 | Public Guide Engine | PLANNED |
 | Visitor Complaint Engine | PLANNED |
 | SEO Manual/Auto/Hybrid | PLANNED |
@@ -46,8 +46,8 @@
 | Theme Engine | PLANNED | No verified implementation |
 | Homepage Engine | IMPLEMENTED | Brand-scoped production homepage aggregation, SEO metadata, mandatory public module access, safe empty states, and automated regression coverage |
 | Widget Engine | PLANNED | No verified implementation |
-| Slot Gacor / RTP | PLANNED | No verified implementation |
-| Jackpot Proof | PLANNED | No verified implementation |
+| Slot Gacor / RTP | IMPLEMENTED | Brand-scoped slot administration, immutable RTP snapshots, public listing, SEO metadata, and regression coverage |
+| Jackpot Proof | IMPLEMENTED | Brand-scoped administration, moderated publication, public listing/detail, production migration, and regression coverage |
 | Public Guide Engine | PLANNED | No verified implementation |
 | Visitor Complaint Engine | PLANNED | No verified implementation |
 | SEO Manual/Auto/Hybrid | PLANNED | No verified implementation |
@@ -72,3 +72,17 @@ Verification baseline:
 
 Baseline: `f906850d888bc617e697f41a9a8d1837c19001b7`.
 <!-- SPRINT-16C-PACKAGE-END -->
+
+<!-- SPRINT-16D-IMPLEMENTATION-TRUTH-START -->
+## Sprint 16D Implementation Truth
+
+| Capability | Verified Status | Evidence |
+|---|---|---|
+| Homepage Engine | IMPLEMENTED | Sprint 16A public production homepage and tests |
+| Slot Gacor / RTP | IMPLEMENTED | `app/Domains/Rtp`, Brand Slot Filament resources, public route/views, immutable snapshot tests |
+| Jackpot Proof | IMPLEMENTED | `app/Domains/JackpotProof`, Filament resource, public controllers/views, migration batch 7, behavior tests |
+| Visitor Complaint Engine | PLANNED | No verified implementation; selected next candidate |
+| Public Guide Engine | PLANNED | No verified implementation |
+
+Verification baseline: `af99d9a6ab748188698b0cb09c6093d3f81ca891`; 433 tests / 1,204 assertions / governance 7/7 PASS.
+<!-- SPRINT-16D-IMPLEMENTATION-TRUTH-END -->

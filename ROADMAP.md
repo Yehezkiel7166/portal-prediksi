@@ -319,3 +319,19 @@ Execution order after Sprint 16A:
 4. apply the permanent completion workflow to every sprint.
 
 <!-- SPRINT-16A-ROADMAP-END -->
+
+<!-- SPRINT-16D-ROADMAP-START -->
+## Sprint 16D — Post-Implementation Truth Synchronization
+
+Canonical implementation truth at baseline `af99d9a6ab748188698b0cb09c6093d3f81ca891`:
+
+- Sprint 16A Homepage Engine: IMPLEMENTED.
+- Sprint 16B Slot Gacor / RTP: IMPLEMENTED.
+- Sprint 16C Jackpot Proof: IMPLEMENTED and production migration completed.
+- Latest full regression: 433 tests / 1,204 assertions / PASS.
+- Governance audit: 7/7 PASS.
+- Owner Panel and Brand 2–5 remain after Brand 1 completion and stabilization.
+- Next implementation candidate: Visitor Complaint Engine.
+
+This synchronization introduces no application behavior change.
+<!-- SPRINT-16D-ROADMAP-END -->
