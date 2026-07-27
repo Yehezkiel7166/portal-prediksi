@@ -401,3 +401,10 @@ Baseline is `de2ac4da66cddb760c3d1c679d09ec737b5c94b5` on `feat/domain-managemen
 
 Baseline is `53968bc1084fadd1e695b23cbe99088567cf551a` on `feat/domain-management-foundation`. Sprint 18C implements BBFS Generator and Konversi Angka SGP as stateless deterministic tools. BBFS is limited by `config/lottery-tools.php`; the converter uses the documented ABCD positional rule. No database migration is required. Do not mark complete before PHP 8.3 targeted regression, full regression, governance audit, commit, push, and remote verification.
 <!-- SPRINT-18C-HANDOVER-END -->
+
+
+<!-- SPRINT-18D-HANDOVER-START -->
+## Sprint 18D Handover
+
+Baseline is `2ef3a9c84b6f9a5926009f9c5c97ac7f673dab0f` on `feat/domain-management-foundation`. Sprint 18D implements the final lottery tools: repository-owned Buku Mimpi reference search/detail pages and Result-derived Paito Togel Warna. No migration is required. Paito must never duplicate official Result data. Do not mark complete before PHP 8.3 targeted regression, full regression, governance audit, completion gate, commit, push, and remote verification.
+<!-- SPRINT-18D-HANDOVER-END -->

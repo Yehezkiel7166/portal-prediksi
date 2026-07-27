@@ -11,6 +11,8 @@ use App\Http\Controllers\Frontend\JackpotProofDetailController;
 use App\Http\Controllers\Frontend\JackpotProofsController;
 use App\Http\Controllers\Frontend\LiveDrawController;
 use App\Http\Controllers\Frontend\LotteryScheduleController;
+use App\Http\Controllers\Frontend\DreamBookController;
+use App\Http\Controllers\Frontend\PaitoController;
 use App\Http\Controllers\Frontend\PredictionDetailController;
 use App\Http\Controllers\Frontend\PredictionsController;
 use App\Http\Controllers\Frontend\PromotionDetailController;
@@ -19,10 +21,13 @@ use App\Http\Controllers\Frontend\ResultDetailController;
 use App\Http\Controllers\Frontend\ResultsController;
 use App\Http\Controllers\Frontend\SgpNumberConverterController;
 use App\Http\Controllers\Frontend\ShioTableController;
+use App\Http\Controllers\Frontend\SitemapController;
 use App\Http\Controllers\Frontend\SlotGacorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
+
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 Route::get('/live-draw', LiveDrawController::class)
     ->name('live-draw.index');
@@ -109,3 +114,13 @@ Route::get('/alat-togel/konversi-angka-sgp', [SgpNumberConverterController::clas
 Route::post('/alat-togel/konversi-angka-sgp', [SgpNumberConverterController::class, 'store'])
     ->middleware('throttle:30,1')
     ->name('tools.sgp-converter.store');
+
+Route::get('/alat-togel/buku-mimpi', [DreamBookController::class, 'index'])
+    ->name('tools.dream-book.index');
+
+Route::get('/alat-togel/buku-mimpi/{slug}', [DreamBookController::class, 'show'])
+    ->where('slug', '[a-z0-9]+(?:-[a-z0-9]+)*')
+    ->name('tools.dream-book.show');
+
+Route::get('/alat-togel/paito-warna', PaitoController::class)
+    ->name('tools.paito');

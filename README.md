@@ -130,3 +130,8 @@ Security is a mandatory production gate. See [`docs/security/THREAT_MODEL.md`](d
 
 Sprint 17B completes the operational Visitor Complaint workflow with controlled status transitions, administrator responses, immutable status history, handler attribution, timestamps, and administrator notification. Production requires both complaint migrations to run after deployment.
 <!-- SPRINT-17B-README-END -->
+
+
+## Sprint 18D Lottery Tools
+
+Brand 1 now includes public Buku Mimpi search/detail pages and Paito Togel Warna derived directly from Result records. The Sprint 18D package requires server-side validation before being declared complete.

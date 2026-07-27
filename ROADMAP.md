@@ -380,3 +380,12 @@ This increment adds two stateless deterministic lottery tools. BBFS normalizes 2
 
 After completion, the remaining mandatory lottery tools are Buku Mimpi and Paito Togel Warna.
 <!-- SPRINT-18C-END -->
+
+
+<!-- SPRINT-18D-START -->
+## Sprint 18D — Buku Mimpi and Paito Togel Warna
+
+Status: implementation package prepared pending production validation.
+
+This increment completes the mandatory six-tool Brand 1 lottery suite. Buku Mimpi provides searchable repository-owned reference content, while Paito renders stable historical color output directly from canonical Result records with market/date filters and automatic cache versioning.
+<!-- SPRINT-18D-END -->

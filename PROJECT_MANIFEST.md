@@ -443,3 +443,12 @@ Implementation components:
 
 Both tools are deterministic, rate-limited, and do not persist visitor input.
 <!-- SPRINT-18C-END -->
+
+
+<!-- SPRINT-18D-START -->
+## Sprint 18D Manifest Increment
+
+- Buku Mimpi: repository-owned indexed reference content, search, pagination, slugs, detail pages, related entries, metadata, and sitemap exposure.
+- Paito: canonical Result-derived historical presentation, market/date filters, deterministic colors, and Result-versioned caching.
+- Database migration: none.
+<!-- SPRINT-18D-END -->

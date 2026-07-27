@@ -1,0 +1,20 @@
+@extends('frontend.layouts.app')
+@section('title', 'Paito Togel Warna dan Data Result | '.config('app.name'))
+@section('description', 'Paito warna berdasarkan data Result resmi yang tersimpan pada sistem.')
+@section('metadata')
+<link rel="canonical" href="{{ route('tools.paito') }}">
+<meta property="og:title" content="Paito Togel Warna dan Data Result | {{ config('app.name') }}">
+<meta property="og:description" content="Paito warna otomatis dari data Result resmi.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ route('tools.paito') }}">
+@endsection
+@section('content')
+<section class="border-b border-slate-800 bg-slate-900"><div class="mx-auto max-w-7xl px-4 py-12 md:py-16"><p class="text-sm font-semibold uppercase tracking-widest text-amber-400">Alat Togel</p><h1 class="mt-3 text-3xl font-bold text-white md:text-5xl">Paito Togel Warna</h1><p class="mt-5 max-w-3xl text-slate-300">Tampilan historis ini dibentuk langsung dari data Result resmi. Paito tidak membuat atau menggandakan data hasil.</p></div></section>
+<section class="bg-slate-950"><div class="mx-auto max-w-7xl px-4 py-12">
+<form method="GET" action="{{ route('tools.paito') }}" class="grid gap-4 rounded-xl border border-slate-800 bg-slate-900 p-5 md:grid-cols-4"><div><label class="text-sm font-semibold text-white" for="market">Pasaran</label><select id="market" name="market" class="mt-2 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white"><option value="">Semua pasaran</option>@foreach($markets as $market)<option value="{{ $market->slug }}" @selected(($filters['market'] ?? '') === $market->slug)>{{ $market->name }}</option>@endforeach</select></div><div><label class="text-sm font-semibold text-white" for="from">Dari tanggal</label><input id="from" name="from" type="date" value="{{ $filters['from'] ?? '' }}" class="mt-2 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white"></div><div><label class="text-sm font-semibold text-white" for="to">Sampai tanggal</label><input id="to" name="to" type="date" value="{{ $filters['to'] ?? '' }}" class="mt-2 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white"></div><div class="flex items-end"><button class="w-full rounded-lg bg-amber-400 px-5 py-3 font-semibold text-slate-950 hover:bg-amber-300">Tampilkan</button></div></form>
+@error('to')<p class="mt-3 text-sm text-red-400">{{ $message }}</p>@enderror
+<div class="mt-6 flex flex-wrap gap-2">@foreach($legend as $digit => $color)<span class="rounded px-2 py-1 text-xs font-semibold {{ $color['class'] }}">{{ $digit }} {{ $color['name'] }}</span>@endforeach</div>
+@if(empty($rows))<div class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-8 text-center text-slate-300">Belum ada Result resmi pada rentang yang dipilih.</div>@else<div class="mt-8 overflow-x-auto rounded-xl border border-slate-800"><table class="min-w-full divide-y divide-slate-800 bg-slate-900"><thead><tr class="text-left text-xs uppercase tracking-wider text-slate-400"><th class="px-4 py-3">Tanggal</th><th class="px-4 py-3">Pasaran</th><th class="px-4 py-3">Nomor Result</th><th class="px-4 py-3">Paito</th></tr></thead><tbody class="divide-y divide-slate-800">@foreach($rows as $row)<tr><td class="whitespace-nowrap px-4 py-4 text-sm text-slate-300">{{ $row['date'] }}</td><td class="whitespace-nowrap px-4 py-4 text-sm font-semibold text-white">{{ $row['market'] }}</td><td class="px-4 py-4 font-mono text-sm text-slate-300">{{ $row['winning_numbers'] }}</td><td class="px-4 py-4"><div class="flex flex-wrap gap-1">@foreach($row['digits'] as $digit)<span title="{{ $digit['name'] }}" class="flex h-8 w-8 items-center justify-center rounded font-bold {{ $digit['class'] }}">{{ $digit['digit'] }}</span>@endforeach</div></td></tr>@endforeach</tbody></table></div>@endif
+<p class="mt-5 text-sm text-slate-500">Maksimal 180 hasil terbaru ditampilkan. Cache berubah otomatis ketika data Result diperbarui.</p>
+</div></section>
+@endsection

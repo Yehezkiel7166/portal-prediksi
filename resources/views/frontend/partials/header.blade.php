@@ -81,8 +81,8 @@
                             <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.lottery-schedule') }}">Jadwal Togel</a>
                             <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.shio-table') }}">Tabel Shio</a>
                             <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.bbfs.create') }}">BBFS Generator</a>
-                            <p class="py-2 text-slate-500">Buku Mimpi</p>
-                            <p class="py-2 text-slate-500">Paito Togel Warna</p>
+                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.dream-book.index') }}">Buku Mimpi</a>
+                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.paito') }}">Paito Togel Warna</a>
                             <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.sgp-converter.create') }}">Konversi Angka SGP</a>
                         </div>
                     </details>

@@ -37,3 +37,13 @@
 - Added public routes, canonical metadata, navigation links, throttling, and validation.
 - Added targeted regression tests and synchronized Sprint 18C documentation.
 - No database migration or visitor-input persistence was introduced.
+
+
+## Unreleased — Sprint 18D
+
+- Added searchable, paginated Buku Mimpi reference content with slug detail pages and related entries.
+- Added canonical metadata and sitemap integration for Buku Mimpi routes.
+- Added Result-derived Paito Togel Warna with market and date-range filters.
+- Added deterministic digit color mapping and Result-versioned cache keys.
+- Added public navigation, automated tests, and synchronized Sprint 18D documentation.
+- No database migration or duplicate Result persistence was introduced.

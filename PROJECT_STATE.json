@@ -5,7 +5,7 @@
     "repository": "https://github.com/Yehezkiel7166/portal-prediksi",
     "primary_branch": "feat/domain-management-foundation",
     "source_of_truth": "git_repository",
-    "version": "0.18.0"
+    "version": "0.18.1"
   },
   "baseline": {
     "commit": "dbc3b17",
@@ -84,7 +84,12 @@
     "guide_management",
     "guide_publication",
     "lottery_schedule",
-    "public_shio_table"
+    "public_shio_table",
+    "dream_book_reference_search",
+    "dream_book_detail_and_sitemap",
+    "result_derived_paito",
+    "paito_market_date_filtering",
+    "paito_color_mapping"
   ],
   "repository_foundation": {
     "status": "completed",
@@ -120,10 +125,10 @@
     "Application test/build CI is not yet implemented"
   ],
   "next_recommended_phase": {
-    "id": "brand_1_final_lottery_tools",
-    "name": "Complete Final Brand 1 Lottery Tools",
-    "objective": "After Sprint 18C completion, implement Buku Mimpi and Paito Togel Warna using canonical content and confirmed Result data.",
-    "status": "planned_after_sprint_18c"
+    "id": "brand_1_lottery_suite_validation",
+    "name": "Validate and close Brand 1 Lottery Tool Suite",
+    "objective": "Run production validation, commit, push, and remotely verify Sprint 18D before selecting the next roadmap increment.",
+    "status": "pending_sprint_18d_validation"
   },
   "mandatory_workflow": [
     "INSPECT",
@@ -321,12 +326,12 @@
     }
   ],
   "active_sprint": {
-    "id": "sprint_18b",
-    "name": "Jadwal Togel and Tabel Shio",
+    "id": "sprint_18d",
+    "name": "Buku Mimpi and Paito Togel Warna",
     "status": "implementation_package_prepared_pending_server_validation",
-    "baseline_commit": "de2ac4da66cddb760c3d1c679d09ec737b5c94b5",
+    "baseline_commit": "2ef3a9c84b6f9a5926009f9c5c97ac7f673dab0f",
     "behavior_change": true,
-    "objective": "Expose canonical Market schedules and the current published Shio table for Brand 1."
+    "objective": "Complete the final Brand 1 lottery tools using repository-owned reference content and canonical Result data."
   },
   "delivery": {
     "brand_1_usable_deadline": "2026-07-30",
