@@ -210,3 +210,154 @@ Feature Freeze tetap berlaku. Jangan memulai sprint fitur baru selama Phase 0.3B
 - Completed milestone: Phase 0.3A — Canonical Repository Synchronization
 - Next planned milestone: Phase 0.3B — Canonical Repository Validation
 - Next recommended phase: Phase 0.3B — Canonical Repository Validation
+<!-- PROJECT-BRAIN-V1-START -->
+## Project Brain Handover
+
+Before continuing work, read `docs/project-brain/README.md` and its canonical document list. The current top priority is Brand 1 production readiness within the 2026-07-24 to 2026-08-23 window. Do not let Owner Panel, marketplace, plugins, installer/updater, advanced AI, or Brand 2–5 implementation delay mandatory Brand 1 production gates.
+
+Do not rely on chat history as implementation state. Use the latest repository snapshot, branch, commit, tests, and diff. The owner expects complete copy-paste-ready PowerShell or Bash instructions.
+<!-- PROJECT-BRAIN-V1-END -->
+
+<!-- CURRENT-DIRECTION-START -->
+## Canonical Direction — 2026-07-25
+
+- Project started on 2026-07-16.
+- Brand 1 usable deadline is 2026-07-30.
+- Overall project deadline is 2026-10-14.
+- Brand 1 contains exactly 10 main modules and 6 lottery tools.
+- Brand 1 is completed before Owner Panel and Brand 2–5.
+- Domain Management is implemented through Commit 14B.
+- The former active 30-day Brand 1 plan is superseded.
+- Every sprint requires repository synchronization and CTO crosscheck.
+
+Canonical reference:
+
+- `docs/governance/CURRENT_DIRECTION.md`
+- `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
+<!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-15A-HANDOVER-START -->
+## Sprint 15A Handover
+
+The active baseline is commit `b702ef326147456d0e98ebb1ca8fbd4881f31d72`
+on branch `feat/domain-management-foundation`.
+
+Sprint 15A synchronizes repository knowledge only. It does not implement new
+application behavior.
+
+Read before continuing:
+
+1. `docs/governance/CURRENT_DIRECTION.md`
+2. `docs/governance/MASTER_PROMPT_V2_0_TO_V2_1_INHERITANCE.md`
+3. `docs/project-brain/CANONICAL_REQUIREMENTS.md`
+4. `docs/registry/LIFECYCLE_MODEL.md`
+5. `PROJECT_STATE.json`
+6. `docs/sprints/SPRINT-15A-REPOSITORY-BRAIN-CANONICAL-SYNC.md`
+
+Next planned work is Sprint 15B Implementation Truth Audit.
+<!-- SPRINT-15A-HANDOVER-END -->
+
+<!-- SPRINT-COMPLETION-GATE-START -->
+## Mandatory AI Continuation Rule
+
+Before continuing any sprint, read the current repository instead of relying on
+chat history.
+
+Before declaring any sprint complete, re-read the repository and perform the
+mandatory CTO crosscheck defined in
+`docs/governance/SPRINT_COMPLETION_GATE.md`.
+
+Do not commit a sprint completion state unless:
+
+- regression and repository audit pass;
+- implementation and documentation are synchronized;
+- affected registries and state artifacts are synchronized;
+- Brand 1 milestone alignment remains correct;
+- a crosscheck report exists under `docs/sprints/crosschecks/`;
+- its final CTO decision is `PASS`.
+
+After push, verify local and remote HEAD equality, ahead/behind `0 0`, and a
+clean working tree.
+<!-- SPRINT-COMPLETION-GATE-END -->
+
+<!-- SPRINT-15C-HANDOVER-START -->
+
+## Sprint 15C Handover State
+
+Baseline:
+
+- branch: `feat/domain-management-foundation`;
+- commit: `5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7`;
+- remote synchronized: yes;
+- working tree at sprint start: clean.
+
+Completed:
+
+- Sprint 15B Permanent Sprint Completion Gate;
+- commit, push, and remote verification;
+- governance audit 7/7 PASS;
+- Domain Management regression 169 tests / 512 assertions.
+
+Active:
+
+- Sprint 15C Repository Truth Synchronization;
+- documentation and machine-readable state only;
+- no application behavior changes.
+
+After Sprint 15C:
+
+- inspect synchronized implementation truth;
+- select the highest-priority incomplete Brand 1 capability;
+- preserve Brand 1 before Owner Panel;
+- execute the mandatory completion workflow.
+<!-- SPRINT-15C-HANDOVER-END -->
+
+<!-- SPRINT-15C-HANDOVER-COMPLETED -->
+
+## Sprint 15C Completed Handover
+
+Sprint 15C — Repository Truth Synchronization is complete.
+
+Before starting the next sprint:
+
+1. preserve the completed Sprint 15C repository truth;
+2. do not reopen repository reconciliation without new contradictory evidence;
+3. select the highest-priority incomplete Brand 1 capability;
+4. preserve the Brand 1 usable deadline of 2026-07-30;
+5. keep Owner Panel and Brand 2–5 after Brand 1 usable completion and stabilization.
+
+<!-- SPRINT-16A-HANDOVER-START -->
+
+## Sprint 16A Completed Handover
+
+Sprint 16A implements `MP21-F017 — Brand 1 Production Homepage`.
+
+Do not recreate or replace the Homepage Engine without proving a verified defect
+or changed canonical requirement.
+
+Verified Homepage Engine evidence:
+
+- explicit Brand-scoped content aggregation;
+- Live Draw, latest Result, current Prediction, Promotion, and Article sections;
+- mandatory Brand 1 module access;
+- canonical and Open Graph metadata;
+- safe null-context empty homepage;
+- cross-brand isolation tests;
+- full project regression: 421 tests / 1,166 assertions / PASS;
+- governance audit: 7/7 PASS.
+
+The following capabilities remain separate and incomplete where indicated by
+their registries:
+
+- Slot Gacor / RTP;
+- Jackpot Proof;
+- Complaint;
+- Guide;
+- Theme Engine;
+- Widget Engine;
+- incomplete Lottery Tool modules.
+
+The next sprint must be selected from synchronized Brand 1 implementation truth.
+Owner Panel and Brand 2–5 remain after Brand 1 completion and stabilization.
+
+<!-- SPRINT-16A-HANDOVER-END -->

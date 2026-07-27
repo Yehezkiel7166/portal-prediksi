@@ -199,3 +199,190 @@ Canonical Map
 Alignment Checklist
 
 - docs/governance/MASTER_PROMPT_ALIGNMENT_CHECKLIST.md
+
+<!-- BRAND-1-BASELINE-START -->
+
+## Brand 1 Baseline Manifest
+
+The repository recognizes `docs/product/BRAND_1_FRONTEND_BASELINE.md` as the canonical complete feature baseline for the default trial brand.
+
+Mandatory Brand 1 capability groups:
+
+- Home;
+- Live Draw;
+- Result;
+- Prediction;
+- Slot Gacor / RTP;
+- Jackpot Proof;
+- Promotion;
+- Complaint;
+- Guide;
+- Lottery Tool Suite;
+- administration;
+- automation;
+- SEO;
+- cache;
+- queue;
+- scheduler;
+- audit;
+- backup;
+- operational monitoring.
+
+The Lottery Tool Suite consists of:
+
+- Jadwal Togel;
+- BBFS Generator;
+- Buku Mimpi;
+- Paito Togel Warna;
+- Konversi Angka SGP;
+- Tabel Shio.
+
+<!-- BRAND-1-BASELINE-END -->
+
+<!-- BEGIN SEO-ENGINE-MANIFEST -->
+## SEO Engine Canonical Documents
+
+- `docs/product/SEO_ENGINE_SPECIFICATION.md`
+- `docs/product/BRAND_1_FRONTEND_BASELINE.md`
+- `docs/sprints/BRAND-1-FRONTEND-COMPLETION.md`
+- `MASTER_PROMPT_POINTER.md`
+
+These documents define:
+
+- Brand 1 SEO automation;
+- SERP operations;
+- evergreen title behavior;
+- manual SEO locks;
+- Card View and List View behavior;
+- AI technical operating responsibility.
+<!-- END SEO-ENGINE-MANIFEST -->
+
+<!-- BEGIN BRAND-1-ARCHITECTURE-SPECIFICATIONS -->
+## Brand 1 Architecture Specifications
+
+Canonical specifications:
+
+- `docs/product/SITE_CONFIGURATION_ENGINE_SPECIFICATION.md`
+- `docs/product/MEDIA_ENGINE_SPECIFICATION.md`
+- `docs/product/MENU_ENGINE_SPECIFICATION.md`
+- `docs/product/BANNER_ENGINE_SPECIFICATION.md`
+- `docs/product/WIDGET_ENGINE_SPECIFICATION.md`
+- `docs/product/SEO_ENGINE_SPECIFICATION.md`
+- `docs/product/AI_CONTENT_ENGINE_SPECIFICATION.md`
+- `docs/product/AI_GOVERNANCE_SPECIFICATION.md`
+
+These documents define Brand 1 architecture before full implementation.
+<!-- END BRAND-1-ARCHITECTURE-SPECIFICATIONS -->
+<!-- PROJECT-BRAIN-V1-START -->
+## Project Brain v1
+
+Effective 2026-07-24, the repository also serves as the permanent project knowledge system. Canonical entry point: `docs/project-brain/README.md`.
+
+Project Brain includes:
+
+- product mission and long-term vision;
+- collaboration and command-delivery model;
+- project-level decisions;
+- multi-brand system blueprint;
+- full feature and idea catalogs;
+- Brand 1 maximum 30-day production plan;
+- production gate;
+- threat model and security control matrix;
+- knowledge-maintenance rules.
+
+### Current delivery order
+
+1. Brand 1 production readiness.
+2. Brand 1 optimization and hardening.
+3. Owner Panel.
+4. Brand 2–5 activation.
+5. Enterprise expansion.
+
+Target Brand 1 completion window: 2026-07-24 through 2026-08-23. Critical security, data-integrity, backup, migration, and release controls may not be waived to meet the date.
+
+### Working environment
+
+The owner primarily executes prepared copy-paste commands through Windows PowerShell and Linux SSH. Repository operations must identify the correct shell, use complete commands, validate state, and stop on failure.
+<!-- PROJECT-BRAIN-V1-END -->
+
+<!-- CURRENT-DIRECTION-START -->
+## Canonical Direction — 2026-07-25
+
+- Project started on 2026-07-16.
+- Brand 1 usable deadline is 2026-07-30.
+- Overall project deadline is 2026-10-14.
+- Brand 1 contains exactly 10 main modules and 6 lottery tools.
+- Brand 1 is completed before Owner Panel and Brand 2–5.
+- Domain Management is implemented through Commit 14B.
+- The former active 30-day Brand 1 plan is superseded.
+- Every sprint requires repository synchronization and CTO crosscheck.
+
+Canonical reference:
+
+- `docs/governance/CURRENT_DIRECTION.md`
+- `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
+<!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-15A-REPOSITORY-BRAIN-START -->
+## Repository Brain Canonical Documents
+
+The following documents are canonical:
+
+- `docs/governance/MASTER_PROMPT_V2_0_TO_V2_1_INHERITANCE.md`
+- `docs/project-brain/CANONICAL_REQUIREMENTS.md`
+- `docs/registry/LIFECYCLE_MODEL.md`
+- `docs/governance/CURRENT_DIRECTION.md`
+- `docs/registry/IMPLEMENTATION_STATUS.md`
+
+Master Prompt v2.1 extends v2.0. Historical requirements remain active unless
+explicitly superseded by a registered decision.
+
+Feature status must be based on implementation evidence, not documentation
+existence.
+<!-- SPRINT-15A-REPOSITORY-BRAIN-END -->
+
+<!-- SPRINT-COMPLETION-GATE-START -->
+## Mandatory Sprint Completion Governance
+
+Canonical artifacts:
+
+- `docs/governance/SPRINT_COMPLETION_GATE.md`
+- `docs/sprints/crosschecks/README.md`
+- `docs/sprints/crosschecks/TEMPLATE.md`
+- `scripts/repository/check-sprint-completion-gate.sh`
+
+These artifacts enforce repository re-read at sprint start and before commit,
+mandatory CTO crosscheck evidence, commit blocking until a `PASS` decision, and
+remote verification before sprint completion.
+<!-- SPRINT-COMPLETION-GATE-END -->
+
+<!-- SPRINT-15C-MANIFEST-START -->
+## Sprint 15C Artifact
+
+- `docs/sprints/SPRINT-15C-REPOSITORY-TRUTH-SYNCHRONIZATION.md`
+<!-- SPRINT-15C-MANIFEST-END -->
+
+<!-- SPRINT-16A-HOMEPAGE-MANIFEST-START -->
+
+## Brand 1 Production Homepage
+
+Capability `MP21-F017` is implemented.
+
+Implementation components:
+
+- `app/Http/Controllers/Frontend/HomeController.php`
+- `resources/views/frontend/home.blade.php`
+- `resources/views/frontend/layouts/app.blade.php`
+- `tests/Feature/Frontend/PublicProductionHomepageTest.php`
+
+The homepage aggregates current-Brand Live Draw, Result, Prediction, Promotion,
+and Blog content. It provides mandatory module access, canonical and Open Graph
+metadata, and safe empty-state behavior.
+
+Verified baseline:
+
+- 421 tests;
+- 1,166 assertions;
+- PASS.
+
+<!-- SPRINT-16A-HOMEPAGE-MANIFEST-END -->

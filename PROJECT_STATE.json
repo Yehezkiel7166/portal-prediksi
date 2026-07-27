@@ -1,9 +1,9 @@
 {
-    "schema_version": 1,
+    "schema_version": 2,
     "project": {
         "name": "Portal Prediksi CMS",
         "repository": "https://github.com/Yehezkiel7166/portal-prediksi",
-        "primary_branch": "main",
+        "primary_branch": "feat/domain-management-foundation",
         "source_of_truth": "git_repository"
     },
     "baseline": {
@@ -40,7 +40,8 @@
         "PromotionListing",
         "PromotionDetail",
         "BlogListing",
-        "BlogDetail"
+        "BlogDetail",
+        "ProductionHomepage"
     ],
     "scheduled_tasks": [
         {
@@ -67,7 +68,8 @@
         "live_draw_management",
         "live_draw_status_automation",
         "latest_result_resolver",
-        "hls_stream_player"
+        "hls_stream_player",
+        "brand_1_production_homepage"
     ],
     "repository_foundation": {
         "status": "completed",
@@ -103,32 +105,33 @@
         "Application test/build CI is not yet implemented"
     ],
     "next_recommended_phase": {
-        "id": "phase_0_3b_canonical_repository_validation",
-        "name": "Phase 0.3B — Canonical Repository Validation",
-        "objective": "Extend deterministic repository validation only where repository evidence identifies a remaining governance gap.",
-        "status": "planned"
+        "id": "brand_1_next_incomplete_capability",
+        "name": "Continue Brand 1 Usable Completion",
+        "objective": "Select the next highest-priority incomplete Brand 1 capability from synchronized repository evidence.",
+        "status": "planned_after_sprint_16a"
     },
     "mandatory_workflow": [
-        "Inspect",
-        "Design",
-        "Patch",
-        "Syntax Check",
-        "Module Test",
-        "Full Test",
-        "Documentation",
-        "Git Clean",
-        "Commit",
-        "Push",
-        "Audit"
+        "INSPECT",
+        "SYNC",
+        "RED",
+        "GREEN",
+        "REGRESSION",
+        "AUDIT",
+        "CTO_CROSSCHECK",
+        "COMMIT",
+        "PUSH",
+        "REMOTE_VERIFY"
     ],
     "repository": {
-        "branch": "main",
-        "remote_tracking_branch": "origin/main",
+        "branch": "feat/domain-management-foundation",
+        "remote_tracking_branch": "origin/feat/domain-management-foundation",
         "synchronization_state": "synchronized",
-        "last_verified_commit": "45c4e5d",
-        "commit_reference_semantics": "last_verified_commit_before_current_documentation_patch",
+        "last_verified_commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
+        "commit_reference_semantics": "last_remote_verified_commit_before_sprint_15c_truth_sync",
         "required_final_working_tree": "clean",
-        "required_final_synchronization": "local_matches_origin_main"
+        "required_final_synchronization": "local_matches_origin_feat_domain_management_foundation",
+        "completion_gate": "passed",
+        "governance_audit": "passed"
     },
     "repository_governance": {
         "phase": "Phase 0.2",
@@ -176,5 +179,185 @@
         ],
         "completion_commit": "45c4e5d",
         "completed_date": "2026-07-22"
+    },
+    "project_brain": {
+        "version": "2.0",
+        "effective_date": "2026-07-25",
+        "status": "canonical",
+        "entry_point": "docs/project-brain/README.md",
+        "canonical_requirements": "docs/project-brain/CANONICAL_REQUIREMENTS.md",
+        "master_prompt_inheritance": "docs/governance/MASTER_PROMPT_V2_0_TO_V2_1_INHERITANCE.md",
+        "registry_lifecycle": "docs/registry/LIFECYCLE_MODEL.md",
+        "brand_1_delivery_window": {
+            "start": "2026-07-16",
+            "deadline": "2026-07-30",
+            "status": "active"
+        },
+        "overall_project_deadline": "2026-10-14",
+        "delivery_order": [
+            "brand_1_usable",
+            "brand_1_stabilization_and_hardening",
+            "owner_panel",
+            "brand_2_to_5_activation",
+            "multi_brand_operational_hardening"
+        ],
+        "security_release_gate": true,
+        "last_synchronized_commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
+        "last_completed_sprint": "Sprint 16A — Brand 1 Production Homepage"
+    },
+    "canonical_direction": {
+        "project_start": "2026-07-16",
+        "brand_1_usable_deadline": "2026-07-30",
+        "overall_project_deadline": "2026-10-14",
+        "brand_1_usable_days": 14,
+        "overall_project_days": 90,
+        "main_modules": 10,
+        "lottery_tools": 6,
+        "brand_1_before_owner_panel": true,
+        "repository_crosscheck_every_sprint": true,
+        "active_plan": "docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md"
+    },
+    "sprint_completion_gate": {
+        "status": "mandatory",
+        "canonical_specification": "docs/governance/SPRINT_COMPLETION_GATE.md",
+        "crosscheck_directory": "docs/sprints/crosschecks",
+        "crosscheck_template": "docs/sprints/crosschecks/TEMPLATE.md",
+        "repository_reread_at_sprint_start": true,
+        "repository_reread_before_commit": true,
+        "cto_crosscheck_required": true,
+        "crosscheck_report_required": true,
+        "commit_blocked_until_crosscheck_passes": true,
+        "remote_verification_required": true,
+        "workflow": [
+            "INSPECT",
+            "SYNC",
+            "RED",
+            "GREEN",
+            "REGRESSION",
+            "AUDIT",
+            "CTO_CROSSCHECK",
+            "COMMIT",
+            "PUSH",
+            "REMOTE_VERIFY"
+        ],
+        "minimum_crosscheck_scope": [
+            "code",
+            "tests",
+            "routes",
+            "migrations",
+            "commands",
+            "scheduler",
+            "queue",
+            "configuration",
+            "security",
+            "architecture",
+            "roadmap",
+            "project_state",
+            "sprint_state",
+            "manifest",
+            "changelog",
+            "ai_handover",
+            "active_sprint_record",
+            "registries",
+            "brand_1_usable_milestone"
+        ]
+    },
+    "domain_management": {
+        "status": "implemented",
+        "completion_through": "Sprint 14B",
+        "verified_at_commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
+        "test_files": 15,
+        "latest_targeted_regression": {
+            "tests": 169,
+            "assertions": 512,
+            "status": "passed"
+        },
+        "capabilities": [
+            "multi_domain_registration",
+            "domain_type_engine",
+            "primary_domain_management",
+            "brand_isolation",
+            "legacy_domain_backfill",
+            "domain_verification",
+            "verification_persistence",
+            "dns_http_seo_verification",
+            "domain_health_monitoring",
+            "domain_health_history",
+            "domain_health_timeline_ui",
+            "https_policy",
+            "canonical_url_engine",
+            "robots_directive_engine",
+            "domain_migration",
+            "scheduled_domain_verification",
+            "filament_domain_management"
+        ]
+    },
+    "completed_sprints": [
+        {
+            "id": "sprint_15b",
+            "name": "Permanent Sprint Completion Gate",
+            "status": "completed",
+            "commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
+            "remote_verified": true,
+            "governance_audit": {
+                "passed": 7,
+                "total": 7
+            }
+        }
+    ],
+    "active_sprint": {
+        "id": "sprint_16a",
+        "name": "Brand 1 Production Homepage",
+        "status": "completed_pending_commit_and_remote_verification",
+        "baseline_commit": "e08b97112b838951b94ed63e40ce633533b6e663",
+        "behavior_change": true,
+        "capability_id": "MP21-F017",
+        "objective": "Implement the Brand 1 production homepage with explicit Brand-scoped aggregation, SEO metadata, mandatory public module access, safe empty states, and automated regression coverage.",
+        "completed_on": "2026-07-26"
+    },
+    "delivery": {
+        "brand_1_usable_deadline": "2026-07-30",
+        "brand_1_usable_days": 14,
+        "active_plan": "docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md"
+    },
+    "homepage_engine": {
+        "status": "implemented",
+        "capability_id": "MP21-F017",
+        "sprint": "Sprint 16A",
+        "baseline_commit": "e08b97112b838951b94ed63e40ce633533b6e663",
+        "brand_scoped_content": [
+            "live_draws",
+            "latest_results",
+            "current_predictions",
+            "active_promotions",
+            "latest_articles"
+        ],
+        "public_module_gateway": [
+            "live_draw",
+            "data_result",
+            "prediction",
+            "slot_gacor_rtp",
+            "jackpot_proof",
+            "promotion",
+            "complaint",
+            "guide",
+            "lottery_tools"
+        ],
+        "seo": [
+            "canonical",
+            "open_graph_title",
+            "open_graph_description",
+            "open_graph_url"
+        ],
+        "null_brand_context_behavior": "render_safe_empty_homepage",
+        "verification": {
+            "dedicated_tests": 6,
+            "dedicated_assertions": 50,
+            "frontend_tests": 72,
+            "frontend_assertions": 312,
+            "full_tests": 421,
+            "full_assertions": 1166,
+            "status": "passed"
+        }
     }
 }

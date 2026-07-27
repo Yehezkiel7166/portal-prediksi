@@ -141,3 +141,25 @@ Repository alignment has priority over feature implementation.
 7. docs/governance/MASTER_PROMPT_CANONICAL_MAP.md
 
 8. docs/governance/MASTER_PROMPT_ALIGNMENT_CHECKLIST.md
+<!-- PROJECT-BRAIN-V1-START -->
+## Project Brain Reading Order
+
+After the repository-state documents, read:
+
+1. `docs/project-brain/README.md`
+2. `docs/project-brain/MASTER_VISION.md`
+3. `docs/project-brain/PROJECT_DECISIONS.md`
+4. `docs/project-brain/WORKING_MODEL.md`
+5. `docs/project-brain/SYSTEM_BLUEPRINT.md`
+6. `docs/project-brain/FEATURE_CATALOG.md`
+7. `docs/security/THREAT_MODEL.md`
+8. `docs/security/SECURITY_CONTROL_MATRIX.md`
+9. `docs/delivery/BRAND-1-30-DAY-PLAN.md`
+10. `docs/delivery/BRAND-1-PRODUCTION-GATE.md`
+
+Project Brain does not erase historical documentation. It provides current project-level direction and explicit precedence. Approved ADRs and the Project Constitution remain authoritative as defined in the Project Brain index.
+
+### Operator command rule
+
+Operational instructions are prepared as complete copy-paste-ready command blocks, explicitly labeled for Windows PowerShell or Linux SSH. Never apply a patch that fails `git apply --check`.
+<!-- PROJECT-BRAIN-V1-END -->

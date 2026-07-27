@@ -209,3 +209,113 @@ Update this file when:
 - implementation proves an assumption incorrect.
 
 Keep `PROJECT_STATE.md`, `PROJECT_STATE.json`, `PROJECT_MANIFEST.md`, sprint documentation, and this roadmap consistent.
+
+<!-- BRAND-1-BASELINE-START -->
+
+## Mandatory Brand 1 Completion Gate
+
+Before multi-brand production activation, complete and validate the Brand 1 baseline defined in:
+
+- `docs/product/BRAND_1_FRONTEND_BASELINE.md`
+
+Required capability groups:
+
+1. Complete public navigation and responsive frontend.
+2. Live Draw, Result, and Prediction regression stability.
+3. Slot Gacor / RTP.
+4. Bukti Jackpot.
+5. Keluhan ticket workflow.
+6. Panduan content workflow.
+7. Jadwal Togel.
+8. BBFS Generator.
+9. Buku Mimpi.
+10. Paito Togel Warna.
+11. Konversi Angka SGP.
+12. Tabel Shio.
+13. Complete Filament administration.
+14. Scheduler, queue, cache, event, audit, SEO, backup, and health automation.
+15. Brand 1 production-readiness test suite.
+
+Multi-brand is an extension milestone after this gate, not a replacement for it.
+
+<!-- BRAND-1-BASELINE-END -->
+<!-- PROJECT-BRAIN-V1-START -->
+## Active Delivery Overlay — Brand 1 Maximum 30-Day Window
+
+The detailed active plan is maintained in `docs/delivery/BRAND-1-30-DAY-PLAN.md`.
+
+- Days 1–3: baseline, dependency/security review, blocker register.
+- Days 4–8: Brand Context, isolation, configuration, theme, menu.
+- Days 9–12: SEO and responsive media foundation.
+- Days 13–17: authorization and security hardening.
+- Days 18–21: queue, scheduler, monitoring, backup, restore, rollback.
+- Days 22–25: regression, performance, responsive/accessibility, dependency triage.
+- Days 26–28: staging release candidate and production-gate rehearsal.
+- Days 29–30: controlled production release and stabilization.
+
+Deadline: 2026-08-23. P0 security, data-integrity, backup, migration, or release failures block deployment.
+
+After Brand 1:
+
+1. optimization and hardening;
+2. Owner Panel;
+3. Brand 2–5 activation;
+4. controlled enterprise capabilities such as Brand Wizard, extension API, trusted plugins, installer/updater, marketplace, and advanced AI assistance.
+<!-- PROJECT-BRAIN-V1-END -->
+
+<!-- CURRENT-DIRECTION-START -->
+## Canonical Direction — 2026-07-25
+
+- Project started on 2026-07-16.
+- Brand 1 usable deadline is 2026-07-30.
+- Overall project deadline is 2026-10-14.
+- Brand 1 contains exactly 10 main modules and 6 lottery tools.
+- Brand 1 is completed before Owner Panel and Brand 2–5.
+- Domain Management is implemented through Commit 14B.
+- The former active 30-day Brand 1 plan is superseded.
+- Every sprint requires repository synchronization and CTO crosscheck.
+
+Canonical reference:
+
+- `docs/governance/CURRENT_DIRECTION.md`
+- `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
+<!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-15C-ROADMAP-START -->
+
+## Post-Sprint 15B Execution Order
+
+Current repository truth:
+
+1. Domain Management is implemented through Sprint 14B.
+2. Sprint 15B Permanent Sprint Completion Gate is completed.
+3. Sprint 15C synchronizes repository truth without application behavior changes.
+4. After Sprint 15C, resume Brand 1 usable implementation.
+5. Owner Panel remains after Brand 1 completion and stabilization.
+
+The next product sprint must select the highest-priority incomplete Brand 1
+capability from implementation evidence. It must not reopen completed Domain
+Management work without a verified regression gap.
+<!-- SPRINT-15C-ROADMAP-END -->
+
+<!-- SPRINT-16A-ROADMAP-START -->
+
+## Sprint 16A Roadmap Update
+
+`MP21-F017 — Brand 1 Production Homepage` is implemented.
+
+The Homepage Engine now provides the verified Brand 1 public aggregation layer
+and gateway to the mandatory public module groups.
+
+This completion does not change the implementation state of Slot Gacor / RTP,
+Jackpot Proof, Complaint, Guide, Theme Engine, Widget Engine, or incomplete
+Lottery Tool modules.
+
+Execution order after Sprint 16A:
+
+1. preserve the implemented Homepage Engine;
+2. select the next highest-priority incomplete Brand 1 capability;
+3. finish Brand 1 before Owner Panel and Brand 2–5;
+4. apply the permanent completion workflow to every sprint.
+
+<!-- SPRINT-16A-ROADMAP-END -->

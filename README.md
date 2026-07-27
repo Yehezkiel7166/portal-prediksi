@@ -107,3 +107,20 @@ php artisan test
 Status proyek kanonis tersedia pada `PROJECT_STATE.md`.
 
 `PROJECT_STATE.json` dipertahankan sebagai machine-readable compatibility artifact dan harus selalu konsisten dengan `PROJECT_STATE.md`.
+<!-- PROJECT-BRAIN-V1-START -->
+## Project Brain
+
+The repository now includes a canonical Project Brain that preserves product vision, working agreements, decisions, architecture direction, feature ideas, security controls, and the Brand 1 delivery plan.
+
+Start with [`docs/project-brain/README.md`](docs/project-brain/README.md).
+
+Current delivery order:
+
+1. Brand 1 production readiness by the maximum target date of 2026-08-23.
+2. Brand 1 optimization and hardening.
+3. Owner Panel.
+4. Brand 2–5 activation.
+5. Enterprise expansion.
+
+Security is a mandatory production gate. See [`docs/security/THREAT_MODEL.md`](docs/security/THREAT_MODEL.md), [`docs/security/SECURITY_CONTROL_MATRIX.md`](docs/security/SECURITY_CONTROL_MATRIX.md), and [`docs/delivery/BRAND-1-PRODUCTION-GATE.md`](docs/delivery/BRAND-1-PRODUCTION-GATE.md).
+<!-- PROJECT-BRAIN-V1-END -->

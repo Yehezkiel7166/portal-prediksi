@@ -56,3 +56,49 @@ Stop implementation when repository evidence conflicts with requirements, an arc
 ## Product-Decision Boundaries
 
 Implementation must stop for decisions that change business rules, public behavior, data ownership or retention, security posture, supported integrations, destructive migration strategy, feature priority, or release acceptance criteria. Technical details within an approved design may be resolved by the technical lead when they preserve documented behavior and architecture.
+<!-- PROJECT-BRAIN-V1-START -->
+## Copy-Paste Operations Standard
+
+The Project Owner primarily executes prepared commands. Every operational instruction must:
+
+- state whether it runs in Windows PowerShell or Linux SSH;
+- be complete and directly copy-pasteable;
+- use known paths and ports when already established;
+- validate branch, commit, and working tree before patching;
+- use `git apply --check` before `git apply`;
+- stop after an error rather than continuing to commit;
+- verify diff, tests, build, documentation, and Git status before push.
+
+Known SSH port is `<SSH_PORT>`; repository path is `<PROJECT_ROOT>`. Secrets, absolute hosting paths, usernames, and passwords must never be committed to the repository.
+<!-- PROJECT-BRAIN-V1-END -->
+
+<!-- SPRINT-COMPLETION-GATE-START -->
+## Mandatory Sprint Completion Gate
+
+The canonical gate is defined in
+[`docs/governance/SPRINT_COMPLETION_GATE.md`](docs/governance/SPRINT_COMPLETION_GATE.md).
+
+Every sprint must follow:
+
+`INSPECT → SYNC → RED → GREEN → REGRESSION → AUDIT → CTO_CROSSCHECK → COMMIT → PUSH → REMOTE_VERIFY`
+
+Repository evidence is authoritative. Chat context is non-authoritative until
+verified against the current branch, HEAD, code, tests, state, registries, and
+documentation.
+
+The repository must be re-read at sprint start and again after regression and
+audit but before commit.
+
+A sprint may not be marked completed and a completion commit may not be created
+until:
+
+- implementation and documentation are mutually consistent;
+- affected registries, roadmap, project state, sprint state, manifest,
+  changelog, and AI handover are synchronized;
+- Brand 1 milestone alignment is confirmed;
+- a CTO crosscheck report exists under `docs/sprints/crosschecks/`;
+- the CTO decision is `PASS`.
+
+After push, remote verification must confirm a clean tree, matching local and
+remote HEAD, and ahead/behind state `0 0`.
+<!-- SPRINT-COMPLETION-GATE-END -->
