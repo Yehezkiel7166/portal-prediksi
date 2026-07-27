@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\PromotionDetailController;
 use App\Http\Controllers\Frontend\PromotionsController;
 use App\Http\Controllers\Frontend\ResultDetailController;
 use App\Http\Controllers\Frontend\ResultsController;
+use App\Http\Controllers\Frontend\SlotGacorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -42,6 +43,9 @@ Route::get(
         'resultDate' => '\d{4}-\d{2}-\d{2}',
     ])
     ->name('results.show');
+
+Route::get('/slot-gacor', SlotGacorController::class)
+    ->name('slot-gacor.index');
 
 Route::get('/promosi', PromotionsController::class)
     ->name('promotions.index');

@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+
+PHP_BINARY="${PHP_BINARY:-/opt/alt/php83/usr/bin/php}"
+
+if [ ! -x "$PHP_BINARY" ]; then
+    printf '\n[FAILED] PHP binary tidak ditemukan atau tidak executable: %s\n' "$PHP_BINARY" >&2
+    exit 1
+fi
 set -euo pipefail
 
 ROOT_DIR="$(git rev-parse --show-toplevel 2>/dev/null || true)"
