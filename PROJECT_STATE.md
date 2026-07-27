@@ -275,3 +275,22 @@ This synchronization introduces no application behavior change.
 
 The implementation package adds canonical Market schedule fields, public Jadwal Togel status resolution, and a public current-period Tabel Shio. Completion remains pending server regression, governance audit, migration, commit, push, and remote verification.
 <!-- SPRINT-18B-END -->
+
+
+<!-- SPRINT-18E-TRUTH-START -->
+## Current Verified Delivery Truth — Sprint 18E
+
+This section supersedes older historical status summaries where they conflict with the verified delivery baseline.
+
+- Active branch: `feat/domain-management-foundation`.
+- Last verified production commit: `20838e11d52af369fcb5b6274d089cecfa57429e`.
+- Last verified tree: `b05daff4acad282035e8b171ee53611b22d9eceb`.
+- Sprint 18D status: completed, committed, pushed, and remotely verified.
+- Full regression: 470 tests and 1336 assertions passed.
+- Governance audit: 7/7 passed.
+- Permanent Sprint Completion Gate: passed.
+- Mandatory Brand 1 lottery suite: all six tools implemented.
+- Current sprint: Sprint 18E documentation-only truth synchronization.
+- Next approved implementation candidate: Site Configuration Foundation.
+- Database migration for Sprint 18E: none.
+<!-- SPRINT-18E-TRUTH-END -->

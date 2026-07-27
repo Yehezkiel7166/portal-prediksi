@@ -452,3 +452,16 @@ Both tools are deterministic, rate-limited, and do not persist visitor input.
 - Paito: canonical Result-derived historical presentation, market/date filters, deterministic colors, and Result-versioned caching.
 - Database migration: none.
 <!-- SPRINT-18D-END -->
+
+
+<!-- SPRINT-18E-START -->
+## Sprint 18E Manifest Increment
+
+- Type: canonical truth synchronization.
+- Baseline commit: `20838e11d52af369fcb5b6274d089cecfa57429e`.
+- Baseline tree: `b05daff4acad282035e8b171ee53611b22d9eceb`.
+- Behavior change: none.
+- Database migration: none.
+- Canonical artifacts: `PROJECT_STATE.md`, `PROJECT_STATE.json`, `SPRINT_STATE.md`, `ROADMAP.md`, `CHANGELOG.md`, `AI_HANDOVER.md`, sprint record, and CTO crosscheck.
+- Next candidate: Site Configuration Foundation.
+<!-- SPRINT-18E-END -->
