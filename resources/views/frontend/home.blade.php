@@ -1,10 +1,11 @@
 @extends('frontend.layouts.app')
 
-@section('title', config('app.name').' | Portal Prediksi dan Data Result')
+@section('title', $siteConfiguration->defaultSeoTitle)
 
 @section(
     'description',
-    'Portal informasi Live Draw, Prediksi Togel, Data Result, Promosi, dan alat togel dari '.config('app.name').'.'
+    $siteConfiguration->defaultSeoDescription
+        ?? 'Portal informasi prediksi, hasil pasaran, live draw, dan kalender shio.'
 )
 
 @push('head')
