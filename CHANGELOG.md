@@ -79,3 +79,13 @@
 - Prevented a second configuration record from being created for the active brand.
 - Routed create and edit persistence through the existing guarded upsert action.
 - Added brand-isolation, access-control, page-registration, and singleton regression coverage.
+
+## Unreleased — Sprint 19A-3 Site Configuration Frontend Integration
+
+- Added a shared frontend view composer for resolved brand Site Configuration.
+- Updated the public header to consume database-backed site identity, logo, and tagline.
+- Updated the public footer to consume database-backed text, contacts, WhatsApp, and social links.
+- Added default SEO title/description and favicon fallbacks.
+- Restricted rendered external asset and social URLs to HTTP/HTTPS.
+- Added frontend integration regression coverage.
+- Added synchronized sprint and CTO crosscheck documentation; completion remains pending mandatory runtime regression and remote verification.

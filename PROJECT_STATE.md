@@ -294,3 +294,16 @@ This section supersedes older historical status summaries where they conflict wi
 - Next approved implementation candidate: Site Configuration Foundation.
 - Database migration for Sprint 18E: none.
 <!-- SPRINT-18E-TRUTH-END -->
+
+<!-- SPRINT-19A-3-PROJECT-STATE-START -->
+## Current Source Truth — Sprint 19A-3
+
+This latest section supersedes older Site Configuration status statements where they conflict.
+
+- Site Configuration data foundation: implemented.
+- Site Configuration Filament administration: implemented in source.
+- Site Configuration frontend integration: implementation prepared.
+- Shared frontend view composer, database-backed header/footer, SEO fallback, and HTTP/HTTPS URL filtering: implemented in source.
+- Database migration for Sprint 19A-3: none.
+- Completion remains blocked until mandatory Laravel regression, CTO crosscheck PASS, push, and remote verification.
+<!-- SPRINT-19A-3-PROJECT-STATE-END -->

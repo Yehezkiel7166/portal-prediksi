@@ -42,8 +42,8 @@ final class SiteConfigurationResolver
         return new ResolvedSiteConfiguration(
             siteName: $siteName,
             tagline: $this->filled($configuration->tagline),
-            logoUrl: $this->filled($configuration->logo_url),
-            faviconUrl: $this->filled($configuration->favicon_url),
+            logoUrl: $this->httpUrl($configuration->logo_url),
+            faviconUrl: $this->httpUrl($configuration->favicon_url),
             defaultSeoTitle: $seoTitle,
             defaultSeoDescription: $this->filled($configuration->default_seo_description),
             contactEmail: $this->filled($configuration->contact_email),
@@ -109,11 +109,24 @@ final class SiteConfigurationResolver
             $network = trim($network);
             $url = trim($url);
 
-            if ($network !== '' && $url !== '') {
+            if ($network !== '' && $this->httpUrl($url) !== null) {
                 $normalized[$network] = $url;
             }
         }
 
         return $normalized;
+    }
+
+    private function httpUrl(mixed $value): ?string
+    {
+        $url = $this->filled($value);
+
+        if ($url === null || filter_var($url, FILTER_VALIDATE_URL) === false) {
+            return null;
+        }
+
+        $scheme = strtolower((string) parse_url($url, PHP_URL_SCHEME));
+
+        return in_array($scheme, ['http', 'https'], true) ? $url : null;
     }
 }

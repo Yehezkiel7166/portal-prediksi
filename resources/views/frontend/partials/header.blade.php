@@ -1,7 +1,15 @@
 <header class="border-b border-amber-400/20 bg-slate-950">
     <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 lg:flex-row lg:items-center lg:justify-between">
-        <a href="{{ route('home') }}" class="text-xl font-bold tracking-wide text-amber-400">
-            {{ config('app.name') }}
+        <a href="{{ route('home') }}" class="flex items-center gap-3 text-xl font-bold tracking-wide text-amber-400">
+            @if ($siteConfiguration->logoUrl)
+                <img src="{{ $siteConfiguration->logoUrl }}" alt="{{ $siteConfiguration->siteName }}" class="h-10 w-auto">
+            @endif
+            <span>
+                {{ $siteConfiguration->siteName }}
+                @if ($siteConfiguration->tagline)
+                    <small class="block text-xs font-normal tracking-normal text-slate-400">{{ $siteConfiguration->tagline }}</small>
+                @endif
+            </span>
         </a>
 
         <nav aria-label="Navigasi utama">

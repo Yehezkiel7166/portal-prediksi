@@ -486,3 +486,17 @@ Both tools are deterministic, rate-limited, and do not persist visitor input.
 - `app/Filament/Resources/SiteConfigurations/Pages/EditSiteConfiguration.php`
 - `tests/Feature/SiteConfiguration/SiteConfigurationFilamentAdministrationTest.php`
 <!-- SPRINT-19A-2-MANIFEST-END -->
+
+<!-- SPRINT-19A-3-MANIFEST-START -->
+## Sprint 19A-3 Manifest
+
+- `app/Providers/AppServiceProvider.php`
+- `app/Domains/SiteConfiguration/Support/SiteConfigurationResolver.php`
+- `app/Filament/Resources/SiteConfigurations/Schemas/SiteConfigurationForm.php`
+- `resources/views/frontend/layouts/app.blade.php`
+- `resources/views/frontend/partials/header.blade.php`
+- `resources/views/frontend/partials/footer.blade.php`
+- `tests/Feature/SiteConfiguration/SiteConfigurationFrontendIntegrationTest.php`
+- `docs/sprints/SPRINT-19A-3-SITE-CONFIGURATION-FRONTEND-INTEGRATION.md`
+- `docs/sprints/crosschecks/SPRINT-19A-3-SITE-CONFIGURATION-FRONTEND-INTEGRATION.md`
+<!-- SPRINT-19A-3-MANIFEST-END -->

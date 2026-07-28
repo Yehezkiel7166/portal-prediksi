@@ -4,8 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title', config('app.name'))</title>
-    <meta name="description" content="@yield('description', 'Portal informasi prediksi, hasil pasaran, live draw, dan kalender shio.')">
+    <title>@yield('title', $siteConfiguration->defaultSeoTitle)</title>
+    <meta name="description" content="@yield('description', $siteConfiguration->defaultSeoDescription ?? 'Portal informasi prediksi, hasil pasaran, live draw, dan kalender shio.')">
+
+    @if ($siteConfiguration->faviconUrl)
+        <link rel="icon" href="{{ $siteConfiguration->faviconUrl }}">
+    @endif
 
     @hasSection('metadata')
         @yield('metadata')

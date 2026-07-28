@@ -416,3 +416,11 @@ Each increment must pass the permanent completion gate before the next increment
 Status: implementation package prepared from verified Sprint 19A-1 baseline.
 
 Scope: current-brand-only configuration listing, create/edit workflow, validated site identity/SEO/contact/social/footer fields, singleton enforcement, and administrator access tests. Frontend consumption remains Sprint 19A-3.
+
+<!-- SPRINT-19A-3-START -->
+## Sprint 19A-3 — Frontend Integration
+
+Status: implementation prepared; completion remains blocked on mandatory Laravel regression and remote verification.
+
+The public frontend now receives resolved Site Configuration through a shared view composer. Header identity, footer/contact/social content, favicon, and SEO defaults use the active brand configuration with safe fallbacks and HTTP/HTTPS-only external URLs. No migration is introduced.
+<!-- SPRINT-19A-3-END -->

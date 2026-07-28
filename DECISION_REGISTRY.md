@@ -93,3 +93,11 @@ Status: Accepted.
 
 Sprint 17B completes the already-started Complaint module before selecting another Brand 1 module. Complaint status history is append-only, public complaint records remain private, and terminal status transitions cannot be reopened through the standard workflow.
 <!-- SPRINT-17B-DECISION-END -->
+
+<!-- SPRINT-19A-3-DECISION-START -->
+## DEC-19A-3-001 — Shared Frontend Site Configuration Composition
+
+Status: Accepted.
+
+All public `frontend.*` views receive one resolved, brand-scoped Site Configuration value through a shared view composer. Templates consume the resolved value rather than querying persistence directly. External logo, favicon, and social URLs are rendered only when their scheme is HTTP or HTTPS.
+<!-- SPRINT-19A-3-DECISION-END -->

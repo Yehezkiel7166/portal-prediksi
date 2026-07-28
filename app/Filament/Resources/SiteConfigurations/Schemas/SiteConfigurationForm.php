@@ -19,8 +19,8 @@ final class SiteConfigurationForm
             Section::make('Identitas Situs')->schema([
                 TextInput::make('site_name')->label('Nama situs')->required()->maxLength(150),
                 TextInput::make('tagline')->label('Tagline')->maxLength(255),
-                TextInput::make('logo_url')->label('URL logo')->url()->maxLength(2048),
-                TextInput::make('favicon_url')->label('URL favicon')->url()->maxLength(2048),
+                TextInput::make('logo_url')->label('URL logo')->url()->rules(['url:http,https'])->maxLength(2048),
+                TextInput::make('favicon_url')->label('URL favicon')->url()->rules(['url:http,https'])->maxLength(2048),
                 Toggle::make('is_active')->label('Aktif')->default(true),
             ])->columns(2),
             Section::make('SEO Default')->schema([

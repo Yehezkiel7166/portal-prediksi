@@ -425,3 +425,9 @@ Sprint 19A is split into bounded increments. Sprint 19A-1 introduces only the si
 
 Sprint 19A-2 adds Filament administration for the current brand's single Site Configuration record. It must be validated on the Hostinger environment before completion. No migration is introduced. After remote verification, continue with Sprint 19A-3 frontend integration.
 <!-- SPRINT-19A-2-HANDOVER-END -->
+
+<!-- SPRINT-19A-3-HANDOVER-START -->
+## Sprint 19A-3 Handover
+
+The Site Configuration frontend integration is prepared on local branch `work` from baseline `6099abf713897fb7a59591d43fa279b500b00acc`. Before declaring completion, install the locked Composer dependencies, run targeted and full Laravel regression, change the Sprint 19A-3 CTO decision to `PASS` only if all gates pass, push to the intended canonical branch, and verify local/remote equality with ahead/behind `0 0`. No migration is required.
+<!-- SPRINT-19A-3-HANDOVER-END -->

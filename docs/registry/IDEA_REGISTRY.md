@@ -1331,3 +1331,11 @@ Canonical reference:
 - `MP2-IDEA-004` Complaint workflow and case tracking: IMPLEMENTED for Brand 1 operational baseline.
 - Attachments and public secure tracking remain separate future increments and were not inferred into Sprint 17B.
 <!-- SPRINT-17B-IDEA-STATUS-END -->
+
+<!-- SPRINT-19A-3-IDEA-START -->
+## Site Configuration Frontend Consumption
+
+Status: IMPLEMENTED IN SOURCE; COMPLETION VALIDATION PENDING.
+
+The approved centralized site identity idea is consumed through a shared frontend view composer, database-backed header/footer content, SEO defaults, safe missing/inactive fallbacks, and HTTP/HTTPS-only public external URLs. Analytics and structured metadata remain bounded to Sprint 19A-4.
+<!-- SPRINT-19A-3-IDEA-END -->

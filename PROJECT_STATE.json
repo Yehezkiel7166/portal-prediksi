@@ -3,9 +3,9 @@
   "project": {
     "name": "Portal Prediksi CMS",
     "repository": "https://github.com/Yehezkiel7166/portal-prediksi",
-    "primary_branch": "feat/domain-management-foundation",
+    "primary_branch": "main",
     "source_of_truth": "git_repository",
-    "version": "0.18.1"
+    "version": "0.19.0-alpha.3"
   },
   "baseline": {
     "commit": "dbc3b17",
@@ -126,10 +126,10 @@
     "Site configuration is not yet consumed by the public frontend"
   ],
   "next_recommended_phase": {
-    "id": "site_configuration_filament_administration",
-    "name": "Sprint 19A-2 — Site Configuration Filament Administration",
-    "objective": "Provide validated current-brand administration over the completed Site Configuration data foundation.",
-    "status": "blocked_until_sprint_19a_1_completion"
+    "id": "sprint_19a_3_completion_validation",
+    "name": "Sprint 19A-3 — Completion Validation",
+    "objective": "Run mandatory Laravel regression, CTO crosscheck, push, and remote verification for the prepared frontend integration.",
+    "status": "blocked_by_environment"
   },
   "mandatory_workflow": [
     "INSPECT",
@@ -144,16 +144,17 @@
     "REMOTE_VERIFY"
   ],
   "repository": {
-    "branch": "feat/domain-management-foundation",
-    "remote_tracking_branch": "origin/feat/domain-management-foundation",
-    "synchronization_state": "synchronized",
+    "branch": "work",
+    "remote_tracking_branch": null,
+    "synchronization_state": "unverified_network_blocked",
     "last_verified_commit": "20838e11d52af369fcb5b6274d089cecfa57429e",
     "commit_reference_semantics": "verified_sprint_18d_production_completion",
     "required_final_working_tree": "clean",
-    "required_final_synchronization": "local_matches_origin_feat_domain_management_foundation",
+    "required_final_synchronization": "local_matches_intended_remote_branch",
     "completion_gate": "passed",
     "governance_audit": "passed",
-    "last_verified_tree": "b05daff4acad282035e8b171ee53611b22d9eceb"
+    "last_verified_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
+    "last_local_commit": "6099abf713897fb7a59591d43fa279b500b00acc"
   },
   "repository_governance": {
     "phase": "Phase 0.2",
@@ -470,5 +471,21 @@
       "shio_table"
     ],
     "completed_through": "Sprint 18D"
+  },
+  "site_configuration_frontend_integration": {
+    "sprint": "19A-3",
+    "implementation": "prepared",
+    "shared_view_composer": true,
+    "header_database_configuration": true,
+    "footer_database_configuration": true,
+    "seo_fallback": true,
+    "external_url_schemes": [
+      "http",
+      "https"
+    ],
+    "migration_required": false,
+    "regression": "blocked_missing_vendor_dependencies",
+    "cto_crosscheck": "fail_pending_regression_and_remote_verification",
+    "remote_verification": "blocked_http_403"
   }
 }
