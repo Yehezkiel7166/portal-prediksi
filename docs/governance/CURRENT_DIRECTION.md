@@ -109,3 +109,24 @@ Sprint 15C repository truth synchronization is complete.
 Implementation now returns to Brand 1 usable completion. Repository-only
 synchronization work must not displace the highest-priority incomplete Brand 1
 capability unless new verified repository contradictions are found.
+
+<!-- SPRINT-20A-CURRENT-DIRECTION-START -->
+## Current Execution State — Sprint 20A
+
+- Canonical branch: `main`.
+- Baseline: `8c621626d6d353b0c7c2550a5889d4fb8038d43e`.
+- Current sprint: Sprint 20A — Repository Truth Reconciliation.
+- Application behavior change: none.
+- Migration change: none.
+- Next sprint: Sprint 20B — Brand 1 Production Readiness Audit.
+
+Mandatory workflow:
+
+`INSPECT → SYNC → RED → GREEN → REGRESSION → AUDIT →
+RE-READ → CTO CROSSCHECK → COMMIT → PUSH → REMOTE VERIFY`
+
+Every sprint must read and crosscheck current code, tests, routes, migrations,
+commands, scheduler, queue, configuration, security, architecture, roadmap,
+project state, sprint state, manifest, changelog, handover, registries, and the
+Brand 1 delivery milestone.
+<!-- SPRINT-20A-CURRENT-DIRECTION-END -->

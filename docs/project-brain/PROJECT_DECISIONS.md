@@ -87,3 +87,9 @@ Canonical reference:
 - `docs/governance/CURRENT_DIRECTION.md`
 - `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
 <!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-20A-PROJECT-DECISION -->
+## Sprint 20A — Canonical Implementation Truth
+
+The newest canonical state sections supersede stale active-status summaries.
+Historical sprint evidence remains preserved.

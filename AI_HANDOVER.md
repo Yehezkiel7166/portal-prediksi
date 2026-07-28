@@ -431,3 +431,26 @@ Sprint 19A-2 adds Filament administration for the current brand's single Site Co
 
 The Site Configuration frontend integration is prepared on local branch `work` from baseline `6099abf713897fb7a59591d43fa279b500b00acc`. Before declaring completion, install the locked Composer dependencies, run targeted and full Laravel regression, change the Sprint 19A-3 CTO decision to `PASS` only if all gates pass, push to the intended canonical branch, and verify local/remote equality with ahead/behind `0 0`. No migration is required.
 <!-- SPRINT-19A-3-HANDOVER-END -->
+
+<!-- SPRINT-20A-AI-HANDOVER-START -->
+## Sprint 20A Handover
+
+Current canonical baseline: `8c621626d6d353b0c7c2550a5889d4fb8038d43e` on `main`.
+
+Sprint 20A performs repository truth reconciliation only. It does not alter
+application behavior, dependencies, or database migrations.
+
+Verified direction:
+
+- Brand 1 has exactly ten public module groups;
+- the Lottery Tool Suite contains six implemented tools;
+- Site Configuration data, administration, and frontend integration exist;
+- production readiness remains unverified until Sprint 20B.
+
+Do not begin Owner Panel or Brand 2–5 before Brand 1 passes its usable,
+production-readiness, and stabilization gates.
+
+Next sprint:
+
+**Sprint 20B — Brand 1 Production Readiness Audit**
+<!-- SPRINT-20A-AI-HANDOVER-END -->

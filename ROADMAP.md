@@ -424,3 +424,43 @@ Status: implementation prepared; completion remains blocked on mandatory Laravel
 
 The public frontend now receives resolved Site Configuration through a shared view composer. Header identity, footer/contact/social content, favicon, and SEO defaults use the active brand configuration with safe fallbacks and HTTP/HTTPS-only external URLs. No migration is introduced.
 <!-- SPRINT-19A-3-END -->
+
+<!-- SPRINT-20A-ROADMAP-START -->
+## Sprint 20A — Repository Truth Reconciliation
+
+Status: In Progress
+
+Baseline:
+
+- branch: `main`;
+- commit: `8c621626d6d353b0c7c2550a5889d4fb8038d43e`;
+- application behavior change: none;
+- database migration: none.
+
+Verified current implementation:
+
+- ten mandatory Brand 1 public module groups have implementation evidence;
+- all six mandatory lottery tools have implementation evidence;
+- Site Configuration persistence, Filament administration, and public frontend
+  integration are implemented;
+- Domain Management, canonical handling, HTTPS policy, verification, health
+  history, and scheduled monitoring are implemented;
+- repository governance and Permanent Sprint Completion Gate are active.
+
+Sprint 20A objective:
+
+1. reconcile canonical documentation and machine-readable state;
+2. preserve historical sprint evidence;
+3. eliminate stale active-state contradictions;
+4. perform full regression and governance audit;
+5. select Sprint 20B Brand 1 Production Readiness Audit.
+
+Next delivery order:
+
+1. Sprint 20B — Brand 1 Production Readiness Audit;
+2. evidence-backed release blocker resolution;
+3. Brand 1 usable and production gate;
+4. Brand 1 stabilization and hardening;
+5. Owner Panel;
+6. Brand 2–5 activation.
+<!-- SPRINT-20A-ROADMAP-END -->

@@ -101,3 +101,12 @@ Status: Accepted.
 
 All public `frontend.*` views receive one resolved, brand-scoped Site Configuration value through a shared view composer. Templates consume the resolved value rather than querying persistence directly. External logo, favicon, and social URLs are rendered only when their scheme is HTTP or HTTPS.
 <!-- SPRINT-19A-3-DECISION-END -->
+
+<!-- SPRINT-20A-DECISION -->
+## DEC-20A-001 — Repository Truth Before Further Feature Work
+
+Status: Accepted.
+
+Canonical documentation and machine-readable state must agree with verified
+implementation before selecting additional product work. The next approved
+sprint is Sprint 20B Brand 1 Production Readiness Audit.

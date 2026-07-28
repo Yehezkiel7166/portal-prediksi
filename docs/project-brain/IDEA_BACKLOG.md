@@ -119,3 +119,9 @@ Canonical reference:
 - `docs/governance/CURRENT_DIRECTION.md`
 - `docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md`
 <!-- CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-20A-BACKLOG-REVIEW -->
+## Sprint 20A Backlog Review
+
+No new idea was added. Owner Panel and Brand 2–5 remain after Brand 1
+production readiness and stabilization.

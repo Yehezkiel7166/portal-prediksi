@@ -307,3 +307,47 @@ This latest section supersedes older Site Configuration status statements where 
 - Database migration for Sprint 19A-3: none.
 - Completion remains blocked until mandatory Laravel regression, CTO crosscheck PASS, push, and remote verification.
 <!-- SPRINT-19A-3-PROJECT-STATE-END -->
+
+<!-- SPRINT-20A-PROJECT-STATE-START -->
+## Canonical Current State — Sprint 20A
+
+This newest canonical section supersedes older status summaries wherever they
+conflict with verified repository evidence.
+
+- Status: active.
+- Branch: `main`.
+- Baseline: `8c621626d6d353b0c7c2550a5889d4fb8038d43e`.
+- Current sprint: Sprint 20A — Repository Truth Reconciliation.
+- Application behavior change: none.
+- Database migration: none.
+
+Verified Brand 1 modules:
+
+1. Home.
+2. Live Draw.
+3. Data Result.
+4. Prediksi Togel.
+5. Slot Gacor / RTP.
+6. Bukti Jackpot.
+7. Promosi.
+8. Keluhan.
+9. Panduan.
+10. Alat Togel.
+
+Verified lottery tools:
+
+1. Jadwal Togel.
+2. BBFS Generator.
+3. Buku Mimpi.
+4. Paito Togel Warna.
+5. Konversi Angka SGP.
+6. Tabel Shio.
+
+Verified supporting foundations include Site Configuration, Domain Management,
+Brand Context, canonical resolution, HTTPS handling, scheduler heartbeat,
+Live Draw automation, and brand-scoped administration.
+
+Next bounded sprint:
+
+**Sprint 20B — Brand 1 Production Readiness Audit**
+<!-- SPRINT-20A-PROJECT-STATE-END -->

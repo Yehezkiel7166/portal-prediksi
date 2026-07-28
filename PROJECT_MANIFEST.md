@@ -500,3 +500,22 @@ Both tools are deterministic, rate-limited, and do not persist visitor input.
 - `docs/sprints/SPRINT-19A-3-SITE-CONFIGURATION-FRONTEND-INTEGRATION.md`
 - `docs/sprints/crosschecks/SPRINT-19A-3-SITE-CONFIGURATION-FRONTEND-INTEGRATION.md`
 <!-- SPRINT-19A-3-MANIFEST-END -->
+
+<!-- SPRINT-20A-MANIFEST-START -->
+## Sprint 20A Canonical Manifest
+
+- Branch: `main`.
+- Baseline: `8c621626d6d353b0c7c2550a5889d4fb8038d43e`.
+- Sprint: Sprint 20A — Repository Truth Reconciliation.
+- Behavior changes: none.
+- Migration changes: none.
+- Current direction: `docs/governance/CURRENT_DIRECTION.md`.
+- Current state: `PROJECT_STATE.md` and `PROJECT_STATE.json`.
+- Sprint state: `SPRINT_STATE.md`.
+- Completion gate: `docs/governance/SPRINT_COMPLETION_GATE.md`.
+- Sprint record:
+  `docs/sprints/SPRINT-20A-REPOSITORY-TRUTH-RECONCILIATION.md`.
+- CTO report:
+  `docs/sprints/crosschecks/SPRINT-20A-REPOSITORY-TRUTH-RECONCILIATION.md`.
+- Next sprint: Sprint 20B — Brand 1 Production Readiness Audit.
+<!-- SPRINT-20A-MANIFEST-END -->

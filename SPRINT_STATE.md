@@ -289,3 +289,31 @@ Completion remains pending migration, full regression, governance audit, CTO cro
 - Database migration: none.
 - Completion status: not complete until regression, CTO PASS, push, and remote verification succeed.
 <!-- SPRINT-19A-3-END -->
+
+<!-- SPRINT-20A-SPRINT-STATE-START -->
+## Active Sprint — Sprint 20A
+
+- Name: Repository Truth Reconciliation.
+- Status: In Progress.
+- Branch: `main`.
+- Baseline: `8c621626d6d353b0c7c2550a5889d4fb8038d43e`.
+- Behavior changes: none.
+- Migration changes: none.
+
+Completion requires:
+
+- canonical documentation and JSON state synchronized;
+- full regression PASS;
+- governance audit PASS;
+- second repository re-read;
+- CTO crosscheck PASS;
+- Permanent Sprint Completion Gate PASS;
+- commit and push;
+- local and remote HEAD equality;
+- ahead/behind `0 0`;
+- clean final working tree.
+
+Next sprint:
+
+**Sprint 20B — Brand 1 Production Readiness Audit**
+<!-- SPRINT-20A-SPRINT-STATE-END -->

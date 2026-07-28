@@ -1,491 +1,490 @@
 {
-  "schema_version": 2,
-  "project": {
-    "name": "Portal Prediksi CMS",
-    "repository": "https://github.com/Yehezkiel7166/portal-prediksi",
-    "primary_branch": "main",
-    "source_of_truth": "git_repository",
-    "version": "0.19.0-alpha.3"
-  },
-  "baseline": {
-    "commit": "dbc3b17",
-    "subject": "feat(live-draw): add hls stream player",
-    "working_tree": "clean_before_repository_foundation",
-    "origin_synchronized": true
-  },
-  "runtime": {
-    "php": "8.3",
-    "laravel": "13.20.0",
-    "filament": "5.7",
-    "database": "mysql",
-    "queue": "database",
-    "frontend_build": "vite"
-  },
-  "implemented_domains": [
-    "Core",
-    "Market",
-    "Prediction",
-    "Result",
-    "Shio",
-    "Promotion",
-    "Blog",
-    "LiveDraw",
-    "Complaint",
-    "Guide"
-  ],
-  "implemented_frontend": [
-    "Home",
-    "LiveDraw",
-    "PredictionListing",
-    "PredictionDetail",
-    "ResultListing",
-    "ResultDetail",
-    "PromotionListing",
-    "PromotionDetail",
-    "BlogListing",
-    "BlogDetail",
-    "ProductionHomepage",
-    "GuideListing",
-    "GuideDetail",
-    "LotterySchedule",
-    "ShioTable"
-  ],
-  "scheduled_tasks": [
-    {
-      "command": "system:scheduler-heartbeat",
-      "frequency": "every_five_minutes",
-      "without_overlapping": true
+    "schema_version": 2,
+    "project": {
+        "name": "Portal Prediksi CMS",
+        "repository": "https://github.com/Yehezkiel7166/portal-prediksi",
+        "primary_branch": "main",
+        "source_of_truth": "git_repository",
+        "version": "0.19.0-alpha.3"
     },
-    {
-      "command": "live-draw:update-status",
-      "frequency": "every_minute",
-      "without_overlapping": true
+    "baseline": {
+        "commit": "dbc3b17",
+        "subject": "feat(live-draw): add hls stream player",
+        "working_tree": "clean_before_repository_foundation",
+        "origin_synchronized": true
+    },
+    "runtime": {
+        "php": "8.3",
+        "laravel": "13.20.0",
+        "filament": "5.7",
+        "database": "mysql",
+        "queue": "database",
+        "frontend_build": "vite"
+    },
+    "implemented_domains": [
+        "Core",
+        "Market",
+        "Prediction",
+        "Result",
+        "Shio",
+        "Promotion",
+        "Blog",
+        "LiveDraw",
+        "Complaint",
+        "Guide"
+    ],
+    "implemented_frontend": [
+        "Home",
+        "LiveDraw",
+        "PredictionListing",
+        "PredictionDetail",
+        "ResultListing",
+        "ResultDetail",
+        "PromotionListing",
+        "PromotionDetail",
+        "BlogListing",
+        "BlogDetail",
+        "ProductionHomepage",
+        "GuideListing",
+        "GuideDetail",
+        "LotterySchedule",
+        "ShioTable"
+    ],
+    "scheduled_tasks": [
+        {
+            "command": "system:scheduler-heartbeat",
+            "frequency": "every_five_minutes",
+            "without_overlapping": true
+        },
+        {
+            "command": "live-draw:update-status",
+            "frequency": "every_minute",
+            "without_overlapping": true
+        }
+    ],
+    "completed_capabilities": [
+        "scheduler_heartbeat",
+        "admin_access",
+        "market_management",
+        "prediction_management",
+        "result_management",
+        "shio_management",
+        "shio_banner_generation",
+        "promotion_management",
+        "blog_management",
+        "live_draw_management",
+        "live_draw_status_automation",
+        "latest_result_resolver",
+        "hls_stream_player",
+        "brand_1_production_homepage",
+        "complaint_public_intake",
+        "complaint_operational_workflow",
+        "complaint_status_history",
+        "complaint_admin_notification",
+        "guide_management",
+        "guide_publication",
+        "lottery_schedule",
+        "public_shio_table",
+        "dream_book_reference_search",
+        "dream_book_detail_and_sitemap",
+        "result_derived_paito",
+        "paito_market_date_filtering",
+        "paito_color_mapping"
+    ],
+    "repository_foundation": {
+        "status": "completed",
+        "required_documents": [
+            "README.md",
+            "PROJECT_MANIFEST.md",
+            "PROJECT_STATE.json",
+            "START_HERE.md",
+            "AI_HANDOVER.md",
+            "ROADMAP.md",
+            "ARCHITECTURE.md",
+            "SECURITY.md",
+            "DEPLOYMENT.md",
+            "MIGRATION.md",
+            "BACKUP_RECOVERY.md",
+            "TESTING.md",
+            "PROJECT_STATE.md",
+            "SPRINT_STATE.md"
+        ],
+        "completed_date": "2026-07-20",
+        "commit": "21e2243",
+        "test_result": {
+            "tests": 174,
+            "assertions": 480,
+            "status": "passed"
+        }
+    },
+    "known_limitations": [
+        "Deployment is not yet automated by repository pipeline",
+        "Backup automation is not implemented in the repository",
+        "Centralized responsive media management is not yet implemented",
+        "Application test/build CI is not yet implemented"
+    ],
+    "next_recommended_phase": {
+        "id": "sprint_20b",
+        "name": "Sprint 20B — Brand 1 Production Readiness Audit",
+        "objective": "Audit deployment, backup, restore, rollback, queue, scheduler, health, security, SEO, responsive delivery, and release blockers.",
+        "status": "planned_after_sprint_20a"
+    },
+    "mandatory_workflow": [
+        "INSPECT",
+        "SYNC",
+        "RED",
+        "GREEN",
+        "REGRESSION",
+        "AUDIT",
+        "CTO_CROSSCHECK",
+        "COMMIT",
+        "PUSH",
+        "REMOTE_VERIFY"
+    ],
+    "repository": {
+        "branch": "main",
+        "remote_tracking_branch": "origin/main",
+        "synchronization_state": "verified_at_sprint_20a_start",
+        "last_verified_commit": "8c621626d6d353b0c7c2550a5889d4fb8038d43e",
+        "commit_reference_semantics": "verified_sprint_18d_production_completion",
+        "required_final_working_tree": "clean",
+        "required_final_synchronization": "local_equals_origin_main",
+        "completion_gate": "passed",
+        "governance_audit": "passed",
+        "last_verified_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
+        "last_local_commit": "6099abf713897fb7a59591d43fa279b500b00acc"
+    },
+    "repository_governance": {
+        "phase": "Phase 0.2",
+        "name": "Repository Governance Automation",
+        "status": "completed",
+        "baseline_commit": "c3208f2",
+        "completion_commit": "5185ad7",
+        "local_validation": {
+            "composer_configuration": "passed",
+            "shell_syntax": "passed",
+            "governance_checks": {
+                "total": 5,
+                "passed": 5,
+                "failed": 0
+            },
+            "full_test_suite": {
+                "tests": 174,
+                "assertions": 480,
+                "status": "passed"
+            }
+        },
+        "capabilities": [
+            "merge_conflict_marker_check",
+            "adr_filename_heading_and_uniqueness_check",
+            "secret_and_private_path_check",
+            "markdown_local_link_check",
+            "repository_manifest_check",
+            "composer_audit_command",
+            "github_actions_repository_audit_workflow"
+        ],
+        "remote_ci_verification": "passed"
+    },
+    "canonical_repository_synchronization": {
+        "phase": "Phase 0.3A",
+        "name": "Canonical Repository Synchronization",
+        "status": "completed",
+        "baseline_commit": "5185ad7",
+        "scope": [
+            "PROJECT_STATE.md",
+            "SPRINT_STATE.md",
+            "PROJECT_STATE.json",
+            "AI_HANDOVER.md",
+            "PROJECT_MANIFEST.md",
+            "ROADMAP.md"
+        ],
+        "completion_commit": "45c4e5d",
+        "completed_date": "2026-07-22"
+    },
+    "project_brain": {
+        "version": "2.0",
+        "effective_date": "2026-07-25",
+        "status": "canonical",
+        "entry_point": "docs/project-brain/README.md",
+        "canonical_requirements": "docs/project-brain/CANONICAL_REQUIREMENTS.md",
+        "master_prompt_inheritance": "docs/governance/MASTER_PROMPT_V2_0_TO_V2_1_INHERITANCE.md",
+        "registry_lifecycle": "docs/registry/LIFECYCLE_MODEL.md",
+        "brand_1_delivery_window": {
+            "start": "2026-07-16",
+            "deadline": "2026-07-30",
+            "status": "active"
+        },
+        "overall_project_deadline": "2026-10-14",
+        "delivery_order": [
+            "brand_1_usable",
+            "brand_1_stabilization_and_hardening",
+            "owner_panel",
+            "brand_2_to_5_activation",
+            "multi_brand_operational_hardening"
+        ],
+        "security_release_gate": true,
+        "last_synchronized_commit": "af99d9a6ab748188698b0cb09c6093d3f81ca891",
+        "last_completed_sprint": "Sprint 16C — Brand Jackpot Proof Foundation"
+    },
+    "canonical_direction": {
+        "project_start": "2026-07-16",
+        "brand_1_usable_deadline": "2026-07-30",
+        "overall_project_deadline": "2026-10-14",
+        "brand_1_usable_days": 14,
+        "overall_project_days": 90,
+        "main_modules": 10,
+        "lottery_tools": 6,
+        "brand_1_before_owner_panel": true,
+        "repository_crosscheck_every_sprint": true,
+        "active_plan": "docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md"
+    },
+    "sprint_completion_gate": {
+        "status": "mandatory",
+        "canonical_specification": "docs/governance/SPRINT_COMPLETION_GATE.md",
+        "crosscheck_directory": "docs/sprints/crosschecks",
+        "crosscheck_template": "docs/sprints/crosschecks/TEMPLATE.md",
+        "repository_reread_at_sprint_start": true,
+        "repository_reread_before_commit": true,
+        "cto_crosscheck_required": true,
+        "crosscheck_report_required": true,
+        "commit_blocked_until_crosscheck_passes": true,
+        "remote_verification_required": true,
+        "workflow": [
+            "INSPECT",
+            "SYNC",
+            "RED",
+            "GREEN",
+            "REGRESSION",
+            "AUDIT",
+            "CTO_CROSSCHECK",
+            "COMMIT",
+            "PUSH",
+            "REMOTE_VERIFY"
+        ],
+        "minimum_crosscheck_scope": [
+            "code",
+            "tests",
+            "routes",
+            "migrations",
+            "commands",
+            "scheduler",
+            "queue",
+            "configuration",
+            "security",
+            "architecture",
+            "roadmap",
+            "project_state",
+            "sprint_state",
+            "manifest",
+            "changelog",
+            "ai_handover",
+            "active_sprint_record",
+            "registries",
+            "brand_1_usable_milestone"
+        ]
+    },
+    "domain_management": {
+        "status": "implemented",
+        "completion_through": "Sprint 14B",
+        "verified_at_commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
+        "test_files": 15,
+        "latest_targeted_regression": {
+            "tests": 169,
+            "assertions": 512,
+            "status": "passed"
+        },
+        "capabilities": [
+            "multi_domain_registration",
+            "domain_type_engine",
+            "primary_domain_management",
+            "brand_isolation",
+            "legacy_domain_backfill",
+            "domain_verification",
+            "verification_persistence",
+            "dns_http_seo_verification",
+            "domain_health_monitoring",
+            "domain_health_history",
+            "domain_health_timeline_ui",
+            "https_policy",
+            "canonical_url_engine",
+            "robots_directive_engine",
+            "domain_migration",
+            "scheduled_domain_verification",
+            "filament_domain_management"
+        ]
+    },
+    "completed_sprints": [
+        {
+            "id": "sprint_15b",
+            "name": "Permanent Sprint Completion Gate",
+            "status": "completed",
+            "commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
+            "remote_verified": true,
+            "governance_audit": {
+                "passed": 7,
+                "total": 7
+            }
+        }
+    ],
+    "active_sprint": {
+        "id": "sprint_20a",
+        "name": "Sprint 20A — Repository Truth Reconciliation",
+        "status": "in_progress",
+        "baseline_commit": "8c621626d6d353b0c7c2550a5889d4fb8038d43e",
+        "application_behavior_change": false,
+        "database_migration_change": false
+    },
+    "delivery": {
+        "brand_1_usable_deadline": "2026-07-30",
+        "brand_1_usable_days": 14,
+        "active_plan": "docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md"
+    },
+    "homepage_engine": {
+        "status": "implemented",
+        "capability_id": "MP21-F017",
+        "sprint": "Sprint 16A",
+        "baseline_commit": "e08b97112b838951b94ed63e40ce633533b6e663",
+        "brand_scoped_content": [
+            "live_draws",
+            "latest_results",
+            "current_predictions",
+            "active_promotions",
+            "latest_articles"
+        ],
+        "public_module_gateway": [
+            "live_draw",
+            "data_result",
+            "prediction",
+            "slot_gacor_rtp",
+            "jackpot_proof",
+            "promotion",
+            "complaint",
+            "guide",
+            "lottery_tools"
+        ],
+        "seo": [
+            "canonical",
+            "open_graph_title",
+            "open_graph_description",
+            "open_graph_url"
+        ],
+        "null_brand_context_behavior": "render_safe_empty_homepage",
+        "verification": {
+            "dedicated_tests": 6,
+            "dedicated_assertions": 50,
+            "frontend_tests": 72,
+            "frontend_assertions": 312,
+            "full_tests": 421,
+            "full_assertions": 1166,
+            "status": "passed"
+        }
+    },
+    "slot_gacor_rtp": {
+        "status": "implemented",
+        "sprint": "Sprint 16B",
+        "verification": "covered by full regression at Sprint 16C baseline"
+    },
+    "jackpot_proof": {
+        "status": "implemented",
+        "sprint": "Sprint 16C",
+        "completion_commit": "af99d9a6ab748188698b0cb09c6093d3f81ca891",
+        "production_migration": "completed",
+        "migration_batch": 7
+    },
+    "latest_verification": {
+        "baseline_commit": "20838e11d52af369fcb5b6274d089cecfa57429e",
+        "baseline_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
+        "tests": 470,
+        "assertions": 1336,
+        "governance_passed": 7,
+        "governance_total": 7,
+        "completion_gate": "passed",
+        "remote_verified": true
+    },
+    "complaint_engine": {
+        "status": "implemented_pending_production_migration",
+        "foundation_sprint": "Sprint 17A",
+        "workflow_completion_sprint": "Sprint 17B",
+        "capabilities": [
+            "public_submission",
+            "brand_isolation",
+            "anti_spam",
+            "rate_limiting",
+            "controlled_status_transitions",
+            "administrator_response",
+            "status_history",
+            "handler_attribution",
+            "administrator_notification"
+        ],
+        "production_migration": "pending_guarded_server_execution"
+    },
+    "sprint_18c": {
+        "name": "BBFS Generator and Konversi Angka SGP",
+        "baseline_commit": "53968bc1084fadd1e695b23cbe99088567cf551a",
+        "baseline_tree": "79e519d3ce06b51c4d5818c6bf03f2773d70fe3b",
+        "status": "implementation_prepared_pending_server_validation",
+        "database_migration_required": false,
+        "capabilities": [
+            "deterministic_bbfs_generation",
+            "sgp_positional_conversion",
+            "public_forms",
+            "validation",
+            "rate_limiting",
+            "no_input_persistence"
+        ]
+    },
+    "version": "0.20.0-alpha.0",
+    "status": "active",
+    "sprint_18d": {
+        "name": "Buku Mimpi and Paito Togel Warna",
+        "status": "completed",
+        "completion_commit": "20838e11d52af369fcb5b6274d089cecfa57429e",
+        "completion_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
+        "database_migration_required": false,
+        "verification": {
+            "tests": 470,
+            "assertions": 1336,
+            "governance_passed": 7,
+            "governance_total": 7,
+            "completion_gate": "passed",
+            "remote_verified": true
+        },
+        "capabilities": [
+            "dream_book_search",
+            "dream_book_detail",
+            "dream_book_sitemap",
+            "result_derived_paito",
+            "market_date_filters",
+            "deterministic_digit_colors",
+            "result_versioned_cache"
+        ]
+    },
+    "brand_1_lottery_suite": {
+        "status": "implemented",
+        "tools": [
+            "lottery_schedule",
+            "bbfs_generator",
+            "dream_book",
+            "paito_color",
+            "sgp_number_converter",
+            "shio_table"
+        ],
+        "completed_through": "Sprint 18D"
+    },
+    "site_configuration_frontend_integration": {
+        "sprint": "19A-3",
+        "implementation": "implemented",
+        "shared_view_composer": true,
+        "header_database_configuration": true,
+        "footer_database_configuration": true,
+        "seo_fallback": true,
+        "external_url_schemes": [
+            "http",
+            "https"
+        ],
+        "migration_required": false,
+        "regression": "verified_before_sprint_20a_baseline",
+        "cto_crosscheck": "fail_pending_regression_and_remote_verification",
+        "remote_verification": "verified_on_main"
     }
-  ],
-  "completed_capabilities": [
-    "scheduler_heartbeat",
-    "admin_access",
-    "market_management",
-    "prediction_management",
-    "result_management",
-    "shio_management",
-    "shio_banner_generation",
-    "promotion_management",
-    "blog_management",
-    "live_draw_management",
-    "live_draw_status_automation",
-    "latest_result_resolver",
-    "hls_stream_player",
-    "brand_1_production_homepage",
-    "complaint_public_intake",
-    "complaint_operational_workflow",
-    "complaint_status_history",
-    "complaint_admin_notification",
-    "guide_management",
-    "guide_publication",
-    "lottery_schedule",
-    "public_shio_table",
-    "dream_book_reference_search",
-    "dream_book_detail_and_sitemap",
-    "result_derived_paito",
-    "paito_market_date_filtering",
-    "paito_color_mapping"
-  ],
-  "repository_foundation": {
-    "status": "completed",
-    "required_documents": [
-      "README.md",
-      "PROJECT_MANIFEST.md",
-      "PROJECT_STATE.json",
-      "START_HERE.md",
-      "AI_HANDOVER.md",
-      "ROADMAP.md",
-      "ARCHITECTURE.md",
-      "SECURITY.md",
-      "DEPLOYMENT.md",
-      "MIGRATION.md",
-      "BACKUP_RECOVERY.md",
-      "TESTING.md",
-      "PROJECT_STATE.md",
-      "SPRINT_STATE.md"
-    ],
-    "completed_date": "2026-07-20",
-    "commit": "21e2243",
-    "test_result": {
-      "tests": 174,
-      "assertions": 480,
-      "status": "passed"
-    }
-  },
-  "known_limitations": [
-    "Deployment is not yet automated by repository pipeline",
-    "Backup automation is not implemented in the repository",
-    "Centralized responsive media management is not yet implemented",
-    "Application test/build CI is not yet implemented",
-    "Site configuration administration is not yet implemented",
-    "Site configuration is not yet consumed by the public frontend"
-  ],
-  "next_recommended_phase": {
-    "id": "sprint_19a_3_completion_validation",
-    "name": "Sprint 19A-3 — Completion Validation",
-    "objective": "Run mandatory Laravel regression, CTO crosscheck, push, and remote verification for the prepared frontend integration.",
-    "status": "blocked_by_environment"
-  },
-  "mandatory_workflow": [
-    "INSPECT",
-    "SYNC",
-    "RED",
-    "GREEN",
-    "REGRESSION",
-    "AUDIT",
-    "CTO_CROSSCHECK",
-    "COMMIT",
-    "PUSH",
-    "REMOTE_VERIFY"
-  ],
-  "repository": {
-    "branch": "work",
-    "remote_tracking_branch": null,
-    "synchronization_state": "unverified_network_blocked",
-    "last_verified_commit": "20838e11d52af369fcb5b6274d089cecfa57429e",
-    "commit_reference_semantics": "verified_sprint_18d_production_completion",
-    "required_final_working_tree": "clean",
-    "required_final_synchronization": "local_matches_intended_remote_branch",
-    "completion_gate": "passed",
-    "governance_audit": "passed",
-    "last_verified_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
-    "last_local_commit": "6099abf713897fb7a59591d43fa279b500b00acc"
-  },
-  "repository_governance": {
-    "phase": "Phase 0.2",
-    "name": "Repository Governance Automation",
-    "status": "completed",
-    "baseline_commit": "c3208f2",
-    "completion_commit": "5185ad7",
-    "local_validation": {
-      "composer_configuration": "passed",
-      "shell_syntax": "passed",
-      "governance_checks": {
-        "total": 5,
-        "passed": 5,
-        "failed": 0
-      },
-      "full_test_suite": {
-        "tests": 174,
-        "assertions": 480,
-        "status": "passed"
-      }
-    },
-    "capabilities": [
-      "merge_conflict_marker_check",
-      "adr_filename_heading_and_uniqueness_check",
-      "secret_and_private_path_check",
-      "markdown_local_link_check",
-      "repository_manifest_check",
-      "composer_audit_command",
-      "github_actions_repository_audit_workflow"
-    ],
-    "remote_ci_verification": "passed"
-  },
-  "canonical_repository_synchronization": {
-    "phase": "Phase 0.3A",
-    "name": "Canonical Repository Synchronization",
-    "status": "completed",
-    "baseline_commit": "5185ad7",
-    "scope": [
-      "PROJECT_STATE.md",
-      "SPRINT_STATE.md",
-      "PROJECT_STATE.json",
-      "AI_HANDOVER.md",
-      "PROJECT_MANIFEST.md",
-      "ROADMAP.md"
-    ],
-    "completion_commit": "45c4e5d",
-    "completed_date": "2026-07-22"
-  },
-  "project_brain": {
-    "version": "2.0",
-    "effective_date": "2026-07-25",
-    "status": "canonical",
-    "entry_point": "docs/project-brain/README.md",
-    "canonical_requirements": "docs/project-brain/CANONICAL_REQUIREMENTS.md",
-    "master_prompt_inheritance": "docs/governance/MASTER_PROMPT_V2_0_TO_V2_1_INHERITANCE.md",
-    "registry_lifecycle": "docs/registry/LIFECYCLE_MODEL.md",
-    "brand_1_delivery_window": {
-      "start": "2026-07-16",
-      "deadline": "2026-07-30",
-      "status": "active"
-    },
-    "overall_project_deadline": "2026-10-14",
-    "delivery_order": [
-      "brand_1_usable",
-      "brand_1_stabilization_and_hardening",
-      "owner_panel",
-      "brand_2_to_5_activation",
-      "multi_brand_operational_hardening"
-    ],
-    "security_release_gate": true,
-    "last_synchronized_commit": "af99d9a6ab748188698b0cb09c6093d3f81ca891",
-    "last_completed_sprint": "Sprint 16C — Brand Jackpot Proof Foundation"
-  },
-  "canonical_direction": {
-    "project_start": "2026-07-16",
-    "brand_1_usable_deadline": "2026-07-30",
-    "overall_project_deadline": "2026-10-14",
-    "brand_1_usable_days": 14,
-    "overall_project_days": 90,
-    "main_modules": 10,
-    "lottery_tools": 6,
-    "brand_1_before_owner_panel": true,
-    "repository_crosscheck_every_sprint": true,
-    "active_plan": "docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md"
-  },
-  "sprint_completion_gate": {
-    "status": "mandatory",
-    "canonical_specification": "docs/governance/SPRINT_COMPLETION_GATE.md",
-    "crosscheck_directory": "docs/sprints/crosschecks",
-    "crosscheck_template": "docs/sprints/crosschecks/TEMPLATE.md",
-    "repository_reread_at_sprint_start": true,
-    "repository_reread_before_commit": true,
-    "cto_crosscheck_required": true,
-    "crosscheck_report_required": true,
-    "commit_blocked_until_crosscheck_passes": true,
-    "remote_verification_required": true,
-    "workflow": [
-      "INSPECT",
-      "SYNC",
-      "RED",
-      "GREEN",
-      "REGRESSION",
-      "AUDIT",
-      "CTO_CROSSCHECK",
-      "COMMIT",
-      "PUSH",
-      "REMOTE_VERIFY"
-    ],
-    "minimum_crosscheck_scope": [
-      "code",
-      "tests",
-      "routes",
-      "migrations",
-      "commands",
-      "scheduler",
-      "queue",
-      "configuration",
-      "security",
-      "architecture",
-      "roadmap",
-      "project_state",
-      "sprint_state",
-      "manifest",
-      "changelog",
-      "ai_handover",
-      "active_sprint_record",
-      "registries",
-      "brand_1_usable_milestone"
-    ]
-  },
-  "domain_management": {
-    "status": "implemented",
-    "completion_through": "Sprint 14B",
-    "verified_at_commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
-    "test_files": 15,
-    "latest_targeted_regression": {
-      "tests": 169,
-      "assertions": 512,
-      "status": "passed"
-    },
-    "capabilities": [
-      "multi_domain_registration",
-      "domain_type_engine",
-      "primary_domain_management",
-      "brand_isolation",
-      "legacy_domain_backfill",
-      "domain_verification",
-      "verification_persistence",
-      "dns_http_seo_verification",
-      "domain_health_monitoring",
-      "domain_health_history",
-      "domain_health_timeline_ui",
-      "https_policy",
-      "canonical_url_engine",
-      "robots_directive_engine",
-      "domain_migration",
-      "scheduled_domain_verification",
-      "filament_domain_management"
-    ]
-  },
-  "completed_sprints": [
-    {
-      "id": "sprint_15b",
-      "name": "Permanent Sprint Completion Gate",
-      "status": "completed",
-      "commit": "5ff3a08128e3f80f6dfef75fcaa26a5efa1cf3a7",
-      "remote_verified": true,
-      "governance_audit": {
-        "passed": 7,
-        "total": 7
-      }
-    }
-  ],
-  "active_sprint": {
-    "id": "sprint_19a_1",
-    "name": "Sprint 19A-1 — Site Configuration Data Foundation",
-    "status": "implementation_prepared_pending_server_validation",
-    "baseline_commit": "1d84f0735ad788aff6b45488cfef9dbc87b222c8",
-    "baseline_tree": "00215be1be0f9a5683fb6ed30b7bcefc2bd9a222"
-  },
-  "delivery": {
-    "brand_1_usable_deadline": "2026-07-30",
-    "brand_1_usable_days": 14,
-    "active_plan": "docs/delivery/BRAND-1-14-DAY-USABLE-PLAN.md"
-  },
-  "homepage_engine": {
-    "status": "implemented",
-    "capability_id": "MP21-F017",
-    "sprint": "Sprint 16A",
-    "baseline_commit": "e08b97112b838951b94ed63e40ce633533b6e663",
-    "brand_scoped_content": [
-      "live_draws",
-      "latest_results",
-      "current_predictions",
-      "active_promotions",
-      "latest_articles"
-    ],
-    "public_module_gateway": [
-      "live_draw",
-      "data_result",
-      "prediction",
-      "slot_gacor_rtp",
-      "jackpot_proof",
-      "promotion",
-      "complaint",
-      "guide",
-      "lottery_tools"
-    ],
-    "seo": [
-      "canonical",
-      "open_graph_title",
-      "open_graph_description",
-      "open_graph_url"
-    ],
-    "null_brand_context_behavior": "render_safe_empty_homepage",
-    "verification": {
-      "dedicated_tests": 6,
-      "dedicated_assertions": 50,
-      "frontend_tests": 72,
-      "frontend_assertions": 312,
-      "full_tests": 421,
-      "full_assertions": 1166,
-      "status": "passed"
-    }
-  },
-  "slot_gacor_rtp": {
-    "status": "implemented",
-    "sprint": "Sprint 16B",
-    "verification": "covered by full regression at Sprint 16C baseline"
-  },
-  "jackpot_proof": {
-    "status": "implemented",
-    "sprint": "Sprint 16C",
-    "completion_commit": "af99d9a6ab748188698b0cb09c6093d3f81ca891",
-    "production_migration": "completed",
-    "migration_batch": 7
-  },
-  "latest_verification": {
-    "baseline_commit": "20838e11d52af369fcb5b6274d089cecfa57429e",
-    "baseline_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
-    "tests": 470,
-    "assertions": 1336,
-    "governance_passed": 7,
-    "governance_total": 7,
-    "completion_gate": "passed",
-    "remote_verified": true
-  },
-  "complaint_engine": {
-    "status": "implemented_pending_production_migration",
-    "foundation_sprint": "Sprint 17A",
-    "workflow_completion_sprint": "Sprint 17B",
-    "capabilities": [
-      "public_submission",
-      "brand_isolation",
-      "anti_spam",
-      "rate_limiting",
-      "controlled_status_transitions",
-      "administrator_response",
-      "status_history",
-      "handler_attribution",
-      "administrator_notification"
-    ],
-    "production_migration": "pending_guarded_server_execution"
-  },
-  "sprint_18c": {
-    "name": "BBFS Generator and Konversi Angka SGP",
-    "baseline_commit": "53968bc1084fadd1e695b23cbe99088567cf551a",
-    "baseline_tree": "79e519d3ce06b51c4d5818c6bf03f2773d70fe3b",
-    "status": "implementation_prepared_pending_server_validation",
-    "database_migration_required": false,
-    "capabilities": [
-      "deterministic_bbfs_generation",
-      "sgp_positional_conversion",
-      "public_forms",
-      "validation",
-      "rate_limiting",
-      "no_input_persistence"
-    ]
-  },
-  "version": "0.19.0-alpha.1",
-  "status": "active",
-  "sprint_18d": {
-    "name": "Buku Mimpi and Paito Togel Warna",
-    "status": "completed",
-    "completion_commit": "20838e11d52af369fcb5b6274d089cecfa57429e",
-    "completion_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
-    "database_migration_required": false,
-    "verification": {
-      "tests": 470,
-      "assertions": 1336,
-      "governance_passed": 7,
-      "governance_total": 7,
-      "completion_gate": "passed",
-      "remote_verified": true
-    },
-    "capabilities": [
-      "dream_book_search",
-      "dream_book_detail",
-      "dream_book_sitemap",
-      "result_derived_paito",
-      "market_date_filters",
-      "deterministic_digit_colors",
-      "result_versioned_cache"
-    ]
-  },
-  "brand_1_lottery_suite": {
-    "status": "implemented",
-    "tools": [
-      "lottery_schedule",
-      "bbfs_generator",
-      "dream_book",
-      "paito_color",
-      "sgp_number_converter",
-      "shio_table"
-    ],
-    "completed_through": "Sprint 18D"
-  },
-  "site_configuration_frontend_integration": {
-    "sprint": "19A-3",
-    "implementation": "prepared",
-    "shared_view_composer": true,
-    "header_database_configuration": true,
-    "footer_database_configuration": true,
-    "seo_fallback": true,
-    "external_url_schemes": [
-      "http",
-      "https"
-    ],
-    "migration_required": false,
-    "regression": "blocked_missing_vendor_dependencies",
-    "cto_crosscheck": "fail_pending_regression_and_remote_verification",
-    "remote_verification": "blocked_http_403"
-  }
 }
