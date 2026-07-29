@@ -404,3 +404,39 @@ Periksa query count, N+1, index, memory, timeout, dan batch size.
 - menyatakan sprint selesai hanya karena focused test lulus;
 - commit tanpa full test suite;
 - mengabaikan test failure yang dianggap tidak terkait tanpa investigasi.
+
+<!-- BEGIN SPRINT-20B-SAFE-TEST-RUNNER -->
+
+## Safe PHPUnit runner
+
+Production repository menggunakan cached configuration pada
+`bootstrap/cache/config.php`. Menjalankan PHPUnit secara langsung dapat membuat
+Laravel membaca konfigurasi production sebelum konfigurasi testing digunakan.
+
+Seluruh test repository wajib dijalankan melalui:
+
+```bash
+bin/test-safe
+```
+
+Target test dan opsi PHPUnit dapat diteruskan langsung:
+
+```bash
+bin/test-safe \
+    --filter=test_action_creates_normalized_blog_post \
+    tests/Feature/Blog/BlogModuleTest.php
+```
+
+Runner ini:
+
+- menetapkan `APP_ENV=testing`;
+- menetapkan SQLite `:memory:`;
+- menggunakan cache, queue, session, dan mail non-persistent;
+- mengisolasi seluruh Laravel bootstrap cache ke direktori sementara;
+- tidak menghapus atau mengubah production config cache;
+- membersihkan isolated cache setelah proses selesai.
+
+Perintah `vendor/bin/phpunit` secara langsung tidak digunakan pada production
+working copy ini.
+
+<!-- END SPRINT-20B-SAFE-TEST-RUNNER -->

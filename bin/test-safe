@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+ROOT_DIR="$(
+    cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." &&
+    pwd
+)"
+
+DEFAULT_ALT_PHP="/opt/alt/php83/usr/bin/php"
+
+if [ -n "${PHP_BIN:-}" ]; then
+    RESOLVED_PHP="$PHP_BIN"
+elif [ -x "$DEFAULT_ALT_PHP" ]; then
+    RESOLVED_PHP="$DEFAULT_ALT_PHP"
+elif command -v php >/dev/null 2>&1; then
+    RESOLVED_PHP="$(command -v php)"
+else
+    printf '[FAIL] PHP CLI executable tidak ditemukan.\n' >&2
+    exit 127
+fi
+
+[ -x "$RESOLVED_PHP" ] || {
+    printf '[FAIL] PHP CLI tidak executable: %s\n' "$RESOLVED_PHP" >&2
+    exit 126
+}
+
+[ -f "$ROOT_DIR/vendor/bin/phpunit" ] || {
+    printf '[FAIL] PHPUnit executable tidak ditemukan.\n' >&2
+    exit 1
+}
+
+[ -f "$ROOT_DIR/phpunit.xml" ] || {
+    printf '[FAIL] phpunit.xml tidak ditemukan.\n' >&2
+    exit 1
+}
+
+CACHE_PARENT="$ROOT_DIR/storage/framework/testing"
+
+mkdir -p "$CACHE_PARENT"
+
+CACHE_DIR="$(
+    mktemp -d "$CACHE_PARENT/bootstrap-cache.XXXXXXXX"
+)"
+
+cleanup()
+{
+    rm -rf -- "$CACHE_DIR"
+}
+
+trap cleanup EXIT HUP INT TERM
+
+export APP_ENV="testing"
+export APP_DEBUG="false"
+
+export APP_CONFIG_CACHE="$CACHE_DIR/config.php"
+export APP_SERVICES_CACHE="$CACHE_DIR/services.php"
+export APP_PACKAGES_CACHE="$CACHE_DIR/packages.php"
+export APP_EVENTS_CACHE="$CACHE_DIR/events.php"
+export APP_ROUTES_CACHE="$CACHE_DIR/routes-v7.php"
+
+export DB_CONNECTION="sqlite"
+export DB_DATABASE=":memory:"
+export DB_URL=""
+
+export CACHE_STORE="array"
+export QUEUE_CONNECTION="sync"
+export SESSION_DRIVER="array"
+export MAIL_MAILER="array"
+
+export PULSE_ENABLED="false"
+export TELESCOPE_ENABLED="false"
+export NIGHTWATCH_ENABLED="false"
+
+cd "$ROOT_DIR"
+
+exec "$RESOLVED_PHP" \
+    -d opcache.enable_cli=0 \
+    vendor/bin/phpunit \
+    --configuration phpunit.xml \
+    "$@"

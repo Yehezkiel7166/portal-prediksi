@@ -51,3 +51,46 @@ can receive a final production-ready decision.
 
 Verify active scheduler and queue cron execution on the production account,
 including timestamped log evidence and failure handling.
+
+<!-- BEGIN SPRINT-20B-TESTING-BOOTSTRAP-REMEDIATION -->
+
+## Testing bootstrap remediation
+
+RED audit membuktikan bahwa production config cache mengoverride testing
+configuration saat PHPUnit dijalankan secara langsung.
+
+Remediasi menyediakan `bin/test-safe` sebagai canonical repository test runner.
+Runner memastikan test menggunakan:
+
+- `APP_ENV=testing`;
+- SQLite `:memory:`;
+- array cache;
+- synchronous queue;
+- array session;
+- array mail;
+- isolated temporary Laravel bootstrap cache.
+
+Production `bootstrap/cache/config.php` tidak dihapus atau diubah.
+
+Validation gate:
+
+```bash
+bash -n bin/test-safe
+
+bin/test-safe \
+    tests/Unit/Operations/SafeTestRunnerTest.php
+
+bin/test-safe \
+    --filter=test_action_creates_normalized_blog_post \
+    tests/Feature/Blog/BlogModuleTest.php
+
+bin/test-safe
+```
+
+Testing bootstrap blocker selesai setelah targeted regression, repeatability,
+full regression, dan repository governance audit seluruhnya lulus.
+
+Sprint 20B belum selesai sebelum backup automation, scheduled backup, dan
+restore rehearsal juga lulus.
+
+<!-- END SPRINT-20B-TESTING-BOOTSTRAP-REMEDIATION -->
