@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 set -eu
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
-REPOSITORY="$(cd "$SCRIPT_DIR/../.." && pwd -P)"
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
+REPOSITORY=$(CDPATH= cd -- "$SCRIPT_DIR/../.." && pwd -P)
 PHP_BIN="/opt/alt/php83/usr/bin/php"
 LOCK_FILE="$REPOSITORY/storage/framework/scheduler-cron.lock"
 LOG_FILE="$REPOSITORY/storage/logs/scheduler-cron.log"
