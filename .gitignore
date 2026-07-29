@@ -26,3 +26,5 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 u339134899_portalprediksi
+/storage/framework/queue-cron.lock
+/storage/framework/scheduler-cron.lock
