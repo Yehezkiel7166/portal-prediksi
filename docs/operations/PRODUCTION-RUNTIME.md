@@ -8,7 +8,7 @@ current CloudLinux/cPanel environment.
 Repository:
 
 ```text
-/home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi
+<REPOSITORY_ROOT>
 ```
 
 PHP runtime:
@@ -28,13 +28,13 @@ database
 Laravel scheduler definitions are executed through:
 
 ```text
-/home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi/scripts/operations/run-scheduler.sh
+<REPOSITORY_ROOT>/scripts/operations/run-scheduler.sh
 ```
 
 Required cPanel cron frequency:
 
 ```cron
-* * * * * /home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi/scripts/operations/run-scheduler.sh
+* * * * * <REPOSITORY_ROOT>/scripts/operations/run-scheduler.sh
 ```
 
 The runner:
@@ -50,13 +50,13 @@ The runner:
 Queue jobs are executed through:
 
 ```text
-/home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi/scripts/operations/run-queue-worker.sh
+<REPOSITORY_ROOT>/scripts/operations/run-queue-worker.sh
 ```
 
 Recommended cPanel cron frequency:
 
 ```cron
-* * * * * /home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi/scripts/operations/run-queue-worker.sh
+* * * * * <REPOSITORY_ROOT>/scripts/operations/run-queue-worker.sh
 ```
 
 The queue runner:
@@ -80,21 +80,21 @@ evidence must be verified separately before declaring Brand 1 production-ready.
 Scheduler:
 
 ```bash
-/home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi/scripts/operations/run-scheduler.sh
-tail -n 50 /home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi/storage/logs/scheduler-cron.log
+<REPOSITORY_ROOT>/scripts/operations/run-scheduler.sh
+tail -n 50 <REPOSITORY_ROOT>/storage/logs/scheduler-cron.log
 ```
 
 Queue:
 
 ```bash
-/home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi/scripts/operations/run-queue-worker.sh
-tail -n 50 /home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi/storage/logs/queue-cron.log
+<REPOSITORY_ROOT>/scripts/operations/run-queue-worker.sh
+tail -n 50 <REPOSITORY_ROOT>/storage/logs/queue-cron.log
 ```
 
 Laravel definitions:
 
 ```bash
-cd /home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi
+cd <REPOSITORY_ROOT>
 /opt/alt/php83/usr/bin/php artisan schedule:list
 /opt/alt/php83/usr/bin/php artisan queue:failed
 ```

@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 set -u
 
-REPOSITORY="/home/u339134899/domains/santoto4d-prediksi.site/portal-prediksi"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+REPOSITORY="$(cd "$SCRIPT_DIR/../.." && pwd -P)"
 PHP_BIN="/opt/alt/php83/usr/bin/php"
 
 LOCK_FILE="$REPOSITORY/storage/framework/queue-cron.lock"
