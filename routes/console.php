@@ -26,3 +26,7 @@ Schedule::command(
 )
     ->dailyAt('02:30')
     ->withoutOverlapping();
+
+Schedule::command('backup:create --quiet-result')
+    ->dailyAt('03:15')
+    ->withoutOverlapping(180);
