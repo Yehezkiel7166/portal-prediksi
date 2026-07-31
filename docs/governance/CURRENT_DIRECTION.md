@@ -137,3 +137,23 @@ The next sprint must collect actual production runtime evidence for scheduler
 and queue execution. Repository command registration alone is not proof that
 the corresponding production cron jobs are active.
 <!-- SPRINT-20C-CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-20D-CURRENT-DIRECTION-START -->
+## Current Execution State - Sprint 20D Complete
+
+- Canonical branch: `main`.
+- Baseline: `5da4d24646bc39e9ca5a2c3f326a2e43b6a78d17`.
+- Sprint 20D production runtime evidence: complete.
+- Scheduler production runtime: PASS.
+- Queue cron production runtime: PASS.
+- Scheduled production backup verification: PASS.
+- Application behavior change: none.
+- Database migration change: none.
+- Next sprint: Sprint 20E - Brand 1 Usable and Production Gate.
+
+Mandatory workflow:
+
+`INSPECT -> RED -> GREEN -> REGRESSION -> AUDIT ->
+RE-READ -> CTO CROSSCHECK -> COMMIT -> PUSH -> REMOTE VERIFY`
+
+<!-- SPRINT-20D-CURRENT-DIRECTION-END -->

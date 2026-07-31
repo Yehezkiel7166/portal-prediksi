@@ -123,8 +123,8 @@
         "Application test/build CI is not yet implemented"
     ],
     "next_recommended_phase": {
-        "name": "Sprint 20D — Production Runtime Activation Evidence",
-        "objective": "Verify timestamped production scheduler and queue cron execution before final production-ready status."
+        "name": "Sprint 20E - Brand 1 Usable and Production Gate",
+        "objective": "Verify Brand 1 as a usable production product across runtime, security, data integrity, public routes, SEO, admin workflow, and operational recovery."
     },
     "mandatory_workflow": [
         "INSPECT",
@@ -505,5 +505,22 @@
         "application_behavior_change": false,
         "database_migration_change": false,
         "next_gate": "Sprint 20D — Production Runtime Activation Evidence"
+    },
+    "production_runtime": {
+        "sprint": "Sprint 20D - Production Runtime Activation Evidence",
+        "status": "verified",
+        "baseline_commit": "5da4d24646bc39e9ca5a2c3f326a2e43b6a78d17",
+        "verified_date": "2026-07-31",
+        "scheduler": "passed",
+        "queue_cron": "passed",
+        "queue_connection": "database",
+        "scheduled_backup": "passed",
+        "backup_identifier": "20260731-031504",
+        "governance_checks": {
+            "passed": 7,
+            "failed": 0
+        },
+        "evidence_path": "storage/logs/sprint-20d-runtime-evidence-20260731-023616.txt",
+        "evidence_tracked": false
     }
 }

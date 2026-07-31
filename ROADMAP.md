@@ -473,3 +473,26 @@ Next delivery order:
 5. Owner Panel;
 6. Brand 2–5 activation.
 <!-- SPRINT-20C-ROADMAP-END -->
+
+<!-- SPRINT-20D-ROADMAP-START -->
+## Sprint 20D - Production Runtime Activation Evidence
+
+Status: Complete.
+
+Verified outcomes:
+
+- production scheduler executes successfully;
+- scheduler heartbeat executes every five minutes;
+- queue cron executes every minute and finishes with `exit=0`;
+- scheduled production backup passes integrity verification;
+- governance audit passes;
+- runtime verification leaves the tracked repository unchanged.
+
+Next delivery order:
+
+1. Sprint 20E - Brand 1 Usable and Production Gate;
+2. Brand 1 stabilization and hardening;
+3. Owner Panel;
+4. Brand 2-5 activation.
+
+<!-- SPRINT-20D-ROADMAP-END -->

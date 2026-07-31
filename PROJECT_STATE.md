@@ -352,3 +352,24 @@ Next bounded sprint:
 
 **Sprint 20D — Production Runtime Activation Evidence**
 <!-- SPRINT-20C-PROJECT-STATE-END -->
+
+<!-- SPRINT-20D-PROJECT-STATE-START -->
+## Canonical Current State - Sprint 20D Complete
+
+- Status: complete.
+- Branch: `main`.
+- Baseline: `5da4d24646bc39e9ca5a2c3f326a2e43b6a78d17`.
+- Scheduler runtime activation: verified.
+- Queue cron runtime activation: verified.
+- Scheduled backup execution and integrity: verified.
+- Queue driver: `database`.
+- Governance audit: 7/7 PASS.
+- Runtime evidence:
+  `storage/logs/sprint-20d-runtime-evidence-20260731-023616.txt`.
+- Runtime evidence is not Git tracked.
+
+Next bounded sprint:
+
+**Sprint 20E - Brand 1 Usable and Production Gate**
+
+<!-- SPRINT-20D-PROJECT-STATE-END -->
