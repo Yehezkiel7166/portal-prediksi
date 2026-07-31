@@ -111,22 +111,29 @@ synchronization work must not displace the highest-priority incomplete Brand 1
 capability unless new verified repository contradictions are found.
 
 <!-- SPRINT-20A-CURRENT-DIRECTION-START -->
-## Current Execution State — Sprint 20A
+## Sprint 20A Historical Direction
+
+Sprint 20A repository truth reconciliation is completed. Its selection of
+Sprint 20B is retained as historical evidence.
+<!-- SPRINT-20A-CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-20C-CURRENT-DIRECTION-START -->
+## Current Execution State — Sprint 20C
 
 - Canonical branch: `main`.
-- Baseline: `8c621626d6d353b0c7c2550a5889d4fb8038d43e`.
-- Current sprint: Sprint 20A — Repository Truth Reconciliation.
+- Baseline: `19d863ace576bac9941cf7baa3f70b2b5af406ab`.
+- Current sprint: Sprint 20C — Repository Truth Synchronization.
 - Application behavior change: none.
 - Migration change: none.
-- Next sprint: Sprint 20B — Brand 1 Production Readiness Audit.
+- Sprint 20B backup automation and restore rehearsal: implemented.
+- Next sprint: Sprint 20D — Production Runtime Activation Evidence.
 
 Mandatory workflow:
 
-`INSPECT → SYNC → RED → GREEN → REGRESSION → AUDIT →
+`INSPECT → RED → GREEN → REGRESSION → AUDIT →
 RE-READ → CTO CROSSCHECK → COMMIT → PUSH → REMOTE VERIFY`
 
-Every sprint must read and crosscheck current code, tests, routes, migrations,
-commands, scheduler, queue, configuration, security, architecture, roadmap,
-project state, sprint state, manifest, changelog, handover, registries, and the
-Brand 1 delivery milestone.
-<!-- SPRINT-20A-CURRENT-DIRECTION-END -->
+The next sprint must collect actual production runtime evidence for scheduler
+and queue execution. Repository command registration alone is not proof that
+the corresponding production cron jobs are active.
+<!-- SPRINT-20C-CURRENT-DIRECTION-END -->

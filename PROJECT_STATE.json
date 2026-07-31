@@ -119,15 +119,12 @@
     },
     "known_limitations": [
         "Deployment is not yet automated by repository pipeline",
-        "Backup automation is not implemented in the repository",
         "Centralized responsive media management is not yet implemented",
         "Application test/build CI is not yet implemented"
     ],
     "next_recommended_phase": {
-        "id": "sprint_20b",
-        "name": "Sprint 20B — Brand 1 Production Readiness Audit",
-        "objective": "Audit deployment, backup, restore, rollback, queue, scheduler, health, security, SEO, responsive delivery, and release blockers.",
-        "status": "planned_after_sprint_20a"
+        "name": "Sprint 20D — Production Runtime Activation Evidence",
+        "objective": "Verify timestamped production scheduler and queue cron execution before final production-ready status."
     },
     "mandatory_workflow": [
         "INSPECT",
@@ -327,12 +324,13 @@
         }
     ],
     "active_sprint": {
-        "id": "sprint_20a",
-        "name": "Sprint 20A — Repository Truth Reconciliation",
+        "name": "Sprint 20C — Repository Truth Synchronization",
         "status": "in_progress",
-        "baseline_commit": "8c621626d6d353b0c7c2550a5889d4fb8038d43e",
-        "application_behavior_change": false,
-        "database_migration_change": false
+        "branch": "main",
+        "baseline": "19d863ace576bac9941cf7baa3f70b2b5af406ab",
+        "behavior_change": false,
+        "database_migration": false,
+        "objective": "Synchronize canonical repository state with verified Sprint 20B backup automation and restore-rehearsal implementation."
     },
     "delivery": {
         "brand_1_usable_deadline": "2026-07-30",
@@ -486,5 +484,26 @@
         "regression": "verified_before_sprint_20a_baseline",
         "cto_crosscheck": "fail_pending_regression_and_remote_verification",
         "remote_verification": "verified_on_main"
+    },
+    "backup_automation": {
+        "status": "implemented",
+        "implementation_commit": "19d863ace576bac9941cf7baa3f70b2b5af406ab",
+        "commands": [
+            "backup:create",
+            "backup:verify",
+            "backup:restore-rehearsal"
+        ],
+        "schedule": "15 3 * * *",
+        "backup_verification": "implemented",
+        "restore_rehearsal": "implemented",
+        "production_database_preservation": "verified"
+    },
+    "sprint_20c": {
+        "name": "Sprint 20C — Repository Truth Synchronization",
+        "status": "in_progress",
+        "baseline": "19d863ace576bac9941cf7baa3f70b2b5af406ab",
+        "application_behavior_change": false,
+        "database_migration_change": false,
+        "next_gate": "Sprint 20D — Production Runtime Activation Evidence"
     }
 }

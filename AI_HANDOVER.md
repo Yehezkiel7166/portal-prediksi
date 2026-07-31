@@ -433,24 +433,29 @@ The Site Configuration frontend integration is prepared on local branch `work` f
 <!-- SPRINT-19A-3-HANDOVER-END -->
 
 <!-- SPRINT-20A-AI-HANDOVER-START -->
-## Sprint 20A Handover
+## Sprint 20A Historical Handover
 
-Current canonical baseline: `8c621626d6d353b0c7c2550a5889d4fb8038d43e` on `main`.
-
-Sprint 20A performs repository truth reconciliation only. It does not alter
-application behavior, dependencies, or database migrations.
-
-Verified direction:
-
-- Brand 1 has exactly ten public module groups;
-- the Lottery Tool Suite contains six implemented tools;
-- Site Configuration data, administration, and frontend integration exist;
-- production readiness remains unverified until Sprint 20B.
-
-Do not begin Owner Panel or Brand 2–5 before Brand 1 passes its usable,
-production-readiness, and stabilization gates.
-
-Next sprint:
-
-**Sprint 20B — Brand 1 Production Readiness Audit**
+Sprint 20A is completed. It selected Sprint 20B as the next bounded
+production-readiness audit.
 <!-- SPRINT-20A-AI-HANDOVER-END -->
+
+<!-- SPRINT-20C-AI-HANDOVER-START -->
+## Sprint 20C Handover
+
+Canonical baseline:
+`19d863ace576bac9941cf7baa3f70b2b5af406ab` on `main`.
+
+Sprint 20B implementation is committed, pushed, and remotely verified. Its
+repository implementation includes backup creation, manifest and checksum
+verification, scheduled backup registration, and isolated restore rehearsal.
+
+Sprint 20C changes documentation and machine-readable state only.
+
+Do not begin Owner Panel or Brand 2–5 work. The next bounded gate is:
+
+**Sprint 20D — Production Runtime Activation Evidence**
+
+That gate must verify actual production scheduler and queue execution using
+timestamped evidence and failure handling. Repository registration is not
+equivalent to active cPanel cron execution.
+<!-- SPRINT-20C-AI-HANDOVER-END -->

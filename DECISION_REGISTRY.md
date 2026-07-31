@@ -110,3 +110,18 @@ Status: Accepted.
 Canonical documentation and machine-readable state must agree with verified
 implementation before selecting additional product work. The next approved
 sprint is Sprint 20B Brand 1 Production Readiness Audit.
+
+<!-- SPRINT-20C-DECISION-START -->
+## DEC-20C-001 — Runtime Evidence After Repository Readiness
+
+Status: Accepted.
+
+Sprint 20B repository readiness is implemented at commit
+`19d863ace576bac9941cf7baa3f70b2b5af406ab`.
+
+Backup creation, scheduled backup registration, verification, and restore
+rehearsal are implemented. Repository registration does not prove that
+production cPanel cron jobs are actively executing.
+
+The next bounded sprint is Sprint 20D Production Runtime Activation Evidence.
+<!-- SPRINT-20C-DECISION-END -->

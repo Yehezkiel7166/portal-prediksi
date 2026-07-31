@@ -309,45 +309,46 @@ This latest section supersedes older Site Configuration status statements where 
 <!-- SPRINT-19A-3-PROJECT-STATE-END -->
 
 <!-- SPRINT-20A-PROJECT-STATE-START -->
-## Canonical Current State — Sprint 20A
+## Sprint 20A Completion State
 
-This newest canonical section supersedes older status summaries wherever they
-conflict with verified repository evidence.
+Sprint 20A repository truth reconciliation is completed. Its selection of
+Sprint 20B remains preserved as historical evidence.
+<!-- SPRINT-20A-PROJECT-STATE-END -->
+
+<!-- SPRINT-20C-PROJECT-STATE-START -->
+## Canonical Current State — Sprint 20C
+
+This newest canonical section supersedes older active-state summaries wherever
+they conflict with verified repository evidence.
 
 - Status: active.
 - Branch: `main`.
-- Baseline: `8c621626d6d353b0c7c2550a5889d4fb8038d43e`.
-- Current sprint: Sprint 20A — Repository Truth Reconciliation.
+- Baseline: `19d863ace576bac9941cf7baa3f70b2b5af406ab`.
+- Current sprint: Sprint 20C — Repository Truth Synchronization.
 - Application behavior change: none.
 - Database migration: none.
+- Sprint 20B implementation commit: `19d863ace576bac9941cf7baa3f70b2b5af406ab`.
+- Local and remote verification before Sprint 20C: PASS.
+- Working tree at Sprint 20C start: clean.
 
-Verified Brand 1 modules:
+Verified Sprint 20B repository capabilities:
 
-1. Home.
-2. Live Draw.
-3. Data Result.
-4. Prediksi Togel.
-5. Slot Gacor / RTP.
-6. Bukti Jackpot.
-7. Promosi.
-8. Keluhan.
-9. Panduan.
-10. Alat Togel.
+- production-safe Laravel test runner;
+- scheduler runtime procedure;
+- queue runtime procedure;
+- normalized production environment handling;
+- Laravel public storage link;
+- repository-managed backup creation;
+- backup archive verification;
+- scheduled daily backup;
+- database and public-storage backup payload;
+- isolated restore rehearsal;
+- production database preservation during rehearsal.
 
-Verified lottery tools:
-
-1. Jadwal Togel.
-2. BBFS Generator.
-3. Buku Mimpi.
-4. Paito Togel Warna.
-5. Konversi Angka SGP.
-6. Tabel Shio.
-
-Verified supporting foundations include Site Configuration, Domain Management,
-Brand Context, canonical resolution, HTTPS handling, scheduler heartbeat,
-Live Draw automation, and brand-scoped administration.
+Repository implementation and production runtime activation remain separate
+gates.
 
 Next bounded sprint:
 
-**Sprint 20B — Brand 1 Production Readiness Audit**
-<!-- SPRINT-20A-PROJECT-STATE-END -->
+**Sprint 20D — Production Runtime Activation Evidence**
+<!-- SPRINT-20C-PROJECT-STATE-END -->

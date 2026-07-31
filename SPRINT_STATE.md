@@ -291,29 +291,39 @@ Completion remains pending migration, full regression, governance audit, CTO cro
 <!-- SPRINT-19A-3-END -->
 
 <!-- SPRINT-20A-SPRINT-STATE-START -->
-## Active Sprint — Sprint 20A
+## Sprint 20A Completion State
 
 - Name: Repository Truth Reconciliation.
+- Status: Completed.
+- Canonical branch: `main`.
+- Application behavior changes: none.
+- Database migration changes: none.
+
+Sprint 20A selected Sprint 20B as the bounded production-readiness audit.
+Historical Sprint 20A evidence remains preserved.
+<!-- SPRINT-20A-SPRINT-STATE-END -->
+
+<!-- SPRINT-20C-SPRINT-STATE-START -->
+## Active Sprint — Sprint 20C
+
+- Name: Repository Truth Synchronization.
 - Status: In Progress.
 - Branch: `main`.
-- Baseline: `8c621626d6d353b0c7c2550a5889d4fb8038d43e`.
-- Behavior changes: none.
-- Migration changes: none.
+- Baseline: `19d863ace576bac9941cf7baa3f70b2b5af406ab`.
+- Application behavior changes: none.
+- Database migration changes: none.
+- Sprint 20B implementation commit: `19d863ace576bac9941cf7baa3f70b2b5af406ab`.
+- Backup creation: implemented.
+- Backup verification: implemented.
+- Scheduled backup: implemented.
+- Restore rehearsal: implemented.
 
-Completion requires:
+Current objective:
 
-- canonical documentation and JSON state synchronized;
-- full regression PASS;
-- governance audit PASS;
-- second repository re-read;
-- CTO crosscheck PASS;
-- Permanent Sprint Completion Gate PASS;
-- commit and push;
-- local and remote HEAD equality;
-- ahead/behind `0 0`;
-- clean final working tree.
+Synchronize canonical documentation and machine-readable state with verified
+Sprint 20B implementation truth without changing application behavior.
 
-Next sprint:
+Next bounded evidence gate:
 
-**Sprint 20B — Brand 1 Production Readiness Audit**
-<!-- SPRINT-20A-SPRINT-STATE-END -->
+**Sprint 20D — Production Runtime Activation Evidence**
+<!-- SPRINT-20C-SPRINT-STATE-END -->

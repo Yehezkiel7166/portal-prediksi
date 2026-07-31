@@ -428,39 +428,48 @@ The public frontend now receives resolved Site Configuration through a shared vi
 <!-- SPRINT-20A-ROADMAP-START -->
 ## Sprint 20A — Repository Truth Reconciliation
 
-Status: In Progress
+Status: Completed.
+
+Sprint 20A reconciled canonical repository state and selected Sprint 20B as
+the production-readiness audit.
+<!-- SPRINT-20A-ROADMAP-END -->
+
+<!-- SPRINT-20C-ROADMAP-START -->
+## Sprint 20C — Repository Truth Synchronization
+
+Status: In Progress.
 
 Baseline:
 
 - branch: `main`;
-- commit: `8c621626d6d353b0c7c2550a5889d4fb8038d43e`;
+- commit: `19d863ace576bac9941cf7baa3f70b2b5af406ab`;
 - application behavior change: none;
 - database migration: none.
 
-Verified current implementation:
+Verified Sprint 20B outcomes:
 
-- ten mandatory Brand 1 public module groups have implementation evidence;
-- all six mandatory lottery tools have implementation evidence;
-- Site Configuration persistence, Filament administration, and public frontend
-  integration are implemented;
-- Domain Management, canonical handling, HTTPS policy, verification, health
-  history, and scheduled monitoring are implemented;
-- repository governance and Permanent Sprint Completion Gate are active.
+- production-readiness remediation implemented;
+- safe Laravel testing bootstrap implemented;
+- scheduled backup automation implemented;
+- backup archive verification implemented;
+- restore rehearsal implemented;
+- production database preservation verified;
+- commit and remote synchronization passed.
 
-Sprint 20A objective:
+Sprint 20C objective:
 
-1. reconcile canonical documentation and machine-readable state;
-2. preserve historical sprint evidence;
-3. eliminate stale active-state contradictions;
-4. perform full regression and governance audit;
-5. select Sprint 20B Brand 1 Production Readiness Audit.
+1. synchronize canonical Markdown and JSON state;
+2. remove stale claims that backup automation is unavailable;
+3. close Sprint 20B repository implementation truth;
+4. preserve historical sprint evidence;
+5. select the next bounded production runtime evidence gate.
 
 Next delivery order:
 
-1. Sprint 20B — Brand 1 Production Readiness Audit;
-2. evidence-backed release blocker resolution;
+1. Sprint 20D — Production Runtime Activation Evidence;
+2. evidence-backed runtime blocker resolution;
 3. Brand 1 usable and production gate;
 4. Brand 1 stabilization and hardening;
 5. Owner Panel;
 6. Brand 2–5 activation.
-<!-- SPRINT-20A-ROADMAP-END -->
+<!-- SPRINT-20C-ROADMAP-END -->

@@ -93,3 +93,13 @@ Canonical reference:
 
 The newest canonical state sections supersede stale active-status summaries.
 Historical sprint evidence remains preserved.
+
+<!-- SPRINT-20C-PROJECT-DECISION -->
+## Sprint 20C — Repository Readiness Is Not Runtime Activation
+
+Sprint 20B repository readiness is implemented at
+`19d863ace576bac9941cf7baa3f70b2b5af406ab`.
+
+Final production-ready status requires timestamped evidence that production
+scheduler and queue cron jobs are actively executing. The next bounded gate is
+Sprint 20D Production Runtime Activation Evidence.
