@@ -123,8 +123,8 @@
         "Application test/build CI is not yet implemented"
     ],
     "next_recommended_phase": {
-        "name": "Sprint 20E - Brand 1 Usable and Production Gate",
-        "objective": "Verify Brand 1 as a usable production product across runtime, security, data integrity, public routes, SEO, admin workflow, and operational recovery."
+        "name": "Sprint 20F - Brand 1 Production Bootstrap and Data Remediation",
+        "objective": "Create a rollback-safe canonical Brand 1 production bootstrap, reconcile tenant ownership, activate administration and minimum content, and implement production security headers."
     },
     "mandatory_workflow": [
         "INSPECT",
@@ -521,6 +521,24 @@
             "failed": 0
         },
         "evidence_path": "storage/logs/sprint-20d-runtime-evidence-20260731-023616.txt",
+        "evidence_tracked": false
+    },
+    "brand_1_production_gate": {
+        "sprint": "Sprint 20E - Brand 1 Usable and Production Gate",
+        "status": "blocked",
+        "baseline_commit": "7ba7734c13bec7e44665014cb4af897bc05c03cc",
+        "inspected_date": "2026-07-31",
+        "runtime_infrastructure": "passed",
+        "canonical_brand": "failed",
+        "production_domain_registration": "failed",
+        "site_configuration": "failed",
+        "production_administrator": "failed",
+        "minimum_content": "failed",
+        "tenant_data_integrity": "failed",
+        "security_headers": "failed",
+        "repository_mutation": false,
+        "database_mutation": false,
+        "evidence_path": "storage/logs/sprint-20e-inspection-20260731-044332.txt",
         "evidence_tracked": false
     }
 }

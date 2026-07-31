@@ -496,3 +496,29 @@ Next delivery order:
 4. Brand 2-5 activation.
 
 <!-- SPRINT-20D-ROADMAP-END -->
+
+<!-- SPRINT-20E-ROADMAP-START -->
+## Sprint 20E - Brand 1 Usable and Production Gate
+
+Status: RED inspection complete; production acceptance blocked.
+
+Verified blockers:
+
+1. generated production brands and test domains;
+2. no canonical primary Brand 1;
+3. production host not registered to Brand 1;
+4. no site configuration;
+5. no production administrator;
+6. insufficient Brand 1 production content;
+7. nullable tenant ownership in existing records;
+8. incomplete security headers.
+
+Next delivery order:
+
+1. Sprint 20F - Brand 1 Production Bootstrap and Data Remediation;
+2. Brand 1 acceptance re-verification;
+3. Brand 1 stabilization and hardening;
+4. Owner Panel;
+5. Brand 2-5 activation.
+
+<!-- SPRINT-20E-ROADMAP-END -->
