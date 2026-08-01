@@ -368,3 +368,22 @@ Next bounded sprint:
 **Sprint 20F - Brand 1 Production Bootstrap and Data Remediation**
 
 <!-- SPRINT-20E-SPRINT-STATE-END -->
+
+<!-- SPRINT-20G-SPRINT-STATE-START -->
+## Sprint 20G Completion State
+
+- Name: Completion Truth Synchronization.
+- Status: Complete.
+- Branch: `main`.
+- Baseline: `c53c742a6e526a8772e87023893311edc3786c81`.
+- Regression: `493` tests / `1428` assertions / PASS.
+- Governance checks: `7/7` PASS.
+- CTO decision: PASS.
+- Application behavior changes: none.
+- Database migration changes: none.
+- Production database mutation: none.
+
+Next bounded sprint:
+
+**Sprint 20H - Brand 1 Production Acceptance Re-verification**
+<!-- SPRINT-20G-SPRINT-STATE-END -->

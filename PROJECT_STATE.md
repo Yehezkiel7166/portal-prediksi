@@ -395,3 +395,37 @@ Next bounded remediation sprint:
 **Sprint 20F - Brand 1 Production Bootstrap and Data Remediation**
 
 <!-- SPRINT-20E-PROJECT-STATE-END -->
+
+<!-- SPRINT-20G-PROJECT-STATE-START -->
+## Canonical Current State - Sprint 20G Complete
+
+This newest section supersedes older active-sprint summaries where they
+conflict with verified repository evidence.
+
+- Status: complete.
+- Branch: `main`.
+- Baseline: `c53c742a6e526a8772e87023893311edc3786c81`.
+- Latest completed sprint: Sprint 20G - Completion Truth Synchronization.
+- Sprint 20F implementation: complete.
+- Sprint 20F CTO crosscheck: PASS.
+- Sprint 20G regression: `493` tests / `1428` assertions / PASS.
+- Sprint 20G governance checks: `7/7` PASS.
+- Sprint 20G CTO crosscheck: PASS.
+- Application behavior change in Sprint 20G: none.
+- Database migration in Sprint 20G: none.
+- Production database mutation in Sprint 20G: none.
+
+Verified production remediation remains:
+
+- Brand ID `7` is the primary `SANTOTO4D` brand;
+- `santoto4d-prediksi.site` is the active primary production domain;
+- Brand 1 Site Configuration exists;
+- administrator `Yehezkiel` exists with the verified Gmail address;
+- nullable Brand ownership in Result, Prediction, and Live Draw is zero;
+- BrandResolver resolves the production domain;
+- production security-header middleware is implemented.
+
+Next bounded sprint:
+
+**Sprint 20H - Brand 1 Production Acceptance Re-verification**
+<!-- SPRINT-20G-PROJECT-STATE-END -->

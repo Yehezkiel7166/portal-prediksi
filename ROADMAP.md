@@ -522,3 +522,30 @@ Next delivery order:
 5. Brand 2-5 activation.
 
 <!-- SPRINT-20E-ROADMAP-END -->
+
+<!-- SPRINT-20G-ROADMAP-START -->
+## Sprint 20F Completion and Sprint 20G Truth Synchronization
+
+Sprint 20F is complete at commit `c53c742a6e526a8772e87023893311edc3786c81`.
+
+Verified Sprint 20F outcomes:
+
+- canonical Brand 1 production bootstrap implemented;
+- production domain ownership configured;
+- Site Configuration provisioned;
+- production administrator verified;
+- tenant ownership remediated;
+- production security headers implemented;
+- full regression passed with `493` tests and `1428` assertions;
+- commit, push, and remote verification passed.
+
+Sprint 20G synchronizes canonical repository truth only.
+
+Delivery order after Sprint 20G:
+
+1. Sprint 20H - Brand 1 Production Acceptance Re-verification;
+2. Brand 1 stabilization and hardening;
+3. Owner Panel;
+4. Brand 2–5 activation;
+5. multi-brand operational hardening.
+<!-- SPRINT-20G-ROADMAP-END -->

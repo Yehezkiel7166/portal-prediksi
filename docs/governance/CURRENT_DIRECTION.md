@@ -180,3 +180,27 @@ Sprint 20E must not be marked complete as a production acceptance gate until
 the RED findings are remediated and independently reverified.
 
 <!-- SPRINT-20E-CURRENT-DIRECTION-END -->
+
+<!-- SPRINT-20G-CURRENT-DIRECTION-START -->
+## Current Execution State - Sprint 20G Complete
+
+- Canonical branch: `main`.
+- Baseline: `c53c742a6e526a8772e87023893311edc3786c81`.
+- Sprint 20F implementation and CTO crosscheck: complete / PASS.
+- Sprint 20G truth synchronization: complete.
+- Sprint 20G regression: `493` tests / `1428` assertions / PASS.
+- Sprint 20G governance checks: `7/7` PASS.
+- Sprint 20G CTO crosscheck: PASS.
+- Application behavior change: none.
+- Database migration change: none.
+- Production database mutation: none.
+- Next sprint: Sprint 20H - Brand 1 Production Acceptance Re-verification.
+
+Mandatory workflow:
+
+`INSPECT -> SYNC -> RED -> GREEN -> REGRESSION -> AUDIT ->
+CTO CROSSCHECK -> COMMIT -> PUSH -> REMOTE VERIFY`
+
+Owner Panel and Brand 2–5 remain blocked until Brand 1 production acceptance
+and stabilization gates pass.
+<!-- SPRINT-20G-CURRENT-DIRECTION-END -->

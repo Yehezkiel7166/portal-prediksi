@@ -123,8 +123,8 @@
         "Application test/build CI is not yet implemented"
     ],
     "next_recommended_phase": {
-        "name": "Sprint 20F - Brand 1 Production Bootstrap and Data Remediation",
-        "objective": "Create a rollback-safe canonical Brand 1 production bootstrap, reconcile tenant ownership, activate administration and minimum content, and implement production security headers."
+        "name": "Sprint 20H - Brand 1 Production Acceptance Re-verification",
+        "objective": "Independently rerun the Brand 1 production acceptance gate after Sprint 20F remediation and record evidence for identity, domain resolution, administration, content readiness, tenant ownership, frontend behavior, and security headers."
     },
     "mandatory_workflow": [
         "INSPECT",
@@ -141,15 +141,15 @@
     "repository": {
         "branch": "main",
         "remote_tracking_branch": "origin/main",
-        "synchronization_state": "verified_at_sprint_20a_start",
-        "last_verified_commit": "8c621626d6d353b0c7c2550a5889d4fb8038d43e",
+        "synchronization_state": "verified_after_sprint_20f_push",
+        "last_verified_commit": "c53c742a6e526a8772e87023893311edc3786c81",
         "commit_reference_semantics": "verified_sprint_18d_production_completion",
         "required_final_working_tree": "clean",
         "required_final_synchronization": "local_equals_origin_main",
         "completion_gate": "passed",
         "governance_audit": "passed",
         "last_verified_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
-        "last_local_commit": "6099abf713897fb7a59591d43fa279b500b00acc"
+        "last_local_commit": "c53c742a6e526a8772e87023893311edc3786c81"
     },
     "repository_governance": {
         "phase": "Phase 0.2",
@@ -324,13 +324,14 @@
         }
     ],
     "active_sprint": {
-        "name": "Sprint 20C — Repository Truth Synchronization",
-        "status": "in_progress",
+        "name": "Sprint 20G - Completion Truth Synchronization",
+        "status": "completed",
         "branch": "main",
-        "baseline": "19d863ace576bac9941cf7baa3f70b2b5af406ab",
+        "baseline": "c53c742a6e526a8772e87023893311edc3786c81",
         "behavior_change": false,
         "database_migration": false,
-        "objective": "Synchronize canonical repository state with verified Sprint 20B backup automation and restore-rehearsal implementation."
+        "production_database_mutation": false,
+        "objective": "Synchronize canonical repository truth with verified Sprint 20F completion."
     },
     "delivery": {
         "brand_1_usable_deadline": "2026-07-30",
@@ -390,14 +391,14 @@
         "migration_batch": 7
     },
     "latest_verification": {
-        "baseline_commit": "20838e11d52af369fcb5b6274d089cecfa57429e",
-        "baseline_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
-        "tests": 470,
-        "assertions": 1336,
+        "baseline_commit": "c53c742a6e526a8772e87023893311edc3786c81",
+        "tests": 493,
+        "assertions": 1428,
         "governance_passed": 7,
         "governance_total": 7,
         "completion_gate": "passed",
-        "remote_verified": true
+        "cto_crosscheck": "passed",
+        "remote_verified": false
     },
     "complaint_engine": {
         "status": "implemented_pending_production_migration",
@@ -525,20 +526,56 @@
     },
     "brand_1_production_gate": {
         "sprint": "Sprint 20E - Brand 1 Usable and Production Gate",
-        "status": "blocked",
-        "baseline_commit": "7ba7734c13bec7e44665014cb4af897bc05c03cc",
-        "inspected_date": "2026-07-31",
+        "status": "pending_reverification_after_remediation",
+        "initial_baseline_commit": "7ba7734c13bec7e44665014cb4af897bc05c03cc",
+        "remediation_sprint": "Sprint 20F",
+        "remediation_commit": "c53c742a6e526a8772e87023893311edc3786c81",
         "runtime_infrastructure": "passed",
-        "canonical_brand": "failed",
-        "production_domain_registration": "failed",
-        "site_configuration": "failed",
-        "production_administrator": "failed",
-        "minimum_content": "failed",
-        "tenant_data_integrity": "failed",
-        "security_headers": "failed",
-        "repository_mutation": false,
-        "database_mutation": false,
-        "evidence_path": "storage/logs/sprint-20e-inspection-20260731-044332.txt",
-        "evidence_tracked": false
+        "canonical_brand": "remediated_pending_reverification",
+        "production_domain_registration": "remediated_pending_reverification",
+        "site_configuration": "remediated_pending_reverification",
+        "production_administrator": "remediated_pending_reverification",
+        "minimum_content": "pending_reverification",
+        "tenant_data_integrity": "remediated_pending_reverification",
+        "security_headers": "implemented_pending_runtime_reverification",
+        "next_acceptance_gate": "Sprint 20H"
+    },
+    "sprint_20f": {
+        "name": "Sprint 20F - Brand 1 Production Bootstrap and Data Remediation",
+        "status": "completed",
+        "baseline_commit": "a0951d9248faab3ff3089f6001363e9b8ac6da6c",
+        "completion_commit": "c53c742a6e526a8772e87023893311edc3786c81",
+        "remote_verified": true,
+        "tests": 493,
+        "assertions": 1428,
+        "cto_crosscheck": "passed",
+        "production_brand_id": 7,
+        "production_brand_name": "SANTOTO4D",
+        "production_domain": "santoto4d-prediksi.site",
+        "site_configuration": "present",
+        "administrator": "verified",
+        "nullable_brand_ownership": {
+            "results": 0,
+            "predictions": 0,
+            "live_draws": 0
+        },
+        "brand_resolver": "passed",
+        "security_headers": "implemented"
+    },
+    "sprint_20g": {
+        "name": "Sprint 20G - Completion Truth Synchronization",
+        "status": "completed",
+        "baseline_commit": "c53c742a6e526a8772e87023893311edc3786c81",
+        "tests": 493,
+        "assertions": 1428,
+        "governance_checks": {
+            "passed": 7,
+            "total": 7
+        },
+        "cto_crosscheck": "passed",
+        "application_behavior_change": false,
+        "database_migration_change": false,
+        "production_database_mutation": false,
+        "next_gate": "Sprint 20H - Brand 1 Production Acceptance Re-verification"
     }
 }

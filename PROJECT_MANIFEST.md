@@ -519,3 +519,33 @@ Both tools are deterministic, rate-limited, and do not persist visitor input.
   `docs/sprints/crosschecks/SPRINT-20A-REPOSITORY-TRUTH-RECONCILIATION.md`.
 - Next sprint: Sprint 20B — Brand 1 Production Readiness Audit.
 <!-- SPRINT-20A-MANIFEST-END -->
+
+<!-- SPRINT-20G-MANIFEST-START -->
+## Sprint 20F Completion Manifest
+
+- Completion commit: `c53c742a6e526a8772e87023893311edc3786c81`.
+- Branch: `main`.
+- Remote branch: `origin/main`.
+- Full regression: `493` tests / `1428` assertions / PASS.
+- CTO crosscheck: PASS.
+- Remote verification: PASS.
+- Final worktree after push: clean.
+
+Implemented artifacts:
+
+- `app/Console/Commands/BootstrapBrandOneProduction.php`
+- `app/Http/Middleware/AddProductionSecurityHeaders.php`
+- `bootstrap/app.php`
+- `tests/Feature/Production/BootstrapBrandOneProductionCommandTest.php`
+- `docs/sprints/SPRINT-20F-BRAND-1-PRODUCTION-BOOTSTRAP-AND-DATA-REMEDIATION.md`
+- `docs/sprints/crosschecks/SPRINT-20F-BRAND-1-PRODUCTION-BOOTSTRAP-AND-DATA-REMEDIATION.md`
+
+Sprint 20G canonical artifacts:
+
+- `docs/sprints/SPRINT-20G-COMPLETION-TRUTH-SYNCHRONIZATION.md`
+- `docs/sprints/crosschecks/SPRINT-20G-COMPLETION-TRUTH-SYNCHRONIZATION.md`
+
+Next bounded sprint:
+
+- Sprint 20H - Brand 1 Production Acceptance Re-verification.
+<!-- SPRINT-20G-MANIFEST-END -->

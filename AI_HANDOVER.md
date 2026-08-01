@@ -498,3 +498,54 @@ inspection.
 Next bounded sprint: **Sprint 20F - Brand 1 Production Bootstrap and Data Remediation**.
 
 <!-- SPRINT-20E-HANDOVER-END -->
+
+<!-- SPRINT-20G-AI-HANDOVER-START -->
+## Sprint 20G Handover
+
+Canonical baseline:
+
+`c53c742a6e526a8772e87023893311edc3786c81` on `main`.
+
+Sprint 20F application implementation, regression, audit, commit, push, and
+remote verification are complete.
+
+Verified Sprint 20F evidence:
+
+- full regression: `493` tests / `1428` assertions / PASS;
+- canonical production Brand: ID `7`, name `SANTOTO4D`;
+- production domain: `santoto4d-prediksi.site`;
+- Site Configuration: present;
+- administrator: verified;
+- nullable Brand ownership in Result, Prediction, and Live Draw: zero;
+- production domain BrandResolver: PASS;
+- production security headers: implemented;
+- local and remote HEAD: `c53c742a6e526a8772e87023893311edc3786c81`;
+- ahead/behind: `0 0`;
+- final working tree: clean.
+
+Sprint 20G synchronizes repository truth only. It introduces no application
+behavior, migration, or production database mutation.
+
+After Sprint 20G completion, run:
+
+**Sprint 20H - Brand 1 Production Acceptance Re-verification**
+
+Do not repeat the Sprint 20F bootstrap implementation. Sprint 20H must perform
+an independent runtime acceptance inspection.
+<!-- SPRINT-20G-AI-HANDOVER-END -->
+
+## Sprint 20G Completion Handover
+
+Sprint 20G Completion Truth Synchronization passed regression, audit, and CTO
+crosscheck.
+
+- Regression: `493` tests / `1428` assertions / PASS.
+- Governance checks: `7/7` PASS.
+- CTO decision: PASS.
+- Application behavior change: none.
+- Database migration change: none.
+- Production database mutation: none.
+
+Next bounded sprint:
+
+**Sprint 20H - Brand 1 Production Acceptance Re-verification**

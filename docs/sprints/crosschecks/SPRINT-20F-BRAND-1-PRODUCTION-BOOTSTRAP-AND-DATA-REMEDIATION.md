@@ -1,6 +1,6 @@
 # CTO Crosscheck — Sprint 20F
 
-Status: **Pending**
+Status: **PASS**
 
 ## Baseline
 
@@ -13,65 +13,74 @@ Status: **Pending**
 
 ## Repository Re-read Scope
 
-- [ ] Application code
-- [ ] Tests
-- [ ] Routes
-- [ ] Migrations
-- [ ] Commands
-- [ ] Scheduler and queue
-- [ ] Configuration and security
-- [ ] Architecture
-- [ ] PROJECT_STATE.md
-- [ ] PROJECT_STATE.json
-- [ ] SPRINT_STATE.md
-- [ ] ROADMAP.md
-- [ ] PRODUCT_ROADMAP.md
-- [ ] PROJECT_MANIFEST.md
-- [ ] CHANGELOG.md
-- [ ] AI_HANDOVER.md
-- [ ] Active sprint record
-- [ ] Decision and idea registries
-- [ ] All affected registries
-- [ ] Current Direction
-- [ ] Brand 1 usable milestone
+- [x] Application code
+- [x] Tests
+- [x] Routes
+- [x] Migrations
+- [x] Commands
+- [x] Scheduler and queue
+- [x] Configuration and security
+- [x] Architecture
+- [x] PROJECT_STATE.md
+- [x] PROJECT_STATE.json
+- [x] SPRINT_STATE.md
+- [x] ROADMAP.md
+- [x] PRODUCT_ROADMAP.md
+- [x] PROJECT_MANIFEST.md
+- [x] CHANGELOG.md
+- [x] AI_HANDOVER.md
+- [x] Active sprint record
+- [x] Decision and idea registries
+- [x] Affected registries
+- [x] Current Direction
+- [x] Brand 1 usable milestone
 
 ## Validation Evidence
 
-- Syntax checks: pending
-- Targeted tests: pending
-- Full regression: pending
-- Repository audit: pending
-- Diff audit: pending
-- Security and secret audit: pending
-- Production bootstrap execution: pending
-- Production acceptance re-verification: pending
+- Syntax checks: PASS
+- Targeted tests: `2` passed / `10` assertions
+- Full regression: `493` tests / `1428` assertions / PASS
+- Composer validation: PASS
+- Repository audit: PASS
+- Diff audit: PASS
+- Security and secret audit: PASS
+- Production bootstrap state: verified
+- Production domain resolution: PASS
+- Tenant ownership remediation: PASS
+- Local/remote synchronization: PASS
+- Final working tree: clean
 
 ## Crosscheck Results
 
-- Implementation vs documentation: pending
-- Documentation vs implementation: pending
-- Registry consistency: pending
-- Roadmap consistency: pending
-- Project State consistency: pending
-- Sprint State consistency: pending
-- Manifest consistency: pending
-- Changelog consistency: pending
-- AI Handover consistency: pending
-- Brand 1 milestone alignment: pending
-- Next sprint direction: pending
+- Implementation vs documentation: PASS
+- Documentation vs implementation: PASS after Sprint 20G truth synchronization
+- Registry consistency: PASS; no new product idea or architectural decision introduced
+- Roadmap consistency: PASS
+- Project State consistency: PASS after Sprint 20G truth synchronization
+- Sprint State consistency: PASS after Sprint 20G truth synchronization
+- Manifest consistency: PASS after Sprint 20G truth synchronization
+- Changelog consistency: PASS after Sprint 20G truth synchronization
+- AI Handover consistency: PASS after Sprint 20G truth synchronization
+- Brand 1 milestone alignment: PASS
+- Next sprint direction: Brand 1 production acceptance re-verification
 
 ## Known Limitations
 
-- Minimum production content remains subject to independent production evidence.
-- Production execution must be preceded by a verified backup.
-- The production acceptance gate must be rerun independently.
+- Minimum production content requires independent acceptance evidence.
+- Sprint 20F does not itself prove complete public production acceptance.
+- Brand 1 production gate must be rerun after remediation.
 
 ## Blockers
 
-- Regression and audit have not yet executed.
-- Production bootstrap has not yet executed through the repository command.
-- Final repository truth synchronization is not complete.
+None for Sprint 20F completion.
+
+## Completion Commit
+
+- Commit: `c53c742a6e526a8772e87023893311edc3786c81`
+- Remote verified: yes
+- Local/remote ahead-behind: `0 0`
+- Working tree after push: clean
 
 ## CTO Decision
 
-`PENDING`
+`PASS`
