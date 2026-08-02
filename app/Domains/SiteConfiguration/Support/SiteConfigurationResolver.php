@@ -14,43 +14,62 @@ final class SiteConfigurationResolver
 {
     private const CACHE_TTL_SECONDS = 300;
 
+    private const CACHE_KEY_VERSION = 'v2';
+
     public function resolve(?Brand $brand): ResolvedSiteConfiguration
     {
         if ($brand === null || ! Schema::hasTable('site_configurations')) {
             return $this->fallback($brand);
         }
 
-        $cacheKey = sprintf('site-configuration:brand:%s', $brand->getKey());
+        $cacheKey = $this->cacheKey($brand->getKey());
 
-        /** @var SiteConfiguration|null $configuration */
+        /** @var array<string, mixed>|null $configuration */
         $configuration = Cache::remember(
             $cacheKey,
             self::CACHE_TTL_SECONDS,
-            fn (): ?SiteConfiguration => SiteConfiguration::query()
+            static fn (): ?array => SiteConfiguration::query()
                 ->where('brand_id', $brand->getKey())
                 ->where('is_active', true)
-                ->first(),
+                ->first()
+                ?->toArray(),
         );
 
         if ($configuration === null) {
             return $this->fallback($brand);
         }
 
-        $siteName = $this->filled($configuration->site_name) ?? $brand->name;
-        $seoTitle = $this->filled($configuration->default_seo_title) ?? $siteName;
+        $siteName = $this->filled($configuration['site_name'] ?? null)
+            ?? $brand->name;
+
+        $seoTitle = $this->filled(
+            $configuration['default_seo_title'] ?? null,
+        ) ?? $siteName;
 
         return new ResolvedSiteConfiguration(
             siteName: $siteName,
-            tagline: $this->filled($configuration->tagline),
-            logoUrl: $this->httpUrl($configuration->logo_url),
-            faviconUrl: $this->httpUrl($configuration->favicon_url),
+            tagline: $this->filled($configuration['tagline'] ?? null),
+            logoUrl: $this->httpUrl($configuration['logo_url'] ?? null),
+            faviconUrl: $this->httpUrl($configuration['favicon_url'] ?? null),
             defaultSeoTitle: $seoTitle,
-            defaultSeoDescription: $this->filled($configuration->default_seo_description),
-            contactEmail: $this->filled($configuration->contact_email),
-            contactPhone: $this->filled($configuration->contact_phone),
-            whatsappNumber: $this->filled($configuration->whatsapp_number),
-            socialLinks: $this->normalizeSocialLinks($configuration->social_links),
-            footerText: $this->filled($configuration->footer_text),
+            defaultSeoDescription: $this->filled(
+                $configuration['default_seo_description'] ?? null,
+            ),
+            contactEmail: $this->filled(
+                $configuration['contact_email'] ?? null,
+            ),
+            contactPhone: $this->filled(
+                $configuration['contact_phone'] ?? null,
+            ),
+            whatsappNumber: $this->filled(
+                $configuration['whatsapp_number'] ?? null,
+            ),
+            socialLinks: $this->normalizeSocialLinks(
+                $configuration['social_links'] ?? null,
+            ),
+            footerText: $this->filled(
+                $configuration['footer_text'] ?? null,
+            ),
             fromDatabase: true,
         );
     }
@@ -58,12 +77,26 @@ final class SiteConfigurationResolver
     public function forget(Brand|int $brand): void
     {
         $brandId = $brand instanceof Brand ? $brand->getKey() : $brand;
+
+        Cache::forget($this->cacheKey($brandId));
+
+        // Remove the pre-v2 key that may contain a serialized Eloquent model.
         Cache::forget(sprintf('site-configuration:brand:%s', $brandId));
+    }
+
+    private function cacheKey(int|string $brandId): string
+    {
+        return sprintf(
+            'site-configuration:%s:brand:%s',
+            self::CACHE_KEY_VERSION,
+            $brandId,
+        );
     }
 
     private function fallback(?Brand $brand): ResolvedSiteConfiguration
     {
-        $siteName = $brand?->name ?: (string) config('app.name', 'Portal Prediksi');
+        $siteName = $brand?->name
+            ?: (string) config('app.name', 'Portal Prediksi');
 
         return new ResolvedSiteConfiguration(
             siteName: $siteName,
@@ -121,12 +154,19 @@ final class SiteConfigurationResolver
     {
         $url = $this->filled($value);
 
-        if ($url === null || filter_var($url, FILTER_VALIDATE_URL) === false) {
+        if (
+            $url === null
+            || filter_var($url, FILTER_VALIDATE_URL) === false
+        ) {
             return null;
         }
 
-        $scheme = strtolower((string) parse_url($url, PHP_URL_SCHEME));
+        $scheme = strtolower(
+            (string) parse_url($url, PHP_URL_SCHEME),
+        );
 
-        return in_array($scheme, ['http', 'https'], true) ? $url : null;
+        return in_array($scheme, ['http', 'https'], true)
+            ? $url
+            : null;
     }
 }
