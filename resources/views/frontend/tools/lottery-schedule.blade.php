@@ -152,12 +152,23 @@
                                         Live Draw
                                     </a>
 
-                                    <a
-                                        href="{{ route('tools.paito') }}"
-                                        class="rounded-lg border border-slate-600 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:bg-slate-800"
-                                    >
-                                        Paito
-                                    </a>
+                                    @if (filled($market->official_url))
+                                        <a
+                                            href="{{ $market->official_url }}"
+                                            target="_blank"
+                                            rel="noopener noreferrer nofollow"
+                                            class="rounded-lg border border-slate-600 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:bg-slate-800"
+                                        >
+                                            Link Official
+                                        </a>
+                                    @else
+                                        <span
+                                            class="inline-flex cursor-not-allowed rounded-lg border border-slate-800 px-3 py-1.5 text-xs font-semibold text-slate-600"
+                                            title="Link resmi belum ditambahkan"
+                                        >
+                                            —
+                                        </span>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

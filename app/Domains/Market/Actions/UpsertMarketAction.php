@@ -63,6 +63,10 @@ class UpsertMarketAction
             $slug !== '' ? $slug : $data['name']
         );
 
+        $data['official_url'] = $this->nullableTrim(
+            $data['official_url'] ?? null
+        );
+
         $data['timezone'] = trim(
             (string) ($data['timezone'] ?? 'Asia/Jakarta')
         );
@@ -107,6 +111,11 @@ class UpsertMarketAction
                 'max:120',
                 Rule::unique('markets', 'slug')
                     ->ignore($market?->getKey()),
+            ],
+            'official_url' => [
+                'nullable',
+                'url:http,https',
+                'max:2048',
             ],
             'timezone' => [
                 'required',

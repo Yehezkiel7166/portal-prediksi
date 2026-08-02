@@ -23,6 +23,7 @@ class MarketFactory extends Factory
             'code' => strtoupper(fake()->unique()->lexify('???')),
             'name' => $name,
             'slug' => Str::slug($name).'-'.fake()->unique()->numberBetween(1, 9999),
+            'official_url' => null,
             'timezone' => 'Asia/Jakarta',
             'active_days' => [1, 2, 3, 4, 5, 6, 7],
             'open_time' => '09:00',

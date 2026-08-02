@@ -70,8 +70,18 @@ final class PublicFrontendRemediationTest extends TestCase
             $source,
         );
 
-        $this->assertStringContainsString(
+        $this->assertStringNotContainsString(
             "route('tools.paito')",
+            $source,
+        );
+
+        $this->assertStringContainsString(
+            '$market->official_url',
+            $source,
+        );
+
+        $this->assertStringContainsString(
+            'Link Official',
             $source,
         );
     }

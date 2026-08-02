@@ -22,6 +22,7 @@ class Market extends Model
         'code',
         'name',
         'slug',
+        'official_url',
         'timezone',
         'active_days',
         'open_time',

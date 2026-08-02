@@ -53,6 +53,16 @@ class MarketForm
                         'Digunakan untuk URL publik pasaran.'
                     ),
 
+                TextInput::make('official_url')
+                    ->label('Link Pasaran Resmi')
+                    ->placeholder('https://website-resmi-pasaran.com')
+                    ->url()
+                    ->maxLength(2048)
+                    ->helperText(
+                        'Masukkan URL resmi pasaran secara manual. Kosongkan jika belum tersedia.'
+                    )
+                    ->columnSpanFull(),
+
                 Select::make('timezone')
                     ->label('Zona waktu')
                     ->options(
