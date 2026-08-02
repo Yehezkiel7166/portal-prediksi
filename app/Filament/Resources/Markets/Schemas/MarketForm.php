@@ -80,17 +80,26 @@ class MarketForm
                     ->columns(4)
                     ->columnSpanFull(),
 
-                TimePicker::make('open_time')
-                    ->label('Jam buka')
-                    ->seconds(false),
-
                 TimePicker::make('close_time')
                     ->label('Jam tutup')
-                    ->seconds(false),
+                    ->seconds(false)
+                    ->helperText(
+                        'Urutan waktu: jam tutup, jam hasil, lalu jam buka.'
+                    ),
 
                 TimePicker::make('result_time')
                     ->label('Jam hasil')
-                    ->seconds(false),
+                    ->seconds(false)
+                    ->helperText(
+                        'Harus setelah jam tutup dan sebelum jam buka.'
+                    ),
+
+                TimePicker::make('open_time')
+                    ->label('Jam buka')
+                    ->seconds(false)
+                    ->helperText(
+                        'Harus setelah jam hasil.'
+                    ),
 
                 Toggle::make('is_holiday')
                     ->label('Status libur')

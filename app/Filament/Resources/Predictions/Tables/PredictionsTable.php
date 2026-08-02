@@ -28,11 +28,31 @@ class PredictionsTable
                     ->date('d M Y')
                     ->sortable(),
 
-                TextColumn::make('predicted_numbers')
-                    ->label('Angka prediksi')
+                TextColumn::make('bbfs')
+                    ->label('BBFS')
                     ->searchable()
-                    ->limit(50)
-                    ->wrap(),
+                    ->placeholder('-'),
+
+                TextColumn::make('prediction_2d')
+                    ->label('2D')
+                    ->searchable()
+                    ->limit(35)
+                    ->wrap()
+                    ->placeholder('-'),
+
+                TextColumn::make('prediction_3d')
+                    ->label('3D')
+                    ->limit(35)
+                    ->wrap()
+                    ->placeholder('-')
+                    ->toggleable(),
+
+                TextColumn::make('prediction_4d')
+                    ->label('4D')
+                    ->limit(35)
+                    ->wrap()
+                    ->placeholder('-')
+                    ->toggleable(),
 
                 TextColumn::make('status')
                     ->label('Status')

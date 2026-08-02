@@ -7,6 +7,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class PredictionForm
@@ -37,14 +38,55 @@ class PredictionForm
                     ->native(false)
                     ->columnSpan(1),
 
-                Textarea::make('predicted_numbers')
-                    ->label('Angka prediksi')
-                    ->placeholder(
-                        'Masukkan angka prediksi, misalnya: 1234 5678 9012'
-                    )
+                TextInput::make('bbfs')
+                    ->label('BBFS')
+                    ->placeholder('Contoh: 209184')
                     ->required()
-                    ->rows(5)
                     ->maxLength(500)
+                    ->columnSpanFull(),
+
+                TextInput::make('colok_bebas')
+                    ->label('Colok Bebas')
+                    ->placeholder('Contoh: 9-4')
+                    ->required()
+                    ->maxLength(500)
+                    ->columnSpanFull(),
+
+                Textarea::make('prediction_2d')
+                    ->label('Prediksi 2D')
+                    ->placeholder('Contoh: 18, 91, 82, 12, 84')
+                    ->required()
+                    ->rows(3)
+                    ->maxLength(2000)
+                    ->columnSpanFull(),
+
+                Textarea::make('prediction_3d')
+                    ->label('Prediksi 3D')
+                    ->placeholder('Contoh: 028, 492, 241')
+                    ->required()
+                    ->rows(3)
+                    ->maxLength(2000)
+                    ->columnSpanFull(),
+
+                Textarea::make('prediction_4d')
+                    ->label('Prediksi 4D')
+                    ->placeholder('Contoh: 9482, 8491, 0981')
+                    ->required()
+                    ->rows(3)
+                    ->maxLength(2000)
+                    ->columnSpanFull(),
+
+                Textarea::make('kembar')
+                    ->label('Angka Kembar')
+                    ->placeholder('Contoh: 88, 99, 44, 00')
+                    ->rows(2)
+                    ->maxLength(1000)
+                    ->columnSpanFull(),
+
+                TextInput::make('shio')
+                    ->label('Shio')
+                    ->placeholder('Contoh: TIKUS')
+                    ->maxLength(100)
                     ->columnSpanFull(),
 
                 Select::make('status')

@@ -173,4 +173,48 @@ final class PublicPredictionDetailTest extends TestCase
             'predictionDate' => '2026-07-20',
         ]))->assertNotFound();
     }
+    public function test_detail_displays_structured_prediction_fields(): void
+    {
+        $market = Market::factory()->create([
+            'name' => 'Bogota',
+            'slug' => 'bogota',
+            'code' => 'BGT',
+            'timezone' => 'America/Bogota',
+            'is_active' => true,
+        ]);
+
+        Prediction::factory()->create([
+            'market_id' => $market->id,
+            'prediction_date' => '2026-08-02',
+            'bbfs' => '209184',
+            'colok_bebas' => '9-4',
+            'prediction_2d' => '18,91,82',
+            'prediction_3d' => '028,492',
+            'prediction_4d' => '9482,8491',
+            'kembar' => '88,99',
+            'shio' => 'TIKUS',
+            'status' => Prediction::STATUS_PUBLISHED,
+            'published_at' => now()->subMinute(),
+        ]);
+
+        $this->get(route('predictions.show', [
+            'marketSlug' => 'bogota',
+            'predictionDate' => '2026-08-02',
+        ]))
+            ->assertOk()
+            ->assertSee('BBFS')
+            ->assertSee('209184')
+            ->assertSee('Colok Bebas')
+            ->assertSee('9-4')
+            ->assertSee('2D')
+            ->assertSee('18,91,82')
+            ->assertSee('3D')
+            ->assertSee('028,492')
+            ->assertSee('4D')
+            ->assertSee('9482,8491')
+            ->assertSee('Kembar')
+            ->assertSee('88,99')
+            ->assertSee('Shio')
+            ->assertSee('TIKUS');
+    }
 }

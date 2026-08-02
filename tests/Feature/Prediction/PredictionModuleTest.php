@@ -209,4 +209,35 @@ class PredictionModuleTest extends TestCase
 
         $this->assertSame($newMarket->brand_id, $updated->brand_id);
     }
+    public function test_action_creates_structured_prediction_fields(): void
+    {
+        $market = Market::factory()->create();
+
+        $prediction = app(UpsertPredictionAction::class)->execute(null, [
+            'market_id' => $market->id,
+            'prediction_date' => '2026-08-02',
+            'bbfs' => ' 209184 ',
+            'colok_bebas' => ' 9-4 ',
+            'prediction_2d' => ' 18,91,82 ',
+            'prediction_3d' => ' 028,492 ',
+            'prediction_4d' => ' 9482,8491 ',
+            'kembar' => ' 88,99 ',
+            'shio' => ' TIKUS ',
+            'status' => Prediction::STATUS_DRAFT,
+            'notes' => null,
+        ]);
+
+        $this->assertSame('209184', $prediction->bbfs);
+        $this->assertSame('9-4', $prediction->colok_bebas);
+        $this->assertSame('18,91,82', $prediction->prediction_2d);
+        $this->assertSame('028,492', $prediction->prediction_3d);
+        $this->assertSame('9482,8491', $prediction->prediction_4d);
+        $this->assertSame('88,99', $prediction->kembar);
+        $this->assertSame('TIKUS', $prediction->shio);
+
+        $this->assertStringContainsString(
+            'BBFS: 209184',
+            $prediction->predicted_numbers,
+        );
+    }
 }

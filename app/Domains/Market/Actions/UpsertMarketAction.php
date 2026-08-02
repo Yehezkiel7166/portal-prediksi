@@ -121,19 +121,19 @@ class UpsertMarketAction
                 'integer',
                 'between:1,7',
             ],
-            'open_time' => [
-                'nullable',
-                'date_format:H:i',
-            ],
             'close_time' => [
                 'nullable',
                 'date_format:H:i',
-                'after:open_time',
             ],
             'result_time' => [
                 'nullable',
                 'date_format:H:i',
                 'after:close_time',
+            ],
+            'open_time' => [
+                'nullable',
+                'date_format:H:i',
+                'after:result_time',
             ],
             'is_holiday' => [
                 'required',

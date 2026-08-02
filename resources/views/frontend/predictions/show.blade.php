@@ -104,8 +104,48 @@
                     Angka prediksi
                 </p>
 
-                <div class="mt-3 whitespace-pre-line break-words rounded-xl border border-amber-400/20 bg-slate-950 p-5 text-lg font-bold leading-8 text-white md:text-xl">
-                    {{ $prediction->predicted_numbers }}
+                <div class="mt-3">
+                    @php
+                        $predictionRows = [
+                            'BBFS' => $prediction->bbfs,
+                            'Colok Bebas' => $prediction->colok_bebas,
+                            '2D' => $prediction->prediction_2d,
+                            '3D' => $prediction->prediction_3d,
+                            '4D' => $prediction->prediction_4d,
+                            'Kembar' => $prediction->kembar,
+                            'Shio' => $prediction->shio,
+                        ];
+
+                        $hasStructuredPrediction = collect($predictionRows)
+                            ->contains(fn ($value) => filled($value));
+                    @endphp
+
+                    @if ($hasStructuredPrediction)
+                        <div class="overflow-hidden rounded-xl border border-amber-400/20 bg-slate-950 px-5 py-2">
+                            @foreach ($predictionRows as $label => $value)
+                                @if (filled($value))
+                                    <div
+                                        class="border-b border-slate-800 py-3 last:border-b-0"
+                                        style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;"
+                                    >
+                                        <span
+                                            class="text-sm font-semibold uppercase tracking-wide text-slate-400"
+                                            style="flex:0 0 120px;"
+                                        >{{ $label }}</span>
+
+                                        <span
+                                            class="break-words text-right font-bold leading-6 text-amber-400"
+                                            style="min-width:0;flex:1 1 auto;"
+                                        >{{ $value }}</span>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="whitespace-pre-line break-words rounded-xl border border-amber-400/20 bg-slate-950 p-4 font-semibold leading-7 text-white">
+                            {{ $prediction->predicted_numbers }}
+                        </div>
+                    @endif
                 </div>
             </section>
 

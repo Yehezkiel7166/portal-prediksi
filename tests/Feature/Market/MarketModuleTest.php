@@ -212,4 +212,87 @@ class MarketModuleTest extends TestCase
 
         $this->assertSame($originalBrand->id, $updated->brand_id);
     }
+    public function test_schedule_accepts_close_then_result_then_open(): void
+    {
+        $brand = Brand::factory()->create();
+
+        app(BrandContext::class)->set($brand);
+
+        $market = app(UpsertMarketAction::class)->execute(null, [
+            'code' => 'SCH',
+            'name' => 'Schedule Market',
+            'slug' => 'schedule-market',
+            'timezone' => 'Asia/Jakarta',
+            'active_days' => [1, 3, 5],
+            'close_time' => '17:30',
+            'result_time' => '17:35',
+            'open_time' => '17:40',
+            'is_holiday' => false,
+            'is_active' => true,
+            'sort_order' => 1,
+            'notes' => null,
+        ]);
+
+        $this->assertSame('17:30', $market->close_time);
+        $this->assertSame('17:35', $market->result_time);
+        $this->assertSame('17:40', $market->open_time);
+    }
+
+    public function test_schedule_rejects_result_not_after_close(): void
+    {
+        $brand = Brand::factory()->create();
+
+        app(BrandContext::class)->set($brand);
+
+        try {
+            app(UpsertMarketAction::class)->execute(null, [
+                'code' => 'BAD1',
+                'name' => 'Invalid Result Time',
+                'slug' => 'invalid-result-time',
+                'timezone' => 'Asia/Jakarta',
+                'close_time' => '17:30',
+                'result_time' => '17:25',
+                'open_time' => '17:40',
+                'is_holiday' => false,
+                'is_active' => true,
+                'sort_order' => 1,
+            ]);
+
+            $this->fail('ValidationException was not thrown.');
+        } catch (ValidationException $exception) {
+            $this->assertArrayHasKey(
+                'result_time',
+                $exception->errors(),
+            );
+        }
+    }
+
+    public function test_schedule_rejects_open_not_after_result(): void
+    {
+        $brand = Brand::factory()->create();
+
+        app(BrandContext::class)->set($brand);
+
+        try {
+            app(UpsertMarketAction::class)->execute(null, [
+                'code' => 'BAD2',
+                'name' => 'Invalid Open Time',
+                'slug' => 'invalid-open-time',
+                'timezone' => 'Asia/Jakarta',
+                'close_time' => '17:30',
+                'result_time' => '17:35',
+                'open_time' => '17:34',
+                'is_holiday' => false,
+                'is_active' => true,
+                'sort_order' => 1,
+            ]);
+
+            $this->fail('ValidationException was not thrown.');
+        } catch (ValidationException $exception) {
+            $this->assertArrayHasKey(
+                'open_time',
+                $exception->errors(),
+            );
+        }
+    }
 }

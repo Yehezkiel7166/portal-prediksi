@@ -45,9 +45,27 @@ class UpsertPredictionAction
 
     private function normalize(array $data): array
     {
-        $data['predicted_numbers'] = trim(
+        foreach ([
+            'bbfs',
+            'colok_bebas',
+            'prediction_2d',
+            'prediction_3d',
+            'prediction_4d',
+            'kembar',
+            'shio',
+        ] as $field) {
+            $data[$field] = $this->nullableTrim(
+                $data[$field] ?? null
+            );
+        }
+
+        $legacyNumbers = trim(
             (string) ($data['predicted_numbers'] ?? '')
         );
+
+        $data['predicted_numbers'] = $legacyNumbers !== ''
+            ? $legacyNumbers
+            : $this->buildLegacyPredictionSummary($data);
 
         $data['status'] ??= Prediction::STATUS_DRAFT;
         $data['notes'] = $this->nullableTrim($data['notes'] ?? null);
@@ -86,7 +104,42 @@ class UpsertPredictionAction
             'predicted_numbers' => [
                 'required',
                 'string',
+                'max:5000',
+            ],
+            'bbfs' => [
+                'nullable',
+                'string',
                 'max:500',
+            ],
+            'colok_bebas' => [
+                'nullable',
+                'string',
+                'max:500',
+            ],
+            'prediction_2d' => [
+                'nullable',
+                'string',
+                'max:2000',
+            ],
+            'prediction_3d' => [
+                'nullable',
+                'string',
+                'max:2000',
+            ],
+            'prediction_4d' => [
+                'nullable',
+                'string',
+                'max:2000',
+            ],
+            'kembar' => [
+                'nullable',
+                'string',
+                'max:1000',
+            ],
+            'shio' => [
+                'nullable',
+                'string',
+                'max:100',
             ],
             'status' => [
                 'required',
@@ -102,6 +155,28 @@ class UpsertPredictionAction
                 'date',
             ],
         ];
+    }
+
+    private function buildLegacyPredictionSummary(array $data): string
+    {
+        return collect([
+            'BBFS' => $data['bbfs'],
+            'Colok Bebas' => $data['colok_bebas'],
+            '2D' => $data['prediction_2d'],
+            '3D' => $data['prediction_3d'],
+            '4D' => $data['prediction_4d'],
+            'Kembar' => $data['kembar'],
+            'Shio' => $data['shio'],
+        ])
+            ->filter(
+                static fn (?string $value): bool =>
+                    $value !== null
+            )
+            ->map(
+                static fn (string $value, string $label): string =>
+                    $label.': '.$value
+            )
+            ->implode(PHP_EOL);
     }
 
     private function nullableTrim(mixed $value): ?string

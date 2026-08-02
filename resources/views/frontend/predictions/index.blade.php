@@ -66,13 +66,122 @@
                     Tanggal prediksi
                 </label>
 
-                <input
-                    id="date"
-                    name="date"
-                    type="date"
-                    value="{{ $filters['date'] }}"
-                    class="mt-2 block w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition focus:border-amber-400"
+                <div
+                    data-dark-datepicker
+                    class="relative mt-2"
                 >
+                    <input
+                        id="date"
+                        name="date"
+                        type="hidden"
+                        value="{{ $filters['date'] }}"
+                        data-datepicker-value
+                    >
+
+                    <button
+                        type="button"
+                        data-datepicker-trigger
+                        aria-haspopup="dialog"
+                        aria-expanded="false"
+                        class="flex w-full items-center justify-between rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-left text-sm text-white outline-none transition hover:border-slate-600 focus:border-amber-400"
+                    >
+                        <span
+                            data-datepicker-display
+                            class="{{ $filters['date'] ? 'text-white' : 'text-slate-500' }}"
+                        >
+                            {{ $filters['date'] ?: 'Pilih tanggal' }}
+                        </span>
+
+                        <svg
+                            aria-hidden="true"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            class="h-5 w-5 shrink-0 text-amber-400"
+                            style="width:1.25rem;height:1.25rem;"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6.75 3v2.25M17.25 3v2.25M3.75 9h16.5M5.25 5.25h13.5A1.5 1.5 0 0 1 20.25 6.75v12A1.5 1.5 0 0 1 18.75 20.25H5.25a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5Z"
+                            />
+                        </svg>
+                    </button>
+
+                    <div
+                        data-datepicker-panel
+                        role="dialog"
+                        aria-label="Pilih tanggal prediksi"
+                        hidden
+                        class="absolute left-0 top-full z-50 mt-2 w-full overflow-hidden rounded-xl border border-slate-700 bg-slate-900 p-4 shadow-2xl"
+                        style="min-width:320px;box-shadow:0 24px 60px rgba(0,0,0,.55);"
+                    >
+                        <div class="flex items-center justify-between gap-3">
+                            <button
+                                type="button"
+                                data-datepicker-prev
+                                aria-label="Bulan sebelumnya"
+                                class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 text-slate-200 transition hover:border-amber-400 hover:text-amber-400"
+                                style="width:2.25rem;height:2.25rem;"
+                            >
+                                &#8249;
+                            </button>
+
+                            <p
+                                data-datepicker-title
+                                class="text-base font-semibold text-white"
+                            ></p>
+
+                            <button
+                                type="button"
+                                data-datepicker-next
+                                aria-label="Bulan berikutnya"
+                                class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 text-slate-200 transition hover:border-amber-400 hover:text-amber-400"
+                                style="width:2.25rem;height:2.25rem;"
+                            >
+                                &#8250;
+                            </button>
+                        </div>
+
+                        <div
+                            class="mt-4 grid grid-cols-7 gap-1 text-center text-xs font-semibold uppercase tracking-wide text-slate-400"
+                            style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.25rem;"
+                        >
+                            <span>Min</span>
+                            <span>Sen</span>
+                            <span>Sel</span>
+                            <span>Rab</span>
+                            <span>Kam</span>
+                            <span>Jum</span>
+                            <span>Sab</span>
+                        </div>
+
+                        <div
+                            data-datepicker-days
+                            class="mt-2 grid grid-cols-7 gap-1"
+                            style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.25rem;"
+                        ></div>
+
+                        <div class="mt-4 flex items-center justify-between border-t border-slate-800 pt-3">
+                            <button
+                                type="button"
+                                data-datepicker-clear
+                                class="text-sm font-semibold text-amber-400 transition hover:text-amber-300"
+                            >
+                                Bersihkan
+                            </button>
+
+                            <button
+                                type="button"
+                                data-datepicker-today
+                                class="text-sm font-semibold text-amber-400 transition hover:text-amber-300"
+                            >
+                                Hari Ini
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="flex items-end gap-3">
@@ -177,8 +286,48 @@
                         Angka prediksi
                     </p>
 
-                    <div class="mt-2 whitespace-pre-line break-words rounded-lg border border-amber-400/20 bg-slate-950 p-4 font-semibold leading-7 text-white">
-                        {{ $prediction->predicted_numbers }}
+                    <div class="mt-2">
+                        @php
+                            $predictionRows = [
+                                'BBFS' => $prediction->bbfs,
+                                'Colok Bebas' => $prediction->colok_bebas,
+                                '2D' => $prediction->prediction_2d,
+                                '3D' => $prediction->prediction_3d,
+                                '4D' => $prediction->prediction_4d,
+                                'Kembar' => $prediction->kembar,
+                                'Shio' => $prediction->shio,
+                            ];
+
+                            $hasStructuredPrediction = collect($predictionRows)
+                                ->contains(fn ($value) => filled($value));
+                        @endphp
+
+                        @if ($hasStructuredPrediction)
+                            <div class="overflow-hidden rounded-lg border border-amber-400/20 bg-slate-950 px-4 py-2">
+                                @foreach ($predictionRows as $label => $value)
+                                    @if (filled($value))
+                                        <div
+                                            class="border-b border-slate-800 py-2 last:border-b-0"
+                                            style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem;"
+                                        >
+                                            <span
+                                                class="text-xs font-semibold uppercase tracking-wide text-slate-400"
+                                                style="flex:0 0 88px;"
+                                            >{{ $label }}</span>
+
+                                            <span
+                                                class="break-words text-right text-sm font-bold leading-5 text-amber-400"
+                                                style="min-width:0;flex:1 1 auto;"
+                                            >{{ $value }}</span>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="whitespace-pre-line break-words rounded-lg border border-amber-400/20 bg-slate-950 p-4 font-semibold leading-7 text-white">
+                                {{ $prediction->predicted_numbers }}
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -244,4 +393,287 @@
         @endif
     </div>
 </section>
+<script>
+    (() => {
+        const roots = document.querySelectorAll('[data-dark-datepicker]');
+
+        if (roots.length === 0) {
+            return;
+        }
+
+        const monthNames = [
+            'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember',
+        ];
+
+        const pad = (value) => String(value).padStart(2, '0');
+
+        const toIsoDate = (date) => [
+            date.getFullYear(),
+            pad(date.getMonth() + 1),
+            pad(date.getDate()),
+        ].join('-');
+
+        const parseIsoDate = (value) => {
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '')) {
+                return null;
+            }
+
+            const [year, month, day] = value
+                .split('-')
+                .map(Number);
+
+            const parsed = new Date(year, month - 1, day);
+
+            if (
+                parsed.getFullYear() !== year
+                || parsed.getMonth() !== month - 1
+                || parsed.getDate() !== day
+            ) {
+                return null;
+            }
+
+            return parsed;
+        };
+
+        const formatDisplayDate = (date) => {
+            if (!date) {
+                return 'Pilih tanggal';
+            }
+
+            return [
+                pad(date.getDate()),
+                monthNames[date.getMonth()],
+                date.getFullYear(),
+            ].join(' ');
+        };
+
+        roots.forEach((root) => {
+            const input = root.querySelector('[data-datepicker-value]');
+            const trigger = root.querySelector('[data-datepicker-trigger]');
+            const display = root.querySelector('[data-datepicker-display]');
+            const panel = root.querySelector('[data-datepicker-panel]');
+            const title = root.querySelector('[data-datepicker-title]');
+            const days = root.querySelector('[data-datepicker-days]');
+            const previous = root.querySelector('[data-datepicker-prev]');
+            const next = root.querySelector('[data-datepicker-next]');
+            const clear = root.querySelector('[data-datepicker-clear]');
+            const today = root.querySelector('[data-datepicker-today]');
+
+            if (
+                !input
+                || !trigger
+                || !display
+                || !panel
+                || !title
+                || !days
+                || !previous
+                || !next
+                || !clear
+                || !today
+            ) {
+                return;
+            }
+
+            let selectedDate = parseIsoDate(input.value);
+            let visibleMonth = selectedDate
+                ? new Date(
+                    selectedDate.getFullYear(),
+                    selectedDate.getMonth(),
+                    1,
+                )
+                : new Date();
+
+            visibleMonth.setDate(1);
+
+            const close = () => {
+                panel.hidden = true;
+                trigger.setAttribute('aria-expanded', 'false');
+            };
+
+            const open = () => {
+                panel.hidden = false;
+                trigger.setAttribute('aria-expanded', 'true');
+            };
+
+            const updateDisplay = () => {
+                display.textContent = formatDisplayDate(selectedDate);
+
+                if (selectedDate) {
+                    display.classList.remove('text-slate-500');
+                    display.classList.add('text-white');
+                } else {
+                    display.classList.remove('text-white');
+                    display.classList.add('text-slate-500');
+                }
+            };
+
+            const selectDate = (date) => {
+                selectedDate = new Date(
+                    date.getFullYear(),
+                    date.getMonth(),
+                    date.getDate(),
+                );
+
+                input.value = toIsoDate(selectedDate);
+
+                visibleMonth = new Date(
+                    selectedDate.getFullYear(),
+                    selectedDate.getMonth(),
+                    1,
+                );
+
+                updateDisplay();
+                render();
+                close();
+            };
+
+            const render = () => {
+                const year = visibleMonth.getFullYear();
+                const month = visibleMonth.getMonth();
+
+                title.textContent = `${monthNames[month]} ${year}`;
+                days.replaceChildren();
+
+                const firstDay = new Date(year, month, 1);
+                const gridStart = new Date(year, month, 1 - firstDay.getDay());
+
+                for (let index = 0; index < 42; index += 1) {
+                    const date = new Date(
+                        gridStart.getFullYear(),
+                        gridStart.getMonth(),
+                        gridStart.getDate() + index,
+                    );
+
+                    const button = document.createElement('button');
+                    const belongsToMonth = date.getMonth() === month;
+                    const isSelected = selectedDate
+                        && toIsoDate(selectedDate) === toIsoDate(date);
+                    const isToday = toIsoDate(new Date()) === toIsoDate(date);
+
+                    button.type = 'button';
+                    button.textContent = String(date.getDate());
+                    button.setAttribute(
+                        'aria-label',
+                        formatDisplayDate(date),
+                    );
+
+                    button.style.width = '2.25rem';
+                    button.style.height = '2.25rem';
+                    button.style.borderRadius = '.5rem';
+                    button.style.display = 'inline-flex';
+                    button.style.alignItems = 'center';
+                    button.style.justifyContent = 'center';
+                    button.style.margin = '0 auto';
+                    button.style.fontSize = '.875rem';
+                    button.style.transition = 'background-color .15s,color .15s,border-color .15s';
+
+                    if (isSelected) {
+                        button.style.background = '#fbbf24';
+                        button.style.color = '#020617';
+                        button.style.fontWeight = '700';
+                    } else {
+                        button.style.background = 'transparent';
+                        button.style.color = belongsToMonth
+                            ? '#f8fafc'
+                            : '#64748b';
+
+                        if (isToday) {
+                            button.style.border = '1px solid #fbbf24';
+                        }
+                    }
+
+                    button.addEventListener('mouseenter', () => {
+                        if (!isSelected) {
+                            button.style.background = '#1e293b';
+                            button.style.color = '#fbbf24';
+                        }
+                    });
+
+                    button.addEventListener('mouseleave', () => {
+                        if (!isSelected) {
+                            button.style.background = 'transparent';
+                            button.style.color = belongsToMonth
+                                ? '#f8fafc'
+                                : '#64748b';
+                        }
+                    });
+
+                    button.addEventListener('click', () => {
+                        selectDate(date);
+                    });
+
+                    days.appendChild(button);
+                }
+            };
+
+            trigger.addEventListener('click', () => {
+                if (panel.hidden) {
+                    open();
+                    render();
+                } else {
+                    close();
+                }
+            });
+
+            previous.addEventListener('click', () => {
+                visibleMonth = new Date(
+                    visibleMonth.getFullYear(),
+                    visibleMonth.getMonth() - 1,
+                    1,
+                );
+
+                render();
+            });
+
+            next.addEventListener('click', () => {
+                visibleMonth = new Date(
+                    visibleMonth.getFullYear(),
+                    visibleMonth.getMonth() + 1,
+                    1,
+                );
+
+                render();
+            });
+
+            clear.addEventListener('click', () => {
+                selectedDate = null;
+                input.value = '';
+                updateDisplay();
+                render();
+                close();
+            });
+
+            today.addEventListener('click', () => {
+                selectDate(new Date());
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!root.contains(event.target)) {
+                    close();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    close();
+                    trigger.focus();
+                }
+            });
+
+            updateDisplay();
+            render();
+        });
+    })();
+</script>
 @endsection

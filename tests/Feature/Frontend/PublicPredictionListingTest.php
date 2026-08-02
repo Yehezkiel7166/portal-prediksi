@@ -247,4 +247,39 @@ final class PublicPredictionListingTest extends TestCase
             ->assertDontSee('OTHER-BRAND-PREDICTION')
             ->assertDontSee('Market Brand B');
     }
+    public function test_listing_displays_structured_prediction_fields(): void
+    {
+        $market = Market::factory()->create([
+            'name' => 'Bogota',
+            'code' => 'BGT',
+            'slug' => 'bogota',
+            'is_active' => true,
+        ]);
+
+        Prediction::factory()->create([
+            'market_id' => $market->id,
+            'prediction_date' => '2026-08-02',
+            'bbfs' => '209184',
+            'colok_bebas' => '9-4',
+            'prediction_2d' => '18,91,82',
+            'prediction_3d' => '028,492',
+            'prediction_4d' => '9482,8491',
+            'kembar' => '88,99',
+            'shio' => 'TIKUS',
+            'status' => Prediction::STATUS_PUBLISHED,
+            'published_at' => now()->subMinute(),
+        ]);
+
+        $this->get(route('predictions.index'))
+            ->assertOk()
+            ->assertSee('BBFS')
+            ->assertSee('209184')
+            ->assertSee('Colok Bebas')
+            ->assertSee('9-4')
+            ->assertSee('18,91,82')
+            ->assertSee('028,492')
+            ->assertSee('9482,8491')
+            ->assertSee('88,99')
+            ->assertSee('TIKUS');
+    }
 }

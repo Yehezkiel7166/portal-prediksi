@@ -32,6 +32,13 @@ $markets = Market::query()
                 'market_id',
                 'prediction_date',
                 'predicted_numbers',
+                'bbfs',
+                'colok_bebas',
+                'prediction_2d',
+                'prediction_3d',
+                'prediction_4d',
+                'kembar',
+                'shio',
                 'notes',
                 'published_at',
             ])
