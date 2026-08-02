@@ -141,15 +141,15 @@
     "repository": {
         "branch": "main",
         "remote_tracking_branch": "origin/main",
-        "synchronization_state": "pending_sprint_20j_completion_push",
-        "last_verified_commit": "2ffc72fcc13a11b0b9c3d03725690889ecee7b36",
+        "synchronization_state": "sprint_20j_completion_remote_verified",
+        "last_verified_commit": "71174b439f303cca694ae7be9215e12e0a74e0a0",
         "commit_reference_semantics": "verified_sprint_18d_production_completion",
         "required_final_working_tree": "clean",
         "required_final_synchronization": "local_equals_origin_main",
-        "completion_gate": "pending",
-        "governance_audit": "pending",
+        "completion_gate": "passed",
+        "governance_audit": "passed",
         "last_verified_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
-        "last_local_commit": "f52e347f79b5f88e3734bb6ebdebccb2735f8bda"
+        "last_local_commit": "71174b439f303cca694ae7be9215e12e0a74e0a0"
     },
     "repository_governance": {
         "phase": "Phase 0.2",
@@ -398,7 +398,9 @@
         "assertions": 1505,
         "completion_gate": "pending",
         "governance_audit": "pending",
-        "remote_verified": false
+        "remote_verified": true,
+        "completion_commit": "71174b439f303cca694ae7be9215e12e0a74e0a0",
+        "remote_completion_head": "71174b439f303cca694ae7be9215e12e0a74e0a0"
     },
     "complaint_engine": {
         "status": "implemented_pending_production_migration",
@@ -652,7 +654,7 @@
         "remote_verified": true
     },
     "sprint_20j": {
-        "status": "completed_pending_remote_verification",
+        "status": "completed",
         "homepage_internal_labels_removed": true,
         "lottery_schedule_column_order": [
             "market",
@@ -673,6 +675,8 @@
             "paito"
         ],
         "generated_shio_banner_rendering": true,
-        "database_migration_required": false
+        "database_migration_required": false,
+        "completion_commit": "71174b439f303cca694ae7be9215e12e0a74e0a0",
+        "remote_verified": true
     }
 }
