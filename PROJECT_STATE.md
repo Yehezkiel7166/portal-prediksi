@@ -434,13 +434,14 @@ Next bounded sprint:
 ## Sprint 20H canonical status
 
 - Sprint: `Sprint 20H — Brand 1 Production Acceptance`
-- Status: `COMPLETE — pending remote verification`
-- Baseline: `af3b3f4f0ee34e7b80e12a5e25323f31d82fb6b0`
+- Status: `COMPLETE`
+- Completion commit: `89c49e129c69df3b23b82ed48cfce0588be68a54`
+- Completion commit remote verification: PASS
 - Full regression evidence: `501 tests / 1469 assertions`
 - Frontend production build and manifest: PASS
 - Production acceptance: PASS
 - Brand 1: `SANTOTO4D`, Brand ID `7`
-- Brand 1 status: complete subject to commit, push, and remote verification
+- Brand 1 status: COMPLETE
 - Next bounded sprint: `Bulk Import Result (CSV/XLSX)`
 - Evidence: `storage/logs/sprint-20h-finalization-20260802-091435.txt`
 <!-- END SPRINT-20H-CANONICAL-STATUS -->
