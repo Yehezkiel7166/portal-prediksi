@@ -123,8 +123,8 @@
         "Application test/build CI is not yet implemented"
     ],
     "next_recommended_phase": {
-        "name": "Sprint 20H - Brand 1 Production Acceptance Re-verification",
-        "objective": "Independently rerun the Brand 1 production acceptance gate after Sprint 20F remediation and record evidence for identity, domain resolution, administration, content readiness, tenant ownership, frontend behavior, and security headers."
+        "name": "Bulk Import Result (CSV/XLSX)",
+        "objective": "Implement bounded, validated, brand-scoped bulk result import for CSV and XLSX files."
     },
     "mandatory_workflow": [
         "INSPECT",
@@ -141,15 +141,15 @@
     "repository": {
         "branch": "main",
         "remote_tracking_branch": "origin/main",
-        "synchronization_state": "verified_after_sprint_20f_push",
-        "last_verified_commit": "c53c742a6e526a8772e87023893311edc3786c81",
+        "synchronization_state": "pending_sprint_20h_completion_push",
+        "last_verified_commit": "af3b3f4f0ee34e7b80e12a5e25323f31d82fb6b0",
         "commit_reference_semantics": "verified_sprint_18d_production_completion",
         "required_final_working_tree": "clean",
         "required_final_synchronization": "local_equals_origin_main",
-        "completion_gate": "passed",
-        "governance_audit": "passed",
+        "completion_gate": "pending",
+        "governance_audit": "pending",
         "last_verified_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
-        "last_local_commit": "c53c742a6e526a8772e87023893311edc3786c81"
+        "last_local_commit": "af3b3f4f0ee34e7b80e12a5e25323f31d82fb6b0"
     },
     "repository_governance": {
         "phase": "Phase 0.2",
@@ -324,14 +324,14 @@
         }
     ],
     "active_sprint": {
-        "name": "Sprint 20G - Completion Truth Synchronization",
+        "name": "Sprint 20H - Brand 1 Production Acceptance",
         "status": "completed",
         "branch": "main",
-        "baseline": "c53c742a6e526a8772e87023893311edc3786c81",
-        "behavior_change": false,
+        "baseline": "af3b3f4f0ee34e7b80e12a5e25323f31d82fb6b0",
+        "behavior_change": true,
         "database_migration": false,
-        "production_database_mutation": false,
-        "objective": "Synchronize canonical repository truth with verified Sprint 20F completion."
+        "production_database_mutation": true,
+        "objective": "Complete Brand 1 production acceptance and canonical governance synchronization."
     },
     "delivery": {
         "brand_1_usable_deadline": "2026-07-30",
@@ -391,13 +391,21 @@
         "migration_batch": 7
     },
     "latest_verification": {
-        "baseline_commit": "c53c742a6e526a8772e87023893311edc3786c81",
-        "tests": 493,
-        "assertions": 1428,
+        "baseline_commit": "af3b3f4f0ee34e7b80e12a5e25323f31d82fb6b0",
+        "tests": 501,
+        "assertions": 1469,
+        "targeted_tests": 94,
+        "targeted_assertions": 277,
+        "live_draw_targeted_tests": 39,
+        "live_draw_targeted_assertions": 109,
+        "frontend_build": "passed",
+        "frontend_manifest": "passed",
+        "production_acceptance": "passed",
         "governance_passed": 7,
         "governance_total": 7,
         "completion_gate": "passed",
         "cto_crosscheck": "passed",
+        "evidence_file": "storage/logs/sprint-20h-finalization-20260802-091435.txt",
         "remote_verified": false
     },
     "complaint_engine": {
@@ -577,5 +585,51 @@
         "database_migration_change": false,
         "production_database_mutation": false,
         "next_gate": "Sprint 20H - Brand 1 Production Acceptance Re-verification"
+    },
+    "brand_1": {
+        "id": 7,
+        "name": "SANTOTO4D",
+        "status": "complete",
+        "production_domain": "santoto4d-prediksi.site",
+        "production_acceptance": "passed",
+        "completion_condition": "Pending completion commit push and remote verification record."
+    },
+    "sprint_20h": {
+        "name": "Brand 1 Production Acceptance",
+        "status": "completed_pending_remote_verification",
+        "baseline_commit": "af3b3f4f0ee34e7b80e12a5e25323f31d82fb6b0",
+        "evidence_file": "storage/logs/sprint-20h-finalization-20260802-091435.txt",
+        "acceptance": {
+            "brand_id_7_santoto4d": "passed",
+            "active_primary_brand": "passed",
+            "production_domain": "passed",
+            "site_configuration": "passed",
+            "production_administrator": "passed",
+            "minimum_result_content": "passed",
+            "minimum_prediction_content": "passed",
+            "minimum_live_draw_content": "passed",
+            "tenant_ownership_integrity": "passed",
+            "brand_resolver": "passed",
+            "production_homepage_http_200": "passed",
+            "prediction_route_http_200": "passed",
+            "live_draw_route_http_200": "passed",
+            "security_headers": "passed",
+            "structured_prediction": "passed",
+            "custom_prediction_ui": "passed",
+            "custom_dark_datepicker": "passed",
+            "market_time_validation": "passed",
+            "site_configuration_cache_serialization": "passed"
+        },
+        "verification": {
+            "full_tests": 501,
+            "full_assertions": 1469,
+            "targeted_tests": 94,
+            "targeted_assertions": 277,
+            "live_draw_tests": 39,
+            "live_draw_assertions": 109,
+            "frontend_build": "passed",
+            "manifest": "passed"
+        },
+        "next_bounded_sprint": "Bulk Import Result (CSV/XLSX)"
     }
 }
