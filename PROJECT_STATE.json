@@ -123,8 +123,8 @@
         "Application test/build CI is not yet implemented"
     ],
     "next_recommended_phase": {
-        "name": "Bulk Import Result (CSV/XLSX)",
-        "objective": "Implement bounded, validated, brand-scoped bulk result import for CSV and XLSX files."
+        "name": "Bulk Import Result Operational Hardening",
+        "objective": "Add downloadable templates, import history, dry-run previews, and queued large-file processing if required."
     },
     "mandatory_workflow": [
         "INSPECT",
@@ -141,15 +141,15 @@
     "repository": {
         "branch": "main",
         "remote_tracking_branch": "origin/main",
-        "synchronization_state": "sprint_20h_completion_remote_verified",
+        "synchronization_state": "pending_sprint_20i_completion_push",
         "last_verified_commit": "89c49e129c69df3b23b82ed48cfce0588be68a54",
         "commit_reference_semantics": "verified_sprint_18d_production_completion",
         "required_final_working_tree": "clean",
         "required_final_synchronization": "local_equals_origin_main",
-        "completion_gate": "passed",
-        "governance_audit": "passed",
+        "completion_gate": "pending",
+        "governance_audit": "pending",
         "last_verified_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
-        "last_local_commit": "89c49e129c69df3b23b82ed48cfce0588be68a54"
+        "last_local_commit": "68cd3af15d7079f94e9bd39c62e5d01b895c2664"
     },
     "repository_governance": {
         "phase": "Phase 0.2",
@@ -324,14 +324,14 @@
         }
     ],
     "active_sprint": {
-        "name": "Sprint 20H - Brand 1 Production Acceptance",
+        "name": "Sprint 20I - Bulk Import Result (CSV/XLSX)",
         "status": "completed",
         "branch": "main",
-        "baseline": "af3b3f4f0ee34e7b80e12a5e25323f31d82fb6b0",
+        "baseline": "68cd3af15d7079f94e9bd39c62e5d01b895c2664",
         "behavior_change": true,
         "database_migration": false,
-        "production_database_mutation": true,
-        "objective": "Complete Brand 1 production acceptance and canonical governance synchronization."
+        "production_database_mutation": false,
+        "objective": "Implement validated and brand-scoped CSV/XLSX bulk result import."
     },
     "delivery": {
         "brand_1_usable_deadline": "2026-07-30",
@@ -391,24 +391,14 @@
         "migration_batch": 7
     },
     "latest_verification": {
-        "baseline_commit": "af3b3f4f0ee34e7b80e12a5e25323f31d82fb6b0",
-        "tests": 501,
-        "assertions": 1469,
-        "targeted_tests": 94,
-        "targeted_assertions": 277,
-        "live_draw_targeted_tests": 39,
-        "live_draw_targeted_assertions": 109,
-        "frontend_build": "passed",
-        "frontend_manifest": "passed",
-        "production_acceptance": "passed",
-        "governance_passed": 7,
-        "governance_total": 7,
-        "completion_gate": "passed",
-        "cto_crosscheck": "passed",
-        "evidence_file": "storage/logs/sprint-20h-finalization-20260802-091435.txt",
-        "remote_verified": true,
-        "completion_commit": "89c49e129c69df3b23b82ed48cfce0588be68a54",
-        "remote_completion_head": "89c49e129c69df3b23b82ed48cfce0588be68a54"
+        "baseline_commit": "68cd3af15d7079f94e9bd39c62e5d01b895c2664",
+        "targeted_tests": 20,
+        "targeted_assertions": 36,
+        "tests": 508,
+        "assertions": 1487,
+        "completion_gate": "pending",
+        "governance_audit": "pending",
+        "remote_verified": false
     },
     "complaint_engine": {
         "status": "implemented_pending_production_migration",
@@ -635,5 +625,28 @@
         "next_bounded_sprint": "Bulk Import Result (CSV/XLSX)",
         "completion_commit": "89c49e129c69df3b23b82ed48cfce0588be68a54",
         "remote_verified": true
+    },
+    "bulk_result_import": {
+        "status": "completed_pending_remote_verification",
+        "formats": [
+            "csv",
+            "xlsx"
+        ],
+        "maximum_rows": 2000,
+        "maximum_upload_kilobytes": 10240,
+        "required_headers": [
+            "market_code",
+            "result_date",
+            "winning_numbers"
+        ],
+        "optional_headers": [
+            "notes"
+        ],
+        "brand_scoped": true,
+        "transactional": true,
+        "existing_records": "updated_by_market_and_date",
+        "invalid_file_behavior": "whole_import_rejected",
+        "duplicate_file_rows": "rejected",
+        "temporary_upload_cleanup": true
     }
 }

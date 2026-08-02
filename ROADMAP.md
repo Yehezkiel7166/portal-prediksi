@@ -565,3 +565,17 @@ Delivery order after Sprint 20G:
 - Next bounded sprint: `Bulk Import Result (CSV/XLSX)`
 - Evidence: `storage/logs/sprint-20h-finalization-20260802-091435.txt`
 <!-- END SPRINT-20H-CANONICAL-STATUS -->
+
+<!-- BEGIN SPRINT-20I-CANONICAL-STATUS -->
+## Sprint 20I canonical status
+
+- Sprint: `Sprint 20I — Bulk Import Result (CSV/XLSX)`
+- Status: `COMPLETE — pending remote verification`
+- Baseline: `68cd3af15d7079f94e9bd39c62e5d01b895c2664`
+- CSV import: implemented
+- XLSX import: implemented
+- Brand isolation: enforced
+- Transactional rollback: enforced
+- Targeted regression: `20 tests / 36 assertions`
+- Full regression: `508 tests / 1487 assertions`
+<!-- END SPRINT-20I-CANONICAL-STATUS -->
