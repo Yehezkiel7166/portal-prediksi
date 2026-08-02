@@ -141,15 +141,15 @@
     "repository": {
         "branch": "main",
         "remote_tracking_branch": "origin/main",
-        "synchronization_state": "pending_sprint_20i_completion_push",
-        "last_verified_commit": "89c49e129c69df3b23b82ed48cfce0588be68a54",
+        "synchronization_state": "sprint_20i_completion_remote_verified",
+        "last_verified_commit": "2ffc72fcc13a11b0b9c3d03725690889ecee7b36",
         "commit_reference_semantics": "verified_sprint_18d_production_completion",
         "required_final_working_tree": "clean",
         "required_final_synchronization": "local_equals_origin_main",
-        "completion_gate": "pending",
-        "governance_audit": "pending",
+        "completion_gate": "passed",
+        "governance_audit": "passed",
         "last_verified_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
-        "last_local_commit": "68cd3af15d7079f94e9bd39c62e5d01b895c2664"
+        "last_local_commit": "2ffc72fcc13a11b0b9c3d03725690889ecee7b36"
     },
     "repository_governance": {
         "phase": "Phase 0.2",
@@ -398,7 +398,9 @@
         "assertions": 1487,
         "completion_gate": "pending",
         "governance_audit": "pending",
-        "remote_verified": false
+        "remote_verified": true,
+        "completion_commit": "2ffc72fcc13a11b0b9c3d03725690889ecee7b36",
+        "remote_completion_head": "2ffc72fcc13a11b0b9c3d03725690889ecee7b36"
     },
     "complaint_engine": {
         "status": "implemented_pending_production_migration",
@@ -627,7 +629,7 @@
         "remote_verified": true
     },
     "bulk_result_import": {
-        "status": "completed_pending_remote_verification",
+        "status": "completed",
         "formats": [
             "csv",
             "xlsx"
@@ -647,6 +649,8 @@
         "existing_records": "updated_by_market_and_date",
         "invalid_file_behavior": "whole_import_rejected",
         "duplicate_file_rows": "rejected",
-        "temporary_upload_cleanup": true
+        "temporary_upload_cleanup": true,
+        "completion_commit": "2ffc72fcc13a11b0b9c3d03725690889ecee7b36",
+        "remote_verified": true
     }
 }
