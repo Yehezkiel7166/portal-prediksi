@@ -289,7 +289,7 @@
         </p>
 
         <h2 class="mt-2 text-2xl font-bold text-white">
-            Modul Publik Brand 1
+            Layanan {{ $siteConfiguration->siteName }}
         </h2>
 
         <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
@@ -317,14 +317,14 @@
             <article class="rounded-xl border border-slate-800 bg-slate-950 p-5">
                 <h3 class="font-semibold text-amber-400">Slot Gacor / RTP</h3>
                 <p class="mt-2 text-sm text-slate-400">
-                    Modul sedang dipersiapkan.
+                    Layanan segera tersedia.
                 </p>
             </article>
 
             <article class="rounded-xl border border-slate-800 bg-slate-950 p-5">
                 <h3 class="font-semibold text-amber-400">Bukti Jackpot</h3>
                 <p class="mt-2 text-sm text-slate-400">
-                    Modul sedang dipersiapkan.
+                    Layanan segera tersedia.
                 </p>
             </article>
 

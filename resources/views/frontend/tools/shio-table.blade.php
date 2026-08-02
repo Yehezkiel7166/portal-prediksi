@@ -9,6 +9,20 @@
 <meta property="og:url" content="{{ route('tools.shio-table') }}">
 @endsection
 @section('content')
+@if ($period && $bannerUrl)
+    <section class="border-b border-slate-800 bg-slate-950">
+        <div class="mx-auto max-w-7xl px-4 py-8">
+            <figure class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-xl">
+                <img
+                    src="{{ $bannerUrl }}"
+                    alt="Banner {{ $period->title }}"
+                    class="h-auto w-full object-cover"
+                    loading="eager"
+                >
+            </figure>
+        </div>
+    </section>
+@endif
 <section class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-7xl px-4 py-12 md:py-16">
         <p class="text-sm font-semibold uppercase tracking-widest text-amber-400">Alat Togel</p>

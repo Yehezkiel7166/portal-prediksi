@@ -579,3 +579,22 @@ Next bounded sprint:
 - Targeted regression: `20 tests / 36 assertions`
 - Full regression: `508 tests / 1487 assertions`
 <!-- END SPRINT-20I-CANONICAL-STATUS -->
+
+<!-- BEGIN SPRINT-20J-CANONICAL-STATUS -->
+## Sprint 20J canonical status
+
+- Sprint: `Sprint 20J — Public Frontend Defect Remediation`
+- Status: `COMPLETE — pending remote verification`
+- Baseline: `f52e347f79b5f88e3734bb6ebdebccb2735f8bda`
+- Internal homepage labels: removed
+- Jadwal order: `Tutup → Hasil → Buka`
+- Jadwal timezone column: removed
+- Overnight status calculation: implemented
+- Existing `live` status contract: retained
+- Public `live` label: `Menunggu Hasil`
+- Public module links: implemented
+- Generated Shio banner rendering: implemented
+- Targeted regression: `22 tests / 115 assertions`
+- Full regression: `513 tests / 1505 assertions`
+- Next sprint: `Automated Prediction and SEO Engine`
+<!-- END SPRINT-20J-CANONICAL-STATUS -->
