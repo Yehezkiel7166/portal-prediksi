@@ -478,3 +478,16 @@ Next bounded sprint:
 - Full regression: `513 tests / 1505 assertions`
 - Next sprint: `Automated Prediction and SEO Engine`
 <!-- END SPRINT-20J-CANONICAL-STATUS -->
+
+<!-- BEGIN SPRINT-20J-C-SUNDAY-HOLIDAY-CLOCK -->
+## Sprint 20J-C canonical status
+
+- PCSO Sunday status: `Libur`
+- Non-operational day key: `holiday`
+- Overnight carry compatibility: retained
+- Jakarta running clock: implemented
+- Clock locale: `id-ID`
+- Clock refresh: one second
+- Targeted regression: `17 tests / 53 assertions`
+- Full regression: `522 tests / 1531 assertions`
+<!-- END SPRINT-20J-C-SUNDAY-HOLIDAY-CLOCK -->

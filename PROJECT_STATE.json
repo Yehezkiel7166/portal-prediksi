@@ -141,13 +141,13 @@
     "repository": {
         "branch": "main",
         "remote_tracking_branch": "origin/main",
-        "synchronization_state": "sprint_20j_completion_remote_verified",
+        "synchronization_state": "pending_sunday_holiday_clock_push",
         "last_verified_commit": "71174b439f303cca694ae7be9215e12e0a74e0a0",
         "commit_reference_semantics": "verified_sprint_18d_production_completion",
         "required_final_working_tree": "clean",
         "required_final_synchronization": "local_equals_origin_main",
-        "completion_gate": "passed",
-        "governance_audit": "passed",
+        "completion_gate": "pending",
+        "governance_audit": "pending",
         "last_verified_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
         "last_local_commit": "71174b439f303cca694ae7be9215e12e0a74e0a0"
     },
@@ -324,14 +324,14 @@
         }
     ],
     "active_sprint": {
-        "name": "Sprint 20J - Public Frontend Defect Remediation",
+        "name": "Sprint 20J-C - Sunday Holiday and Running Clock Hotfix",
         "status": "completed",
         "branch": "main",
-        "baseline": "f52e347f79b5f88e3734bb6ebdebccb2735f8bda",
+        "baseline": "ca324e1a232907ff385d774756a8337f72c67dd0",
         "behavior_change": true,
         "database_migration": false,
         "production_database_mutation": false,
-        "objective": "Remove internal public labels, repair overnight lottery schedules, add public module links, and render generated Shio banners."
+        "objective": "Respect non-operational market calendar days and display a running Jakarta clock in the public header."
     },
     "delivery": {
         "brand_1_usable_deadline": "2026-07-30",
@@ -391,16 +391,14 @@
         "migration_batch": 7
     },
     "latest_verification": {
-        "baseline_commit": "f52e347f79b5f88e3734bb6ebdebccb2735f8bda",
-        "targeted_tests": 22,
-        "targeted_assertions": 115,
-        "tests": 513,
-        "assertions": 1505,
+        "baseline_commit": "ca324e1a232907ff385d774756a8337f72c67dd0",
+        "targeted_tests": 17,
+        "targeted_assertions": 53,
+        "tests": 522,
+        "assertions": 1531,
         "completion_gate": "pending",
         "governance_audit": "pending",
-        "remote_verified": true,
-        "completion_commit": "71174b439f303cca694ae7be9215e12e0a74e0a0",
-        "remote_completion_head": "71174b439f303cca694ae7be9215e12e0a74e0a0"
+        "remote_verified": false
     },
     "complaint_engine": {
         "status": "implemented_pending_production_migration",
@@ -678,5 +676,16 @@
         "database_migration_required": false,
         "completion_commit": "71174b439f303cca694ae7be9215e12e0a74e0a0",
         "remote_verified": true
+    },
+    "sunday_holiday_clock_hotfix": {
+        "status": "completed_pending_remote_verification",
+        "pcso_sunday_status_key": "holiday",
+        "pcso_sunday_status_label": "Libur",
+        "overnight_carry_preserved": true,
+        "overnight_boundary_hour": 6,
+        "clock_timezone": "Asia/Jakarta",
+        "clock_locale": "id-ID",
+        "clock_refresh_seconds": 1,
+        "clock_format_example": "Minggu, 2 Agu 2026 (18:48:55)"
     }
 }

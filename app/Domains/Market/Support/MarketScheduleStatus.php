@@ -63,16 +63,18 @@ final class MarketScheduleStatus
 
         if (
             $activeDays !== []
-            && !in_array(
-                $open->dayOfWeekIso,
+            && !$this->isActiveCalendarDay(
+                $now,
+                $open,
+                $close,
+                $result,
                 $activeDays,
-                true,
             )
         ) {
             return $this->status(
-                'closed',
-                'Tutup',
-                'Pasaran tidak aktif pada siklus hari ini.',
+                'holiday',
+                'Libur',
+                'Pasaran tidak beroperasi pada hari ini.',
             );
         }
 
@@ -183,6 +185,81 @@ final class MarketScheduleStatus
         ];
     }
 
+    /**
+     * Hari operasional menggunakan hari kalender saat ini.
+     *
+     * Siklus hari sebelumnya hanya boleh diteruskan setelah tengah
+     * malam apabila waktu tutup atau hasil berada pada awal hari.
+     * Ini mempertahankan kontrak market overnight tanpa membuat
+     * market non-operasional tetap Buka sepanjang hari libur.
+     *
+     * @param array<int, int|string> $activeDays
+     */
+    private function isActiveCalendarDay(
+        CarbonImmutable $now,
+        CarbonImmutable $open,
+        CarbonImmutable $close,
+        CarbonImmutable $result,
+        array $activeDays,
+    ): bool {
+        $normalizedDays = array_values(
+            array_unique(
+                array_map(
+                    static function (int|string $day): int {
+                        $number = (int) $day;
+
+                        return $number === 0
+                            ? 7
+                            : $number;
+                    },
+                    $activeDays,
+                )
+            )
+        );
+
+        if (
+            in_array(
+                $now->dayOfWeekIso,
+                $normalizedDays,
+                true,
+            )
+        ) {
+            return true;
+        }
+
+        $opensOnActiveDay = in_array(
+            $open->dayOfWeekIso,
+            $normalizedDays,
+            true,
+        );
+
+        if (!$opensOnActiveDay) {
+            return false;
+        }
+
+        $isPreviousDayCarry = !$open->isSameDay($now);
+
+        if (!$isPreviousDayCarry) {
+            return false;
+        }
+
+        $finishesToday = $close->isSameDay($now)
+            || $result->isSameDay($now);
+
+        if (!$finishesToday) {
+            return false;
+        }
+
+        $overnightBoundaryHour = 6;
+
+        $closeIsOvernight = $close->hour
+            < $overnightBoundaryHour;
+
+        $resultIsOvernight = $result->hour
+            < $overnightBoundaryHour;
+
+        return $closeIsOvernight || $resultIsOvernight;
+    }
     /**
      * @return array{key:string,label:string,description:string}
      */

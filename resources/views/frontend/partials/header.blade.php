@@ -12,7 +12,18 @@
             </span>
         </a>
 
-        <nav aria-label="Navigasi utama">
+        <div class="flex flex-col items-start gap-3 lg:items-end">
+            <div
+                data-live-clock
+                role="timer"
+                aria-live="off"
+                aria-label="Waktu Indonesia Barat"
+                class="rounded-lg border border-amber-400/20 bg-slate-900 px-3 py-2 text-xs font-semibold tabular-nums text-amber-300"
+            >
+                Memuat waktu...
+            </div>
+
+            <nav aria-label="Navigasi utama">
             <ul class="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium">
                 <li>
                     <a
@@ -135,6 +146,65 @@
                     </a>
                 </li>
             </ul>
-        </nav>
+            </nav>
+        </div>
     </div>
 </header>
+
+<script>
+    (() => {
+        const clock = document.querySelector('[data-live-clock]');
+
+        if (!clock) {
+            return;
+        }
+
+        const dateFormatter = new Intl.DateTimeFormat('id-ID', {
+            timeZone: 'Asia/Jakarta',
+            weekday: 'long',
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+        });
+
+        const timeFormatter = new Intl.DateTimeFormat('id-ID', {
+            timeZone: 'Asia/Jakarta',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hourCycle: 'h23',
+        });
+
+        const capitalize = (value) => {
+            if (!value) {
+                return value;
+            }
+
+            return value.charAt(0).toUpperCase() + value.slice(1);
+        };
+
+        const renderClock = () => {
+            const now = new Date();
+
+            const dateText = capitalize(
+                dateFormatter
+                    .format(now)
+                    .replace(/\./g, '')
+            );
+
+            const timeText = timeFormatter
+                .format(now)
+                .replace(/\./g, '')
+                .replace(/\s/g, '');
+
+            clock.textContent = `${dateText} (${timeText})`;
+            clock.setAttribute(
+                'datetime',
+                now.toISOString()
+            );
+        };
+
+        renderClock();
+        window.setInterval(renderClock, 1000);
+    })();
+</script>
