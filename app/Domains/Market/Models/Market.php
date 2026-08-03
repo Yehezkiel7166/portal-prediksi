@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Market extends Model
 {
@@ -60,7 +61,13 @@ class Market extends Model
         return $this->hasMany(Result::class);
     }
 
-    
+    public function latestResult(): HasOne
+    {
+        return $this->hasOne(Result::class)->ofMany([
+            'result_date' => 'max',
+            'id' => 'max',
+        ]);
+    }
 
     public function scopeActive(Builder $query): Builder
     {

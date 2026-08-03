@@ -2,11 +2,13 @@
 
 namespace App\Filament\Resources\Results\Pages;
 
+use App\Domains\Market\Models\Market;
 use App\Domains\Result\Actions\BulkImportResultsAction;
 use App\Filament\Resources\Results\ResultResource;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Facades\Storage;
@@ -15,20 +17,41 @@ use Throwable;
 
 class ListResults extends ListRecords
 {
-    protected static string $resource = ResultResource::class;
+    protected static string $resource =
+        ResultResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
             Action::make('importResults')
                 ->label('Import CSV/XLSX')
-                ->icon('heroicon-o-arrow-up-tray')
+                ->icon(
+                    'heroicon-o-arrow-up-tray'
+                )
                 ->color('gray')
                 ->schema([
+                    Select::make('market_id')
+                        ->label('Pasaran')
+                        ->options(
+                            fn (): array => Market::query()
+                                ->ordered()
+                                ->pluck(
+                                    'name',
+                                    'id'
+                                )
+                                ->all()
+                        )
+                        ->searchable()
+                        ->preload()
+                        ->required()
+                        ->native(false),
+
                     FileUpload::make('file')
                         ->label('File Result')
                         ->disk('local')
-                        ->directory('result-imports')
+                        ->directory(
+                            'result-imports'
+                        )
                         ->acceptedFileTypes([
                             'text/csv',
                             'text/plain',
@@ -38,73 +61,102 @@ class ListResults extends ListRecords
                         ->maxSize(10240)
                         ->required()
                         ->helperText(
-                            'Header wajib: market_code, result_date, winning_numbers. Header notes opsional.'
+                            'File dikunci ke pasaran terpilih. Header wajib: market_code, result_date, winning_numbers. Header notes opsional.'
                         ),
                 ])
-                ->action(function (array $data): void {
-                    $relativePath = (string) $data['file'];
+                ->action(
+                    function (array $data): void {
+                        $relativePath =
+                            (string) $data['file'];
 
-                    $absolutePath = Storage::disk('local')
-                        ->path($relativePath);
+                        $absolutePath =
+                            Storage::disk('local')
+                                ->path(
+                                    $relativePath
+                                );
 
-                    try {
-                        $report = app(
-                            BulkImportResultsAction::class
-                        )->execute($absolutePath);
+                        try {
+                            $market =
+                                Market::query()
+                                    ->findOrFail(
+                                        (int) $data[
+                                            'market_id'
+                                        ]
+                                    );
 
-                        Notification::make()
-                            ->success()
-                            ->title('Import result berhasil')
-                            ->body(sprintf(
-                                '%d baris diproses: %d dibuat dan %d diperbarui.',
-                                $report['total'],
-                                $report['created'],
-                                $report['updated'],
-                            ))
-                            ->send();
-                    } catch (
-                        ValidationException $exception
-                    ) {
-                        $messages = [];
+                            $report = app(
+                                BulkImportResultsAction::class
+                            )->execute(
+                                $absolutePath,
+                                $market,
+                            );
 
-                        foreach (
-                            $exception->errors() as $errors
+                            Notification::make()
+                                ->success()
+                                ->title(
+                                    'Import result berhasil'
+                                )
+                                ->body(sprintf(
+                                    '%d baris diproses: %d dibuat dan %d diperbarui.',
+                                    $report['total'],
+                                    $report['created'],
+                                    $report['updated'],
+                                ))
+                                ->send();
+                        } catch (
+                            ValidationException $exception
                         ) {
-                            foreach ($errors as $error) {
-                                $messages[] = $error;
+                            $messages = [];
+
+                            foreach (
+                                $exception->errors() as $errors
+                            ) {
+                                foreach (
+                                    $errors as $error
+                                ) {
+                                    $messages[] =
+                                        $error;
+                                }
                             }
+
+                            Notification::make()
+                                ->danger()
+                                ->title(
+                                    'Import result gagal'
+                                )
+                                ->body(implode(
+                                    "\n",
+                                    array_slice(
+                                        $messages,
+                                        0,
+                                        10,
+                                    ),
+                                ))
+                                ->persistent()
+                                ->send();
+                        } catch (
+                            Throwable $exception
+                        ) {
+                            report($exception);
+
+                            Notification::make()
+                                ->danger()
+                                ->title(
+                                    'Import result gagal'
+                                )
+                                ->body(
+                                    'Terjadi kesalahan saat membaca file.'
+                                )
+                                ->persistent()
+                                ->send();
+                        } finally {
+                            Storage::disk('local')
+                                ->delete(
+                                    $relativePath
+                                );
                         }
-
-                        Notification::make()
-                            ->danger()
-                            ->title('Import result gagal')
-                            ->body(implode(
-                                "\n",
-                                array_slice(
-                                    $messages,
-                                    0,
-                                    10,
-                                ),
-                            ))
-                            ->persistent()
-                            ->send();
-                    } catch (Throwable $exception) {
-                        report($exception);
-
-                        Notification::make()
-                            ->danger()
-                            ->title('Import result gagal')
-                            ->body(
-                                'Terjadi kesalahan saat membaca file.'
-                            )
-                            ->persistent()
-                            ->send();
-                    } finally {
-                        Storage::disk('local')->delete(
-                            $relativePath
-                        );
                     }
-                }),
+                ),
 
             CreateAction::make(),
         ];

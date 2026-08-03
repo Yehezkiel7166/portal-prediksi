@@ -10,7 +10,7 @@ class ResultResourceAccessTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_admin_can_open_result_resource(): void
+    public function test_admin_can_open_result_market_resource(): void
     {
         $admin = User::factory()->create([
             'is_admin' => true,
@@ -22,7 +22,19 @@ class ResultResourceAccessTest extends TestCase
             ->assertOk();
     }
 
-    public function test_regular_user_cannot_open_result_resource(): void
+    public function test_admin_can_open_result_history_resource(): void
+    {
+        $admin = User::factory()->create([
+            'is_admin' => true,
+            'email_verified_at' => now(),
+        ]);
+
+        $this->actingAs($admin)
+            ->get('/admin/result-history')
+            ->assertOk();
+    }
+
+    public function test_regular_user_cannot_open_result_resources(): void
     {
         $user = User::factory()->create([
             'is_admin' => false,
@@ -31,6 +43,10 @@ class ResultResourceAccessTest extends TestCase
 
         $this->actingAs($user)
             ->get('/admin/results')
+            ->assertForbidden();
+
+        $this->actingAs($user)
+            ->get('/admin/result-history')
             ->assertForbidden();
     }
 }

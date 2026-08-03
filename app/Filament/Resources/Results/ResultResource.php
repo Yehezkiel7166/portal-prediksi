@@ -21,17 +21,24 @@ class ResultResource extends Resource
     protected static string|BackedEnum|null $navigationIcon =
         'heroicon-o-trophy';
 
-    protected static ?string $navigationLabel = 'Result';
+    protected static ?string $navigationLabel =
+        'History Result';
 
     protected static ?string $modelLabel = 'result';
 
-    protected static ?string $pluralModelLabel = 'result';
+    protected static ?string $pluralModelLabel =
+        'history result';
 
-    protected static ?string $recordTitleAttribute = 'result_date';
+    protected static ?string $recordTitleAttribute =
+        'result_date';
 
     protected static ?int $navigationSort = 15;
 
-    protected static ?string $slug = 'results';
+    protected static ?string $slug =
+        'result-history';
+
+    protected static bool $shouldRegisterNavigation =
+        false;
 
     public static function getNavigationGroup(): ?string
     {
@@ -41,16 +48,20 @@ class ResultResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
-            ;
+            ->with([
+                'market:id,name,slug,code,sort_order',
+            ]);
     }
 
-    public static function form(Schema $schema): Schema
-    {
+    public static function form(
+        Schema $schema
+    ): Schema {
         return ResultForm::configure($schema);
     }
 
-    public static function table(Table $table): Table
-    {
+    public static function table(
+        Table $table
+    ): Table {
         return ResultsTable::configure($table);
     }
 
@@ -63,8 +74,12 @@ class ResultResource extends Resource
     {
         return [
             'index' => ListResults::route('/'),
-            'create' => CreateResult::route('/create'),
-            'edit' => EditResult::route('/{record}/edit'),
+            'create' => CreateResult::route(
+                '/create'
+            ),
+            'edit' => EditResult::route(
+                '/{record}/edit'
+            ),
         ];
     }
 }

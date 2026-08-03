@@ -24,7 +24,7 @@ final class MarketScheduleStatus
         $now = ($now ?? CarbonImmutable::now($timezone))
             ->setTimezone($timezone);
 
-        if (!$market->is_active) {
+        if (! $market->is_active) {
             return $this->status(
                 'inactive',
                 'Nonaktif',
@@ -42,9 +42,9 @@ final class MarketScheduleStatus
         }
 
         if (
-            !$market->open_time
-            || !$market->close_time
-            || !$market->result_time
+            ! $market->open_time
+            || ! $market->close_time
+            || ! $market->result_time
         ) {
             return $this->status(
                 'upcoming',
@@ -63,7 +63,7 @@ final class MarketScheduleStatus
 
         if (
             $activeDays !== []
-            && !$this->isActiveCalendarDay(
+            && ! $this->isActiveCalendarDay(
                 $now,
                 $open,
                 $close,
@@ -102,7 +102,7 @@ final class MarketScheduleStatus
                 )
                 ->exists();
 
-            if (!$hasResult) {
+            if (! $hasResult) {
                 $hasResult = $market->results()
                     ->whereDate(
                         'result_date',
@@ -193,7 +193,7 @@ final class MarketScheduleStatus
      * Ini mempertahankan kontrak market overnight tanpa membuat
      * market non-operasional tetap Buka sepanjang hari libur.
      *
-     * @param array<int, int|string> $activeDays
+     * @param  array<int, int|string>  $activeDays
      */
     private function isActiveCalendarDay(
         CarbonImmutable $now,
@@ -233,20 +233,20 @@ final class MarketScheduleStatus
             true,
         );
 
-        if (!$opensOnActiveDay) {
+        if (! $opensOnActiveDay) {
             return false;
         }
 
-        $isPreviousDayCarry = !$open->isSameDay($now);
+        $isPreviousDayCarry = ! $open->isSameDay($now);
 
-        if (!$isPreviousDayCarry) {
+        if (! $isPreviousDayCarry) {
             return false;
         }
 
         $finishesToday = $close->isSameDay($now)
             || $result->isSameDay($now);
 
-        if (!$finishesToday) {
+        if (! $finishesToday) {
             return false;
         }
 
@@ -260,6 +260,7 @@ final class MarketScheduleStatus
 
         return $closeIsOvernight || $resultIsOvernight;
     }
+
     /**
      * @return array{key:string,label:string,description:string}
      */

@@ -27,12 +27,13 @@ final class BulkImportResultsAction
      *     skipped:int
      * }
      */
-    public function execute(string $path): array
-    {
-        if (!is_file($path) || !is_readable($path)) {
+    public function execute(
+        string $path,
+        ?Market $targetMarket = null,
+    ): array {
+        if (! is_file($path) || ! is_readable($path)) {
             throw ValidationException::withMessages([
-                'file' =>
-                    'File import tidak ditemukan atau tidak dapat dibaca.',
+                'file' => 'File import tidak ditemukan atau tidak dapat dibaca.',
             ]);
         }
 
@@ -43,12 +44,21 @@ final class BulkImportResultsAction
                 'file' => 'Brand context aktif wajib tersedia.',
             ]);
         }
+        if (
+            $targetMarket !== null
+            && (int) $targetMarket->brand_id
+                !== (int) $brand->getKey()
+        ) {
+            throw ValidationException::withMessages([
+                'market_id' => 'Pasaran tidak termasuk dalam brand aktif.',
+            ]);
+        }
 
         $extension = strtolower(
             pathinfo($path, PATHINFO_EXTENSION)
         );
 
-        if (!in_array($extension, ['csv', 'xlsx'], true)) {
+        if (! in_array($extension, ['csv', 'xlsx'], true)) {
             throw ValidationException::withMessages([
                 'file' => 'Format file harus CSV atau XLSX.',
             ]);
@@ -97,18 +107,27 @@ final class BulkImportResultsAction
 
                 if ($market === null) {
                     throw ValidationException::withMessages([
-                        'market_code' =>
-                            'Kode pasaran tidak ditemukan pada brand aktif.',
+                        'market_code' => 'Kode pasaran tidak ditemukan pada brand aktif.',
+                    ]);
+                }
+                if (
+                    $targetMarket !== null
+                    && (int) $market->getKey()
+                        !== (int) $targetMarket->getKey()
+                ) {
+                    throw ValidationException::withMessages([
+                        'market_code' => sprintf(
+                            'File hanya boleh berisi pasaran %s.',
+                            $targetMarket->code,
+                        ),
                     ]);
                 }
 
                 $validated = Validator::make(
                     [
                         'market_id' => $market->getKey(),
-                        'result_date' =>
-                            $normalized['result_date'],
-                        'winning_numbers' =>
-                            $normalized['winning_numbers'],
+                        'result_date' => $normalized['result_date'],
+                        'winning_numbers' => $normalized['winning_numbers'],
                         'notes' => $normalized['notes'],
                     ],
                     [
@@ -133,14 +152,13 @@ final class BulkImportResultsAction
                     ],
                 )->validate();
 
-                $key = $market->getKey() .
-                    ':' .
+                $key = $market->getKey().
+                    ':'.
                     $validated['result_date'];
 
                 if (isset($seen[$key])) {
                     throw ValidationException::withMessages([
-                        'result_date' =>
-                            'Pasaran dan tanggal duplikat di dalam file.',
+                        'result_date' => 'Pasaran dan tanggal duplikat di dalam file.',
                     ]);
                 }
 
@@ -234,7 +252,7 @@ final class BulkImportResultsAction
         try {
             $header = fgetcsv($handle);
 
-            if (!is_array($header)) {
+            if (! is_array($header)) {
                 return [];
             }
 
@@ -265,7 +283,7 @@ final class BulkImportResultsAction
      */
     private function readXlsx(string $path): array
     {
-        $reader = new XlsxReader();
+        $reader = new XlsxReader;
         $reader->open($path);
 
         try {
@@ -308,7 +326,7 @@ final class BulkImportResultsAction
     }
 
     /**
-     * @param array<int, mixed> $headers
+     * @param  array<int, mixed>  $headers
      * @return list<string>
      */
     private function normalizeHeaders(
@@ -333,7 +351,7 @@ final class BulkImportResultsAction
     }
 
     /**
-     * @param list<string> $headers
+     * @param  list<string>  $headers
      */
     private function assertRequiredHeaders(
         array $headers
@@ -350,16 +368,15 @@ final class BulkImportResultsAction
 
         if ($missing !== []) {
             throw ValidationException::withMessages([
-                'file' =>
-                    'Header wajib tidak ditemukan: ' .
+                'file' => 'Header wajib tidak ditemukan: '.
                     implode(', ', $missing),
             ]);
         }
     }
 
     /**
-     * @param list<string> $headers
-     * @param array<int, mixed> $values
+     * @param  list<string>  $headers
+     * @param  array<int, mixed>  $values
      * @return array<string, mixed>
      */
     private function combineRow(
@@ -381,7 +398,7 @@ final class BulkImportResultsAction
             $values,
         );
 
-        if (!is_array($combined)) {
+        if (! is_array($combined)) {
             throw new RuntimeException(
                 'Jumlah kolom file tidak valid.'
             );
@@ -391,7 +408,7 @@ final class BulkImportResultsAction
     }
 
     /**
-     * @param array<string, mixed> $row
+     * @param  array<string, mixed>  $row
      * @return array{
      *     market_code:string,
      *     result_date:string,
@@ -448,7 +465,7 @@ final class BulkImportResultsAction
         ) {
             try {
                 $date = CarbonImmutable::createFromFormat(
-                    '!' . $format,
+                    '!'.$format,
                     $value,
                 );
 
@@ -463,13 +480,12 @@ final class BulkImportResultsAction
         }
 
         throw ValidationException::withMessages([
-            'result_date' =>
-                'Tanggal harus memakai format YYYY-MM-DD, DD-MM-YYYY, DD/MM/YYYY, atau YYYY/MM/DD.',
+            'result_date' => 'Tanggal harus memakai format YYYY-MM-DD, DD-MM-YYYY, DD/MM/YYYY, atau YYYY/MM/DD.',
         ]);
     }
 
     /**
-     * @param array<int, mixed> $values
+     * @param  array<int, mixed>  $values
      */
     private function isEmptyRow(array $values): bool
     {

@@ -2,16 +2,17 @@
 
 use App\Http\Controllers\Frontend\BbfsGeneratorController;
 use App\Http\Controllers\Frontend\BlogDetailController;
-use App\Http\Controllers\Frontend\ComplaintController;
 use App\Http\Controllers\Frontend\BlogsController;
-use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ComplaintController;
+use App\Http\Controllers\Frontend\DreamBookController;
 use App\Http\Controllers\Frontend\GuideDetailController;
 use App\Http\Controllers\Frontend\GuidesController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\JackpotProofDetailController;
 use App\Http\Controllers\Frontend\JackpotProofsController;
 use App\Http\Controllers\Frontend\LiveDrawController;
 use App\Http\Controllers\Frontend\LotteryScheduleController;
-use App\Http\Controllers\Frontend\DreamBookController;
+use App\Http\Controllers\Frontend\MarketResultHistoryController;
 use App\Http\Controllers\Frontend\PaitoController;
 use App\Http\Controllers\Frontend\PredictionDetailController;
 use App\Http\Controllers\Frontend\PredictionsController;
@@ -49,6 +50,16 @@ Route::get('/data-result', ResultsController::class)
     ->name('results.index');
 
 Route::get(
+    '/data-result/{marketSlug}',
+    MarketResultHistoryController::class,
+)
+    ->where(
+        'marketSlug',
+        '[a-z0-9]+(?:-[a-z0-9]+)*',
+    )
+    ->name('results.history');
+
+Route::get(
     '/data-result/{marketSlug}/{resultDate}',
     ResultDetailController::class,
 )
@@ -73,7 +84,6 @@ Route::get('/promosi', PromotionsController::class)
 Route::get('/promosi/{slug}', PromotionDetailController::class)
     ->where('slug', '[a-z0-9]+(?:-[a-z0-9]+)*')
     ->name('promotions.show');
-
 
 Route::get('/keluhan', [ComplaintController::class, 'create'])
     ->name('complaints.create');

@@ -13,15 +13,16 @@ final class PublicResultListingTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_public_result_route_uses_the_frontend_controller(): void
+    public function test_public_result_route_uses_frontend_controller(): void
     {
-        $response = $this->get(route('results.index'));
-
-        $response
+        $this->get(route('results.index'))
             ->assertOk()
-            ->assertViewIs('frontend.results.index')
-            ->assertSee('Data Result Togel Terbaru')
-            ->assertSee('Belum ada data result');
+            ->assertViewIs(
+                'frontend.results.index'
+            )
+            ->assertSee(
+                'Result Terbaru Setiap Pasaran'
+            );
 
         $this->assertSame(
             ResultsController::class,
@@ -32,195 +33,171 @@ final class PublicResultListingTest extends TestCase
         );
     }
 
-    public function test_listing_displays_results_from_active_markets_only(): void
+    public function test_listing_displays_one_card_per_active_market(): void
     {
-        $activeMarket = Market::factory()->create([
+        $market = Market::factory()->create([
             'name' => 'Singapore',
             'code' => 'SGP',
+            'slug' => 'singapore',
             'is_active' => true,
         ]);
 
-        $inactiveMarket = Market::factory()->create([
+        Result::factory()->create([
+            'market_id' => $market->id,
+            'result_date' => '2026-07-18',
+            'winning_numbers' => 'OLDER',
+        ]);
+
+        Result::factory()->create([
+            'market_id' => $market->id,
+            'result_date' => '2026-07-19',
+            'winning_numbers' => 'LATEST',
+        ]);
+
+        $this->get(route('results.index'))
+            ->assertOk()
+            ->assertSee('Singapore')
+            ->assertSee('LATEST')
+            ->assertDontSee('OLDER')
+            ->assertViewHas(
+                'markets',
+                fn ($markets): bool => $markets->total() === 1
+                    && $markets
+                        ->first()
+                        ->results_count === 2,
+            );
+    }
+
+    public function test_market_without_result_is_displayed(): void
+    {
+        Market::factory()->create([
+            'name' => 'Empty Market',
+            'code' => 'EMP',
+            'is_active' => true,
+        ]);
+
+        $this->get(route('results.index'))
+            ->assertOk()
+            ->assertSee('Empty Market')
+            ->assertSee('Belum ada result.');
+    }
+
+    public function test_inactive_market_is_not_displayed(): void
+    {
+        Market::factory()->create([
             'name' => 'Inactive Market',
-            'code' => 'OFF',
             'is_active' => false,
         ]);
 
-        Result::factory()->create([
-            'market_id' => $activeMarket->id,
-            'result_date' => '2026-07-19',
-            'winning_numbers' => '1234',
-            'notes' => 'Result publik aktif.',
-        ]);
-
-        Result::factory()->create([
-            'market_id' => $inactiveMarket->id,
-            'result_date' => '2026-07-19',
-            'winning_numbers' => 'INACTIVE-HIDDEN',
-        ]);
-
-        $response = $this->get(route('results.index'));
-
-        $response
+        $this->get(route('results.index'))
             ->assertOk()
-            ->assertSee('Singapore')
-            ->assertSee('SGP')
-            ->assertSee('1234')
-            ->assertSee('Result publik aktif.')
-            ->assertDontSee('Inactive Market')
-            ->assertDontSee('INACTIVE-HIDDEN');
+            ->assertDontSee('Inactive Market');
     }
 
-    public function test_listing_orders_newest_result_date_first(): void
+    public function test_listing_paginates_markets_by_twelve(): void
     {
-        $olderMarket = Market::factory()->create([
-            'name' => 'Older Market',
-            'code' => 'OLD',
-            'is_active' => true,
-        ]);
-
-        $newerMarket = Market::factory()->create([
-            'name' => 'Newer Market',
-            'code' => 'NEW',
-            'is_active' => true,
-        ]);
-
-        Result::factory()->create([
-            'market_id' => $olderMarket->id,
-            'result_date' => '2026-07-18',
-            'winning_numbers' => 'OLDER-RESULT',
-        ]);
-
-        Result::factory()->create([
-            'market_id' => $newerMarket->id,
-            'result_date' => '2026-07-19',
-            'winning_numbers' => 'NEWER-RESULT',
-        ]);
-
-        $response = $this->get(route('results.index'));
-
-        $response
-            ->assertOk()
-            ->assertSeeInOrder([
-                'Newer Market',
-                'NEWER-RESULT',
-                'Older Market',
-                'OLDER-RESULT',
-            ]);
-    }
-
-    public function test_listing_paginates_results_by_twelve_records(): void
-    {
-        $market = Market::factory()->create([
-            'name' => 'Pagination Market',
-            'code' => 'PAGE',
-            'is_active' => true,
-        ]);
-
         foreach (range(1, 13) as $index) {
-            Result::factory()->create([
-                'market_id' => $market->id,
-                'result_date' => now()
-                    ->subDays($index)
-                    ->toDateString(),
-                'winning_numbers' => sprintf(
-                    'RESULT-%02d',
+            Market::factory()->create([
+                'name' => sprintf(
+                    'Market %02d',
                     $index,
                 ),
+                'code' => sprintf(
+                    'M%02d',
+                    $index,
+                ),
+                'sort_order' => $index,
+                'is_active' => true,
             ]);
         }
 
-        $firstPage = $this->get(route('results.index'));
-
-        $firstPage
+        $this->get(route('results.index'))
             ->assertOk()
             ->assertViewHas(
-                'results',
-                fn ($results): bool =>
-                    $results->perPage() === 12
-                    && $results->total() === 13
-                    && $results->count() === 12,
+                'markets',
+                fn ($markets): bool => $markets->perPage() === 12
+                    && $markets->total() === 13
+                    && $markets->count() === 12,
             )
-            ->assertSee('RESULT-01')
-            ->assertDontSee('RESULT-13');
+            ->assertSee('Market 01');
 
-        $secondPage = $this->get(
-            route('results.index', ['page' => 2]),
-        );
-
-        $secondPage
+        $this->get(route('results.index', [
+            'page' => 2,
+        ]))
             ->assertOk()
             ->assertViewHas(
-                'results',
-                fn ($results): bool =>
-                    $results->currentPage() === 2
-                    && $results->count() === 1,
+                'markets',
+                fn ($markets): bool => $markets->currentPage() === 2
+                    && $markets->count() === 1
+                    && $markets->first()->name === 'Market 13',
             )
-            ->assertSee('RESULT-13')
-            ->assertDontSee('RESULT-01');
+            ->assertSee('Market 13');
     }
 
-    public function test_header_links_to_the_public_result_listing(): void
+    public function test_header_links_to_public_result_listing(): void
     {
         $this->get(route('home'))
             ->assertOk()
-            ->assertSee(route('results.index'), false);
+            ->assertSee(
+                route('results.index'),
+                false,
+            );
     }
 
-    public function test_listing_only_displays_results_for_the_current_brand(): void
+    public function test_listing_only_displays_current_brand(): void
     {
-
-        $brandA=Brand::factory()->create([
-            'code'=>'brand-a',
+        $brandA = Brand::factory()->create([
+            'code' => 'brand-a',
             'domain' => 'brand-a.test',
-            'name'=>'Brand A',
-            'slug'=>'brand-a',
-            'is_active'=>true,
+            'name' => 'Brand A',
+            'slug' => 'brand-a',
+            'is_active' => true,
         ]);
 
-        $brandB=Brand::factory()->create([
-            'code'=>'brand-b',
-            'name'=>'Brand B',
-            'slug'=>'brand-b',
-            'is_active'=>true,
+        $brandB = Brand::factory()->create([
+            'code' => 'brand-b',
+            'name' => 'Brand B',
+            'slug' => 'brand-b',
+            'is_active' => true,
         ]);
 
-        $marketA=Market::factory()->create([
-            'brand_id'=>$brandA->id,
-            'name'=>'Market Brand A',
-            'code'=>'BRA',
-            'slug'=>'market-brand-a',
-            'is_active'=>true,
+        $marketA = Market::factory()->create([
+            'brand_id' => $brandA->id,
+            'name' => 'Market Brand A',
+            'slug' => 'market-brand-a',
+            'is_active' => true,
         ]);
 
-        $marketB=Market::factory()->create([
-            'brand_id'=>$brandB->id,
-            'name'=>'Market Brand B',
-            'code'=>'BRB',
-            'slug'=>'market-brand-b',
-            'is_active'=>true,
-        ]);
-
-        Result::factory()->create([
-            'brand_id'=>$brandA->id,
-            'market_id'=>$marketA->id,
-            'result_date'=>'2026-07-20',
-            'winning_numbers'=>'CURRENT-BRAND-RESULT',
+        $marketB = Market::factory()->create([
+            'brand_id' => $brandB->id,
+            'name' => 'Market Brand B',
+            'slug' => 'market-brand-b',
+            'is_active' => true,
         ]);
 
         Result::factory()->create([
-            'brand_id'=>$brandB->id,
-            'market_id'=>$marketB->id,
-            'result_date'=>'2026-07-20',
-            'winning_numbers'=>'OTHER-BRAND-RESULT',
+            'brand_id' => $brandA->id,
+            'market_id' => $marketA->id,
+            'winning_numbers' => 'CURRENT-BRAND',
         ]);
 
-        $this->get('http://brand-a.test'.parse_url(route('results.index'), PHP_URL_PATH))
+        Result::factory()->create([
+            'brand_id' => $brandB->id,
+            'market_id' => $marketB->id,
+            'winning_numbers' => 'OTHER-BRAND',
+        ]);
+
+        $path = parse_url(
+            route('results.index'),
+            PHP_URL_PATH,
+        );
+
+        $this->get(
+            'http://brand-a.test'.$path
+        )
             ->assertOk()
-            ->assertSee('CURRENT-BRAND-RESULT')
-            ->assertSee('Market Brand A')
-            ->assertDontSee('OTHER-BRAND-RESULT')
+            ->assertSee('CURRENT-BRAND')
+            ->assertDontSee('OTHER-BRAND')
             ->assertDontSee('Market Brand B');
     }
-
 }

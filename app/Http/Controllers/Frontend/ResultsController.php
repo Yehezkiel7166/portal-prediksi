@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Frontend;
 
 use App\Domains\Market\Models\Market;
-use App\Domains\Result\Models\Result;
+use App\Domains\Market\Support\MarketScheduleStatusResolver;
+use App\Domains\Result\Support\LatestResultResolver;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ResultIndexRequest;
 use Illuminate\Contracts\View\View;
@@ -11,59 +14,74 @@ use Illuminate\Database\Eloquent\Builder;
 
 final class ResultsController extends Controller
 {
-    public function __invoke(ResultIndexRequest $request): View
-    {
+    public function __invoke(
+        ResultIndexRequest $request,
+        LatestResultResolver $latestResultResolver,
+        MarketScheduleStatusResolver $statusResolver,
+    ): View {
         $filters = $request->filters();
-$markets = Market::query()
-            
+
+        $markets = Market::query()
+            ->select([
+                'id',
+                'brand_id',
+                'name',
+                'slug',
+                'code',
+                'timezone',
+                'active_days',
+                'open_time',
+                'close_time',
+                'is_holiday',
+                'holiday_note',
+                'is_active',
+                'sort_order',
+            ])
             ->active()
+            ->when(
+                $filters['market'],
+                static fn (
+                    Builder $query,
+                    string $market
+                ): Builder => $query->where(
+                    'slug',
+                    $market,
+                ),
+            )
+            ->withCount('results')
             ->ordered()
-            ->get([
+            ->paginate(12)
+            ->withQueryString();
+
+        $latestResultResolver->attachToMarkets(
+            $markets->getCollection(),
+        );
+
+        $statuses = $markets
+            ->getCollection()
+            ->mapWithKeys(
+                static fn (Market $market): array => [
+                    $market->getKey() => $statusResolver->resolve($market),
+                ],
+            );
+
+        $marketOptions = Market::query()
+            ->select([
                 'id',
                 'name',
                 'slug',
                 'code',
-            ]);
-
-        $results = Result::query()
-            
-            ->select([
-                'id',
-                'market_id',
-                'result_date',
-                'winning_numbers',
-                'notes',
+                'sort_order',
             ])
-            ->whereHas(
-                'market',
-                fn (Builder $query): Builder => $query->active(),
-            )
-            ->when(
-                $filters['market'],
-                fn (Builder $query, string $market): Builder =>
-                    $query->whereHas(
-                        'market',
-                        fn (Builder $marketQuery): Builder =>
-                            $marketQuery->where('slug', $market),
-                    ),
-            )
-            ->when(
-                $filters['date'],
-                fn (Builder $query, string $date): Builder =>
-                    $query->whereDate('result_date', $date),
-            )
-            ->with([
-                'market:id,name,slug,code,is_active,sort_order',
-            ])
-            ->orderByDesc('result_date')
-            ->orderByDesc('id')
-            ->paginate(12)
-            ->withQueryString();
+            ->active()
+            ->ordered()
+            ->get();
 
         return view('frontend.results.index', [
             'filters' => $filters,
             'markets' => $markets,
-            'results' => $results,
+            'marketOptions' => $marketOptions,
+            'statuses' => $statuses,
         ]);
     }
 }

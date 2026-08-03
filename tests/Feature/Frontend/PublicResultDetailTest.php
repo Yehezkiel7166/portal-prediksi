@@ -79,8 +79,8 @@ final class PublicResultDetailTest extends TestCase
             ->assertSee('19 Juli 2026')
             ->assertSee('rel="canonical"', false)
             ->assertSee($url)
-            ->assertSee(route('results.index', [
-                'market' => 'singapore',
+            ->assertSee(route('results.history', [
+                'marketSlug' => 'singapore',
             ]));
     }
 
@@ -171,5 +171,4 @@ final class PublicResultDetailTest extends TestCase
             'resultDate' => '2026-07-20',
         ]), PHP_URL_PATH))->assertNotFound();
     }
-
 }

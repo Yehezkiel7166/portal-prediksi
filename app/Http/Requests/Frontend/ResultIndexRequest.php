@@ -17,8 +17,9 @@ final class ResultIndexRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'market' => $this->normalizeString($this->input('market')),
-            'date' => $this->normalizeString($this->input('date')),
+            'market' => $this->normalizeString(
+                $this->input('market')
+            ),
         ]);
     }
 
@@ -32,10 +33,6 @@ final class ResultIndexRequest extends FormRequest
                 Rule::exists('markets', 'slug')
                     ->where('is_active', true),
             ],
-            'date' => [
-                'nullable',
-                'date_format:Y-m-d',
-            ],
         ];
     }
 
@@ -43,15 +40,11 @@ final class ResultIndexRequest extends FormRequest
     {
         return [
             'market.exists' => 'Pasaran yang dipilih tidak tersedia.',
-            'date.date_format' => 'Format tanggal harus menggunakan YYYY-MM-DD.',
         ];
     }
 
     /**
-     * @return array{
-     *     market: string|null,
-     *     date: string|null
-     * }
+     * @return array{market:string|null}
      */
     public function filters(): array
     {
@@ -59,12 +52,12 @@ final class ResultIndexRequest extends FormRequest
 
         return [
             'market' => $validated['market'] ?? null,
-            'date' => $validated['date'] ?? null,
         ];
     }
 
-    private function normalizeString(mixed $value): ?string
-    {
+    private function normalizeString(
+        mixed $value
+    ): ?string {
         if (! is_string($value)) {
             return null;
         }

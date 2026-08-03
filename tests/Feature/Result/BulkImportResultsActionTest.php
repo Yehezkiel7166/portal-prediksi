@@ -49,8 +49,7 @@ class BulkImportResultsActionTest extends TestCase
         $this->assertDatabaseHas('results', [
             'brand_id' => $brand->id,
             'market_id' => $market->id,
-            'result_date' =>
-                '2026-08-01 00:00:00',
+            'result_date' => '2026-08-01 00:00:00',
             'winning_numbers' => '1234',
             'notes' => 'Imported CSV',
         ]);
@@ -112,10 +111,10 @@ class BulkImportResultsActionTest extends TestCase
             );
         }
 
-        $xlsxPath = $temporary . '.xlsx';
+        $xlsxPath = $temporary.'.xlsx';
         @unlink($temporary);
 
-        $writer = new Writer();
+        $writer = new Writer;
         $writer->openToFile($xlsxPath);
 
         $writer->addRow(Row::fromValues([
@@ -146,8 +145,7 @@ class BulkImportResultsActionTest extends TestCase
 
         $this->assertDatabaseHas('results', [
             'market_id' => $market->id,
-            'result_date' =>
-                '2026-08-02 00:00:00',
+            'result_date' => '2026-08-02 00:00:00',
             'winning_numbers' => '5678',
         ]);
     }
@@ -267,6 +265,43 @@ class BulkImportResultsActionTest extends TestCase
         )->execute($path);
     }
 
+    public function test_scoped_import_rejects_another_market(): void
+    {
+        [$brand, $targetMarket] =
+            $this->brandAndMarket();
+
+        Market::factory()->create([
+            'brand_id' => $brand->id,
+            'code' => 'SDY',
+            'name' => 'Sydney',
+        ]);
+
+        $path = $this->csv([
+            [
+                'market_code',
+                'result_date',
+                'winning_numbers',
+                'notes',
+            ],
+            [
+                'SDY',
+                '2026-08-03',
+                '5678',
+                null,
+            ],
+        ]);
+
+        $this->expectException(
+            ValidationException::class
+        );
+
+        app(BulkImportResultsAction::class)
+            ->execute(
+                $path,
+                $targetMarket,
+            );
+    }
+
     /**
      * @return array{Brand, Market}
      */
@@ -286,7 +321,7 @@ class BulkImportResultsActionTest extends TestCase
     }
 
     /**
-     * @param list<list<mixed>> $rows
+     * @param  list<list<mixed>>  $rows
      */
     private function csv(array $rows): string
     {
@@ -315,7 +350,7 @@ class BulkImportResultsActionTest extends TestCase
 
         fclose($handle);
 
-        $csvPath = $temporary . '.csv';
+        $csvPath = $temporary.'.csv';
         rename($temporary, $csvPath);
 
         $this->beforeApplicationDestroyed(

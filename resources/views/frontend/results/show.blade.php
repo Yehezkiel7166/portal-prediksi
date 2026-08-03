@@ -54,8 +54,8 @@
             <span class="mx-2">/</span>
 
             <a
-                href="{{ route('results.index', [
-                    'market' => $result->market->slug,
+                href="{{ route('results.history', [
+                    'marketSlug' => $result->market->slug,
                 ]) }}"
                 class="transition hover:text-amber-400"
             >
@@ -122,8 +122,8 @@
 
         <div class="mt-8 flex flex-wrap gap-3">
             <a
-                href="{{ route('results.index', [
-                    'market' => $result->market->slug,
+                href="{{ route('results.history', [
+                    'marketSlug' => $result->market->slug,
                 ]) }}"
                 class="inline-flex items-center justify-center rounded-lg bg-amber-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-amber-300"
             >

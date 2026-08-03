@@ -64,6 +64,56 @@ final class LatestResultResolverTest extends TestCase
         );
     }
 
+    public function test_it_attaches_latest_results_to_markets(): void
+    {
+        $marketA = Market::factory()->create();
+        $marketB = Market::factory()->create();
+
+        Result::factory()->create([
+            'market_id' => $marketA->id,
+            'result_date' => '2026-07-18',
+            'winning_numbers' => 'A-OLD',
+        ]);
+
+        Result::factory()->create([
+            'market_id' => $marketA->id,
+            'result_date' => '2026-07-20',
+            'winning_numbers' => 'A-LATEST',
+        ]);
+
+        Result::factory()->create([
+            'market_id' => $marketB->id,
+            'result_date' => '2026-07-19',
+            'winning_numbers' => 'B-LATEST',
+        ]);
+
+        $markets = Market::query()
+            ->whereKey([
+                $marketA->id,
+                $marketB->id,
+            ])
+            ->get();
+
+        app(LatestResultResolver::class)
+            ->attachToMarkets($markets);
+
+        $this->assertSame(
+            'A-LATEST',
+            $markets
+                ->firstWhere('id', $marketA->id)
+                ->getRelation('latestResult')
+                ->winning_numbers,
+        );
+
+        $this->assertSame(
+            'B-LATEST',
+            $markets
+                ->firstWhere('id', $marketB->id)
+                ->getRelation('latestResult')
+                ->winning_numbers,
+        );
+    }
+
     public function test_it_returns_null_when_market_has_no_results(): void
     {
         $market = Market::factory()->create();
