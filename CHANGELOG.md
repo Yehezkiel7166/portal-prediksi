@@ -140,3 +140,16 @@
 - Added header navigation and clock regression coverage.
 - Verified 528 tests and 1574 assertions.
 <!-- SPRINT-20J-D-CHANGELOG-END -->
+
+<!-- SPRINT-20K-A-CHANGELOG-START -->
+## Sprint 20K-A — Homepage Banner Slider
+
+- Added brand-scoped homepage banner management.
+- Added desktop and mobile uploads.
+- Added publication, expiration, sorting, and focal-point controls.
+- Added optional safe CTA.
+- Added responsive autoplay slider controls and indicators.
+- Added static fallback.
+- Added inline slider runtime without Node/npm server dependency.
+- Added domain, Filament, frontend, and runtime regression coverage.
+<!-- SPRINT-20K-A-CHANGELOG-END -->

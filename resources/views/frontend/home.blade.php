@@ -26,25 +26,7 @@
 @endpush
 
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
-    <div class="mx-auto max-w-7xl px-4 py-16 md:py-20">
-        <div class="max-w-3xl">
-            <p class="mb-4 text-sm font-semibold uppercase tracking-widest text-amber-400">
-                Portal Informasi Terpadu
-            </p>
-
-            <h1 class="text-4xl font-bold leading-tight text-white md:text-6xl">
-                Prediksi, hasil pasaran, dan informasi draw dalam satu portal.
-            </h1>
-
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-                Akses Live Draw, Prediksi Togel, Data Result, Promosi,
-                dan layanan publik melalui tampilan yang cepat,
-                terstruktur, dan responsif.
-            </p>
-        </div>
-    </div>
-</section>
+@include('frontend.partials.homepage-banner-slider')
 
 <section class="bg-slate-950">
     <div class="mx-auto max-w-7xl px-4 py-12 md:py-16">

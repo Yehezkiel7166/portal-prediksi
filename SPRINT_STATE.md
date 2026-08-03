@@ -462,3 +462,15 @@ Next bounded sprint:
 - CTO crosscheck: PASS.
 - Migration impact: none.
 <!-- SPRINT-20J-D-STATE-END -->
+
+<!-- SPRINT-20K-A-STATE-START -->
+## Sprint 20K-A — Homepage Banner Slider
+
+- Status: completed pending production migration.
+- Baseline: `81688dbcfc25549e26574ede39869c1d89117f9e`.
+- Targeted: 32 tests / 114 assertions / PASS.
+- Full: 554 tests / 1641 assertions / PASS.
+- Slider runtime: inline JavaScript.
+- Node/npm required on server: no.
+- Production migration: not executed.
+<!-- SPRINT-20K-A-STATE-END -->

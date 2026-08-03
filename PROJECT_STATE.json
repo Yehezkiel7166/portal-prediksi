@@ -90,7 +90,8 @@
         "result_derived_paito",
         "paito_market_date_filtering",
         "paito_color_mapping",
-        "header_logo_only_navigation_and_jakarta_clock"
+        "header_logo_only_navigation_and_jakarta_clock",
+        "homepage_banner_slider_management"
     ],
     "repository_foundation": {
         "status": "completed",
@@ -704,5 +705,19 @@
         "completion_gate": "passed",
         "cto_crosscheck": "passed",
         "migration_required": false
+    },
+    "sprint_20k_a": {
+        "name": "Homepage Banner Slider",
+        "status": "completed_pending_production_migration",
+        "baseline": "81688dbcfc25549e26574ede39869c1d89117f9e",
+        "targeted_tests": 32,
+        "targeted_assertions": 114,
+        "full_tests": 554,
+        "full_assertions": 1641,
+        "blade_compile": "passed",
+        "migration_pretend": "passed",
+        "production_migration_executed": false,
+        "slider_runtime": "inline_javascript",
+        "node_required_on_server": false
     }
 }

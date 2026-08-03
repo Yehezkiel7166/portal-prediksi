@@ -622,3 +622,11 @@ order, and displays a continuously running Asia/Jakarta clock on the right.
 No public route, database schema, scheduler, queue, dependency, or backend
 domain behavior changed.
 <!-- SPRINT-20J-D-ROADMAP-END -->
+
+<!-- SPRINT-20K-A-ROADMAP-START -->
+## Sprint 20K-A Homepage Banner Slider
+
+Homepage banner administration and the responsive slider are implemented.
+The next guarded operational step is production migration followed by admin
+and public homepage smoke verification.
+<!-- SPRINT-20K-A-ROADMAP-END -->

@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Domains\Blog\Models\BlogPost;
 use App\Domains\Brand\Support\BrandContext;
+use App\Domains\HomepageBanner\Models\HomepageBanner;
 use App\Domains\LiveDraw\Models\LiveDraw;
 use App\Domains\Prediction\Models\Prediction;
 use App\Domains\Promotion\Models\Promotion;
@@ -55,6 +56,13 @@ final class HomeController extends Controller
             ->limit(6)
             ->get();
 
+        $homepageBanners = HomepageBanner::query()
+            ->where('brand_id', $brandId)
+            ->published()
+            ->ordered()
+            ->limit(8)
+            ->get();
+
         $activePromotions = Promotion::query()
             ->where('brand_id', $brandId)
             ->published()
@@ -70,6 +78,7 @@ final class HomeController extends Controller
             ->get();
 
         return $this->renderHomepage(
+            homepageBanners: $homepageBanners,
             liveDraws: $liveDraws,
             latestResults: $latestResults,
             currentPredictions: $currentPredictions,
@@ -81,6 +90,7 @@ final class HomeController extends Controller
     private function renderEmptyHomepage(): View
     {
         return $this->renderHomepage(
+            homepageBanners: collect(),
             liveDraws: collect(),
             latestResults: collect(),
             currentPredictions: collect(),
@@ -90,6 +100,7 @@ final class HomeController extends Controller
     }
 
     /**
+     * @param Collection<int, HomepageBanner> $homepageBanners
      * @param Collection<int, LiveDraw> $liveDraws
      * @param Collection<int, Result> $latestResults
      * @param Collection<int, Prediction> $currentPredictions
@@ -97,6 +108,7 @@ final class HomeController extends Controller
      * @param Collection<int, BlogPost> $latestArticles
      */
     private function renderHomepage(
+        Collection $homepageBanners,
         Collection $liveDraws,
         Collection $latestResults,
         Collection $currentPredictions,
@@ -104,6 +116,7 @@ final class HomeController extends Controller
         Collection $latestArticles,
     ): View {
         return view('frontend.home', [
+            'homepageBanners' => $homepageBanners,
             'liveDraws' => $liveDraws,
             'latestResults' => $latestResults,
             'currentPredictions' => $currentPredictions,

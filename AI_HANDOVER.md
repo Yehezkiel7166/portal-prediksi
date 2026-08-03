@@ -635,3 +635,21 @@ Validation evidence:
 
 No migration or operational activation is required.
 <!-- SPRINT-20J-D-HANDOVER-END -->
+
+<!-- SPRINT-20K-A-HANDOVER-START -->
+## Sprint 20K-A Handover
+
+Implemented the HomepageBanner domain, Filament CRUD, publication scheduling,
+responsive images, optional CTA, autoplay, navigation controls, indicators,
+and safe fallback behavior.
+
+The production server does not provide Node.js or npm. Slider JavaScript is
+inline in the Blade partial.
+
+Validation:
+
+- targeted: 32 tests / 114 assertions / PASS;
+- full: 554 tests / 1641 assertions / PASS.
+
+Production migration remains pending.
+<!-- SPRINT-20K-A-HANDOVER-END -->

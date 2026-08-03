@@ -3,6 +3,7 @@
 namespace App\Domains\Brand\Models;
 
 use App\Domains\Domain\Models\BrandDomain;
+use App\Domains\HomepageBanner\Models\HomepageBanner;
 use App\Domains\SiteConfiguration\Models\SiteConfiguration;
 use Database\Factories\BrandFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -51,6 +52,11 @@ class Brand extends Model
     public function siteConfiguration(): HasOne
     {
         return $this->hasOne(SiteConfiguration::class);
+    }
+    /** @return HasMany<HomepageBanner, $this> */
+    public function homepageBanners(): HasMany
+    {
+        return $this->hasMany(HomepageBanner::class);
     }
 
     protected static function newFactory(): BrandFactory

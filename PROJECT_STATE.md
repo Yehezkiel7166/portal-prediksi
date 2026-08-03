@@ -513,3 +513,23 @@ Validation:
 - governance audit: 7/7 PASS;
 - permanent completion gate: PASS.
 <!-- SPRINT-20J-D-HEADER-END -->
+
+<!-- SPRINT-20K-A-HOMEPAGE-BANNER-START -->
+## Sprint 20K-A — Homepage Banner Slider
+
+Status: completed pending commit, push, remote verification, and separate
+production migration.
+
+Implemented brand-scoped banner records, Filament CRUD, desktop/mobile images,
+publication scheduling, ordering, focal points, optional CTA, responsive
+slider controls, five-second autoplay, static fallback, and inline runtime
+JavaScript.
+
+Validation:
+
+- targeted: 32 tests / 114 assertions / PASS;
+- full: 554 tests / 1641 assertions / PASS;
+- Blade compile: PASS;
+- migration pretend: PASS;
+- governance audit: PASS.
+<!-- SPRINT-20K-A-HOMEPAGE-BANNER-END -->
