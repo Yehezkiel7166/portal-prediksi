@@ -611,3 +611,14 @@ Delivery order after Sprint 20G:
 - Targeted regression: `17 tests / 53 assertions`
 - Full regression: `522 tests / 1531 assertions`
 <!-- END SPRINT-20J-C-SUNDAY-HOLIDAY-CLOCK -->
+
+<!-- SPRINT-20J-D-ROADMAP-START -->
+## Sprint 20J-D Header Completion
+
+The public header now exposes only the logo visually, preserves the configured
+site name and tagline for assistive technology, uses the approved navigation
+order, and displays a continuously running Asia/Jakarta clock on the right.
+
+No public route, database schema, scheduler, queue, dependency, or backend
+domain behavior changed.
+<!-- SPRINT-20J-D-ROADMAP-END -->

@@ -1,29 +1,30 @@
 <header class="border-b border-amber-400/20 bg-slate-950">
-    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 lg:flex-row lg:items-center lg:justify-between">
-        <a href="{{ route('home') }}" class="flex items-center gap-3 text-xl font-bold tracking-wide text-amber-400">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 lg:flex-row lg:items-center">
+        <a
+            href="{{ route('home') }}"
+            class="flex shrink-0 items-center text-amber-400"
+        >
             @if ($siteConfiguration->logoUrl)
-                <img src="{{ $siteConfiguration->logoUrl }}" alt="{{ $siteConfiguration->siteName }}" class="h-10 w-auto">
+                <img
+                    src="{{ $siteConfiguration->logoUrl }}"
+                    alt="{{ $siteConfiguration->siteName }}"
+                    class="h-10 w-auto"
+                >
             @endif
-            <span>
+
+            <span class="sr-only">
                 {{ $siteConfiguration->siteName }}
+
                 @if ($siteConfiguration->tagline)
-                    <small class="block text-xs font-normal tracking-normal text-slate-400">{{ $siteConfiguration->tagline }}</small>
+                    <span>{{ $siteConfiguration->tagline }}</span>
                 @endif
             </span>
         </a>
 
-        <div class="flex flex-col items-start gap-3 lg:items-end">
-            <div
-                data-live-clock
-                role="timer"
-                aria-live="off"
-                aria-label="Waktu Indonesia Barat"
-                class="rounded-lg border border-amber-400/20 bg-slate-900 px-3 py-2 text-xs font-semibold tabular-nums text-amber-300"
-            >
-                Memuat waktu...
-            </div>
-
-            <nav aria-label="Navigasi utama">
+        <nav
+            aria-label="Navigasi utama"
+            class="min-w-0 flex-1 lg:ml-8"
+        >
             <ul class="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium">
                 <li>
                     <a
@@ -47,7 +48,7 @@
                             'text-slate-300' => ! request()->routeIs('live-draw.*'),
                         ])
                     >
-                        Live Draw
+                        LiveDraw
                     </a>
                 </li>
 
@@ -60,7 +61,7 @@
                             'text-slate-300' => ! request()->routeIs('predictions.*'),
                         ])
                     >
-                        Prediksi Togel
+                        Prediksi
                     </a>
                 </li>
 
@@ -79,6 +80,59 @@
 
                 <li>
                     <a
+                        href="{{ route('results.index') }}"
+                        @class([
+                            'transition hover:text-amber-300',
+                            'text-amber-400' => request()->routeIs('results.*'),
+                            'text-slate-300' => ! request()->routeIs('results.*'),
+                        ])
+                    >
+                        Result
+                    </a>
+                </li>
+
+                <li>
+                    <details class="relative">
+                        <summary
+                            @class([
+                                'cursor-pointer transition hover:text-amber-300',
+                                'text-amber-400' => request()->routeIs('tools.*'),
+                                'text-slate-300' => ! request()->routeIs('tools.*'),
+                            ])
+                        >
+                            Alat Togel
+                        </summary>
+
+                        <div class="absolute left-0 z-50 mt-3 w-56 rounded-lg border border-slate-700 bg-slate-900 p-3 shadow-xl">
+                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.lottery-schedule') }}">
+                                Jadwal Togel
+                            </a>
+
+                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.shio-table') }}">
+                                Tabel Shio
+                            </a>
+
+                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.bbfs.create') }}">
+                                BBFS Generator
+                            </a>
+
+                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.dream-book.index') }}">
+                                Buku Mimpi
+                            </a>
+
+                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.paito') }}">
+                                Paito Togel Warna
+                            </a>
+
+                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.sgp-converter.create') }}">
+                                Konversi Angka SGP
+                            </a>
+                        </div>
+                    </details>
+                </li>
+
+                <li>
+                    <a
                         href="{{ route('jackpot-proofs.index') }}"
                         @class([
                             'transition hover:text-amber-300',
@@ -88,23 +142,6 @@
                     >
                         Bukti Jackpot
                     </a>
-                </li>
-
-                <li>
-                    <details class="relative">
-                        <summary class="cursor-pointer text-slate-300 transition hover:text-amber-300">
-                            Alat Togel
-                        </summary>
-
-                        <div class="mt-3 w-56 rounded-lg border border-slate-700 bg-slate-900 p-3">
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.lottery-schedule') }}">Jadwal Togel</a>
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.shio-table') }}">Tabel Shio</a>
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.bbfs.create') }}">BBFS Generator</a>
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.dream-book.index') }}">Buku Mimpi</a>
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.paito') }}">Paito Togel Warna</a>
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.sgp-converter.create') }}">Konversi Angka SGP</a>
-                        </div>
-                    </details>
                 </li>
 
                 <li>
@@ -132,22 +169,18 @@
                         Keluhan
                     </a>
                 </li>
-
-                <li>
-                    <a
-                        href="{{ route('results.index') }}"
-                        @class([
-                            'transition hover:text-amber-300',
-                            'text-amber-400' => request()->routeIs('results.*'),
-                            'text-slate-300' => ! request()->routeIs('results.*'),
-                        ])
-                    >
-                        Data Result
-                    </a>
-                </li>
             </ul>
-            </nav>
-        </div>
+        </nav>
+
+        <time
+            data-live-clock
+            role="timer"
+            aria-live="off"
+            aria-label="Waktu Indonesia Barat"
+            class="shrink-0 self-start whitespace-nowrap rounded-lg border border-amber-400/20 bg-slate-900 px-3 py-2 text-xs font-semibold tabular-nums text-amber-300 lg:ml-auto lg:self-center"
+        >
+            Memuat waktu...
+        </time>
     </div>
 </header>
 
@@ -197,7 +230,7 @@
                 .replace(/\./g, '')
                 .replace(/\s/g, '');
 
-            clock.textContent = `${dateText} (${timeText})`;
+            clock.textContent = `${dateText} ( ${timeText} )`;
             clock.setAttribute(
                 'datetime',
                 now.toISOString()

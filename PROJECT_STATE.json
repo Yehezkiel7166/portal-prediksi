@@ -89,7 +89,8 @@
         "dream_book_detail_and_sitemap",
         "result_derived_paito",
         "paito_market_date_filtering",
-        "paito_color_mapping"
+        "paito_color_mapping",
+        "header_logo_only_navigation_and_jakarta_clock"
     ],
     "repository_foundation": {
         "status": "completed",
@@ -141,13 +142,13 @@
     "repository": {
         "branch": "main",
         "remote_tracking_branch": "origin/main",
-        "synchronization_state": "pending_sunday_holiday_clock_push",
+        "synchronization_state": "pending_header_navigation_clock_commit",
         "last_verified_commit": "71174b439f303cca694ae7be9215e12e0a74e0a0",
         "commit_reference_semantics": "verified_sprint_18d_production_completion",
         "required_final_working_tree": "clean",
         "required_final_synchronization": "local_equals_origin_main",
-        "completion_gate": "pending",
-        "governance_audit": "pending",
+        "completion_gate": "passed",
+        "governance_audit": "passed",
         "last_verified_tree": "b05daff4acad282035e8b171ee53611b22d9eceb",
         "last_local_commit": "71174b439f303cca694ae7be9215e12e0a74e0a0"
     },
@@ -687,5 +688,21 @@
         "clock_locale": "id-ID",
         "clock_refresh_seconds": 1,
         "clock_format_example": "Minggu, 2 Agu 2026 (18:48:55)"
+    },
+    "sprint_20j_d": {
+        "name": "Header Navigation and Jakarta Clock",
+        "status": "completed_pending_commit_push_remote_verify",
+        "baseline": "c92d0022ff44594fa8b731f77f1152b3adbd4391",
+        "targeted_tests": 13,
+        "targeted_assertions": 77,
+        "full_tests": 528,
+        "full_assertions": 1574,
+        "governance_checks": {
+            "passed": 7,
+            "failed": 0
+        },
+        "completion_gate": "passed",
+        "cto_crosscheck": "passed",
+        "migration_required": false
     }
 }

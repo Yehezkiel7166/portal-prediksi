@@ -491,3 +491,25 @@ Next bounded sprint:
 - Targeted regression: `17 tests / 53 assertions`
 - Full regression: `522 tests / 1531 assertions`
 <!-- END SPRINT-20J-C-SUNDAY-HOLIDAY-CLOCK -->
+
+<!-- SPRINT-20J-D-HEADER-START -->
+## Sprint 20J-D — Header Navigation and Jakarta Clock
+
+Status: completed pending commit, push, and remote verification.
+
+Implemented:
+
+- logo-only visible header identity;
+- screen-reader-only site name and tagline;
+- required nine-item navigation order;
+- right-aligned live Jakarta clock;
+- `id-ID` locale and `Asia/Jakarta` timezone;
+- one-second clock refresh.
+
+Validation:
+
+- targeted: 13 tests / 77 assertions / PASS;
+- full regression: 528 tests / 1574 assertions / PASS;
+- governance audit: 7/7 PASS;
+- permanent completion gate: PASS.
+<!-- SPRINT-20J-D-HEADER-END -->

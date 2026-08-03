@@ -129,3 +129,14 @@
 - Recorded Sprint 20G CTO decision as PASS.
 - Selected Sprint 20H Brand 1 Production Acceptance Re-verification.
 - Introduced no application, migration, or production database change.
+
+<!-- SPRINT-20J-D-CHANGELOG-START -->
+## Sprint 20J-D — Header Navigation and Clock
+
+- Changed the visible site identity to logo-only.
+- Preserved site name and tagline as screen-reader-only content.
+- Applied the required navigation labels and ordering.
+- Positioned the live Jakarta clock on the right.
+- Added header navigation and clock regression coverage.
+- Verified 528 tests and 1574 assertions.
+<!-- SPRINT-20J-D-CHANGELOG-END -->

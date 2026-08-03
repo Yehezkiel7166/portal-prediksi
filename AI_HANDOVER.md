@@ -611,3 +611,27 @@ Next bounded sprint:
 - Targeted regression: `17 tests / 53 assertions`
 - Full regression: `522 tests / 1531 assertions`
 <!-- END SPRINT-20J-C-SUNDAY-HOLIDAY-CLOCK -->
+
+<!-- SPRINT-20J-D-HANDOVER-START -->
+## Sprint 20J-D Handover
+
+Baseline: `c92d0022ff44594fa8b731f77f1152b3adbd4391`.
+
+The frontend header implementation now:
+
+- displays only the configured logo visually;
+- retains site name and tagline under `sr-only`;
+- uses the required navigation order;
+- preserves all existing named frontend routes;
+- displays a right-aligned running clock using `id-ID` and `Asia/Jakarta`.
+
+Validation evidence:
+
+- targeted regression: 13 tests / 77 assertions / PASS;
+- full regression: 528 tests / 1574 assertions / PASS;
+- governance audit: 7/7 PASS;
+- completion gate: PASS;
+- CTO crosscheck: PASS.
+
+No migration or operational activation is required.
+<!-- SPRINT-20J-D-HANDOVER-END -->

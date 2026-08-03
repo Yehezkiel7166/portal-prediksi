@@ -449,3 +449,16 @@ Next bounded sprint:
 - Targeted regression: `17 tests / 53 assertions`
 - Full regression: `522 tests / 1531 assertions`
 <!-- END SPRINT-20J-C-SUNDAY-HOLIDAY-CLOCK -->
+
+<!-- SPRINT-20J-D-STATE-START -->
+## Sprint 20J-D — Header Navigation and Jakarta Clock
+
+- Status: completed pending commit, push, and remote verification.
+- Baseline: `c92d0022ff44594fa8b731f77f1152b3adbd4391`.
+- Targeted regression: 13 tests / 77 assertions / PASS.
+- Full regression: 528 tests / 1574 assertions / PASS.
+- Governance audit: 7/7 PASS.
+- Permanent Sprint Completion Gate: PASS.
+- CTO crosscheck: PASS.
+- Migration impact: none.
+<!-- SPRINT-20J-D-STATE-END -->
