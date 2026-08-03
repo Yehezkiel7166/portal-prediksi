@@ -8,7 +8,8 @@
     >
         <div
             data-slider-track
-            class="relative min-h-[280px] sm:min-h-[360px] lg:min-h-[460px]"
+            class="relative"
+            style="height: clamp(280px, 32vw, 460px); min-height: 280px;"
         >
             @foreach ($homepageBanners as $index => $banner)
                 @php
@@ -46,7 +47,7 @@
                         'pointer-events-none z-0 opacity-0' => $index !== 0,
                     ])
                 >
-                    <picture>
+                    <picture class="absolute inset-0 block h-full w-full">
                         <source
                             media="(max-width: 639px)"
                             srcset="{{ $mobileUrl }}"
@@ -55,8 +56,8 @@
                         <img
                             src="{{ $desktopUrl }}"
                             alt="{{ $banner->title }}"
-                            class="absolute inset-0 h-full w-full object-cover"
-                            style="object-position: {{ $objectPosition }}"
+                            class="block h-full w-full object-cover"
+                            style="height: 100%; width: 100%; object-fit: cover; object-position: {{ $objectPosition }}"
                             @if ($index === 0)
                                 fetchpriority="high"
                             @else
