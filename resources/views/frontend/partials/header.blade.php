@@ -225,10 +225,23 @@
                     .replace(/\./g, '')
             );
 
-            const timeText = timeFormatter
-                .format(now)
-                .replace(/\./g, '')
-                .replace(/\s/g, '');
+            const timeParts = timeFormatter.formatToParts(now);
+
+            const timeValues = Object.fromEntries(
+                timeParts
+                    .filter(({ type }) => (
+                        type === 'hour'
+                        || type === 'minute'
+                        || type === 'second'
+                    ))
+                    .map(({ type, value }) => [type, value])
+            );
+
+            const timeText = [
+                timeValues.hour,
+                timeValues.minute,
+                timeValues.second,
+            ].join(':');
 
             clock.textContent = `${dateText} ( ${timeText} )`;
             clock.setAttribute(

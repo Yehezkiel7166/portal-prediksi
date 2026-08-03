@@ -169,6 +169,16 @@ final class HeaderNavigationAndClockLayoutTest extends TestCase
         );
 
         $this->assertStringContainsString(
+            'timeFormatter.formatToParts(now)',
+            $this->source,
+        );
+
+        $this->assertStringContainsString(
+            "].join(':');",
+            $this->source,
+        );
+
+        $this->assertStringContainsString(
             'clock.textContent = `${dateText} ( ${timeText} )`;',
             $this->source,
         );
