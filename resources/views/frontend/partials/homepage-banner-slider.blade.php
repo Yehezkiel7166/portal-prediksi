@@ -23,17 +23,7 @@
                         )
                         : $desktopUrl;
 
-                    $objectPosition = match ($banner->focal_point) {
-                        'top-left' => 'left top',
-                        'top' => 'center top',
-                        'top-right' => 'right top',
-                        'left' => 'left center',
-                        'right' => 'right center',
-                        'bottom-left' => 'left bottom',
-                        'bottom' => 'center bottom',
-                        'bottom-right' => 'right bottom',
-                        default => 'center center',
-                    };
+
                 @endphp
 
                 <article
@@ -56,8 +46,8 @@
                         <img
                             src="{{ $desktopUrl }}"
                             alt="{{ $banner->title }}"
-                            class="block h-full w-full object-cover"
-                            style="height: 100%; width: 100%; object-fit: cover; object-position: {{ $objectPosition }}"
+                            class="block h-full w-full object-contain"
+                            style="height: 100%; width: 100%; object-fit: contain;"
                             @if ($index === 0)
                                 fetchpriority="high"
                             @else
@@ -66,38 +56,6 @@
                         >
                     </picture>
 
-                    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/65 to-slate-950/10"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-
-                    <div class="relative z-20 mx-auto flex min-h-[280px] max-w-7xl items-center px-4 py-12 sm:min-h-[360px] lg:min-h-[460px]">
-                        <div class="max-w-2xl">
-                            <p class="text-xs font-semibold uppercase tracking-[0.24em] text-amber-400 sm:text-sm">
-                                Informasi Pilihan
-                            </p>
-
-                            <h1 class="mt-3 text-3xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-                                {{ $banner->title }}
-                            </h1>
-
-                            @if (filled($banner->subtitle))
-                                <p class="mt-4 max-w-xl text-sm leading-7 text-slate-200 sm:text-lg">
-                                    {{ $banner->subtitle }}
-                                </p>
-                            @endif
-
-                            @if (
-                                filled($banner->cta_label)
-                                && filled($banner->cta_url)
-                            )
-                                <a
-                                    href="{{ $banner->cta_url }}"
-                                    class="mt-6 inline-flex items-center rounded-lg bg-amber-400 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 focus:ring-offset-slate-950"
-                                >
-                                    {{ $banner->cta_label }}
-                                </a>
-                            @endif
-                        </div>
-                    </div>
                 </article>
             @endforeach
         </div>
