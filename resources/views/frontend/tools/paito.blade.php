@@ -56,13 +56,18 @@ Tampilkan
 <div class="flex flex-wrap gap-3">
 @foreach($palette as $name => $hex)
 <button
-type="button"
-data-tool="paint"
-data-color="{{ $name }}"
-class="paito-tool h-10 w-10 rounded-lg border-2 border-transparent"
-style="background-color: {{ $hex }}"
-title="{{ $name }}"
-></button>
+    type="button"
+    data-tool="paint"
+    data-color="{{ $name }}"
+    class="paito-tool inline-flex items-center gap-2 rounded-lg border border-slate-600 px-3 py-2 text-sm font-semibold text-white"
+    title="{{ ucfirst($name) }}"
+>
+    <span
+        class="h-6 w-6 rounded border border-white/50"
+        style="background-color: {{ $hex }}"
+    ></span>
+    <span>{{ ucfirst($name) }}</span>
+</button>
 @endforeach
 
 <button
@@ -119,6 +124,20 @@ Hapus Semua Warna
                     placeholder="Contoh: 123"
                     class="auto-paito-input w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white"
                 >
+
+                <select
+                    data-auto-color="{{ $position }}"
+                    class="mt-2 w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white"
+                >
+                    @foreach ($palette as $colorName => $hex)
+                        <option
+                            value="{{ $colorName }}"
+                            @selected($colorName === 'red')
+                        >
+                            {{ ucfirst($colorName) }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
         @endforeach
     </div>
@@ -141,20 +160,37 @@ Belum ada Result pada pasaran yang dipilih.
 <table class="min-w-full border-collapse bg-slate-900">
 <thead>
 <tr class="bg-slate-800 text-center text-sm font-bold text-white">
-<th class="border border-slate-700 px-5 py-4">AS</th>
-<th class="border border-slate-700 px-5 py-4">KOP</th>
-<th class="border border-slate-700 px-5 py-4">KEPALA</th>
-<th class="border border-slate-700 px-5 py-4">EKOR</th>
-<th class="border border-slate-700 px-5 py-4">JUMLAH</th>
+    <th class="border border-slate-700 px-4 py-4">
+        Hari
+    </th>
+
+    @for ($column = 1; $column <= 5; $column++)
+        <th
+            class="border border-slate-700 px-5 py-4"
+            aria-label="Angka {{ $column }}"
+        ></th>
+    @endfor
 </tr>
 </thead>
 <tbody>
 @foreach($rows as $row)
 <tr
-data-date="{{ $row['date'] }}"
-data-market="{{ $row['market'] }}"
-data-result="{{ $row['winning_numbers'] }}"
+    data-date="{{ $row['date'] }}"
+    data-market="{{ $row['market'] }}"
+    data-result="{{ $row['winning_numbers'] }}"
 >
+    <th
+        scope="row"
+        data-paito-day
+        class="whitespace-nowrap border border-slate-700 bg-slate-800 px-4 py-4 text-left text-sm font-bold uppercase text-amber-300"
+    >
+        {{
+            \Illuminate\Support\Carbon::parse($row['date'])
+                ->locale('id')
+                ->translatedFormat('l')
+        }}
+    </th>
+
 @foreach($row['values'] as $position => $digit)
 @php
 $colorName = $row['colors'][$position] ?? null;
@@ -246,8 +282,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const digits = input.value.replace(/\D/g, '');
 
                 if (digits !== '') {
-                    rules[input.dataset.autoPosition] =
-                        [...new Set(digits.split(''))];
+                    const position = input.dataset.autoPosition;
+                    const color = document.querySelector(
+                        `[data-auto-color="${position}"]`
+                    )?.value || 'red';
+
+                    rules[position] = {
+                        digits: [...new Set(digits.split(''))],
+                        color,
+                    };
                 }
             });
 
@@ -260,16 +303,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('.paito-cell')
             .forEach((cell) => {
-                const accepted = rules[cell.dataset.position];
+                const rule = rules[cell.dataset.position];
 
                 if (
-                    accepted
-                    && accepted.includes(cell.textContent.trim())
+                    rule
+                    && rule.digits.includes(cell.textContent.trim())
                 ) {
                     cells.push({
                         result_id: Number(cell.dataset.resultId),
                         position: cell.dataset.position,
-                        color: activeColor,
+                        color: rule.color,
                     });
                 }
             });
@@ -299,14 +342,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('.paito-cell')
             .forEach((cell) => {
-                const accepted = rules[cell.dataset.position];
+                const rule = rules[cell.dataset.position];
 
                 if (
-                    accepted
-                    && accepted.includes(cell.textContent.trim())
+                    rule
+                    && rule.digits.includes(cell.textContent.trim())
                 ) {
-                    cell.style.backgroundColor = colors[activeColor];
-                    cell.dataset.color = activeColor;
+                    cell.style.backgroundColor = colors[rule.color];
+                    cell.dataset.color = rule.color;
                 }
             });
     });

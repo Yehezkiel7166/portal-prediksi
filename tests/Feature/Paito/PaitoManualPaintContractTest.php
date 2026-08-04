@@ -6,18 +6,23 @@ use Tests\TestCase;
 
 class PaitoManualPaintContractTest extends TestCase
 {
-    public function test_paito_uses_required_columns(): void
+    public function test_paito_uses_day_grid(): void
     {
         $view = file_get_contents(
-            resource_path('views/frontend/tools/paito.blade.php')
+            resource_path(
+                'views/frontend/tools/paito.blade.php'
+            )
         );
 
-        foreach (['AS', 'KOP', 'KEPALA', 'EKOR', 'JUMLAH'] as $column) {
-            $this->assertStringContainsString(
-                '>'.$column.'<',
-                $view,
-            );
-        }
+        $this->assertStringContainsString(
+            'data-paito-day',
+            $view,
+        );
+
+        $this->assertStringContainsString(
+            "translatedFormat('l')",
+            $view,
+        );
 
         $this->assertStringNotContainsString(
             '>Tanggal<',
@@ -28,7 +33,9 @@ class PaitoManualPaintContractTest extends TestCase
     public function test_manual_paint_controls_exist(): void
     {
         $view = file_get_contents(
-            resource_path('views/frontend/tools/paito.blade.php')
+            resource_path(
+                'views/frontend/tools/paito.blade.php'
+            )
         );
 
         $this->assertStringContainsString(
@@ -47,7 +54,7 @@ class PaitoManualPaintContractTest extends TestCase
         );
 
         $this->assertStringContainsString(
-            'data-position="{{ $position }}"',
+            '{{ ucfirst($name) }}',
             $view,
         );
     }
