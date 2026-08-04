@@ -1,20 +1,227 @@
 @extends('frontend.layouts.app')
-@section('title', 'Paito Togel Warna dan Data Result | '.config('app.name'))
-@section('description', 'Paito warna berdasarkan data Result resmi yang tersimpan pada sistem.')
+
+@section('title', 'Paito Togel Warna | '.config('app.name'))
+@section('description', 'Paito AS KOP KEPALA EKOR dan JUMLAH dari data Result.')
+
 @section('metadata')
 <link rel="canonical" href="{{ route('tools.paito') }}">
-<meta property="og:title" content="Paito Togel Warna dan Data Result | {{ config('app.name') }}">
-<meta property="og:description" content="Paito warna otomatis dari data Result resmi.">
+<meta property="og:title" content="Paito Togel Warna">
 <meta property="og:type" content="website">
-<meta property="og:url" content="{{ route('tools.paito') }}">
 @endsection
+
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900"><div class="mx-auto max-w-7xl px-4 py-12 md:py-16"><p class="text-sm font-semibold uppercase tracking-widest text-amber-400">Alat Togel</p><h1 class="mt-3 text-3xl font-bold text-white md:text-5xl">Paito Togel Warna</h1><p class="mt-5 max-w-3xl text-slate-300">Tampilan historis ini dibentuk langsung dari data Result resmi. Paito tidak membuat atau menggandakan data hasil.</p></div></section>
-<section class="bg-slate-950"><div class="mx-auto max-w-7xl px-4 py-12">
-<form method="GET" action="{{ route('tools.paito') }}" class="grid gap-4 rounded-xl border border-slate-800 bg-slate-900 p-5 md:grid-cols-4"><div><label class="text-sm font-semibold text-white" for="market">Pasaran</label><select id="market" name="market" class="mt-2 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white"><option value="">Semua pasaran</option>@foreach($markets as $market)<option value="{{ $market->slug }}" @selected(($filters['market'] ?? '') === $market->slug)>{{ $market->name }}</option>@endforeach</select></div><div><label class="text-sm font-semibold text-white" for="from">Dari tanggal</label><input id="from" name="from" type="date" value="{{ $filters['from'] ?? '' }}" class="mt-2 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white"></div><div><label class="text-sm font-semibold text-white" for="to">Sampai tanggal</label><input id="to" name="to" type="date" value="{{ $filters['to'] ?? '' }}" class="mt-2 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3 text-white"></div><div class="flex items-end"><button class="w-full rounded-lg bg-amber-400 px-5 py-3 font-semibold text-slate-950 hover:bg-amber-300">Tampilkan</button></div></form>
-@error('to')<p class="mt-3 text-sm text-red-400">{{ $message }}</p>@enderror
-<div class="mt-6 flex flex-wrap gap-2">@foreach($legend as $digit => $color)<span class="rounded px-2 py-1 text-xs font-semibold {{ $color['class'] }}">{{ $digit }} {{ $color['name'] }}</span>@endforeach</div>
-@if(empty($rows))<div class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-8 text-center text-slate-300">Belum ada Result resmi pada rentang yang dipilih.</div>@else<div class="mt-8 overflow-x-auto rounded-xl border border-slate-800"><table class="min-w-full divide-y divide-slate-800 bg-slate-900"><thead><tr class="text-left text-xs uppercase tracking-wider text-slate-400"><th class="px-4 py-3">Tanggal</th><th class="px-4 py-3">Pasaran</th><th class="px-4 py-3">Nomor Result</th><th class="px-4 py-3">Paito</th></tr></thead><tbody class="divide-y divide-slate-800">@foreach($rows as $row)<tr><td class="whitespace-nowrap px-4 py-4 text-sm text-slate-300">{{ $row['date'] }}</td><td class="whitespace-nowrap px-4 py-4 text-sm font-semibold text-white">{{ $row['market'] }}</td><td class="px-4 py-4 font-mono text-sm text-slate-300">{{ $row['winning_numbers'] }}</td><td class="px-4 py-4"><div class="flex flex-wrap gap-1">@foreach($row['digits'] as $digit)<span title="{{ $digit['name'] }}" class="flex h-8 w-8 items-center justify-center rounded font-bold {{ $digit['class'] }}">{{ $digit['digit'] }}</span>@endforeach</div></td></tr>@endforeach</tbody></table></div>@endif
-<p class="mt-5 text-sm text-slate-500">Maksimal 180 hasil terbaru ditampilkan. Cache berubah otomatis ketika data Result diperbarui.</p>
-</div></section>
+@php
+$palette = [
+    'red' => '#ef4444',
+    'blue' => '#3b82f6',
+    'green' => '#22c55e',
+    'yellow' => '#facc15',
+    'orange' => '#f97316',
+    'purple' => '#a855f7',
+    'pink' => '#ec4899',
+    'cyan' => '#06b6d4',
+    'gray' => '#64748b',
+];
+@endphp
+
+<section class="border-b border-slate-800 bg-slate-900">
+<div class="mx-auto max-w-6xl px-4 py-10">
+<h1 class="text-3xl font-bold text-white">Paito Togel Warna</h1>
+<p class="mt-3 text-slate-300">
+Data otomatis berasal dari modul Result.
+</p>
+</div>
+</section>
+
+<section class="bg-slate-950">
+<div class="mx-auto max-w-6xl px-4 py-10">
+
+<form method="GET" class="flex flex-col gap-3 rounded-xl border border-slate-800 bg-slate-900 p-5 sm:flex-row">
+<select name="market" class="flex-1 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white">
+<option value="">Semua pasaran</option>
+@foreach($markets as $market)
+<option value="{{ $market->slug }}" @selected(($filters['market'] ?? '') === $market->slug)>
+{{ $market->name }}
+</option>
+@endforeach
+</select>
+<button class="rounded-lg bg-amber-400 px-6 py-3 font-semibold text-slate-950">
+Tampilkan
+</button>
+</form>
+
+<div class="mt-6 rounded-xl border border-slate-800 bg-slate-900 p-5">
+<p class="mb-3 text-sm font-semibold text-white">Pilih Warna</p>
+
+<div class="flex flex-wrap gap-3">
+@foreach($palette as $name => $hex)
+<button
+type="button"
+data-tool="paint"
+data-color="{{ $name }}"
+class="paito-tool h-10 w-10 rounded-lg border-2 border-transparent"
+style="background-color: {{ $hex }}"
+title="{{ $name }}"
+></button>
+@endforeach
+
+<button
+type="button"
+data-tool="erase"
+class="paito-tool rounded-lg border border-slate-600 px-4 py-2 text-sm font-semibold text-white"
+>
+Hapus
+</button>
+
+@if(($filters['market'] ?? '') !== '')
+<button
+type="button"
+id="clear-all"
+class="rounded-lg border border-red-500 px-4 py-2 text-sm font-semibold text-red-300"
+>
+Hapus Semua Warna
+</button>
+@endif
+</div>
+</div>
+
+@if($rows->isEmpty())
+<div class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-8 text-center text-slate-300">
+Belum ada Result pada pasaran yang dipilih.
+</div>
+@else
+<div class="mt-8 overflow-x-auto rounded-xl border border-slate-800">
+<table class="min-w-full border-collapse bg-slate-900">
+<thead>
+<tr class="bg-slate-800 text-center text-sm font-bold text-white">
+<th class="border border-slate-700 px-5 py-4">AS</th>
+<th class="border border-slate-700 px-5 py-4">KOP</th>
+<th class="border border-slate-700 px-5 py-4">KEPALA</th>
+<th class="border border-slate-700 px-5 py-4">EKOR</th>
+<th class="border border-slate-700 px-5 py-4">JUMLAH</th>
+</tr>
+</thead>
+<tbody>
+@foreach($rows as $row)
+<tr
+data-date="{{ $row['date'] }}"
+data-market="{{ $row['market'] }}"
+data-result="{{ $row['winning_numbers'] }}"
+>
+@foreach($row['values'] as $position => $digit)
+@php
+$colorName = $row['colors'][$position] ?? null;
+$background = $colorName ? ($palette[$colorName] ?? null) : null;
+@endphp
+<td
+class="paito-cell cursor-pointer select-none border border-slate-700 px-5 py-4 text-center text-2xl font-bold text-white"
+data-result-id="{{ $row['id'] }}"
+data-position="{{ $position }}"
+data-color="{{ $colorName }}"
+style="{{ $background ? 'background-color: '.$background : '' }}"
+>
+{{ $digit }}
+</td>
+@endforeach
+</tr>
+@endforeach
+</tbody>
+</table>
+</div>
+@endif
+
+</div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const token = document.querySelector('meta[name="csrf-token"]')?.content;
+    const colors = @json($palette);
+    let tool = 'paint';
+    let activeColor = 'red';
+
+    document.querySelectorAll('.paito-tool').forEach((button) => {
+        button.addEventListener('click', () => {
+            tool = button.dataset.tool;
+
+            if (button.dataset.color) {
+                activeColor = button.dataset.color;
+            }
+
+            document.querySelectorAll('.paito-tool')
+                .forEach((item) => item.classList.remove('ring-4', 'ring-white'));
+
+            button.classList.add('ring-4', 'ring-white');
+        });
+    });
+
+    document.querySelectorAll('.paito-cell').forEach((cell) => {
+        cell.addEventListener('click', async () => {
+            const resultId = cell.dataset.resultId;
+            const position = cell.dataset.position;
+            const deleting = tool === 'erase';
+
+            const response = await fetch(
+                `/alat-togel/paito-warna/result/${resultId}/color`,
+                {
+                    method: deleting ? 'DELETE' : 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': token,
+                    },
+                    body: JSON.stringify(
+                        deleting
+                            ? { position }
+                            : { position, color: activeColor }
+                    ),
+                }
+            );
+
+            if (!response.ok) {
+                alert('Gagal menyimpan warna.');
+                return;
+            }
+
+            cell.style.backgroundColor =
+                deleting ? '' : colors[activeColor];
+
+            cell.dataset.color =
+                deleting ? '' : activeColor;
+        });
+    });
+
+    document.getElementById('clear-all')?.addEventListener('click', async () => {
+        if (!confirm('Hapus semua warna pada pasaran ini?')) {
+            return;
+        }
+
+        const market = @json($markets->firstWhere(
+            'slug',
+            $filters['market'] ?? ''
+        )?->getKey());
+
+        const response = await fetch(
+            `/alat-togel/paito-warna/market/${market}/colors`,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': token,
+                },
+            }
+        );
+
+        if (!response.ok) {
+            alert('Gagal menghapus warna.');
+            return;
+        }
+
+        document.querySelectorAll('.paito-cell').forEach((cell) => {
+            cell.style.backgroundColor = '';
+            cell.dataset.color = '';
+        });
+    });
+});
+</script>
 @endsection

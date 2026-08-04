@@ -134,3 +134,18 @@ Route::get('/alat-togel/buku-mimpi/{slug}', [DreamBookController::class, 'show']
 
 Route::get('/alat-togel/paito-warna', PaitoController::class)
     ->name('tools.paito');
+
+Route::post(
+    '/alat-togel/paito-warna/result/{result}/color',
+    [\App\Http\Controllers\Frontend\PaitoColorController::class, 'save'],
+)->middleware('throttle:120,1')->name('tools.paito.color.save');
+
+Route::delete(
+    '/alat-togel/paito-warna/result/{result}/color',
+    [\App\Http\Controllers\Frontend\PaitoColorController::class, 'delete'],
+)->middleware('throttle:120,1')->name('tools.paito.color.delete');
+
+Route::delete(
+    '/alat-togel/paito-warna/market/{market}/colors',
+    [\App\Http\Controllers\Frontend\PaitoColorController::class, 'clear'],
+)->middleware('throttle:10,1')->name('tools.paito.color.clear');
