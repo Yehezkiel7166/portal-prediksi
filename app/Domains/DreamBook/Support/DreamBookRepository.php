@@ -2,9 +2,12 @@
 
 namespace App\Domains\DreamBook\Support;
 
+use App\Domains\DreamBook\Models\DreamBookEntry;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use Throwable;
 
 final class DreamBookRepository
 {
@@ -15,15 +18,13 @@ final class DreamBookRepository
 
         if ($needle !== '') {
             $entries = $entries->filter(function (array $entry) use ($needle): bool {
-                $haystack = Str::lower(implode(' ', [
+                return str_contains(Str::lower(implode(' ', [
                     $entry['number'],
                     $entry['title'],
                     $entry['slug'],
                     $entry['interpretation'],
                     implode(' ', $entry['keywords']),
-                ]));
-
-                return str_contains($haystack, $needle);
+                ])), $needle);
             })->values();
         }
 
@@ -46,14 +47,35 @@ final class DreamBookRepository
     public function related(array $entry, int $limit = 4): Collection
     {
         return $this->all()
-            ->reject(fn (array $candidate): bool => $candidate['slug'] === $entry['slug'])
-            ->sortBy(fn (array $candidate): int => abs((int) $candidate['number'] - (int) $entry['number']))
+            ->reject(fn (array $item): bool => $item['slug'] === $entry['slug'])
+            ->sortBy(fn (array $item): int => abs((int) $item['number'] - (int) $entry['number']))
             ->take($limit)
             ->values();
     }
 
     public function all(): Collection
     {
+        try {
+            if (Schema::hasTable('dream_book_entries')) {
+                $entries = DreamBookEntry::query()
+                    ->active()
+                    ->ordered()
+                    ->get()
+                    ->map(fn (DreamBookEntry $entry): array => [
+                        'number' => $entry->number,
+                        'slug' => $entry->slug,
+                        'title' => $entry->title,
+                        'keywords' => $entry->keywords ?? [],
+                        'interpretation' => $entry->interpretation,
+                    ]);
+
+                if ($entries->isNotEmpty()) {
+                    return $entries;
+                }
+            }
+        } catch (Throwable) {
+        }
+
         return collect(config('dream-book.entries', []))
             ->sortBy(fn (array $entry): int => (int) $entry['number'])
             ->values();
