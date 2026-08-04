@@ -6,6 +6,7 @@ use App\Domains\Market\Models\Market;
 use App\Domains\Paito\Actions\DeleteAllPaitoColors;
 use App\Domains\Paito\Actions\DeletePaitoCellColor;
 use App\Domains\Paito\Actions\SavePaitoCellColor;
+use App\Domains\Paito\Actions\SavePaitoCellColors;
 use App\Domains\Result\Models\Result;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
@@ -50,6 +51,26 @@ final class PaitoColorController extends Controller
         );
 
         return response()->json(['deleted' => true]);
+    }
+
+    public function bulk(
+        Request $request,
+        SavePaitoCellColors $action,
+    ): JsonResponse {
+        $validated = $request->validate([
+            'cells' => [
+                'required',
+                'array',
+                'min:1',
+                'max:900',
+            ],
+        ]);
+
+        return response()->json([
+            'saved' => $action->execute(
+                $validated['cells'],
+            ),
+        ]);
     }
 
     public function clear(

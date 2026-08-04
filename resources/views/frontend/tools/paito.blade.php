@@ -85,6 +85,53 @@ Hapus Semua Warna
 </div>
 </div>
 
+<div class="mt-6 rounded-xl border border-slate-800 bg-slate-900 p-5">
+    <h2 class="text-lg font-bold text-white">
+        Pewarnaan Otomatis
+    </h2>
+
+    <p class="mt-1 text-sm text-slate-400">
+        Isi digit yang ingin ditandai. Warna mengikuti
+        warna aktif pada pilihan warna di atas.
+    </p>
+
+    <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        @foreach([
+            'as' => 'AS',
+            'kop' => 'KOP',
+            'kepala' => 'KEPALA',
+            'ekor' => 'EKOR',
+            'jumlah' => 'JUMLAH',
+        ] as $position => $label)
+            <div>
+                <label
+                    for="auto-{{ $position }}"
+                    class="mb-2 block text-sm font-semibold text-white"
+                >
+                    {{ $label }}
+                </label>
+
+                <input
+                    id="auto-{{ $position }}"
+                    data-auto-position="{{ $position }}"
+                    maxlength="10"
+                    inputmode="numeric"
+                    placeholder="Contoh: 123"
+                    class="auto-paito-input w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white"
+                >
+            </div>
+        @endforeach
+    </div>
+
+    <button
+        type="button"
+        id="auto-paint"
+        class="mt-4 rounded-lg bg-emerald-500 px-6 py-3 font-semibold text-white hover:bg-emerald-400"
+    >
+        Proses Otomatis
+    </button>
+</div>
+
 @if($rows->isEmpty())
 <div class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-8 text-center text-slate-300">
 Belum ada Result pada pasaran yang dipilih.
@@ -189,6 +236,79 @@ document.addEventListener('DOMContentLoaded', () => {
             cell.dataset.color =
                 deleting ? '' : activeColor;
         });
+    });
+
+    document.getElementById('auto-paint')?.addEventListener('click', async () => {
+        const rules = {};
+
+        document.querySelectorAll('.auto-paito-input')
+            .forEach((input) => {
+                const digits = input.value.replace(/\D/g, '');
+
+                if (digits !== '') {
+                    rules[input.dataset.autoPosition] =
+                        [...new Set(digits.split(''))];
+                }
+            });
+
+        if (Object.keys(rules).length === 0) {
+            alert('Isi minimal satu kolom angka.');
+            return;
+        }
+
+        const cells = [];
+
+        document.querySelectorAll('.paito-cell')
+            .forEach((cell) => {
+                const accepted = rules[cell.dataset.position];
+
+                if (
+                    accepted
+                    && accepted.includes(cell.textContent.trim())
+                ) {
+                    cells.push({
+                        result_id: Number(cell.dataset.resultId),
+                        position: cell.dataset.position,
+                        color: activeColor,
+                    });
+                }
+            });
+
+        if (cells.length === 0) {
+            alert('Tidak ada angka yang cocok.');
+            return;
+        }
+
+        const response = await fetch(
+            '/alat-togel/paito-warna/colors/bulk',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': token,
+                },
+                body: JSON.stringify({ cells }),
+            }
+        );
+
+        if (!response.ok) {
+            alert('Gagal memproses pewarnaan otomatis.');
+            return;
+        }
+
+        document.querySelectorAll('.paito-cell')
+            .forEach((cell) => {
+                const accepted = rules[cell.dataset.position];
+
+                if (
+                    accepted
+                    && accepted.includes(cell.textContent.trim())
+                ) {
+                    cell.style.backgroundColor = colors[activeColor];
+                    cell.dataset.color = activeColor;
+                }
+            });
     });
 
     document.getElementById('clear-all')?.addEventListener('click', async () => {

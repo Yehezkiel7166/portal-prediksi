@@ -145,6 +145,12 @@ Route::delete(
     [\App\Http\Controllers\Frontend\PaitoColorController::class, 'delete'],
 )->middleware('throttle:120,1')->name('tools.paito.color.delete');
 
+Route::post(
+    '/alat-togel/paito-warna/colors/bulk',
+    [\App\Http\Controllers\Frontend\PaitoColorController::class, 'bulk'],
+)->middleware('throttle:30,1')
+    ->name('tools.paito.color.bulk');
+
 Route::delete(
     '/alat-togel/paito-warna/market/{market}/colors',
     [\App\Http\Controllers\Frontend\PaitoColorController::class, 'clear'],
