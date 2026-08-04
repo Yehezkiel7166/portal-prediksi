@@ -36,6 +36,11 @@ final class ResultMarketPresentationContractTest extends TestCase
         );
 
         $this->assertStringContainsString(
+            '@foreach ($markets as $market)',
+            $view,
+        );
+
+        $this->assertStringNotContainsString(
             '@forelse ($markets as $market)',
             $view,
         );
@@ -47,6 +52,15 @@ final class ResultMarketPresentationContractTest extends TestCase
 
         $this->assertStringNotContainsString(
             '@forelse ($results as $result)',
+            $view,
+        );
+        $this->assertStringContainsString(
+            'md:grid-cols-[minmax(180px,1.5fr)',
+            $view,
+        );
+
+        $this->assertStringNotContainsString(
+            'grid gap-6 md:grid-cols-2 xl:grid-cols-3',
             $view,
         );
     }
@@ -70,6 +84,16 @@ final class ResultMarketPresentationContractTest extends TestCase
 
         $this->assertStringContainsString(
             'protected static ?string $model = Market::class;',
+            $resource,
+        );
+
+        $this->assertStringContainsString(
+            "->with('latestResult')",
+            $resource,
+        );
+
+        $this->assertStringNotContainsString(
+            'latestResult:id,brand_id,market_id',
             $resource,
         );
 

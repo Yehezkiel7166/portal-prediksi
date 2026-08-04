@@ -37,9 +37,14 @@ class ResultMarketResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
-            ->with([
-                'latestResult:id,brand_id,market_id,result_date,winning_numbers,updated_at',
-            ])
+            /*
+             * Jangan membatasi kolom latestResult di sini.
+             *
+             * Relasi latestResult menggunakan ofMany(), yang membentuk
+             * join/subquery internal. Select market_id tanpa qualifier
+             * menghasilkan ambiguous column pada MySQL production.
+             */
+            ->with('latestResult')
             ->withCount('results')
             ->withMax('results', 'updated_at')
             ->ordered();
