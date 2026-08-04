@@ -11,31 +11,54 @@ use Throwable;
 
 final class DreamBookRepository
 {
-    public function search(?string $query, int $page = 1): LengthAwarePaginator
-    {
+    public function search(
+        ?string $query,
+        int $page = 1,
+        ?string $category = null,
+    ): LengthAwarePaginator {
         $entries = $this->all();
         $needle = Str::lower(trim((string) $query));
+        $category = Str::upper(trim((string) $category));
 
-        if ($needle !== '') {
-            $entries = $entries->filter(function (array $entry) use ($needle): bool {
-                return str_contains(Str::lower(implode(' ', [
-                    $entry['number'],
-                    $entry['title'],
-                    $entry['slug'],
-                    $entry['interpretation'],
-                    implode(' ', $entry['keywords']),
-                ])), $needle);
-            })->values();
+        if (in_array($category, ['2D', '3D', '4D'], true)) {
+            $entries = $entries
+                ->where('category', $category)
+                ->values();
         }
 
-        $perPage = max(1, (int) config('dream-book.per_page', 12));
+        if ($needle !== '') {
+            $entries = $entries
+                ->filter(function (array $entry) use ($needle): bool {
+                    $haystack = Str::lower(implode(' ', [
+                        $entry['number'],
+                        $entry['category'],
+                        $entry['description'],
+                        $entry['numbers'],
+                        $entry['title'],
+                        $entry['slug'],
+                        $entry['interpretation'],
+                        implode(' ', $entry['keywords']),
+                    ]));
+
+                    return str_contains($haystack, $needle);
+                })
+                ->values();
+        }
+
+        $perPage = max(
+            1,
+            (int) config('dream-book.per_page', 12),
+        );
 
         return new LengthAwarePaginator(
             $entries->forPage($page, $perPage)->values(),
             $entries->count(),
             $perPage,
             $page,
-            ['path' => request()->url(), 'query' => request()->query()],
+            [
+                'path' => request()->url(),
+                'query' => request()->query(),
+            ],
         );
     }
 
@@ -44,11 +67,20 @@ final class DreamBookRepository
         return $this->all()->firstWhere('slug', $slug);
     }
 
-    public function related(array $entry, int $limit = 4): Collection
-    {
+    public function related(
+        array $entry,
+        int $limit = 4,
+    ): Collection {
         return $this->all()
-            ->reject(fn (array $item): bool => $item['slug'] === $entry['slug'])
-            ->sortBy(fn (array $item): int => abs((int) $item['number'] - (int) $entry['number']))
+            ->reject(
+                fn (array $candidate): bool => $candidate['slug'] === $entry['slug']
+            )
+            ->sortBy(
+                fn (array $candidate): int => abs(
+                    (int) $candidate['number']
+                    - (int) $entry['number']
+                )
+            )
             ->take($limit)
             ->values();
     }
@@ -61,13 +93,20 @@ final class DreamBookRepository
                     ->active()
                     ->ordered()
                     ->get()
-                    ->map(fn (DreamBookEntry $entry): array => [
-                        'number' => $entry->number,
-                        'slug' => $entry->slug,
-                        'title' => $entry->title,
-                        'keywords' => $entry->keywords ?? [],
-                        'interpretation' => $entry->interpretation,
-                    ]);
+                    ->map(
+                        fn (DreamBookEntry $entry): array => [
+                            'number' => $entry->number,
+                            'category' => $entry->category ?? '2D',
+                            'description' => $entry->description
+                                ?: $entry->title,
+                            'numbers' => $entry->numbers
+                                ?: $entry->number,
+                            'slug' => $entry->slug,
+                            'title' => $entry->title,
+                            'keywords' => $entry->keywords ?? [],
+                            'interpretation' => $entry->interpretation,
+                        ]
+                    );
 
                 if ($entries->isNotEmpty()) {
                     return $entries;
@@ -77,7 +116,21 @@ final class DreamBookRepository
         }
 
         return collect(config('dream-book.entries', []))
-            ->sortBy(fn (array $entry): int => (int) $entry['number'])
+            ->map(
+                fn (array $entry): array => [
+                    'number' => (string) $entry['number'],
+                    'category' => '2D',
+                    'description' => $entry['title'],
+                    'numbers' => (string) $entry['number'],
+                    'slug' => $entry['slug'],
+                    'title' => $entry['title'],
+                    'keywords' => $entry['keywords'] ?? [],
+                    'interpretation' => $entry['interpretation'] ?? '',
+                ]
+            )
+            ->sortBy(
+                fn (array $entry): int => (int) $entry['number']
+            )
             ->values();
     }
 }
