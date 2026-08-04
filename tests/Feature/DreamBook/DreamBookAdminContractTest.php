@@ -6,19 +6,44 @@ use Tests\TestCase;
 
 class DreamBookAdminContractTest extends TestCase
 {
-    public function test_admin_resource_and_database_repository_exist(): void
+    public function test_admin_uses_classic_dream_book_fields(): void
     {
         $resource = file_get_contents(
-            app_path('Filament/Resources/DreamBookEntries/DreamBookEntryResource.php')
+            app_path(
+                'Filament/Resources/DreamBookEntries/DreamBookEntryResource.php'
+            )
         );
 
-        $repository = file_get_contents(
-            app_path('Domains/DreamBook/Support/DreamBookRepository.php')
+        $this->assertIsString($resource);
+
+        $this->assertStringContainsString(
+            "->label('Nomor')",
+            $resource,
         );
 
-        $this->assertStringContainsString("'Tabel Mimpi'", $resource);
-        $this->assertStringContainsString("'dream-book'", $resource);
-        $this->assertStringContainsString("Schema::hasTable('dream_book_entries')", $repository);
-        $this->assertStringContainsString("config('dream-book.entries', [])", $repository);
+        $this->assertStringContainsString(
+            "->label('Keterangan')",
+            $resource,
+        );
+
+        $this->assertStringContainsString(
+            "->label('Kategori Angka')",
+            $resource,
+        );
+
+        $this->assertStringContainsString(
+            "->label('Angka')",
+            $resource,
+        );
+
+        $this->assertStringNotContainsString(
+            "TagsInput::make('keywords')",
+            $resource,
+        );
+
+        $this->assertStringNotContainsString(
+            "Textarea::make('interpretation')",
+            $resource,
+        );
     }
 }
