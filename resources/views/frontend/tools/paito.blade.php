@@ -160,8 +160,10 @@ Hapus Semua Warna
                 <input
                     id="auto-{{ $position }}"
                     data-auto-position="{{ $position }}"
-                    maxlength="10"
+                    maxlength="1"
                     inputmode="numeric"
+                    pattern="[0-9]"
+                    data-single-digit
                     placeholder="Contoh: 123"
                     class="auto-paito-input w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white"
                 >
@@ -207,79 +209,102 @@ Belum ada Result pada pasaran yang dipilih.
 </div>
 @else
 <div
-    class="mt-8 overflow-x-auto rounded-xl border border-slate-700 bg-slate-950 shadow-xl"
-    data-paito-classic-grid
+    class="mt-8 overflow-x-auto rounded-xl border border-slate-700 bg-slate-950"
+    data-paito-weekly-grid
 >
-<table
-    class="w-full min-w-[560px] table-fixed border-collapse bg-slate-900"
->
-<thead>
-<tr class="bg-slate-800 text-center text-xs font-bold uppercase tracking-wider text-slate-300">
-    <th
-        class="w-28 border border-slate-600 px-3 py-3"
-    >
-        Hari
-    </th>
+<table class="min-w-[1540px] border-collapse bg-slate-900">
+    <thead>
+        <tr class="bg-slate-200 text-center text-xs font-bold text-slate-950">
+            @php
+                $dayLabels = [
+                    1 => 'Senin',
+                    2 => 'Selasa',
+                    3 => 'Rabu',
+                    4 => 'Kamis',
+                    5 => 'Jumat',
+                    6 => 'Sabtu',
+                    7 => 'Minggu',
+                ];
+            @endphp
 
-    @for ($column = 1; $column <= 5; $column++)
-        <th
-            class="border border-slate-600 p-0"
-            aria-label="Kolom angka {{ $column }}"
-        >
-            <span class="sr-only">
-                Angka {{ $column }}
-            </span>
-        </th>
-    @endfor
-</tr>
-</thead>
-<tbody>
-@foreach($rows as $row)
-<tr
-    data-date="{{ $row['date'] }}"
-    data-market="{{ $row['market'] }}"
-    data-result="{{ $row['winning_numbers'] }}"
-    class="odd:bg-slate-900 even:bg-slate-950/60 hover:bg-slate-800/70"
->
-    <th
-        scope="row"
-        data-paito-day
-        class="border border-slate-600 bg-slate-800 px-3 py-3 text-center text-sm font-black uppercase tracking-wide text-amber-300"
-    >
-        {{
-            \Illuminate\Support\Carbon::parse(
-                $row['date']
-            )
-                ->locale('id')
-                ->translatedFormat('l')
-        }}
-    </th>
+            @foreach ($dayLabels as $dayNumber => $dayLabel)
+                <th
+                    colspan="4"
+                    class="border border-slate-400 px-2 py-2"
+                >
+                    {{ $dayLabel }}
+                </th>
 
-@foreach($row['values'] as $position => $digit)
-@php
-$colorName = $row['colors'][$position] ?? null;
-$background = $colorName ? ($palette[$colorName] ?? null) : null;
-@endphp
-<td
-    class="paito-cell h-16 cursor-pointer select-none border border-slate-600 p-0 text-center align-middle text-2xl font-black text-white transition hover:brightness-125 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-300"
-    data-result-id="{{ $row['id'] }}"
-    data-position="{{ $position }}"
-    data-color="{{ $colorName }}"
-    data-digit="{{ $digit }}"
-    tabindex="0"
-    role="button"
-    aria-label="Warnai angka {{ $digit }}"
-    style="{{ $background ? 'background-color: '.$background : '' }}"
->
-    <span class="inline-flex h-12 w-12 items-center justify-center">
-        {{ $digit }}
-    </span>
-</td>
-@endforeach
-</tr>
-@endforeach
-</tbody>
+                <th
+                    class="w-10 border border-slate-400 px-2 py-2"
+                    aria-label="Jumlah {{ $dayLabel }}"
+                >
+                    D
+                </th>
+            @endforeach
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach ($weeks as $week)
+            <tr>
+                @foreach (range(1, 7) as $dayNumber)
+                    @php
+                        $day = $week['days'][$dayNumber];
+                    @endphp
+
+                    @if ($day !== null)
+                        <span class="sr-only">
+                            {{ $day['winning_numbers'] }}
+                        </span>
+                    @endif
+
+                    @php
+                        $positions = [
+                            'as',
+                            'kop',
+                            'kepala',
+                            'ekor',
+                            'jumlah',
+                        ];
+                    @endphp
+
+                    @foreach ($positions as $position)                        @php
+                            $digit = $day['cells'][$position] ?? '';
+                            $colorName =
+                                $day['colors'][$position] ?? null;
+                            $background = $colorName
+                                ? ($palette[$colorName] ?? null)
+                                : null;
+                        @endphp
+
+                        <td
+                            @class([
+                                'paito-cell h-10 min-w-10 select-none border border-slate-600 p-0 text-center text-sm font-bold transition',
+                                'cursor-pointer text-white hover:brightness-125' =>
+                                    $day !== null,
+                                'bg-slate-950 text-slate-700' =>
+                                    $day === null,
+                            ])
+                            data-result-id="{{ $day['id'] ?? '' }}"
+                            data-position="{{ $position }}"
+                            data-digit="{{ $digit }}"
+                            data-color="{{ $colorName }}"
+                            tabindex="{{ $day !== null ? '0' : '-1' }}"
+                            role="{{ $day !== null ? 'button' : 'cell' }}"
+                            style="{{ $background
+                                ? 'background-color: '.$background
+                                : '' }}"
+                        >
+                            {{ $digit }}
+                        </td>
+                    @endforeach
+                @endforeach
+            </tr>
+        @endforeach
+    </tbody>
 </table>
+</div>
 </div>
 @endif
 
@@ -462,9 +487,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             document.querySelectorAll('.auto-paito-input')
                 .forEach((input) => {
-                    const digits = input.value.replace(/\D/g, '');
+                    const digit = input.value
+                        .replace(/\D/g, '')
+                        .slice(0, 1);
 
-                    if (digits === '') {
+                    input.value = digit;
+
+                    if (digit === '') {
                         return;
                     }
 
@@ -474,7 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     )?.value || 'red';
 
                     rules[position] = {
-                        digits: [...new Set(digits.split(''))],
+                        digits: [digit],
                         color,
                     };
                 });

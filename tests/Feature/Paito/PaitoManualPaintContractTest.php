@@ -6,7 +6,7 @@ use Tests\TestCase;
 
 class PaitoManualPaintContractTest extends TestCase
 {
-    public function test_paito_uses_day_grid(): void
+    public function test_paito_uses_weekly_result_grid(): void
     {
         $view = file_get_contents(
             resource_path(
@@ -15,17 +15,22 @@ class PaitoManualPaintContractTest extends TestCase
         );
 
         $this->assertStringContainsString(
-            'data-paito-day',
+            'data-paito-weekly-grid',
             $view,
         );
 
         $this->assertStringContainsString(
-            "translatedFormat('l')",
+            '@foreach ($weeks as $week)',
+            $view,
+        );
+
+        $this->assertStringContainsString(
+            '@foreach (range(1, 7) as $dayNumber)',
             $view,
         );
 
         $this->assertStringNotContainsString(
-            '>Tanggal<',
+            'data-paito-day',
             $view,
         );
     }
@@ -38,24 +43,20 @@ class PaitoManualPaintContractTest extends TestCase
             )
         );
 
-        $this->assertStringContainsString(
-            'data-tool="paint"',
-            $view,
-        );
-
-        $this->assertStringContainsString(
-            'data-tool="erase"',
-            $view,
-        );
-
-        $this->assertStringContainsString(
-            'Hapus Semua Warna',
-            $view,
-        );
-
-        $this->assertStringContainsString(
-            '{{ ucfirst($name) }}',
-            $view,
-        );
+        foreach (
+            [
+                'data-tool="paint"',
+                'data-tool="erase"',
+                'Hapus Semua Warna',
+                'activeColor = button.dataset.color;',
+                '{ position, color: activeColor }',
+                'handleCellPaint',
+            ] as $contract
+        ) {
+            $this->assertStringContainsString(
+                $contract,
+                $view,
+            );
+        }
     }
 }
