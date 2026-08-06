@@ -197,19 +197,30 @@ Hapus Semua Warna
 Belum ada Result pada pasaran yang dipilih.
 </div>
 @else
-<div class="mt-8 overflow-x-auto rounded-xl border border-slate-800">
-<table class="min-w-full border-collapse bg-slate-900">
+<div
+    class="mt-8 overflow-x-auto rounded-xl border border-slate-700 bg-slate-950 shadow-xl"
+    data-paito-classic-grid
+>
+<table
+    class="w-full min-w-[560px] table-fixed border-collapse bg-slate-900"
+>
 <thead>
-<tr class="bg-slate-800 text-center text-sm font-bold text-white">
-    <th class="border border-slate-700 px-4 py-4">
+<tr class="bg-slate-800 text-center text-xs font-bold uppercase tracking-wider text-slate-300">
+    <th
+        class="w-28 border border-slate-600 px-3 py-3"
+    >
         Hari
     </th>
 
     @for ($column = 1; $column <= 5; $column++)
         <th
-            class="border border-slate-700 px-5 py-4"
-            aria-label="Angka {{ $column }}"
-        ></th>
+            class="border border-slate-600 p-0"
+            aria-label="Kolom angka {{ $column }}"
+        >
+            <span class="sr-only">
+                Angka {{ $column }}
+            </span>
+        </th>
     @endfor
 </tr>
 </thead>
@@ -219,14 +230,17 @@ Belum ada Result pada pasaran yang dipilih.
     data-date="{{ $row['date'] }}"
     data-market="{{ $row['market'] }}"
     data-result="{{ $row['winning_numbers'] }}"
+    class="odd:bg-slate-900 even:bg-slate-950/60 hover:bg-slate-800/70"
 >
     <th
         scope="row"
         data-paito-day
-        class="whitespace-nowrap border border-slate-700 bg-slate-800 px-4 py-4 text-left text-sm font-bold uppercase text-amber-300"
+        class="border border-slate-600 bg-slate-800 px-3 py-3 text-center text-sm font-black uppercase tracking-wide text-amber-300"
     >
         {{
-            \Illuminate\Support\Carbon::parse($row['date'])
+            \Illuminate\Support\Carbon::parse(
+                $row['date']
+            )
                 ->locale('id')
                 ->translatedFormat('l')
         }}
@@ -238,13 +252,19 @@ $colorName = $row['colors'][$position] ?? null;
 $background = $colorName ? ($palette[$colorName] ?? null) : null;
 @endphp
 <td
-class="paito-cell cursor-pointer select-none border border-slate-700 px-5 py-4 text-center text-2xl font-bold text-white"
-data-result-id="{{ $row['id'] }}"
-data-position="{{ $position }}"
-data-color="{{ $colorName }}"
-style="{{ $background ? 'background-color: '.$background : '' }}"
+    class="paito-cell h-16 cursor-pointer select-none border border-slate-600 p-0 text-center align-middle text-2xl font-black text-white transition hover:brightness-125 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-300"
+    data-result-id="{{ $row['id'] }}"
+    data-position="{{ $position }}"
+    data-color="{{ $colorName }}"
+    data-digit="{{ $digit }}"
+    tabindex="0"
+    role="button"
+    aria-label="Warnai angka {{ $digit }}"
+    style="{{ $background ? 'background-color: '.$background : '' }}"
 >
-{{ $digit }}
+    <span class="inline-flex h-12 w-12 items-center justify-center">
+        {{ $digit }}
+    </span>
 </td>
 @endforeach
 </tr>
