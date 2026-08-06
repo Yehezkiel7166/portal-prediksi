@@ -227,34 +227,69 @@ Hapus Semua Warna
     data-paito-weekly-grid
 >
 <table class="min-w-[1540px] border-collapse bg-slate-900">
-    <thead>
-        <tr class="bg-slate-200 text-center text-xs font-bold text-slate-950">
-            @php
-                $dayLabels = [
-                    1 => 'Senin',
-                    2 => 'Selasa',
-                    3 => 'Rabu',
-                    4 => 'Kamis',
-                    5 => 'Jumat',
-                    6 => 'Sabtu',
-                    7 => 'Minggu',
-                ];
-            @endphp
+    <thead data-paito-gold-header>
+        @php
+            $dayLabels = [
+                1 => 'Senin',
+                2 => 'Selasa',
+                3 => 'Rabu',
+                4 => 'Kamis',
+                5 => 'Jumat',
+                6 => 'Sabtu',
+                7 => 'Minggu',
+            ];
+        @endphp
 
+        <tr
+            class="bg-slate-900 text-center text-sm font-bold text-amber-400"
+            data-paito-weekday-header
+        >
             @foreach ($dayLabels as $dayNumber => $dayLabel)
                 <th
                     colspan="4"
-                    class="border border-slate-400 px-2 py-2"
+                    class="border border-slate-600 px-2 py-3 text-amber-400"
                 >
                     {{ $dayLabel }}
                 </th>
 
                 <th
-                    class="w-9 border border-slate-500 bg-slate-800/70 px-1 py-2 text-xs font-normal text-slate-400"
+                    rowspan="2"
+                    class="w-9 border border-slate-600 bg-slate-900 px-1 py-2 text-xs font-normal text-amber-400"
                     aria-label="Jumlah {{ $dayLabel }}"
                     data-paito-sum-header
                 >
                     D
+                </th>
+            @endforeach
+        </tr>
+
+        <tr
+            class="bg-slate-950 text-center text-[11px] font-semibold uppercase tracking-wide text-amber-400"
+            data-paito-position-header
+        >
+            @foreach (range(1, 7) as $dayNumber)
+                <th
+                    class="border border-slate-600 px-1 py-2 text-amber-400"
+                >
+                    AS
+                </th>
+
+                <th
+                    class="border border-slate-600 px-1 py-2 text-amber-400"
+                >
+                    KOP
+                </th>
+
+                <th
+                    class="border border-slate-600 px-1 py-2 text-amber-400"
+                >
+                    KEPALA
+                </th>
+
+                <th
+                    class="border border-slate-600 px-1 py-2 text-amber-400"
+                >
+                    EKOR
                 </th>
             @endforeach
         </tr>
@@ -284,7 +319,8 @@ Hapus Semua Warna
                         ];
                     @endphp
 
-                    @foreach ($positions as $position)                        @php
+                    @foreach ($positions as $position)
+                        @php
                             $digit = $day['cells'][$position] ?? '';
                             $colorName =
                                 $day['colors'][$position] ?? null;
