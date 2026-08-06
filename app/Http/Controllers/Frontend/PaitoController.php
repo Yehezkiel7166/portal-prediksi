@@ -39,16 +39,27 @@ final class PaitoController extends Controller
             ->ordered()
             ->get(['id', 'name', 'slug', 'code']);
 
+        $selectedMarket = $markets->firstWhere(
+            'slug',
+            $validated['market'] ?? null,
+        );
+
         $results = Result::query()
             ->whereHas(
                 'market',
                 fn (Builder $query): Builder => $query->active(),
             )
             ->when(
-                $validated['market'] ?? null,
-                fn (Builder $query, string $slug): Builder => $query->whereHas(
-                    'market',
-                    fn (Builder $market): Builder => $market->where('slug', $slug),
+                $selectedMarket !== null,
+                fn (Builder $query): Builder => $query->where(
+                    'market_id',
+                    $selectedMarket->getKey(),
+                ),
+            )
+            ->when(
+                $selectedMarket === null,
+                fn (Builder $query): Builder => $query->whereRaw(
+                    '1 = 0',
                 ),
             )
             ->when(
@@ -85,6 +96,7 @@ final class PaitoController extends Controller
 
         return view('frontend.tools.paito', [
             'markets' => $markets,
+            'selectedMarket' => $selectedMarket,
             'weeks' => $weeks,
             'rows' => $weeks,
             'filters' => $validated,

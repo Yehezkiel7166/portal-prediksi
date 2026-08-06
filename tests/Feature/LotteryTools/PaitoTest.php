@@ -37,7 +37,11 @@ final class PaitoTest extends TestCase
         Result::factory()->create(['market_id' => $market->id, 'brand_id' => $brand->id, 'result_date' => '2026-07-20', 'winning_numbers' => '1111']);
         Result::factory()->create(['market_id' => $market->id, 'brand_id' => $brand->id, 'result_date' => '2026-07-25', 'winning_numbers' => '9999']);
 
-        $this->get(route('tools.paito', ['from' => '2026-07-24', 'to' => '2026-07-26']))
+        $this->get(route('tools.paito', [
+            'market' => $market->slug,
+            'from' => '2026-07-24',
+            'to' => '2026-07-26',
+        ]))
             ->assertOk()
             ->assertSee('9999')
             ->assertDontSee('1111');

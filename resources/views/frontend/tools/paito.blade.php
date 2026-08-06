@@ -203,10 +203,24 @@ Hapus Semua Warna
     </div>
 </div>
 
-@if($rows->isEmpty())
-<div class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-8 text-center text-slate-300">
-Belum ada Result pada pasaran yang dipilih.
-</div>
+@if ($selectedMarket === null)
+    <div
+        class="mt-8 rounded-xl border border-amber-500/40 bg-amber-950/20 p-8 text-center"
+        data-paito-market-required
+    >
+        <h2 class="text-lg font-bold text-amber-300">
+            Pilih Pasaran
+        </h2>
+
+        <p class="mt-2 text-sm text-slate-300">
+            Pilih satu pasaran untuk menampilkan paito mingguan.
+        </p>
+    </div>
+@elseif ($weeks->isEmpty())
+    <div class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-8 text-center text-slate-300">
+        Belum ada Result pada pasaran
+        {{ $selectedMarket->name }}.
+    </div>
 @else
 <div
     class="mt-8 overflow-x-auto rounded-xl border border-slate-700 bg-slate-950"
