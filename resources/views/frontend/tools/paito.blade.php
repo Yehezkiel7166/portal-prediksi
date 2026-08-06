@@ -50,33 +50,74 @@ Tampilkan
 </button>
 </form>
 
-<div class="mt-6 rounded-xl border border-slate-800 bg-slate-900 p-5">
-<p class="mb-3 text-sm font-semibold text-white">Pilih Warna</p>
-
-<div class="flex flex-wrap gap-3">
-@foreach($palette as $name => $hex)
-<button
-    type="button"
-    data-tool="paint"
-    data-color="{{ $name }}"
-    class="paito-tool inline-flex items-center gap-2 rounded-lg border border-slate-600 px-3 py-2 text-sm font-semibold text-white"
-    title="{{ ucfirst($name) }}"
+<div
+    class="mt-6 rounded-xl border border-slate-800 bg-slate-900 p-5"
+    data-paito-palette
 >
-    <span
-        class="h-6 w-6 rounded border border-white/50"
-        style="background-color: {{ $hex }}"
-    ></span>
-    <span>{{ ucfirst($name) }}</span>
-</button>
-@endforeach
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+            <h2 class="text-lg font-bold text-white">
+                Pilih Warna
+            </h2>
 
-<button
-type="button"
-data-tool="erase"
-class="paito-tool rounded-lg border border-slate-600 px-4 py-2 text-sm font-semibold text-white"
->
-Hapus
-</button>
+            <p class="mt-1 text-sm text-slate-400">
+                Pilih warna, kemudian klik angka pada tabel.
+            </p>
+        </div>
+
+        <div class="inline-flex w-fit items-center gap-3 rounded-lg border border-slate-700 bg-slate-950 px-4 py-2">
+            <span
+                id="active-color-preview"
+                class="h-5 w-5 rounded border border-white/50"
+                style="background-color: #ef4444"
+            ></span>
+
+            <span class="text-sm text-slate-400">
+                Aktif:
+            </span>
+
+            <strong
+                id="active-color-label"
+                class="text-sm text-white"
+            >
+                Merah
+            </strong>
+        </div>
+    </div>
+
+    <div class="mt-5 flex flex-wrap gap-3">
+        @foreach($palette as $name => $hex)
+            <button
+                type="button"
+                data-tool="paint"
+                data-color="{{ $name }}"
+                data-color-hex="{{ $hex }}"
+                data-color-label="{{ ucfirst($name) }}"
+                class="paito-tool inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold text-white transition"
+                aria-pressed="{{ $name === 'red' ? 'true' : 'false' }}"
+                style="{{ $name === 'red'
+                    ? 'border-color:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.30)'
+                    : 'border-color:#475569' }}"
+            >
+                <span
+                    class="h-6 w-6 rounded border border-white/50"
+                    style="background-color: {{ $hex }}"
+                ></span>
+
+                <span>{{ ucfirst($name) }}</span>
+            </button>
+        @endforeach
+
+        <button
+            type="button"
+            data-tool="erase"
+            data-color-label="Hapus"
+            class="paito-tool inline-flex items-center gap-2 rounded-lg border border-slate-600 px-4 py-2 text-sm font-semibold text-white transition"
+            aria-pressed="false"
+        >
+            <span class="text-lg leading-none">×</span>
+            <span>Hapus</span>
+        </button>
 
 @if(($filters['market'] ?? '') !== '')
 <button
@@ -223,18 +264,55 @@ document.addEventListener('DOMContentLoaded', () => {
     let tool = 'paint';
     let activeColor = 'red';
 
-    document.querySelectorAll('.paito-tool').forEach((button) => {
+    const paletteButtons = document.querySelectorAll(
+        '.paito-tool'
+    );
+
+    const activeColorPreview = document.getElementById(
+        'active-color-preview'
+    );
+
+    const activeColorLabel = document.getElementById(
+        'active-color-label'
+    );
+
+    paletteButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            tool = button.dataset.tool;
+            tool = button.dataset.tool || 'paint';
 
             if (button.dataset.color) {
                 activeColor = button.dataset.color;
             }
 
-            document.querySelectorAll('.paito-tool')
-                .forEach((item) => item.classList.remove('ring-4', 'ring-white'));
+            paletteButtons.forEach((item) => {
+                item.setAttribute(
+                    'aria-pressed',
+                    item === button ? 'true' : 'false'
+                );
 
-            button.classList.add('ring-4', 'ring-white');
+                item.style.borderColor = '#475569';
+                item.style.boxShadow = '';
+            });
+
+            button.style.borderColor = '#ffffff';
+            button.style.boxShadow =
+                '0 0 0 3px rgba(255,255,255,.30)';
+
+            if (tool === 'erase') {
+                activeColorPreview.style.backgroundColor =
+                    'transparent';
+
+                activeColorPreview.textContent = '×';
+                activeColorLabel.textContent = 'Hapus';
+                return;
+            }
+
+            activeColorPreview.textContent = '';
+            activeColorPreview.style.backgroundColor =
+                button.dataset.colorHex;
+
+            activeColorLabel.textContent =
+                button.dataset.colorLabel || activeColor;
         });
     });
 
