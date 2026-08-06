@@ -183,13 +183,22 @@ Hapus Semua Warna
         @endforeach
     </div>
 
-    <button
-        type="button"
-        id="auto-paint"
-        class="mt-4 rounded-lg bg-emerald-500 px-6 py-3 font-semibold text-white hover:bg-emerald-400"
-    >
-        Proses Otomatis
-    </button>
+    <div class="mt-4 flex flex-wrap items-center gap-4">
+        <button
+            type="button"
+            id="auto-paint"
+            class="rounded-lg bg-emerald-500 px-6 py-3 font-semibold text-white transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+            Proses Otomatis
+        </button>
+
+        <p
+            id="paito-status"
+            class="hidden text-sm font-semibold"
+            role="status"
+            aria-live="polite"
+        ></p>
+    </div>
 </div>
 
 @if($rows->isEmpty())
@@ -283,6 +292,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const colors = @json($palette);
     let tool = 'paint';
     let activeColor = 'red';
+    let requestInProgress = false;
+
+    const statusElement = document.getElementById(
+        'paito-status'
+    );
+
+    const showStatus = (message, type = 'success') => {
+        if (!statusElement) {
+            return;
+        }
+
+        statusElement.textContent = message;
+        statusElement.classList.remove(
+            'hidden',
+            'text-emerald-400',
+            'text-red-400',
+            'text-amber-400'
+        );
+
+        statusElement.classList.add(
+            type === 'error'
+                ? 'text-red-400'
+                : type === 'warning'
+                    ? 'text-amber-400'
+                    : 'text-emerald-400'
+        );
+    };
 
     const paletteButtons = document.querySelectorAll(
         '.paito-tool'
@@ -336,12 +372,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.querySelectorAll('.paito-cell').forEach((cell) => {
-        cell.addEventListener('click', async () => {
-            const resultId = cell.dataset.resultId;
-            const position = cell.dataset.position;
-            const deleting = tool === 'erase';
+    const handleCellPaint = async (cell) => {
+        if (requestInProgress) {
+            return;
+        }
 
+        const resultId = cell.dataset.resultId;
+        const position = cell.dataset.position;
+        const deleting = tool === 'erase';
+
+        requestInProgress = true;
+        cell.classList.add('opacity-60');
+
+        try {
             const response = await fetch(
                 `/alat-togel/paito-warna/result/${resultId}/color`,
                 {
@@ -360,8 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
             );
 
             if (!response.ok) {
-                alert('Gagal menyimpan warna.');
-                return;
+                throw new Error('Gagal menyimpan warna.');
             }
 
             cell.style.backgroundColor =
@@ -369,17 +411,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
             cell.dataset.color =
                 deleting ? '' : activeColor;
+
+            showStatus(
+                deleting
+                    ? 'Warna sel berhasil dihapus.'
+                    : 'Warna sel berhasil disimpan.'
+            );
+        } catch (error) {
+            showStatus(
+                error.message || 'Terjadi kesalahan.',
+                'error'
+            );
+        } finally {
+            requestInProgress = false;
+            cell.classList.remove('opacity-60');
+        }
+    };
+
+    document.querySelectorAll('.paito-cell')
+        .forEach((cell) => {
+            cell.addEventListener(
+                'click',
+                () => handleCellPaint(cell)
+            );
+
+            cell.addEventListener('keydown', (event) => {
+                if (
+                    event.key !== 'Enter'
+                    && event.key !== ' '
+                ) {
+                    return;
+                }
+
+                event.preventDefault();
+                handleCellPaint(cell);
+            });
         });
-    });
 
-    document.getElementById('auto-paint')?.addEventListener('click', async () => {
-        const rules = {};
+    document.getElementById('auto-paint')
+        ?.addEventListener('click', async () => {
+            if (requestInProgress) {
+                return;
+            }
 
-        document.querySelectorAll('.auto-paito-input')
-            .forEach((input) => {
-                const digits = input.value.replace(/\D/g, '');
+            const autoButton = document.getElementById(
+                'auto-paint'
+            );
 
-                if (digits !== '') {
+            const rules = {};
+
+            document.querySelectorAll('.auto-paito-input')
+                .forEach((input) => {
+                    const digits = input.value.replace(/\D/g, '');
+
+                    if (digits === '') {
+                        return;
+                    }
+
                     const position = input.dataset.autoPosition;
                     const color = document.querySelector(
                         `[data-auto-color="${position}"]`
@@ -389,68 +477,103 @@ document.addEventListener('DOMContentLoaded', () => {
                         digits: [...new Set(digits.split(''))],
                         color,
                     };
-                }
-            });
+                });
 
-        if (Object.keys(rules).length === 0) {
-            alert('Isi minimal satu kolom angka.');
-            return;
-        }
-
-        const cells = [];
-
-        document.querySelectorAll('.paito-cell')
-            .forEach((cell) => {
-                const rule = rules[cell.dataset.position];
-
-                if (
-                    rule
-                    && rule.digits.includes(cell.textContent.trim())
-                ) {
-                    cells.push({
-                        result_id: Number(cell.dataset.resultId),
-                        position: cell.dataset.position,
-                        color: rule.color,
-                    });
-                }
-            });
-
-        if (cells.length === 0) {
-            alert('Tidak ada angka yang cocok.');
-            return;
-        }
-
-        const response = await fetch(
-            '/alat-togel/paito-warna/colors/bulk',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': token,
-                },
-                body: JSON.stringify({ cells }),
+            if (Object.keys(rules).length === 0) {
+                showStatus(
+                    'Isi minimal satu kolom angka.',
+                    'warning'
+                );
+                return;
             }
-        );
 
-        if (!response.ok) {
-            alert('Gagal memproses pewarnaan otomatis.');
-            return;
-        }
+            const cells = [];
 
-        document.querySelectorAll('.paito-cell')
-            .forEach((cell) => {
-                const rule = rules[cell.dataset.position];
+            document.querySelectorAll('.paito-cell')
+                .forEach((cell) => {
+                    const rule = rules[cell.dataset.position];
+                    const digit =
+                        cell.dataset.digit
+                        || cell.textContent.trim();
 
-                if (
-                    rule
-                    && rule.digits.includes(cell.textContent.trim())
-                ) {
-                    cell.style.backgroundColor = colors[rule.color];
-                    cell.dataset.color = rule.color;
+                    if (
+                        rule
+                        && rule.digits.includes(digit)
+                    ) {
+                        cells.push({
+                            result_id: Number(
+                                cell.dataset.resultId
+                            ),
+                            position: cell.dataset.position,
+                            color: rule.color,
+                        });
+                    }
+                });
+
+            if (cells.length === 0) {
+                showStatus(
+                    'Tidak ada angka yang cocok.',
+                    'warning'
+                );
+                return;
+            }
+
+            requestInProgress = true;
+            autoButton?.setAttribute('disabled', 'disabled');
+
+            try {
+                const response = await fetch(
+                    '/alat-togel/paito-warna/colors/bulk',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': token,
+                        },
+                        body: JSON.stringify({ cells }),
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(
+                        'Gagal memproses pewarnaan otomatis.'
+                    );
                 }
-            });
-    });
+
+                document.querySelectorAll('.paito-cell')
+                    .forEach((cell) => {
+                        const rule =
+                            rules[cell.dataset.position];
+
+                        const digit =
+                            cell.dataset.digit
+                            || cell.textContent.trim();
+
+                        if (
+                            rule
+                            && rule.digits.includes(digit)
+                        ) {
+                            cell.style.backgroundColor =
+                                colors[rule.color];
+
+                            cell.dataset.color = rule.color;
+                        }
+                    });
+
+                showStatus(
+                    `${cells.length} sel berhasil diwarnai.`
+                );
+            } catch (error) {
+                showStatus(
+                    error.message || 'Terjadi kesalahan.',
+                    'error'
+                );
+            } finally {
+                requestInProgress = false;
+                autoButton?.removeAttribute('disabled');
+            }
+        });
 
     document.getElementById('clear-all')?.addEventListener('click', async () => {
         if (!confirm('Hapus semua warna pada pasaran ini?')) {
