@@ -49,7 +49,7 @@ class PaitoWeeklyOrderingTest extends TestCase
         ]);
     }
 
-    public function test_week_order_is_newest_first(): void
+    public function test_week_order_is_oldest_first(): void
     {
         $controller = file_get_contents(
             app_path(
@@ -58,7 +58,7 @@ class PaitoWeeklyOrderingTest extends TestCase
         );
 
         $this->assertStringContainsString(
-            "->sortByDesc('week_start')",
+            "->sortBy('week_start')",
             $controller,
         );
 

@@ -164,7 +164,7 @@ Hapus Semua Warna
                     inputmode="numeric"
                     pattern="[0-9]"
                     data-single-digit
-                    placeholder="Contoh: 123"
+                    placeholder="0–9"
                     class="auto-paito-input w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white"
                 >
 
@@ -250,8 +250,9 @@ Hapus Semua Warna
                 </th>
 
                 <th
-                    class="w-10 border border-slate-400 px-2 py-2"
+                    class="w-9 border border-slate-500 bg-slate-800/70 px-1 py-2 text-xs font-normal text-slate-400"
                     aria-label="Jumlah {{ $dayLabel }}"
+                    data-paito-sum-header
                 >
                     D
                 </th>
@@ -294,8 +295,12 @@ Hapus Semua Warna
 
                         <td
                             @class([
-                                'paito-cell h-10 min-w-10 select-none border border-slate-600 p-0 text-center text-sm font-bold transition',
-                                'cursor-pointer text-white hover:brightness-125' =>
+                                'paito-cell h-10 select-none border border-slate-600 p-0 text-center transition',
+                                'min-w-10 text-sm font-bold text-white' =>
+                                    $position !== 'jumlah',
+                                'min-w-8 bg-slate-950/60 text-xs font-normal text-slate-400' =>
+                                    $position === 'jumlah',
+                                'cursor-pointer hover:brightness-125' =>
                                     $day !== null,
                                 'bg-slate-950 text-slate-700' =>
                                     $day === null,
@@ -304,6 +309,8 @@ Hapus Semua Warna
                             data-position="{{ $position }}"
                             data-digit="{{ $digit }}"
                             data-color="{{ $colorName }}"
+                            data-paito-result-cell="{{ $position !== 'jumlah' ? 'true' : 'false' }}"
+                            data-paito-sum-cell="{{ $position === 'jumlah' ? 'true' : 'false' }}"
                             tabindex="{{ $day !== null ? '0' : '-1' }}"
                             role="{{ $day !== null ? 'button' : 'cell' }}"
                             style="{{ $background

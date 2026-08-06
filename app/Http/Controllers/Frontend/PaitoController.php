@@ -191,7 +191,7 @@ final class PaitoController extends Controller
                     'days' => $days,
                 ];
             })
-            ->sortByDesc('week_start')
+            ->sortBy('week_start')
             ->values();
     }
 }
