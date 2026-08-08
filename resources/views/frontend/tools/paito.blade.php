@@ -223,10 +223,14 @@ Hapus Semua Warna
     </div>
 @else
 <div
-    class="mt-8 overflow-x-auto rounded-xl border border-slate-700 bg-slate-950"
+    class="mt-8 w-full max-w-full overflow-x-auto overscroll-x-contain rounded-xl border border-slate-700 bg-slate-950"
     data-paito-weekly-grid
+    data-paito-responsive-scroll
 >
-<table class="min-w-[1540px] border-collapse bg-slate-900">
+<table
+    class="w-max min-w-[1680px] border-collapse bg-slate-900 lg:min-w-[1750px] xl:min-w-[1820px]"
+    data-paito-responsive-table
+>
     <thead data-paito-gold-header>
         @php
             $dayLabels = [
@@ -247,14 +251,15 @@ Hapus Semua Warna
             @foreach ($dayLabels as $dayNumber => $dayLabel)
                 <th
                     colspan="4"
-                    class="border border-slate-600 px-2 py-3 text-amber-400"
+                    class="min-w-[184px] border border-slate-600 px-2 py-3 text-amber-400 md:min-w-[196px]"
+                    data-paito-weekday-group
                 >
                     {{ $dayLabel }}
                 </th>
 
                 <th
                     rowspan="2"
-                    class="w-9 border border-slate-600 bg-slate-900 px-1 py-2 text-xs font-normal text-amber-400"
+                    class="w-12 min-w-12 border border-slate-600 bg-slate-900/50 px-2 py-2 text-xs font-normal text-amber-300/70 md:w-14 md:min-w-14"
                     aria-label="Jumlah {{ $dayLabel }}"
                     data-paito-sum-header
                 >
@@ -269,25 +274,26 @@ Hapus Semua Warna
         >
             @foreach (range(1, 7) as $dayNumber)
                 <th
-                    class="border border-slate-600 px-1 py-2 text-amber-400"
+                    class="min-w-[46px] border border-slate-600 px-1.5 py-2 text-amber-400 md:min-w-[49px]"
                 >
                     AS
                 </th>
 
                 <th
-                    class="border border-slate-600 px-1 py-2 text-amber-400"
+                    class="min-w-[46px] border border-slate-600 px-1.5 py-2 text-amber-400 md:min-w-[49px]"
                 >
                     KOP
                 </th>
 
                 <th
-                    class="border border-slate-600 px-1 py-2 text-amber-400"
+                    class="min-w-[46px] border border-slate-600 border-r-2 border-r-amber-500/70 px-1.5 py-2 text-amber-400 md:min-w-[49px]"
+                    data-paito-head-tail-divider
                 >
                     KEPALA
                 </th>
 
                 <th
-                    class="border border-slate-600 px-1 py-2 text-amber-400"
+                    class="min-w-[46px] border border-slate-600 px-1.5 py-2 text-amber-400 md:min-w-[49px]"
                 >
                     EKOR
                 </th>
@@ -331,11 +337,13 @@ Hapus Semua Warna
 
                         <td
                             @class([
-                                'paito-cell h-10 select-none border border-slate-600 p-0 text-center transition',
-                                'min-w-10 text-sm font-bold text-white' =>
+                                'paito-cell h-10 select-none border border-slate-600 p-0 text-center transition md:h-11',
+                                'min-w-[46px] text-sm font-bold text-white md:min-w-[49px]' =>
                                     $position !== 'jumlah',
-                                'min-w-8 bg-slate-950/60 text-xs font-normal text-slate-400' =>
+                                'w-12 min-w-12 bg-slate-950/40 text-xs font-normal text-slate-400/60 md:w-14 md:min-w-14' =>
                                     $position === 'jumlah',
+                                'border-r-2 border-r-amber-500/60' =>
+                                    $position === 'kepala',
                                 'cursor-pointer hover:brightness-125' =>
                                     $day !== null,
                                 'bg-slate-950 text-slate-700' =>
@@ -347,6 +355,7 @@ Hapus Semua Warna
                             data-color="{{ $colorName }}"
                             data-paito-result-cell="{{ $position !== 'jumlah' ? 'true' : 'false' }}"
                             data-paito-sum-cell="{{ $position === 'jumlah' ? 'true' : 'false' }}"
+                            data-paito-head-tail-cell="{{ $position === 'kepala' ? 'true' : 'false' }}"
                             tabindex="{{ $day !== null ? '0' : '-1' }}"
                             role="{{ $day !== null ? 'button' : 'cell' }}"
                             style="{{ $background

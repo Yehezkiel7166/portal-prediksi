@@ -62,7 +62,7 @@ class PaitoGoldHeaderContractTest extends TestCase
         );
 
         $this->assertStringContainsString(
-            "'min-w-10 text-sm font-bold text-white'",
+            'min-w-[46px] text-sm font-bold text-white',
             $view,
         );
 
@@ -72,7 +72,7 @@ class PaitoGoldHeaderContractTest extends TestCase
         );
 
         $this->assertStringContainsString(
-            "'min-w-8 bg-slate-950/60 text-xs font-normal text-slate-400'",
+            'w-12 min-w-12 bg-slate-950/40 text-xs font-normal text-slate-400/60',
             $view,
         );
     }
