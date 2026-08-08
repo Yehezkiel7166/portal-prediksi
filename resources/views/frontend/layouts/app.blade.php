@@ -22,6 +22,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
     @stack('head')
+    @include('frontend.partials.theme-tokens')
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
     @include('frontend.partials.header')

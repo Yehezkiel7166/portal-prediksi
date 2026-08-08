@@ -31,18 +31,18 @@
 
 <style>
     [data-sgp-converter] {
-        --sgp-page-bg: #020617;
-        --sgp-surface: #0f172a;
-        --sgp-surface-soft: rgba(2, 6, 23, .80);
-        --sgp-border: #334155;
+        --sgp-page-bg: var(--theme-page-bg, #020617);
+        --sgp-surface: var(--theme-surface, #0f172a);
+        --sgp-surface-soft: var(--theme-surface-soft, rgba(2, 6, 23, .80));
+        --sgp-border: var(--theme-border, #334155);
 
-        --sgp-primary: #22d3ee;
-        --sgp-danger: #e11d48;
+        --sgp-primary: var(--theme-primary, #22d3ee);
+        --sgp-danger: var(--theme-danger, #e11d48);
 
-        --sgp-text: #ffffff;
-        --sgp-muted: #94a3b8;
+        --sgp-text: var(--theme-text, #ffffff);
+        --sgp-muted: var(--theme-text-muted, #94a3b8);
 
-        --sgp-result-border: #f43f5e;
+        --sgp-result-border: var(--theme-result-border, #f43f5e);
 
         background: var(--sgp-page-bg);
         border-bottom: 1px solid var(--sgp-border);
