@@ -1,8 +1,20 @@
-<header class="border-b border-amber-400/20 bg-slate-950">
-    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 lg:flex-row lg:items-center">
+<header
+    data-theme-header
+    class="border-b"
+>
+    <div
+        class="
+            mx-auto flex max-w-7xl flex-col
+            gap-4 px-4 py-5
+            lg:flex-row lg:items-center
+        "
+    >
         <a
             href="{{ route('home') }}"
-            class="flex shrink-0 items-center text-amber-400"
+            class="flex shrink-0 items-center"
+            @if (request()->routeIs('home'))
+                aria-current="page"
+            @endif
         >
             @if ($siteConfiguration->logoUrl)
                 <img
@@ -16,7 +28,9 @@
                 {{ $siteConfiguration->siteName }}
 
                 @if ($siteConfiguration->tagline)
-                    <span>{{ $siteConfiguration->tagline }}</span>
+                    <span>
+                        {{ $siteConfiguration->tagline }}
+                    </span>
                 @endif
             </span>
         </a>
@@ -25,15 +39,20 @@
             aria-label="Navigasi utama"
             class="min-w-0 flex-1 lg:ml-8"
         >
-            <ul class="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium">
+            <ul
+                class="
+                    flex flex-wrap items-center
+                    gap-x-5 gap-y-3
+                    text-sm font-medium
+                "
+            >
                 <li>
                     <a
                         href="{{ route('home') }}"
-                        @class([
-                            'transition hover:text-amber-300',
-                            'text-amber-400' => request()->routeIs('home'),
-                            'text-slate-300' => ! request()->routeIs('home'),
-                        ])
+                        class="transition"
+                        @if (request()->routeIs('home'))
+                            aria-current="page"
+                        @endif
                     >
                         Home
                     </a>
@@ -42,11 +61,10 @@
                 <li>
                     <a
                         href="{{ route('live-draw.index') }}"
-                        @class([
-                            'transition hover:text-amber-300',
-                            'text-amber-400' => request()->routeIs('live-draw.*'),
-                            'text-slate-300' => ! request()->routeIs('live-draw.*'),
-                        ])
+                        class="transition"
+                        @if (request()->routeIs('live-draw.*'))
+                            aria-current="page"
+                        @endif
                     >
                         LiveDraw
                     </a>
@@ -55,11 +73,10 @@
                 <li>
                     <a
                         href="{{ route('predictions.index') }}"
-                        @class([
-                            'transition hover:text-amber-300',
-                            'text-amber-400' => request()->routeIs('predictions.*'),
-                            'text-slate-300' => ! request()->routeIs('predictions.*'),
-                        ])
+                        class="transition"
+                        @if (request()->routeIs('predictions.*'))
+                            aria-current="page"
+                        @endif
                     >
                         Prediksi
                     </a>
@@ -68,11 +85,10 @@
                 <li>
                     <a
                         href="{{ route('slot-gacor.index') }}"
-                        @class([
-                            'transition hover:text-amber-300',
-                            'text-amber-400' => request()->routeIs('slot-gacor.*'),
-                            'text-slate-300' => ! request()->routeIs('slot-gacor.*'),
-                        ])
+                        class="transition"
+                        @if (request()->routeIs('slot-gacor.*'))
+                            aria-current="page"
+                        @endif
                     >
                         Slot Gacor
                     </a>
@@ -81,11 +97,10 @@
                 <li>
                     <a
                         href="{{ route('results.index') }}"
-                        @class([
-                            'transition hover:text-amber-300',
-                            'text-amber-400' => request()->routeIs('results.*'),
-                            'text-slate-300' => ! request()->routeIs('results.*'),
-                        ])
+                        class="transition"
+                        @if (request()->routeIs('results.*'))
+                            aria-current="page"
+                        @endif
                     >
                         Result
                     </a>
@@ -94,37 +109,61 @@
                 <li>
                     <details class="relative">
                         <summary
-                            @class([
-                                'cursor-pointer transition hover:text-amber-300',
-                                'text-amber-400' => request()->routeIs('tools.*'),
-                                'text-slate-300' => ! request()->routeIs('tools.*'),
-                            ])
+                            class="cursor-pointer transition"
+                            @if (request()->routeIs('tools.*'))
+                                aria-current="page"
+                            @endif
                         >
                             Alat Togel
                         </summary>
 
-                        <div class="absolute left-0 z-50 mt-3 w-56 rounded-lg border border-slate-700 bg-slate-900 p-3 shadow-xl">
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.lottery-schedule') }}">
+                        <div
+                            data-theme-header-menu
+                            class="
+                                absolute left-0 z-50 mt-3
+                                w-56 rounded-lg border
+                                p-3 shadow-xl
+                            "
+                        >
+                            <a
+                                class="block py-2 transition"
+                                href="{{ route('tools.lottery-schedule') }}"
+                            >
                                 Jadwal Togel
                             </a>
 
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.shio-table') }}">
+                            <a
+                                class="block py-2 transition"
+                                href="{{ route('tools.shio-table') }}"
+                            >
                                 Tabel Shio
                             </a>
 
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.bbfs.create') }}">
+                            <a
+                                class="block py-2 transition"
+                                href="{{ route('tools.bbfs.create') }}"
+                            >
                                 BBFS Generator
                             </a>
 
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.dream-book.index') }}">
+                            <a
+                                class="block py-2 transition"
+                                href="{{ route('tools.dream-book.index') }}"
+                            >
                                 Buku Mimpi
                             </a>
 
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.paito') }}">
+                            <a
+                                class="block py-2 transition"
+                                href="{{ route('tools.paito') }}"
+                            >
                                 Paito Togel Warna
                             </a>
 
-                            <a class="block py-2 text-slate-300 transition hover:text-amber-300" href="{{ route('tools.sgp-converter.create') }}">
+                            <a
+                                class="block py-2 transition"
+                                href="{{ route('tools.sgp-converter.create') }}"
+                            >
                                 Konversi Angka SGP
                             </a>
                         </div>
@@ -134,11 +173,10 @@
                 <li>
                     <a
                         href="{{ route('jackpot-proofs.index') }}"
-                        @class([
-                            'transition hover:text-amber-300',
-                            'text-amber-400' => request()->routeIs('jackpot-proofs.*'),
-                            'text-slate-300' => ! request()->routeIs('jackpot-proofs.*'),
-                        ])
+                        class="transition"
+                        @if (request()->routeIs('jackpot-proofs.*'))
+                            aria-current="page"
+                        @endif
                     >
                         Bukti Jackpot
                     </a>
@@ -147,11 +185,10 @@
                 <li>
                     <a
                         href="{{ route('guides.index') }}"
-                        @class([
-                            'transition hover:text-amber-300',
-                            'text-amber-400' => request()->routeIs('guides.*'),
-                            'text-slate-300' => ! request()->routeIs('guides.*'),
-                        ])
+                        class="transition"
+                        @if (request()->routeIs('guides.*'))
+                            aria-current="page"
+                        @endif
                     >
                         Panduan
                     </a>
@@ -160,11 +197,10 @@
                 <li>
                     <a
                         href="{{ route('complaints.create') }}"
-                        @class([
-                            'transition hover:text-amber-300',
-                            'text-amber-400' => request()->routeIs('complaints.*'),
-                            'text-slate-300' => ! request()->routeIs('complaints.*'),
-                        ])
+                        class="transition"
+                        @if (request()->routeIs('complaints.*'))
+                            aria-current="page"
+                        @endif
                     >
                         Keluhan
                     </a>
@@ -174,10 +210,18 @@
 
         <time
             data-live-clock
+            data-theme-clock
             role="timer"
             aria-live="off"
             aria-label="Waktu Indonesia Barat"
-            class="shrink-0 self-start whitespace-nowrap rounded-lg border border-amber-400/20 bg-slate-900 px-3 py-2 text-xs font-semibold tabular-nums text-amber-300 lg:ml-auto lg:self-center"
+            class="
+                shrink-0 self-start
+                whitespace-nowrap rounded-lg
+                border px-3 py-2
+                text-xs font-semibold
+                tabular-nums
+                lg:ml-auto lg:self-center
+            "
         >
             Memuat waktu...
         </time>
