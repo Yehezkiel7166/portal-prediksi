@@ -349,7 +349,9 @@ Hapus Semua Warna
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const token = document.querySelector('meta[name="csrf-token"]')?.content;
+    const token =
+        document.querySelector('meta[name="csrf-token"]')?.content
+        || @json(csrf_token());
     const colors = @json($palette);
     let tool = 'paint';
     let activeColor = 'red';
