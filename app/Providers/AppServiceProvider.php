@@ -6,8 +6,10 @@ use App\Core\Contracts\Clock;
 use App\Core\Support\SystemClock;
 use App\Domains\Brand\Support\BrandContext;
 use App\Domains\SiteConfiguration\Support\SiteConfigurationResolver;
-use Illuminate\Support\ServiceProvider;
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +26,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Gate::before(
+            static function (
+                User $user,
+                string $ability,
+            ): ?bool {
+                return $user->isTemporaryOwner()
+                    ? true
+                    : null;
+            },
+        );
         View::composer('frontend.*', function ($view): void {
             $view->with(
                 'siteConfiguration',

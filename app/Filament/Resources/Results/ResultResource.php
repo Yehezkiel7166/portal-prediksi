@@ -38,7 +38,7 @@ class ResultResource extends Resource
         'result-history';
 
     protected static bool $shouldRegisterNavigation =
-        false;
+        true;
 
     public static function getNavigationGroup(): ?string
     {

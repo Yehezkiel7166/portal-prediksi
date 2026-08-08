@@ -36,9 +36,20 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
+    /**
+     * Temporary owner bootstrap while Brand 1 is being completed.
+     *
+     * This is intentionally based only on the existing is_admin flag.
+     * Replace this contract when permanent multi-brand RBAC is introduced.
+     */
+    public function isTemporaryOwner(): bool
+    {
+        return (bool) $this->is_admin;
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return $panel->getId() === 'admin'
-            && $this->is_admin;
+            && $this->isTemporaryOwner();
     }
 }
