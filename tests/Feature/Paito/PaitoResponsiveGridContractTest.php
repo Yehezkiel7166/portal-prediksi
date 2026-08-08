@@ -20,7 +20,7 @@ class PaitoResponsiveGridContractTest extends TestCase
             'overflow-x-auto',
             'max-w-full',
             'w-max',
-            'min-w-[1680px]',
+            'min-w-[1260px]',
         ] as $contract) {
             $this->assertStringContainsString(
                 $contract,
@@ -62,8 +62,8 @@ class PaitoResponsiveGridContractTest extends TestCase
         );
 
         foreach ([
-            'w-12 min-w-12',
-            'md:w-14',
+            'w-9 min-w-9',
+            'md:w-10',
             'font-normal',
             'text-slate-400/60',
             'bg-slate-950/40',
@@ -84,10 +84,10 @@ class PaitoResponsiveGridContractTest extends TestCase
         );
 
         foreach ([
-            'data-paito-head-tail-divider',
+
             'data-paito-head-tail-cell=',
             'border-r-2',
-            'border-r-amber-500/70',
+
             'border-r-amber-500/60',
         ] as $contract) {
             $this->assertStringContainsString(

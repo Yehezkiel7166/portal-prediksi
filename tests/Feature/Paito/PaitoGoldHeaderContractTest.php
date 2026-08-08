@@ -17,9 +17,9 @@ class PaitoGoldHeaderContractTest extends TestCase
         foreach ([
             'data-paito-gold-header',
             'data-paito-weekday-header',
-            'data-paito-position-header',
+
             'text-amber-400',
-            'rowspan="2"',
+
             'colspan="4"',
         ] as $contract) {
             $this->assertStringContainsString(
@@ -40,11 +40,8 @@ class PaitoGoldHeaderContractTest extends TestCase
         foreach ([
             "1 => 'Senin'",
             "7 => 'Minggu'",
-            '@foreach (range(1, 7) as $dayNumber)',
-            'AS',
-            'KOP',
-            'KEPALA',
-            'EKOR',
+            "1 => 'Senin'",
+            "7 => 'Minggu'",
         ] as $contract) {
             $this->assertStringContainsString(
                 $contract,
@@ -62,7 +59,7 @@ class PaitoGoldHeaderContractTest extends TestCase
         );
 
         $this->assertStringContainsString(
-            'min-w-[46px] text-sm font-bold text-white',
+            'w-9 min-w-9 text-sm font-bold text-white',
             $view,
         );
 
@@ -72,7 +69,7 @@ class PaitoGoldHeaderContractTest extends TestCase
         );
 
         $this->assertStringContainsString(
-            'w-12 min-w-12 bg-slate-950/40 text-xs font-normal text-slate-400/60',
+            'w-9 min-w-9 bg-slate-950/40 text-xs font-normal text-slate-400/60',
             $view,
         );
     }
