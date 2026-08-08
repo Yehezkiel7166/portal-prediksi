@@ -640,36 +640,94 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-    document.getElementById('clear-all')?.addEventListener('click', async () => {
+    const clearAllButton = document.getElementById('clear-all');
+
+    clearAllButton?.addEventListener('click', async () => {
+        if (requestInProgress) {
+            showStatus(
+                'Permintaan lain masih diproses.',
+                'error'
+            );
+            return;
+        }
+
         if (!confirm('Hapus semua warna pada pasaran ini?')) {
             return;
         }
 
-        const market = @json($markets->firstWhere(
-            'slug',
-            $filters['market'] ?? ''
-        )?->getKey());
+        const market = @json($selectedMarket?->getKey());
 
-        const response = await fetch(
-            `/alat-togel/paito-warna/market/${market}/colors`,
-            {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': token,
-                },
-            }
-        );
-
-        if (!response.ok) {
-            alert('Gagal menghapus warna.');
+        if (!market) {
+            showStatus(
+                'Pasaran aktif tidak ditemukan.',
+                'error'
+            );
             return;
         }
 
-        document.querySelectorAll('.paito-cell').forEach((cell) => {
-            cell.style.backgroundColor = '';
-            cell.dataset.color = '';
-        });
+        if (!token) {
+            showStatus(
+                'Token keamanan tidak tersedia. Muat ulang halaman.',
+                'error'
+            );
+            return;
+        }
+
+        requestInProgress = true;
+        clearAllButton.setAttribute('disabled', 'disabled');
+
+        try {
+            const response = await fetch(
+                `/alat-togel/paito-warna/market/${market}/colors`,
+                {
+                    method: 'DELETE',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': token,
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                }
+            );
+
+            let payload = null;
+
+            try {
+                payload = await response.json();
+            } catch (error) {
+                payload = null;
+            }
+
+            if (!response.ok) {
+                const message =
+                    payload?.message
+                    || `Gagal menghapus warna. HTTP ${response.status}.`;
+
+                throw new Error(message);
+            }
+
+            document.querySelectorAll('.paito-cell')
+                .forEach((cell) => {
+                    cell.style.backgroundColor = '';
+                    cell.dataset.color = '';
+                });
+
+            const deleted = Number(payload?.deleted ?? 0);
+
+            showStatus(
+                deleted > 0
+                    ? `${deleted} warna berhasil dihapus.`
+                    : 'Warna berhasil dihapus.'
+            );
+        } catch (error) {
+            showStatus(
+                error.message || 'Gagal menghapus warna.',
+                'error'
+            );
+        } finally {
+            requestInProgress = false;
+            clearAllButton.removeAttribute('disabled');
+        }
     });
 });
 </script>
