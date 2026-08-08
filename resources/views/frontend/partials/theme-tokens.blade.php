@@ -484,3 +484,127 @@
             2px;
     }
 </style>
+
+<style id="brand-theme-homepage">
+    [data-theme-home-section] {
+        position: relative;
+        color: var(--theme-text);
+    }
+
+    [data-theme-home-section] + [data-theme-home-section] {
+        border-top:
+            1px solid
+            color-mix(
+                in srgb,
+                var(--theme-border) 70%,
+                transparent
+            );
+    }
+
+    [data-theme-home-section] [data-theme-surface] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 82%,
+                transparent
+            );
+
+        box-shadow:
+            0 12px 28px
+            color-mix(
+                in srgb,
+                var(--theme-shadow) 75%,
+                transparent
+            );
+
+        transition:
+            transform 160ms ease,
+            border-color 160ms ease,
+            box-shadow 160ms ease;
+    }
+
+    [data-theme-home-section] a[data-theme-surface]:hover {
+        transform: translateY(-2px);
+        border-color: var(--theme-border-accent);
+
+        box-shadow:
+            0 16px 34px
+            color-mix(
+                in srgb,
+                var(--theme-shadow) 88%,
+                transparent
+            );
+    }
+
+    [data-theme-home-section] [data-theme-accent] {
+        color: var(--theme-primary);
+    }
+
+    [data-theme-home-section] [data-theme-muted] {
+        color: var(--theme-text-muted);
+    }
+
+    [data-theme-status] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 80%,
+                transparent
+            );
+
+        border-color: var(--theme-border);
+        color: var(--theme-text-muted);
+    }
+
+    [data-theme-status="live"] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-danger) 14%,
+                transparent
+            );
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-danger) 45%,
+                transparent
+            );
+
+        color: var(--theme-danger);
+    }
+
+    [data-theme-status="scheduled"] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-warning) 14%,
+                transparent
+            );
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-warning) 45%,
+                transparent
+            );
+
+        color: var(--theme-warning);
+    }
+
+    @media (max-width: 767px) {
+        [data-theme-home-section] [data-theme-surface] {
+            border-radius: 0.75rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        [data-theme-home-section] [data-theme-surface] {
+            transition: none;
+        }
+
+        [data-theme-home-section] a[data-theme-surface]:hover {
+            transform: none;
+        }
+    }
+</style>
