@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Filament\Resources\SiteConfigurations\Schemas;
 
 use App\Domains\Theme\Support\ThemePresetCatalog;
+use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
@@ -57,11 +59,16 @@ final class SiteConfigurationForm
 
             Section::make('Design')
                 ->description(
-                    'Pilih template tampilan untuk brand aktif. '
-                    .'Warna akan digunakan oleh frontend yang '
-                    .'sudah terhubung ke Theme Engine.'
+                    'Atur template, background dan tampilan komponen '
+                    .'untuk brand aktif.'
                 )
                 ->schema([
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | PRESET
+                    |--------------------------------------------------------------------------
+                    */
 
                     Select::make('theme_preset')
                         ->label('Template Design')
@@ -77,7 +84,7 @@ final class SiteConfigurationForm
                         ->dehydrated(),
 
                     Placeholder::make('theme_preview')
-                        ->label('Preview')
+                        ->label('Preview Template')
                         ->content(
                             static function (
                                 callable $get,
@@ -141,7 +148,7 @@ final class SiteConfigurationForm
                                         border-radius:12px;
                                     ">
                                         <div style="
-                                            min-height:110px;
+                                            min-height:120px;
                                             padding:18px;
                                             background:
                                                 linear-gradient(
@@ -154,7 +161,7 @@ final class SiteConfigurationForm
                                             align-items:flex-end;
                                         ">
                                             <div style="
-                                                background:rgba(0,0,0,.55);
+                                                background:rgba(0,0,0,.60);
                                                 color:#fff;
                                                 padding:8px 12px;
                                                 border-radius:8px;
@@ -200,15 +207,270 @@ final class SiteConfigurationForm
                             },
                         ),
 
-                    Placeholder::make('theme_notice')
+                    /*
+                    |--------------------------------------------------------------------------
+                    | BACKGROUND
+                    |--------------------------------------------------------------------------
+                    */
+
+                    Select::make('theme_background_mode')
+                        ->label('Background')
+                        ->options([
+                            'theme' => 'Gunakan Background Template',
+
+                            'image' => 'Upload Background Sendiri',
+                        ])
+                        ->default('theme')
+                        ->required()
+                        ->live()
+                        ->dehydrated(),
+
+                    FileUpload::make(
+                        'theme_background_image',
+                    )
+                        ->label(
+                            'Upload Background',
+                        )
+                        ->disk('public')
+                        ->directory(
+                            'brand-design/backgrounds',
+                        )
+                        ->image()
+                        ->imagePreviewHeight('220')
+                        ->maxSize(8192)
+                        ->helperText(
+                            'Gunakan JPG, PNG atau WebP. '
+                            .'Disarankan gambar landscape resolusi tinggi.'
+                        )
+                        ->visible(
+                            static fn (
+                                callable $get,
+                            ): bool => $get(
+                                'theme_background_mode',
+                            ) === 'image',
+                        )
+                        ->dehydrated(),
+
+                    Select::make(
+                        'theme_background_size',
+                    )
+                        ->label(
+                            'Ukuran Background',
+                        )
+                        ->options([
+                            'cover' => 'Cover',
+                            'contain' => 'Contain',
+                            'auto' => 'Ukuran Asli',
+                        ])
+                        ->default('cover')
+                        ->required()
+                        ->visible(
+                            static fn (
+                                callable $get,
+                            ): bool => $get(
+                                'theme_background_mode',
+                            ) === 'image',
+                        )
+                        ->dehydrated(),
+
+                    Select::make(
+                        'theme_background_position',
+                    )
+                        ->label(
+                            'Posisi Background',
+                        )
+                        ->options([
+                            'center' => 'Tengah',
+                            'top' => 'Atas',
+                            'bottom' => 'Bawah',
+                            'left' => 'Kiri',
+                            'right' => 'Kanan',
+                        ])
+                        ->default('center')
+                        ->required()
+                        ->visible(
+                            static fn (
+                                callable $get,
+                            ): bool => $get(
+                                'theme_background_mode',
+                            ) === 'image',
+                        )
+                        ->dehydrated(),
+
+                    Toggle::make(
+                        'theme_background_repeat',
+                    )
+                        ->label(
+                            'Ulangi Background',
+                        )
+                        ->default(false)
+                        ->visible(
+                            static fn (
+                                callable $get,
+                            ): bool => $get(
+                                'theme_background_mode',
+                            ) === 'image',
+                        )
+                        ->dehydrated(),
+
+                    Toggle::make(
+                        'theme_background_fixed',
+                    )
+                        ->label(
+                            'Background Tetap Saat Scroll',
+                        )
+                        ->default(false)
+                        ->visible(
+                            static fn (
+                                callable $get,
+                            ): bool => $get(
+                                'theme_background_mode',
+                            ) === 'image',
+                        )
+                        ->dehydrated(),
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | OVERLAY
+                    |--------------------------------------------------------------------------
+                    */
+
+                    Toggle::make(
+                        'theme_overlay_enabled',
+                    )
+                        ->label(
+                            'Gunakan Overlay',
+                        )
+                        ->helperText(
+                            'Overlay membantu teks tetap terbaca '
+                            .'di atas background gambar.'
+                        )
+                        ->default(false)
+                        ->live()
+                        ->visible(
+                            static fn (
+                                callable $get,
+                            ): bool => $get(
+                                'theme_background_mode',
+                            ) === 'image',
+                        )
+                        ->dehydrated(),
+
+                    ColorPicker::make(
+                        'theme_overlay_color',
+                    )
+                        ->label(
+                            'Warna Overlay',
+                        )
+                        ->default('#000000')
+                        ->visible(
+                            static fn (
+                                callable $get,
+                            ): bool => $get(
+                                'theme_background_mode',
+                            ) === 'image'
+                                && (bool) $get(
+                                    'theme_overlay_enabled',
+                                ),
+                        )
+                        ->dehydrated(),
+
+                    TextInput::make(
+                        'theme_overlay_opacity',
+                    )
+                        ->label(
+                            'Opacity Overlay',
+                        )
+                        ->numeric()
+                        ->minValue(0)
+                        ->maxValue(100)
+                        ->suffix('%')
+                        ->default(25)
+                        ->helperText(
+                            '0% = transparan, 100% = menutupi penuh.'
+                        )
+                        ->visible(
+                            static fn (
+                                callable $get,
+                            ): bool => $get(
+                                'theme_background_mode',
+                            ) === 'image'
+                                && (bool) $get(
+                                    'theme_overlay_enabled',
+                                ),
+                        )
+                        ->dehydrated(),
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | COMPONENT APPEARANCE
+                    |--------------------------------------------------------------------------
+                    */
+
+                    Select::make(
+                        'theme_component_style',
+                    )
+                        ->label(
+                            'Tampilan Card / Komponen',
+                        )
+                        ->options([
+                            'solid' => 'Solid',
+
+                            'semi-transparent' => 'Semi Transparent',
+
+                            'glass' => 'Glass',
+
+                            'outline' => 'Outline',
+                        ])
+                        ->default('solid')
+                        ->required()
+                        ->live()
+                        ->dehydrated(),
+
+                    TextInput::make(
+                        'theme_component_opacity',
+                    )
+                        ->label(
+                            'Opacity Komponen',
+                        )
+                        ->numeric()
+                        ->minValue(10)
+                        ->maxValue(100)
+                        ->suffix('%')
+                        ->default(100)
+                        ->helperText(
+                            'Disarankan 65–100% agar isi tetap mudah dibaca.'
+                        )
+                        ->dehydrated(),
+
+                    TextInput::make(
+                        'theme_component_blur',
+                    )
+                        ->label(
+                            'Background Blur',
+                        )
+                        ->numeric()
+                        ->minValue(0)
+                        ->maxValue(30)
+                        ->suffix('px')
+                        ->default(0)
+                        ->helperText(
+                            'Blur terutama digunakan pada mode Glass.'
+                        )
+                        ->dehydrated(),
+
+                    Placeholder::make(
+                        'theme_design_note',
+                    )
                         ->label('')
                         ->content(
-                            'Custom background, overlay, opacity, '
-                            .'glass dan transparansi akan ditambahkan '
-                            .'pada tahap berikutnya di section Design ini juga.',
+                            'Theme berlaku untuk seluruh frontend setelah '
+                            .'modul-modul terhubung penuh ke Theme Engine. '
+                            .'Kontras teks dan tombol tetap mengikuti token '
+                            .'template agar tampilan tidak menjadi aneh.',
                         ),
                 ])
-                ->columns(1),
+                ->columns(2),
 
             Section::make('SEO Default')
                 ->schema([
