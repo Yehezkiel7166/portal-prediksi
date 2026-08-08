@@ -55,16 +55,37 @@ final class SiteConfigurationThemeManagerTest extends TestCase
             ),
         );
 
+        /*
+         * SiteConfigurationForm owns field composition.
+         * ThemeDesignPreview owns actual preview rendering.
+         */
+
         foreach ([
             "Placeholder::make('theme_preview')",
-            'linear-gradient',
-            'palette',
+            'Live Preview Design',
+            'ThemeDesignPreview::class',
         ] as $contract) {
             $this->assertStringContainsString(
                 $contract,
                 $form,
             );
         }
+
+        $preview = file_get_contents(
+            app_path(
+                'Domains/Theme/Support/ThemeDesignPreview.php',
+            ),
+        );
+
+        $this->assertStringContainsString(
+            'linear-gradient',
+            $preview,
+        );
+
+        $this->assertStringContainsString(
+            "\$preset['palette']",
+            $preview,
+        );
     }
 
     public function test_theme_is_loaded_from_active_brand(): void

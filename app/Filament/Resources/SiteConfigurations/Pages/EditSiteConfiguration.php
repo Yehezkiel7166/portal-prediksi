@@ -8,6 +8,7 @@ use App\Domains\Brand\Support\BrandContext;
 use App\Domains\SiteConfiguration\Actions\UpsertSiteConfiguration;
 use App\Domains\SiteConfiguration\Models\SiteConfiguration;
 use App\Domains\Theme\Models\BrandThemeSetting;
+use App\Domains\Theme\Support\ThemeDesignPreview;
 use App\Domains\Theme\Support\ThemePresetCatalog;
 use App\Filament\Resources\SiteConfigurations\SiteConfigurationResource;
 use Filament\Resources\Pages\EditRecord;
@@ -367,6 +368,41 @@ final class EditSiteConfiguration extends EditRecord
             ]);
         }
 
+        /*
+        |--------------------------------------------------------------------------
+        | READABILITY SAVE GUARD
+        |--------------------------------------------------------------------------
+        */
+
+        $minimumOpacity =
+            ThemeDesignPreview::MINIMUM_OPACITY[
+                $themeData['component_style']
+            ]
+            ?? 85;
+
+        if (
+            $themeData['component_opacity']
+            < $minimumOpacity
+        ) {
+            throw ValidationException::withMessages([
+                'theme_component_opacity' => 'Untuk mode '.
+                    $themeData['component_style'].
+                    ', opacity minimal '.
+                    $minimumOpacity.
+                    '% agar konten tetap mudah dibaca.',
+            ]);
+        }
+
+        if (
+            $themeData['background_mode'] === 'image'
+            && ! $themeData['overlay_enabled']
+            && $themeData['component_opacity'] < 55
+        ) {
+            throw ValidationException::withMessages([
+                'theme_component_opacity' => 'Background gambar tanpa overlay membutuhkan '.
+                    'opacity komponen minimal 55%, atau aktifkan overlay.',
+            ]);
+        }
         /*
         |--------------------------------------------------------------------------
         | Save Site Configuration first

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources\SiteConfigurations\Schemas;
 
+use App\Domains\Theme\Support\ThemeDesignPreview;
 use App\Domains\Theme\Support\ThemePresetCatalog;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
@@ -84,129 +85,14 @@ final class SiteConfigurationForm
                         ->dehydrated(),
 
                     Placeholder::make('theme_preview')
-                        ->label('Preview Template')
+                        ->label('Live Preview Design')
                         ->content(
-                            static function (
+                            static fn (
                                 callable $get,
-                            ): HtmlString {
-                                $slug = $get(
-                                    'theme_preset',
-                                );
-
-                                $preset = filled($slug)
-                                    ? app(
-                                        ThemePresetCatalog::class,
-                                    )->find(
-                                        (string) $slug,
-                                    )
-                                    : null;
-
-                                if ($preset === null) {
-                                    return new HtmlString(
-                                        '<div style="
-                                            padding:16px;
-                                            border:1px solid #334155;
-                                            border-radius:10px;
-                                        ">
-                                            Pilih template untuk melihat preview.
-                                        </div>',
-                                    );
-                                }
-
-                                $palette =
-                                    $preset['palette'];
-
-                                $background =
-                                    htmlspecialchars(
-                                        (string) $palette[0],
-                                        ENT_QUOTES,
-                                    );
-
-                                $primary =
-                                    htmlspecialchars(
-                                        (string) $palette[1],
-                                        ENT_QUOTES,
-                                    );
-
-                                $accent =
-                                    htmlspecialchars(
-                                        (string) $palette[2],
-                                        ENT_QUOTES,
-                                    );
-
-                                $name =
-                                    htmlspecialchars(
-                                        (string) $preset['name'],
-                                        ENT_QUOTES,
-                                    );
-
-                                return new HtmlString(
-                                    <<<HTML
-                                    <div style="
-                                        overflow:hidden;
-                                        border:1px solid #475569;
-                                        border-radius:12px;
-                                    ">
-                                        <div style="
-                                            min-height:120px;
-                                            padding:18px;
-                                            background:
-                                                linear-gradient(
-                                                    135deg,
-                                                    {$background},
-                                                    {$primary},
-                                                    {$accent}
-                                                );
-                                            display:flex;
-                                            align-items:flex-end;
-                                        ">
-                                            <div style="
-                                                background:rgba(0,0,0,.60);
-                                                color:#fff;
-                                                padding:8px 12px;
-                                                border-radius:8px;
-                                                font-weight:700;
-                                            ">
-                                                {$name}
-                                            </div>
-                                        </div>
-
-                                        <div style="
-                                            display:flex;
-                                            gap:8px;
-                                            padding:12px;
-                                            background:#0f172a;
-                                        ">
-                                            <span style="
-                                                width:38px;
-                                                height:38px;
-                                                border-radius:8px;
-                                                background:{$background};
-                                                border:1px solid #64748b;
-                                            "></span>
-
-                                            <span style="
-                                                width:38px;
-                                                height:38px;
-                                                border-radius:8px;
-                                                background:{$primary};
-                                                border:1px solid #64748b;
-                                            "></span>
-
-                                            <span style="
-                                                width:38px;
-                                                height:38px;
-                                                border-radius:8px;
-                                                background:{$accent};
-                                                border:1px solid #64748b;
-                                            "></span>
-                                        </div>
-                                    </div>
-                                    HTML,
-                                );
-                            },
+                            ): HtmlString => app(
+                                ThemeDesignPreview::class,
+                            )->render($get),
                         ),
-
                     /*
                     |--------------------------------------------------------------------------
                     | BACKGROUND
@@ -249,6 +135,7 @@ final class SiteConfigurationForm
                                 'theme_background_mode',
                             ) === 'image',
                         )
+                        ->live()
                         ->dehydrated(),
 
                     Select::make(
@@ -271,6 +158,7 @@ final class SiteConfigurationForm
                                 'theme_background_mode',
                             ) === 'image',
                         )
+                        ->live()
                         ->dehydrated(),
 
                     Select::make(
@@ -295,6 +183,7 @@ final class SiteConfigurationForm
                                 'theme_background_mode',
                             ) === 'image',
                         )
+                        ->live()
                         ->dehydrated(),
 
                     Toggle::make(
@@ -311,6 +200,7 @@ final class SiteConfigurationForm
                                 'theme_background_mode',
                             ) === 'image',
                         )
+                        ->live()
                         ->dehydrated(),
 
                     Toggle::make(
@@ -327,6 +217,7 @@ final class SiteConfigurationForm
                                 'theme_background_mode',
                             ) === 'image',
                         )
+                        ->live()
                         ->dehydrated(),
 
                     /*
@@ -373,6 +264,7 @@ final class SiteConfigurationForm
                                     'theme_overlay_enabled',
                                 ),
                         )
+                        ->live()
                         ->dehydrated(),
 
                     TextInput::make(
@@ -399,6 +291,7 @@ final class SiteConfigurationForm
                                     'theme_overlay_enabled',
                                 ),
                         )
+                        ->live()
                         ->dehydrated(),
 
                     /*
@@ -441,6 +334,7 @@ final class SiteConfigurationForm
                         ->helperText(
                             'Disarankan 65–100% agar isi tetap mudah dibaca.'
                         )
+                        ->live()
                         ->dehydrated(),
 
                     TextInput::make(
@@ -457,6 +351,7 @@ final class SiteConfigurationForm
                         ->helperText(
                             'Blur terutama digunakan pada mode Glass.'
                         )
+                        ->live()
                         ->dehydrated(),
 
                     Placeholder::make(
