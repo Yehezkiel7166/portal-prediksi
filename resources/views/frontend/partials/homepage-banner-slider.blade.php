@@ -1,6 +1,7 @@
 @if ($homepageBanners->isNotEmpty())
     <section
         data-homepage-slider
+        data-theme-homepage-banner
         data-autoplay-delay="5000"
         aria-roledescription="carousel"
         aria-label="Banner utama"
@@ -64,6 +65,7 @@
             <button
                 type="button"
                 data-slider-previous
+                data-theme-banner-control
                 aria-label="Banner sebelumnya"
                 class="absolute left-3 top-1/2 z-30 -translate-y-1/2 rounded-full border border-white/20 bg-slate-950/70 p-3 text-white backdrop-blur transition hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400"
             >
@@ -73,6 +75,7 @@
             <button
                 type="button"
                 data-slider-next
+                data-theme-banner-control
                 aria-label="Banner berikutnya"
                 class="absolute right-3 top-1/2 z-30 -translate-y-1/2 rounded-full border border-white/20 bg-slate-950/70 p-3 text-white backdrop-blur transition hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400"
             >
@@ -81,6 +84,7 @@
 
             <div
                 data-slider-indicators
+                data-theme-banner-indicators
                 aria-label="Pilih banner"
                 class="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 gap-2"
             >
@@ -88,6 +92,7 @@
                     <button
                         type="button"
                         data-slider-indicator="{{ $index }}"
+                        data-theme-banner-indicator
                         aria-label="Tampilkan banner {{ $index + 1 }}"
                         aria-current="{{ $index === 0 ? 'true' : 'false' }}"
                         @class([
@@ -101,7 +106,10 @@
         @endif
     </section>
 @else
-    <section class="border-b border-slate-800 bg-slate-900">
+    <section
+        data-theme-homepage-banner-fallback
+        class="border-b border-slate-800 bg-slate-900"
+    >
         <div class="mx-auto max-w-7xl px-4 py-16 md:py-20">
             <div class="max-w-3xl">
                 <p class="mb-4 text-sm font-semibold uppercase tracking-widest text-amber-400">

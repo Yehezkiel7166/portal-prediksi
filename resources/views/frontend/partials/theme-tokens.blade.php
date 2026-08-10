@@ -2186,3 +2186,201 @@
         }
     }
 </style>
+
+<style id="brand-theme-homepage-banner">
+    /*
+    |--------------------------------------------------------------------------
+    | HOMEPAGE BANNER
+    |--------------------------------------------------------------------------
+    |
+    | Theme applies only to carousel chrome.
+    | Uploaded desktop/mobile banner media remains authoritative.
+    |
+    */
+
+    [data-theme-homepage-banner] {
+        position:
+            relative;
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 78%,
+                transparent
+            ) !important;
+
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface) 92%,
+                transparent
+            ) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Never recolor banner media
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-homepage-banner] picture,
+    [data-theme-homepage-banner] img {
+        color-scheme:
+            normal;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Navigation controls
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-banner-control] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 82%,
+                transparent
+            ) !important;
+
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface) 72%,
+                transparent
+            ) !important;
+
+        color:
+            var(--theme-text) !important;
+
+        backdrop-filter:
+            blur(
+                max(
+                    6px,
+                    var(--theme-component-blur, 0px)
+                )
+            );
+    }
+
+    [data-theme-banner-control]:hover {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 88%,
+                transparent
+            ) !important;
+
+        border-color:
+            var(--theme-border-accent) !important;
+    }
+
+    [data-theme-banner-control]:focus-visible {
+        outline:
+            2px solid var(--theme-primary);
+
+        outline-offset:
+            3px;
+
+        box-shadow:
+            0 0 0 3px
+            color-mix(
+                in srgb,
+                var(--theme-primary) 22%,
+                transparent
+            );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Indicators
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-banner-indicator] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-text) 42%,
+                transparent
+            ) !important;
+    }
+
+    [data-theme-banner-indicator][aria-current="true"] {
+        background:
+            var(--theme-primary) !important;
+    }
+
+    [data-theme-banner-indicator]:hover {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-primary) 72%,
+                var(--theme-text) 28%
+            ) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Empty-banner fallback
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-homepage-banner-fallback] {
+        position:
+            relative;
+
+        color:
+            var(--theme-text);
+
+        background:
+            transparent !important;
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 78%,
+                transparent
+            ) !important;
+    }
+
+    [data-theme-homepage-banner-fallback] .text-white {
+        color:
+            var(--theme-text) !important;
+    }
+
+    [data-theme-homepage-banner-fallback] .text-slate-300 {
+        color:
+            var(--theme-text-muted) !important;
+    }
+
+    [data-theme-homepage-banner-fallback] .text-amber-400 {
+        color:
+            var(--theme-primary) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Responsive control sizing
+    |--------------------------------------------------------------------------
+    */
+
+    @media (max-width: 639px) {
+        [data-theme-banner-control] {
+            padding:
+                0.625rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        [data-theme-homepage-banner]
+        [data-slider-slide] {
+            transition-duration:
+                0.01ms !important;
+        }
+
+        [data-theme-banner-indicator] {
+            transition:
+                none !important;
+        }
+    }
+</style>
