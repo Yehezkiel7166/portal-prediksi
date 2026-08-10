@@ -608,3 +608,218 @@
         }
     }
 </style>
+
+<style id="brand-theme-results">
+    /*
+    |--------------------------------------------------------------------------
+    | RESULT MODULE
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-result-hero],
+    [data-theme-result-section] {
+        position: relative;
+        color: var(--theme-text);
+    }
+
+    [data-theme-result-hero] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 75%,
+                transparent
+            );
+    }
+
+    [data-theme-result-card],
+    [data-theme-result-history-card],
+    [data-theme-result-detail] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 85%,
+                transparent
+            );
+
+        box-shadow:
+            0 16px 36px
+            color-mix(
+                in srgb,
+                var(--theme-shadow) 72%,
+                transparent
+            );
+    }
+
+    [data-theme-result-card] {
+        transition:
+            transform 160ms ease,
+            border-color 160ms ease,
+            box-shadow 160ms ease;
+    }
+
+    [data-theme-result-card]:hover {
+        transform: translateY(-3px);
+
+        border-color:
+            var(--theme-border-accent);
+
+        box-shadow:
+            0 20px 42px
+            color-mix(
+                in srgb,
+                var(--theme-shadow) 88%,
+                transparent
+            );
+    }
+
+    [data-theme-result-number-panel] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-result-bg) 82%,
+                transparent
+            );
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-result-border) 55%,
+                transparent
+            );
+    }
+
+    [data-theme-result-number] {
+        color:
+            var(--theme-result-text);
+
+        text-shadow:
+            0 0 22px
+            color-mix(
+                in srgb,
+                var(--theme-glow) 30%,
+                transparent
+            );
+    }
+
+    [data-theme-result-detail-header],
+    [data-theme-result-notes] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 78%,
+                transparent
+            );
+    }
+
+    [data-theme-result-meta],
+    [data-theme-result-market-code] {
+        border-color:
+            var(--theme-border);
+
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 72%,
+                transparent
+            );
+    }
+
+    [data-theme-market-status] {
+        border-color:
+            var(--theme-border);
+
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 80%,
+                transparent
+            );
+
+        color:
+            var(--theme-text-muted);
+    }
+
+    [data-theme-market-status="open"] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-success) 48%,
+                transparent
+            );
+
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-success) 12%,
+                transparent
+            );
+
+        color:
+            var(--theme-success);
+    }
+
+    [data-theme-market-status="closed"] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-danger) 48%,
+                transparent
+            );
+
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-danger) 12%,
+                transparent
+            );
+
+        color:
+            var(--theme-danger);
+    }
+
+    [data-theme-market-status="holiday"] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-warning) 48%,
+                transparent
+            );
+
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-warning) 12%,
+                transparent
+            );
+
+        color:
+            var(--theme-warning);
+    }
+
+    @media (max-width: 639px) {
+        [data-theme-result-grid] {
+            grid-template-columns:
+                minmax(0, 1fr);
+        }
+
+        [data-theme-result-card],
+        [data-theme-result-history-card],
+        [data-theme-result-detail] {
+            border-radius: 0.875rem;
+        }
+
+        [data-theme-result-number] {
+            letter-spacing: 0.08em;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        [data-theme-result-card] {
+            transition: none;
+        }
+
+        [data-theme-result-card]:hover {
+            transform: none;
+        }
+    }
+</style>

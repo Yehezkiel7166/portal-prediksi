@@ -41,12 +41,19 @@
 @endsection
 
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
-    <div class="mx-auto max-w-4xl px-4 py-12 md:py-16">
-        <nav class="text-sm text-slate-400" aria-label="Breadcrumb">
+<section
+    data-theme-result-hero
+    class="border-b"
+>
+    <div class="mx-auto max-w-5xl px-4 py-8 md:py-12">
+        <nav
+            data-theme-muted
+            class="text-sm"
+            aria-label="Breadcrumb"
+        >
             <a
                 href="{{ route('results.index') }}"
-                class="transition hover:text-amber-400"
+                class="transition hover:opacity-80"
             >
                 Data Result
             </a>
@@ -57,82 +64,231 @@
                 href="{{ route('results.history', [
                     'marketSlug' => $result->market->slug,
                 ]) }}"
-                class="transition hover:text-amber-400"
+                class="transition hover:opacity-80"
             >
                 {{ $result->market->name }}
             </a>
 
             <span class="mx-2">/</span>
 
-            <span class="text-slate-200">
+            <span>
                 {{ $result->result_date->format('d-m-Y') }}
             </span>
         </nav>
-
-        <p class="mt-8 text-sm font-semibold uppercase tracking-widest text-amber-400">
-            Data Result
-        </p>
-
-        <h1 class="mt-3 text-3xl font-bold text-white md:text-5xl">
-            Result {{ $result->market->name }}
-        </h1>
-
-        <div class="mt-5 flex flex-wrap gap-3 text-sm">
-            <span class="rounded-full border border-slate-700 px-3 py-1 text-slate-300">
-                {{ $result->market->code }}
-            </span>
-
-            <time
-                datetime="{{ $result->result_date->format('Y-m-d') }}"
-                class="rounded-full border border-slate-700 px-3 py-1 text-slate-300"
-            >
-                {{ $result->result_date->translatedFormat('d F Y') }}
-            </time>
-
-            <span class="rounded-full border border-slate-700 px-3 py-1 text-slate-300">
-                {{ $result->market->timezone }}
-            </span>
-        </div>
     </div>
 </section>
 
-<section class="bg-slate-950">
-    <div class="mx-auto max-w-4xl px-4 py-12">
-        <article class="rounded-xl border border-slate-800 bg-slate-900 p-6 md:p-8">
-            <p class="text-sm font-medium text-slate-400">
-                Nomor result
-            </p>
+<section data-theme-result-section>
+    <div class="mx-auto max-w-5xl px-4 py-10 md:py-14">
+        <article
+            data-theme-result-detail
+            data-theme-surface
+            class="
+                overflow-hidden rounded-2xl border
+            "
+        >
+            <header
+                data-theme-result-detail-header
+                class="
+                    border-b px-5 py-6
+                    md:px-8 md:py-7
+                "
+            >
+                <p
+                    data-theme-accent
+                    class="
+                        text-xs font-semibold uppercase
+                        tracking-[0.18em]
+                    "
+                >
+                    Detail Result
+                </p>
 
-            <div class="mt-4 whitespace-pre-line break-words rounded-xl border border-amber-400/20 bg-slate-950 p-6 text-center text-2xl font-bold leading-relaxed text-white md:text-3xl">
-                {{ $result->winning_numbers }}
-            </div>
+                <div
+                    class="
+                        mt-3 flex flex-col gap-4
+                        sm:flex-row sm:items-end
+                        sm:justify-between
+                    "
+                >
+                    <div>
+                        <h1
+                            class="
+                                text-3xl font-black
+                                md:text-4xl
+                            "
+                        >
+                            {{ $result->market->name }}
+                        </h1>
 
-            @if (filled($result->notes))
-                <div class="mt-8 border-t border-slate-800 pt-8">
-                    <h2 class="text-lg font-semibold text-white">
-                        Catatan
-                    </h2>
+                        <p
+                            data-theme-muted
+                            class="mt-2 text-sm"
+                        >
+                            Result resmi tanggal
+                            {{ $result->result_date->translatedFormat('d F Y') }}
+                        </p>
+                    </div>
 
-                    <p class="mt-3 whitespace-pre-line leading-7 text-slate-300">
-                        {{ $result->notes }}
-                    </p>
+                    <span
+                        data-theme-result-market-code
+                        class="
+                            self-start rounded-full
+                            border px-3 py-1.5
+                            text-xs font-bold
+                            sm:self-auto
+                        "
+                    >
+                        {{ $result->market->code }}
+                    </span>
                 </div>
-            @endif
+            </header>
+
+            <div class="p-5 md:p-8">
+                <div
+                    data-theme-result-number-panel
+                    class="
+                        rounded-2xl border
+                        px-5 py-8 text-center
+                        md:px-8 md:py-10
+                    "
+                >
+                    <p
+                        data-theme-muted
+                        class="
+                            text-xs font-semibold uppercase
+                            tracking-[0.18em]
+                        "
+                    >
+                        Hasil Result
+                    </p>
+
+                    <div
+                        data-theme-result-number
+                        class="
+                            mt-4 whitespace-pre-line
+                            break-words font-mono
+                            text-4xl font-black
+                            leading-tight tracking-[0.12em]
+                            sm:text-5xl md:text-6xl
+                        "
+                    >
+                        {{ $result->winning_numbers }}
+                    </div>
+                </div>
+
+                <dl
+                    class="
+                        mt-6 grid gap-3
+                        sm:grid-cols-3
+                    "
+                >
+                    <div
+                        data-theme-result-meta
+                        class="rounded-xl border p-4"
+                    >
+                        <dt
+                            data-theme-muted
+                            class="text-xs"
+                        >
+                            Pasaran
+                        </dt>
+
+                        <dd class="mt-1 font-semibold">
+                            {{ $result->market->name }}
+                        </dd>
+                    </div>
+
+                    <div
+                        data-theme-result-meta
+                        class="rounded-xl border p-4"
+                    >
+                        <dt
+                            data-theme-muted
+                            class="text-xs"
+                        >
+                            Tanggal
+                        </dt>
+
+                        <dd class="mt-1 font-semibold">
+                            {{ $result->result_date->translatedFormat('d M Y') }}
+                        </dd>
+                    </div>
+
+                    <div
+                        data-theme-result-meta
+                        class="rounded-xl border p-4"
+                    >
+                        <dt
+                            data-theme-muted
+                            class="text-xs"
+                        >
+                            Zona Waktu
+                        </dt>
+
+                        <dd class="mt-1 font-semibold">
+                            {{ $result->market->timezone }}
+                        </dd>
+                    </div>
+                </dl>
+
+                @if (filled($result->notes))
+                    <section
+                        data-theme-result-notes
+                        class="mt-8 border-t pt-7"
+                    >
+                        <h2 class="text-lg font-semibold">
+                            Catatan
+                        </h2>
+
+                        <p
+                            data-theme-muted
+                            class="
+                                mt-3 whitespace-pre-line
+                                leading-7
+                            "
+                        >
+                            {{ $result->notes }}
+                        </p>
+                    </section>
+                @endif
+            </div>
         </article>
 
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div
+            class="
+                mt-6 grid gap-3
+                sm:grid-cols-2
+            "
+        >
             <a
+                data-theme-primary-button
                 href="{{ route('results.history', [
                     'marketSlug' => $result->market->slug,
                 ]) }}"
-                class="inline-flex items-center justify-center rounded-lg bg-amber-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-amber-300"
+                class="
+                    inline-flex min-h-12
+                    items-center justify-center
+                    rounded-lg border px-5 py-3
+                    text-center text-sm
+                    font-semibold transition
+                    hover:opacity-90
+                "
             >
                 Result {{ $result->market->name }} Lainnya
             </a>
 
             <a
+                data-theme-secondary-button
                 href="{{ route('results.index') }}"
-                class="inline-flex items-center justify-center rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-slate-500 hover:text-white"
+                class="
+                    inline-flex min-h-12
+                    items-center justify-center
+                    rounded-lg border px-5 py-3
+                    text-center text-sm
+                    font-semibold transition
+                    hover:opacity-90
+                "
             >
                 Semua Data Result
             </a>

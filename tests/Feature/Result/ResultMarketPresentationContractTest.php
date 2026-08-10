@@ -35,6 +35,16 @@ final class ResultMarketPresentationContractTest extends TestCase
             $controller,
         );
 
+        /*
+        |--------------------------------------------------------------------------
+        | BUSINESS CONTRACT
+        |--------------------------------------------------------------------------
+        |
+        | Result listing tetap market-centric:
+        | satu market = satu presentation card.
+        |
+        */
+
         $this->assertStringContainsString(
             '@foreach ($markets as $market)',
             $view,
@@ -54,13 +64,56 @@ final class ResultMarketPresentationContractTest extends TestCase
             '@forelse ($results as $result)',
             $view,
         );
+
+        /*
+        |--------------------------------------------------------------------------
+        | RESPONSIVE CARD CONTRACT
+        |--------------------------------------------------------------------------
+        */
+
         $this->assertStringContainsString(
-            'md:grid-cols-[minmax(180px,1.5fr)',
+            'data-theme-result-grid',
+            $view,
+        );
+
+        $this->assertStringContainsString(
+            'data-theme-result-card',
+            $view,
+        );
+
+        $this->assertStringContainsString(
+            'sm:grid-cols-2',
+            $view,
+        );
+
+        $this->assertStringContainsString(
+            'xl:grid-cols-3',
             $view,
         );
 
         $this->assertStringNotContainsString(
-            'grid gap-6 md:grid-cols-2 xl:grid-cols-3',
+            'md:grid-cols-[minmax(180px,1.5fr)',
+            $view,
+        );
+
+        /*
+        |--------------------------------------------------------------------------
+        | MARKET IDENTITY CONTRACT
+        |--------------------------------------------------------------------------
+        */
+
+        $this->assertStringContainsString(
+            '{{ $market->name }}',
+            $view,
+        );
+
+        $this->assertStringContainsString(
+            '{{ $market->code }}',
+            $view,
+        );
+
+        $this->assertStringContainsString(
+            'Detail {{ $market->name }}',
             $view,
         );
     }
