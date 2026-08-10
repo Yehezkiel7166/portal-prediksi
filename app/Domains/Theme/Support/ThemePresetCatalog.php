@@ -160,11 +160,9 @@ final class ThemePresetCatalog
             ? 'rgba(255, 255, 255, 0.82)'
             : 'rgba(15, 23, 42, 0.82)';
 
-        $buttonText = $this->isLightColor(
+        $buttonText = $this->bestContrastText(
             $primary,
-        )
-            ? '#020617'
-            : '#FFFFFF';
+        );
 
         $slug =
             $family['slug'].'-'.$variantSlug;
@@ -316,37 +314,111 @@ final class ThemePresetCatalog
         return '#0F172A';
     }
 
-    private function isLightColor(
+    private function bestContrastText(
+        string $background,
+    ): string {
+        $dark = '#020617';
+        $light = '#FFFFFF';
+
+        $darkRatio = $this->contrastRatio(
+            $dark,
+            $background,
+        );
+
+        $lightRatio = $this->contrastRatio(
+            $light,
+            $background,
+        );
+
+        return $darkRatio >= $lightRatio
+            ? $dark
+            : $light;
+    }
+
+    private function contrastRatio(
+        string $foreground,
+        string $background,
+    ): float {
+        $foregroundLuminance =
+            $this->relativeLuminance(
+                $foreground,
+            );
+
+        $backgroundLuminance =
+            $this->relativeLuminance(
+                $background,
+            );
+
+        $lighter = max(
+            $foregroundLuminance,
+            $backgroundLuminance,
+        );
+
+        $darker = min(
+            $foregroundLuminance,
+            $backgroundLuminance,
+        );
+
+        return (
+            $lighter + 0.05
+        ) / (
+            $darker + 0.05
+        );
+    }
+
+    private function relativeLuminance(
         string $hex,
-    ): bool {
+    ): float {
         $hex = ltrim(
             $hex,
             '#',
         );
 
-        if (strlen($hex) !== 6) {
-            return false;
+        if (
+            strlen($hex) !== 6
+            || preg_match(
+                '/^[0-9A-Fa-f]{6}$/',
+                $hex,
+            ) !== 1
+        ) {
+            throw new RuntimeException(
+                "Invalid contrast color: #{$hex}",
+            );
         }
 
-        $red = hexdec(
-            substr($hex, 0, 2),
+        $channels = [
+            hexdec(
+                substr($hex, 0, 2),
+            ) / 255,
+
+            hexdec(
+                substr($hex, 2, 2),
+            ) / 255,
+
+            hexdec(
+                substr($hex, 4, 2),
+            ) / 255,
+        ];
+
+        $channels = array_map(
+            static function (
+                float $channel,
+            ): float {
+                if ($channel <= 0.04045) {
+                    return $channel / 12.92;
+                }
+
+                return (
+                    ($channel + 0.055)
+                    / 1.055
+                ) ** 2.4;
+            },
+            $channels,
         );
 
-        $green = hexdec(
-            substr($hex, 2, 2),
-        );
-
-        $blue = hexdec(
-            substr($hex, 4, 2),
-        );
-
-        $luminance =
-            (
-                (0.299 * $red)
-                + (0.587 * $green)
-                + (0.114 * $blue)
-            ) / 255;
-
-        return $luminance >= 0.58;
+        return
+            (0.2126 * $channels[0])
+            + (0.7152 * $channels[1])
+            + (0.0722 * $channels[2]);
     }
 }
