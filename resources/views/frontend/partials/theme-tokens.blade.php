@@ -21,6 +21,9 @@
     $themeOverlay =
         $themeBackground['overlay'] ?? [];
 
+    $themeGradient =
+        $themeBackground['theme_gradient'] ?? [];
+
     $themeComponentStyle =
         $themeAppearance['component_style']
         ?? 'solid';
@@ -204,6 +207,31 @@
     body[data-theme-root] > main {
         min-height: 55vh;
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | THEME BACKGROUND
+    |--------------------------------------------------------------------------
+    */
+
+    @if (
+        $themeBackgroundMode === 'theme'
+        && is_array($themeGradient)
+        && count($themeGradient) >= 3
+    )
+        body[data-theme-root] {
+            background-image:
+                linear-gradient(
+                    135deg,
+                    {{ $themeGradient[0] }} 0%,
+                    {{ $themeGradient[1] }} 55%,
+                    {{ $themeGradient[2] }} 100%
+                );
+
+            background-attachment:
+                fixed;
+        }
+    @endif
 
     /*
     |--------------------------------------------------------------------------

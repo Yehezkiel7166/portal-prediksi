@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\JackpotProofsController;
 use App\Http\Controllers\Frontend\LiveDrawController;
 use App\Http\Controllers\Frontend\LotteryScheduleController;
 use App\Http\Controllers\Frontend\MarketResultHistoryController;
+use App\Http\Controllers\Frontend\PaitoColorController;
 use App\Http\Controllers\Frontend\PaitoController;
 use App\Http\Controllers\Frontend\PredictionDetailController;
 use App\Http\Controllers\Frontend\PredictionsController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\Frontend\SgpNumberConverterController;
 use App\Http\Controllers\Frontend\ShioTableController;
 use App\Http\Controllers\Frontend\SitemapController;
 use App\Http\Controllers\Frontend\SlotGacorController;
+use App\Http\Middleware\ApplyThemeQaPreview;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -137,21 +139,58 @@ Route::get('/alat-togel/paito-warna', PaitoController::class)
 
 Route::post(
     '/alat-togel/paito-warna/result/{result}/color',
-    [\App\Http\Controllers\Frontend\PaitoColorController::class, 'save'],
+    [PaitoColorController::class, 'save'],
 )->middleware('throttle:120,1')->name('tools.paito.color.save');
 
 Route::delete(
     '/alat-togel/paito-warna/result/{result}/color',
-    [\App\Http\Controllers\Frontend\PaitoColorController::class, 'delete'],
+    [PaitoColorController::class, 'delete'],
 )->middleware('throttle:120,1')->name('tools.paito.color.delete');
 
 Route::post(
     '/alat-togel/paito-warna/colors/bulk',
-    [\App\Http\Controllers\Frontend\PaitoColorController::class, 'bulk'],
+    [PaitoColorController::class, 'bulk'],
 )->middleware('throttle:30,1')
     ->name('tools.paito.color.bulk');
 
 Route::delete(
     '/alat-togel/paito-warna/market/{market}/colors',
-    [\App\Http\Controllers\Frontend\PaitoColorController::class, 'clear'],
+    [PaitoColorController::class, 'clear'],
 )->middleware('throttle:10,1')->name('tools.paito.color.clear');
+
+/*
+|--------------------------------------------------------------------------
+| Signed Theme QA Preview
+|--------------------------------------------------------------------------
+|
+| No database writes. `signed` validates both preset query parameter and
+| expiration timestamp before ApplyThemeQaPreview can override the request.
+|
+*/
+
+Route::prefix('/__theme-qa')
+    ->middleware([
+        'signed',
+        ApplyThemeQaPreview::class,
+    ])
+    ->group(function (): void {
+        Route::get(
+            '/',
+            HomeController::class,
+        )->name('theme-qa.home');
+
+        Route::get(
+            '/data-result',
+            ResultsController::class,
+        )->name('theme-qa.results');
+
+        Route::get(
+            '/prediksi-togel',
+            PredictionsController::class,
+        )->name('theme-qa.predictions');
+
+        Route::get(
+            '/live-draw',
+            LiveDrawController::class,
+        )->name('theme-qa.live-draw');
+    });

@@ -26,6 +26,27 @@ final class BrandThemeResolver
 
         /*
         |--------------------------------------------------------------------------
+        | Signed QA preview override
+        |--------------------------------------------------------------------------
+        |
+        | Only ApplyThemeQaPreview may place this server-side request attribute.
+        | Production database state is never mutated by visual QA.
+        |
+        */
+
+        $qaPreview = request()->attributes->get(
+            'theme_qa_preview',
+        );
+
+        if (is_array($qaPreview)) {
+            return array_replace_recursive(
+                $defaults,
+                $qaPreview,
+            );
+        }
+
+        /*
+        |--------------------------------------------------------------------------
         | Safe deployment fallback
         |--------------------------------------------------------------------------
         |
@@ -63,6 +84,12 @@ final class BrandThemeResolver
         $resolved['slug'] =
             $setting->theme_slug;
 
+        $preset = app(
+            ThemePresetCatalog::class,
+        )->find(
+            $setting->theme_slug,
+        );
+
         $resolved['background'] = [
             'mode' => $setting->background_mode,
 
@@ -75,6 +102,10 @@ final class BrandThemeResolver
             'repeat' => $setting->background_repeat,
 
             'fixed' => $setting->background_fixed,
+
+            'theme_gradient' => $preset['background']['theme_gradient']
+                ?? $defaults['background']['theme_gradient']
+                ?? [],
 
             'overlay' => [
                 'enabled' => $setting->overlay_enabled,
