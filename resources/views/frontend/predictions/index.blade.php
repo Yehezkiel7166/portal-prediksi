@@ -396,7 +396,7 @@
 </section>
 <script>
     (() => {
-        const roots = document.querySelectorAll('[data-dark-datepicker data-theme-datepicker]');
+        const roots = document.querySelectorAll('[data-dark-datepicker][data-theme-datepicker]');
 
         if (roots.length === 0) {
             return;
