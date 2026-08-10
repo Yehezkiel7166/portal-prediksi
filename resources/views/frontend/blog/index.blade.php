@@ -22,7 +22,7 @@
 @endsection
 
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-content="blog-index" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-7xl px-4 py-12 md:py-16">
         <p class="text-sm font-semibold uppercase tracking-widest text-amber-400">
             Blog
@@ -39,7 +39,7 @@
     </div>
 </section>
 
-<section class="bg-slate-950">
+<section data-theme-content="blog-index" class="bg-slate-950">
     <div class="mx-auto max-w-7xl px-4 py-12">
         <div class="mb-7">
             <p class="text-sm text-slate-400">
@@ -56,7 +56,7 @@
                 <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             @endif
 
-            <article class="flex h-full flex-col overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+            <article data-theme-surface class="flex h-full flex-col overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
                 <a
                     href="{{ route('blog.show', $blogPost->slug) }}"
                     class="block aspect-[16/9] overflow-hidden bg-slate-950"
@@ -124,7 +124,7 @@
                 </div>
             @endif
         @empty
-            <div class="rounded-xl border border-dashed border-slate-700 bg-slate-900 px-6 py-16 text-center">
+            <div data-theme-surface class="rounded-xl border border-dashed border-slate-700 bg-slate-900 px-6 py-16 text-center">
                 <h2 class="text-xl font-semibold text-white">
                     Belum ada artikel
                 </h2>

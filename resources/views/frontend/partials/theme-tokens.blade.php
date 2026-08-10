@@ -1696,3 +1696,253 @@
         }
     }
 </style>
+
+<style id="brand-theme-content-marketing">
+    /*
+    |--------------------------------------------------------------------------
+    | CONTENT + MARKETING MODULES
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-content] {
+        position:
+            relative;
+
+        color:
+            var(--theme-text);
+
+        background:
+            transparent !important;
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 76%,
+                transparent
+            ) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | LEGACY PALETTE -> THEME TOKENS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-content] .bg-slate-900,
+    [data-theme-content] .bg-slate-950 {
+        background:
+            var(--theme-surface) !important;
+    }
+
+    [data-theme-content] .bg-slate-950\/60 {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 60%,
+                transparent
+            ) !important;
+    }
+
+    [data-theme-content] .text-white,
+    [data-theme-content] .text-slate-100,
+    [data-theme-content] .text-slate-200 {
+        color:
+            var(--theme-text) !important;
+    }
+
+    [data-theme-content] .text-slate-300,
+    [data-theme-content] .text-slate-400,
+    [data-theme-content] .text-slate-500,
+    [data-theme-content] .text-slate-600 {
+        color:
+            var(--theme-text-muted) !important;
+    }
+
+    [data-theme-content] .text-amber-300,
+    [data-theme-content] .text-amber-400 {
+        color:
+            var(--theme-primary) !important;
+    }
+
+    [data-theme-content] .border-slate-700,
+    [data-theme-content] .border-slate-800 {
+        border-color:
+            var(--theme-border) !important;
+    }
+
+    [data-theme-content] .border-amber-400 {
+        border-color:
+            var(--theme-border-accent) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CARDS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-content] [data-theme-surface] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 84%,
+                transparent
+            ) !important;
+
+        box-shadow:
+            0 14px 34px
+            color-mix(
+                in srgb,
+                var(--theme-shadow) 70%,
+                transparent
+            );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CONTENT LINKS / CTA
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-content] a.text-amber-400,
+    [data-theme-content] a.border-amber-400 {
+        color:
+            var(--theme-primary) !important;
+    }
+
+    [data-theme-content] a.border-amber-400 {
+        background:
+            var(--theme-button-secondary-bg);
+
+        border-color:
+            var(--theme-border-accent) !important;
+    }
+
+    [data-theme-content] a.border-amber-400:hover {
+        background:
+            var(--theme-button-primary-bg) !important;
+
+        color:
+            var(--theme-button-primary-text) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | RICH CONTENT
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-rich-content] {
+        color:
+            var(--theme-text);
+    }
+
+    [data-theme-rich-content] h1,
+    [data-theme-rich-content] h2,
+    [data-theme-rich-content] h3,
+    [data-theme-rich-content] h4,
+    [data-theme-rich-content] strong {
+        color:
+            var(--theme-text);
+    }
+
+    [data-theme-rich-content] a {
+        color:
+            var(--theme-primary);
+    }
+
+    [data-theme-rich-content] blockquote {
+        color:
+            var(--theme-text-muted);
+
+        border-color:
+            var(--theme-border-accent);
+    }
+
+    [data-theme-rich-content] code {
+        background:
+            var(--theme-surface-alt);
+
+        color:
+            var(--theme-primary);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | MEDIA SAFETY
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-content] img,
+    [data-theme-content] iframe {
+        color-scheme:
+            normal;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | MEDIA CONTAINERS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-content] .aspect-\[16\/9\],
+    [data-theme-content] .aspect-video {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 90%,
+                #000000 10%
+            ) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | EMPTY STATES
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-content] .border-dashed {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 75%,
+                transparent
+            ) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | DETAIL FOOTERS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-content] footer {
+        border-color:
+            var(--theme-border) !important;
+
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 60%,
+                transparent
+            ) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | RESPONSIVE
+    |--------------------------------------------------------------------------
+    */
+
+    @media (max-width: 767px) {
+        [data-theme-content] [data-theme-surface] {
+            border-radius:
+                0.875rem;
+        }
+
+        [data-theme-rich-content] {
+            overflow-wrap:
+                anywhere;
+        }
+    }
+</style>

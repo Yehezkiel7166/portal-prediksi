@@ -49,7 +49,7 @@
 @endsection
 
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-content="promotion-detail" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-5xl px-4 py-10 md:py-14">
         <a
             href="{{ route('promotions.index') }}"
@@ -74,9 +74,9 @@
     </div>
 </section>
 
-<section class="bg-slate-950">
+<section data-theme-content="promotion-detail" class="bg-slate-950">
     <div class="mx-auto max-w-5xl px-4 py-12">
-        <article class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+        <article data-theme-surface class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
             @if ($promotion->media_source === 'upload' && filled($promotion->media_path))
                 <div class="aspect-[16/9] overflow-hidden bg-slate-950">
                     <img
@@ -109,7 +109,7 @@
 
             <div class="p-6 md:p-8">
                 @if (filled($promotion->content))
-                    <div class="whitespace-pre-line break-words leading-8 text-slate-300">
+                    <div data-theme-rich-content class="whitespace-pre-line break-words leading-8 text-slate-300">
                         {{ $promotion->content }}
                     </div>
                 @elseif (filled($promotion->excerpt))

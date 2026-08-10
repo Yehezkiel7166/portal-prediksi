@@ -60,7 +60,7 @@
 @endsection
 
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-content="blog-detail" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-5xl px-4 py-10 md:py-14">
         <a
             href="{{ route('blog.index') }}"
@@ -92,9 +92,9 @@
     </div>
 </section>
 
-<section class="bg-slate-950">
+<section data-theme-content="blog-detail" class="bg-slate-950">
     <div class="mx-auto max-w-5xl px-4 py-12">
-        <article class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+        <article data-theme-surface class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
             @if ($blogPost->image_source === 'upload' && filled($blogPost->image_path))
                 <div class="aspect-[16/9] overflow-hidden bg-slate-950">
                     <img
@@ -117,7 +117,7 @@
 
             <div class="p-6 md:p-8">
                 @if (filled($blogPost->content))
-                    <div class="prose prose-invert max-w-none break-words leading-8">
+                    <div data-theme-rich-content class="prose prose-invert max-w-none break-words leading-8">
                         {!! $blogPost->content !!}
                     </div>
                 @elseif (filled($blogPost->excerpt))
