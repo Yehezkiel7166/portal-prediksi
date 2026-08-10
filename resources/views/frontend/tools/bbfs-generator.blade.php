@@ -9,16 +9,16 @@
 <meta property="og:url" content="{{ route('tools.bbfs.create') }}">
 @endsection
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-tool="bbfs" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-5xl px-4 py-12 md:py-16">
         <p class="text-sm font-semibold uppercase tracking-widest text-amber-400">Alat Togel</p>
         <h1 class="mt-3 text-3xl font-bold text-white md:text-5xl">BBFS Generator</h1>
         <p class="mt-5 max-w-3xl text-slate-300">Masukkan 2 sampai 7 digit unik. Sistem menghapus duplikasi sambil mempertahankan urutan pertama, lalu membuat seluruh permutasi tanpa pengulangan digit.</p>
     </div>
 </section>
-<section class="bg-slate-950">
+<section data-theme-tool="bbfs" class="bg-slate-950">
     <div class="mx-auto max-w-5xl px-4 py-12">
-        <form method="POST" action="{{ route('tools.bbfs.store') }}" class="rounded-xl border border-slate-800 bg-slate-900 p-6">
+        <form data-theme-surface method="POST" action="{{ route('tools.bbfs.store') }}" class="rounded-xl border border-slate-800 bg-slate-900 p-6">
             @csrf
             <div class="grid gap-6 md:grid-cols-[1fr_180px]">
                 <div>
@@ -39,7 +39,7 @@
         </form>
 
         @if($result)
-            <section class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-6">
+            <section data-theme-tool="bbfs" class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-6">
                 <div class="flex flex-wrap items-center justify-between gap-3">
                     <div>
                         <h2 class="text-xl font-semibold text-white">Hasil {{ $result['length'] }}D</h2>
@@ -52,7 +52,7 @@
             </section>
         @endif
 
-        <section class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-6 text-sm text-slate-300">
+        <section data-theme-tool="bbfs" class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-6 text-sm text-slate-300">
             <h2 class="text-lg font-semibold text-white">Aturan generator</h2>
             <p class="mt-3">Keluaran bersifat deterministik: input, urutan digit, dan panjang yang sama selalu menghasilkan urutan keluaran yang sama. Digit tidak diulang dalam satu kombinasi dan input pengunjung tidak disimpan ke database.</p>
         </section>

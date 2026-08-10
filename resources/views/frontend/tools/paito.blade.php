@@ -24,7 +24,7 @@ $palette = [
 ];
 @endphp
 
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-tool="paito" class="border-b border-slate-800 bg-slate-900">
 <div class="mx-auto max-w-6xl px-4 py-10">
 <h1 class="text-3xl font-bold text-white">Paito Togel Warna</h1>
 <p class="mt-3 text-slate-300">
@@ -33,10 +33,10 @@ Data otomatis berasal dari modul Result.
 </div>
 </section>
 
-<section class="bg-slate-950">
+<section data-theme-tool="paito" class="bg-slate-950">
 <div class="mx-auto max-w-6xl px-4 py-10">
 
-<form method="GET" class="flex flex-col gap-3 rounded-xl border border-slate-800 bg-slate-900 p-5 sm:flex-row">
+<form data-theme-surface method="GET" class="flex flex-col gap-3 rounded-xl border border-slate-800 bg-slate-900 p-5 sm:flex-row">
 <select name="market" class="flex-1 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white">
 <option value="">Semua pasaran</option>
 @foreach($markets as $market)
@@ -51,8 +51,8 @@ Tampilkan
 </form>
 
 <div
-    class="mt-6 rounded-xl border border-slate-800 bg-slate-900 p-5"
-    data-paito-palette
+    data-theme-surface class="mt-6 rounded-xl border border-slate-800 bg-slate-900 p-5"
+    data-paito-palette data-theme-surface
 >
     <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
@@ -131,7 +131,7 @@ Hapus Semua Warna
 </div>
 </div>
 
-<div class="mt-6 rounded-xl border border-slate-800 bg-slate-900 p-5">
+<div data-theme-surface class="mt-6 rounded-xl border border-slate-800 bg-slate-900 p-5">
     <h2 class="text-lg font-bold text-white">
         Pewarnaan Otomatis
     </h2>
@@ -224,7 +224,7 @@ Hapus Semua Warna
 @else
 <div
     class="mt-8 w-full max-w-full overflow-x-auto overscroll-x-contain rounded-xl border border-slate-700 bg-slate-950"
-    data-paito-weekly-grid
+    data-paito-weekly-grid data-theme-paito-grid
     data-paito-responsive-scroll
 >
 <table

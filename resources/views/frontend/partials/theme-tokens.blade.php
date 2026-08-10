@@ -1304,3 +1304,395 @@
         }
     }
 </style>
+
+<style id="brand-theme-lottery-tools">
+    /*
+    |--------------------------------------------------------------------------
+    | ALL LOTTERY TOOLS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-tool] {
+        position:
+            relative;
+
+        color:
+            var(--theme-text);
+
+        background:
+            transparent !important;
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 76%,
+                transparent
+            ) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | STATIC LEGACY PALETTE
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-tool] .bg-slate-900,
+    [data-theme-tool] .bg-slate-950,
+    [data-theme-tool] .bg-slate-800 {
+        background:
+            var(--theme-surface) !important;
+    }
+
+    [data-theme-tool] .bg-slate-900\/80,
+    [data-theme-tool] .bg-slate-950\/60,
+    [data-theme-tool] .bg-slate-950\/40 {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 65%,
+                transparent
+            ) !important;
+    }
+
+    [data-theme-tool] .text-white,
+    [data-theme-tool] .text-slate-100,
+    [data-theme-tool] .text-slate-200 {
+        color:
+            var(--theme-text) !important;
+    }
+
+    [data-theme-tool] .text-slate-300,
+    [data-theme-tool] .text-slate-400,
+    [data-theme-tool] .text-slate-500,
+    [data-theme-tool] .text-slate-600,
+    [data-theme-tool] .text-slate-700 {
+        color:
+            var(--theme-text-muted) !important;
+    }
+
+    [data-theme-tool] .text-amber-300,
+    [data-theme-tool] .text-amber-400 {
+        color:
+            var(--theme-primary) !important;
+    }
+
+    [data-theme-tool] .border-slate-500,
+    [data-theme-tool] .border-slate-600,
+    [data-theme-tool] .border-slate-700,
+    [data-theme-tool] .border-slate-800 {
+        border-color:
+            var(--theme-border) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | SURFACES
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-tool] [data-theme-surface] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 84%,
+                transparent
+            ) !important;
+
+        box-shadow:
+            0 14px 32px
+            color-mix(
+                in srgb,
+                var(--theme-shadow) 70%,
+                transparent
+            );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | INPUTS / SELECTS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-tool] input,
+    [data-theme-tool] select,
+    [data-theme-tool] textarea {
+        background:
+            var(--theme-input-bg) !important;
+
+        color:
+            var(--theme-input-text) !important;
+
+        border-color:
+            var(--theme-input-border) !important;
+    }
+
+    [data-theme-tool] input:focus,
+    [data-theme-tool] select:focus,
+    [data-theme-tool] textarea:focus {
+        border-color:
+            var(--theme-primary) !important;
+
+        outline:
+            none;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | STANDARD PRIMARY BUTTONS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-tool] button[type="submit"] {
+        background:
+            var(--theme-button-primary-bg) !important;
+
+        color:
+            var(--theme-button-primary-text) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | DREAM BOOK
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-tool="dream-book-index"] .divide-slate-800 > :not([hidden]) ~ :not([hidden]) {
+        border-color:
+            var(--theme-border) !important;
+    }
+
+    [data-theme-tool="dream-book-index"] a.text-amber-400,
+    [data-theme-tool="dream-book-detail"] a.text-amber-400 {
+        color:
+            var(--theme-primary) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | LOTTERY SCHEDULE
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-tool="lottery-schedule"] table {
+        color:
+            var(--theme-text);
+    }
+
+    [data-theme-tool="lottery-schedule"] thead {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 82%,
+                transparent
+            ) !important;
+    }
+
+    [data-theme-tool="lottery-schedule"] tbody tr {
+        border-color:
+            var(--theme-border);
+    }
+
+    [data-theme-schedule-status] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 75%,
+                transparent
+            ) !important;
+
+        border-color:
+            var(--theme-border) !important;
+
+        color:
+            var(--theme-text-muted) !important;
+    }
+
+    [data-theme-schedule-status="open"] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-success) 48%,
+                transparent
+            ) !important;
+
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-success) 12%,
+                transparent
+            ) !important;
+
+        color:
+            var(--theme-success) !important;
+    }
+
+    [data-theme-schedule-status="live"],
+    [data-theme-schedule-status="result_available"],
+    [data-theme-schedule-status="upcoming"] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-warning) 48%,
+                transparent
+            ) !important;
+
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-warning) 12%,
+                transparent
+            ) !important;
+
+        color:
+            var(--theme-warning) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | PAITO
+    |--------------------------------------------------------------------------
+    |
+    | Important:
+    | User-selected paint colors remain authoritative.
+    | Theme only controls shell/table chrome.
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-tool="paito"] [data-paito-weekly-grid] {
+        border-color:
+            var(--theme-border) !important;
+
+        background:
+            var(--theme-surface) !important;
+    }
+
+    [data-theme-tool="paito"] [data-paito-responsive-table] {
+        background:
+            var(--theme-surface) !important;
+    }
+
+    [data-theme-tool="paito"] [data-paito-weekday-header] {
+        background:
+            var(--theme-surface-alt) !important;
+
+        color:
+            var(--theme-primary) !important;
+    }
+
+    [data-theme-tool="paito"] [data-paito-weekday-group],
+    [data-theme-tool="paito"] [data-paito-sum-header],
+    [data-theme-tool="paito"] .paito-cell {
+        border-color:
+            var(--theme-border) !important;
+    }
+
+    /*
+    | Do not override inline background-color of painted cells.
+    */
+
+    [data-theme-tool="paito"] .paito-cell[style*="background-color"] {
+        background-color:
+            revert-layer;
+    }
+
+    [data-theme-tool="paito"] [data-paito-market-required] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-warning) 10%,
+                transparent
+            ) !important;
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-warning) 45%,
+                transparent
+            ) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | PAITO SEMANTIC ACTIONS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-tool="paito"] #auto-paint {
+        background:
+            var(--theme-success) !important;
+
+        color:
+            var(--theme-on-success, #ffffff) !important;
+    }
+
+    [data-theme-tool="paito"] #clear-all {
+        border-color:
+            var(--theme-danger) !important;
+
+        color:
+            var(--theme-danger) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | SHIO
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-tool="shio"] img {
+        color-scheme:
+            normal;
+    }
+
+    [data-theme-tool="shio"] article span {
+        background:
+            var(--theme-surface-alt) !important;
+
+        color:
+            var(--theme-text) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | BBFS RESULT
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-tool="bbfs"] .font-mono {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-result-bg) 82%,
+                transparent
+            ) !important;
+
+        color:
+            var(--theme-result-text) !important;
+
+        border-color:
+            var(--theme-result-border) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | RESPONSIVE
+    |--------------------------------------------------------------------------
+    */
+
+    @media (max-width: 767px) {
+        [data-theme-tool] [data-theme-surface] {
+            border-radius:
+                0.875rem;
+        }
+
+        [data-theme-tool="lottery-schedule"] table {
+            min-width:
+                760px;
+        }
+
+        [data-theme-tool="paito"] [data-paito-responsive-scroll] {
+            max-width:
+                100%;
+        }
+    }
+</style>

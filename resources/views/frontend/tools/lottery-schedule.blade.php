@@ -35,7 +35,7 @@
 @endpush
 
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-tool="lottery-schedule" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-7xl px-4 py-12 md:py-16">
         <p class="text-sm font-semibold uppercase tracking-widest text-amber-400">
             Alat Togel
@@ -52,9 +52,9 @@
     </div>
 </section>
 
-<section class="bg-slate-950">
+<section data-theme-tool="lottery-schedule" class="bg-slate-950">
     <div class="mx-auto max-w-7xl px-4 py-12">
-        <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900">
+        <div data-theme-surface class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900">
             <table class="min-w-full divide-y divide-slate-800 text-sm">
                 <thead class="bg-slate-900/80 text-left text-xs uppercase tracking-wider text-slate-400">
                     <tr>
@@ -94,6 +94,7 @@
 
                             <td class="px-5 py-4">
                                 <span
+                                    data-theme-schedule-status="{{ $market->schedule_status['key'] }}"
                                     @class([
                                         'inline-flex rounded-full border px-3 py-1 text-xs font-semibold',
                                         'border-emerald-400/40 text-emerald-300' =>

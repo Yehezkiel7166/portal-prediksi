@@ -31,7 +31,7 @@
 @endsection
 
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-tool="dream-book-index" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-6xl px-4 py-12 md:py-16">
         <p class="text-sm font-semibold uppercase tracking-widest text-amber-400">
             Alat Togel
@@ -48,9 +48,10 @@
     </div>
 </section>
 
-<section class="bg-slate-950">
+<section data-theme-tool="dream-book-index" class="bg-slate-950">
     <div class="mx-auto max-w-6xl px-4 py-10">
         <form
+            data-theme-surface
             method="GET"
             action="{{ route('tools.dream-book.index') }}"
             class="rounded-xl border border-slate-800 bg-slate-900 p-5"
@@ -125,11 +126,11 @@
         </form>
 
         @if ($entries->isEmpty())
-            <div class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-8 text-center text-slate-300">
+            <div data-theme-surface class="mt-8 rounded-xl border border-slate-800 bg-slate-900 p-8 text-center text-slate-300">
                 Tidak ada data kategori {{ $category }} yang cocok.
             </div>
         @else
-            <div class="mt-8 overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+            <div data-theme-surface class="mt-8 overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
                 <div class="hidden grid-cols-[70px_minmax(0,1fr)_120px_220px] gap-4 border-b border-slate-700 bg-slate-800 px-5 py-4 text-sm font-bold text-white md:grid">
                     <div>No.</div>
                     <div>Keterangan</div>

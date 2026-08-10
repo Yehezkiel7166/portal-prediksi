@@ -10,9 +10,9 @@
 @endsection
 @section('content')
 @if ($period && $bannerUrl)
-    <section class="border-b border-slate-800 bg-slate-950">
+    <section data-theme-tool="shio" class="border-b border-slate-800 bg-slate-950">
         <div class="mx-auto max-w-7xl px-4 py-8">
-            <figure class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-xl">
+            <figure data-theme-surface class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-xl">
                 <img
                     src="{{ $bannerUrl }}"
                     alt="Banner {{ $period->title }}"
@@ -23,23 +23,23 @@
         </div>
     </section>
 @endif
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-tool="shio" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-7xl px-4 py-12 md:py-16">
         <p class="text-sm font-semibold uppercase tracking-widest text-amber-400">Alat Togel</p>
         <h1 class="mt-3 text-3xl font-bold text-white md:text-5xl">Tabel Shio</h1>
         <p class="mt-5 max-w-3xl text-slate-300">Referensi kelompok angka shio untuk periode yang sedang berlaku.</p>
     </div>
 </section>
-<section class="bg-slate-950">
+<section data-theme-tool="shio" class="bg-slate-950">
     <div class="mx-auto max-w-7xl px-4 py-12">
         @if($period)
-            <div class="mb-8 rounded-xl border border-slate-800 bg-slate-900 p-6">
+            <div data-theme-surface class="mb-8 rounded-xl border border-slate-800 bg-slate-900 p-6">
                 <h2 class="text-2xl font-bold text-white">{{ $period->title }}</h2>
                 <p class="mt-2 text-sm text-slate-400">Periode {{ $period->start_date->format('d M Y') }} sampai {{ $period->end_date->format('d M Y') }}</p>
             </div>
             <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 @foreach($period->shios as $shio)
-                    <article class="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                    <article data-theme-surface class="rounded-xl border border-slate-800 bg-slate-900 p-5">
                         <h3 class="text-lg font-bold text-amber-400">{{ $shio->name }}</h3>
                         <div class="mt-4 flex flex-wrap gap-2">
                             @foreach($shio->numbers ?? [] as $number)
