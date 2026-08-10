@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-special="complaints" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-4xl px-4 py-12 md:py-16">
         <p class="text-sm font-semibold uppercase tracking-widest text-amber-400">Layanan Pengguna</p>
         <h1 class="mt-3 text-3xl font-bold text-white md:text-5xl">Form Keluhan</h1>
@@ -18,10 +18,10 @@
     </div>
 </section>
 
-<section class="bg-slate-950">
+<section data-theme-special="complaints" class="bg-slate-950">
     <div class="mx-auto max-w-4xl px-4 py-12">
         @if (session('complaint_submitted'))
-            <div role="status" class="mb-8 rounded-xl border border-emerald-500/40 bg-emerald-950/30 p-6 text-emerald-100">
+            <div data-theme-complaint-status="success" role="status" class="mb-8 rounded-xl border border-emerald-500/40 bg-emerald-950/30 p-6 text-emerald-100">
                 <h2 class="text-lg font-bold">Keluhan berhasil dikirim</h2>
                 <p class="mt-2">Simpan nomor referensi berikut:</p>
                 <p class="mt-3 font-mono text-xl font-bold">{{ session('complaint_reference') }}</p>
@@ -29,7 +29,7 @@
         @endif
 
         @if ($errors->any())
-            <div role="alert" class="mb-8 rounded-xl border border-red-500/40 bg-red-950/30 p-6 text-red-200">
+            <div data-theme-complaint-status="error" role="alert" class="mb-8 rounded-xl border border-red-500/40 bg-red-950/30 p-6 text-red-200">
                 <p class="font-semibold">Form belum dapat dikirim.</p>
                 <ul class="mt-2 list-inside list-disc">
                     @foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach
@@ -37,7 +37,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('complaints.store') }}" class="space-y-6 rounded-xl border border-slate-800 bg-slate-900 p-6 md:p-8">
+        <form data-theme-surface method="POST" action="{{ route('complaints.store') }}" class="space-y-6 rounded-xl border border-slate-800 bg-slate-900 p-6 md:p-8">
             @csrf
             <div class="hidden" aria-hidden="true">
                 <label for="website">Website</label>

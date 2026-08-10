@@ -1946,3 +1946,243 @@
         }
     }
 </style>
+
+<style id="brand-theme-special-modules">
+    /*
+    |--------------------------------------------------------------------------
+    | SPECIAL MODULES
+    |--------------------------------------------------------------------------
+    | Slot Gacor + Jackpot Proof + Complaints
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-special] {
+        position:
+            relative;
+
+        color:
+            var(--theme-text);
+
+        background:
+            transparent !important;
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 76%,
+                transparent
+            ) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | LEGACY PALETTE
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-special] .bg-slate-900,
+    [data-theme-special] .bg-slate-950 {
+        background:
+            var(--theme-surface) !important;
+    }
+
+    [data-theme-special] .text-white,
+    [data-theme-special] .text-slate-100,
+    [data-theme-special] .text-slate-200 {
+        color:
+            var(--theme-text) !important;
+    }
+
+    [data-theme-special] .text-slate-300,
+    [data-theme-special] .text-slate-400,
+    [data-theme-special] .text-slate-500,
+    [data-theme-special] .text-slate-600 {
+        color:
+            var(--theme-text-muted) !important;
+    }
+
+    [data-theme-special] .text-amber-300,
+    [data-theme-special] .text-amber-400 {
+        color:
+            var(--theme-primary) !important;
+    }
+
+    [data-theme-special] .border-slate-700,
+    [data-theme-special] .border-slate-800 {
+        border-color:
+            var(--theme-border) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | SURFACES
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-special] [data-theme-surface] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 84%,
+                transparent
+            ) !important;
+
+        box-shadow:
+            0 14px 34px
+            color-mix(
+                in srgb,
+                var(--theme-shadow) 70%,
+                transparent
+            );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | SLOT GACOR
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-special="slot-gacor"] [data-theme-rtp-value] {
+        color:
+            var(--theme-success) !important;
+    }
+
+    [data-theme-special="slot-gacor"] img {
+        color-scheme:
+            normal;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | JACKPOT PROOF
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-special="jackpot-index"] img,
+    [data-theme-special="jackpot-detail"] img {
+        color-scheme:
+            normal;
+    }
+
+    [data-theme-special="jackpot-index"] a:hover {
+        color:
+            var(--theme-primary);
+    }
+
+    [data-theme-special="jackpot-detail"] [data-theme-rich-content] {
+        color:
+            var(--theme-text-muted);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | COMPLAINT FORM
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-special="complaints"] input,
+    [data-theme-special="complaints"] textarea {
+        background:
+            var(--theme-input-bg) !important;
+
+        color:
+            var(--theme-input-text) !important;
+
+        border-color:
+            var(--theme-input-border) !important;
+    }
+
+    [data-theme-special="complaints"] input:focus,
+    [data-theme-special="complaints"] textarea:focus {
+        border-color:
+            var(--theme-primary) !important;
+
+        outline:
+            none;
+    }
+
+    [data-theme-special="complaints"] button[type="submit"] {
+        background:
+            var(--theme-button-primary-bg) !important;
+
+        color:
+            var(--theme-button-primary-text) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | COMPLAINT SEMANTIC STATES
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-complaint-status="success"] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-success) 12%,
+                transparent
+            ) !important;
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-success) 48%,
+                transparent
+            ) !important;
+
+        color:
+            var(--theme-success) !important;
+    }
+
+    [data-theme-complaint-status="error"] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-danger) 12%,
+                transparent
+            ) !important;
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-danger) 48%,
+                transparent
+            ) !important;
+
+        color:
+            var(--theme-danger) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | MEDIA CONTAINERS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-special] .aspect-\[4\/3\] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 90%,
+                #000000 10%
+            ) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | RESPONSIVE
+    |--------------------------------------------------------------------------
+    */
+
+    @media (max-width: 767px) {
+        [data-theme-special] [data-theme-surface] {
+            border-radius:
+                0.875rem;
+        }
+
+        [data-theme-special="complaints"] form {
+            padding:
+                1.25rem;
+        }
+    }
+</style>
