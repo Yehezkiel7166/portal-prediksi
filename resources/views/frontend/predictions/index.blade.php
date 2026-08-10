@@ -8,7 +8,7 @@
 )
 
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-module="predictions" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-7xl px-4 py-12 md:py-16">
         <p class="text-sm font-semibold uppercase tracking-widest text-amber-400">
             Prediksi Togel
@@ -25,9 +25,10 @@
     </div>
 </section>
 
-<section class="border-b border-slate-800 bg-slate-950">
+<section data-theme-module="predictions" class="border-b border-slate-800 bg-slate-950">
     <div class="mx-auto max-w-7xl px-4 py-8">
         <form
+            data-theme-surface
             method="GET"
             action="{{ route('predictions.index') }}"
             class="grid gap-5 rounded-xl border border-slate-800 bg-slate-900 p-6 md:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]"
@@ -67,7 +68,7 @@
                 </label>
 
                 <div
-                    data-dark-datepicker
+                    data-dark-datepicker data-theme-datepicker
                     class="relative mt-2"
                 >
                     <input
@@ -220,7 +221,7 @@
     </div>
 </section>
 
-<section class="bg-slate-950">
+<section data-theme-module="predictions" class="bg-slate-950">
     <div class="mx-auto max-w-7xl px-4 py-12">
         <div class="mb-7 flex flex-wrap items-center justify-between gap-3">
             <p class="text-sm text-slate-400">
@@ -243,7 +244,7 @@
                 <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             @endif
 
-            <article class="flex h-full flex-col rounded-xl border border-slate-800 bg-slate-900 p-6">
+            <article data-theme-surface class="flex h-full flex-col rounded-xl border border-slate-800 bg-slate-900 p-6">
                 <div class="flex flex-wrap items-start justify-between gap-3">
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">
@@ -395,7 +396,7 @@
 </section>
 <script>
     (() => {
-        const roots = document.querySelectorAll('[data-dark-datepicker]');
+        const roots = document.querySelectorAll('[data-dark-datepicker data-theme-datepicker]');
 
         if (roots.length === 0) {
             return;

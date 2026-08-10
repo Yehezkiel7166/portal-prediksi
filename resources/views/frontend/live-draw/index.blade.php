@@ -25,7 +25,7 @@
 @endsection
 
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-module="live-draw" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-7xl px-4 py-12 md:py-16">
         <p class="text-sm font-semibold uppercase tracking-widest text-amber-400">
             Live Draw
@@ -42,7 +42,7 @@
     </div>
 </section>
 
-<section class="bg-slate-950">
+<section data-theme-module="live-draw" class="bg-slate-950">
     <div class="mx-auto max-w-7xl px-4 py-12">
         <div class="mb-7">
             <p class="text-sm text-slate-400">
@@ -92,7 +92,7 @@
                     ->implode(', ');
             @endphp
 
-            <article class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+            <article data-theme-live-card data-theme-surface class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
                 <div
                     class="relative flex min-h-40 items-end overflow-hidden border-b border-slate-800 bg-slate-950 p-6"
                     @if (filled($liveDraw->background_path))
@@ -138,7 +138,7 @@
                             </div>
                         </div>
 
-                        <span class="shrink-0 rounded-full border px-3 py-1 text-xs font-semibold {{ $statusClasses }}">
+                        <span data-theme-live-status="{{ $liveDraw->status }}" class="shrink-0 rounded-full border px-3 py-1 text-xs font-semibold">
                             {{ $statusLabel }}
                         </span>
                     </div>
@@ -260,7 +260,7 @@
                     @endif
 
                     @if (! $liveDraw->isLive() && $latestResult !== null)
-                        <section
+                        <section data-theme-module="live-draw"
                             class="mt-6 rounded-xl border border-sky-400/30 bg-sky-950/20 p-5"
                             aria-label="Hasil terbaru {{ $liveDraw->market->name }}"
                         >

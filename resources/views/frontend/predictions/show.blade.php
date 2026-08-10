@@ -28,7 +28,7 @@
 @endsection
 
 @section('content')
-<section class="border-b border-slate-800 bg-slate-900">
+<section data-theme-module="prediction-detail" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-5xl px-4 py-10 md:py-14">
         <a
             href="{{ route('predictions.index', ['market' => $prediction->market->slug]) }}"
@@ -53,9 +53,9 @@
     </div>
 </section>
 
-<section class="bg-slate-950">
+<section data-theme-module="prediction-detail" class="bg-slate-950">
     <div class="mx-auto max-w-5xl px-4 py-12">
-        <article class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+        <article data-theme-surface class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
             <header class="border-b border-slate-800 p-6 md:p-8">
                 <div class="flex flex-wrap items-start justify-between gap-5">
                     <div>
@@ -99,7 +99,7 @@
                 </section>
             </div>
 
-            <section class="border-t border-slate-800 p-6 md:p-8">
+            <section data-theme-module="prediction-detail" class="border-t border-slate-800 p-6 md:p-8">
                 <p class="text-sm text-slate-400">
                     Angka prediksi
                 </p>
@@ -150,7 +150,7 @@
             </section>
 
             @if (filled($prediction->notes))
-                <section class="border-t border-slate-800 p-6 md:p-8">
+                <section data-theme-module="prediction-detail" class="border-t border-slate-800 p-6 md:p-8">
                     <p class="text-sm text-slate-400">
                         Catatan
                     </p>

@@ -823,3 +823,484 @@
         }
     }
 </style>
+
+<style id="brand-theme-core-data">
+    /*
+    |--------------------------------------------------------------------------
+    | CORE DATA MODULES
+    |--------------------------------------------------------------------------
+    | Predictions + Prediction Detail + Live Draw
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-module="predictions"],
+    [data-theme-module="prediction-detail"],
+    [data-theme-module="live-draw"] {
+        position: relative;
+
+        color:
+            var(--theme-text);
+
+        background:
+            transparent !important;
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 76%,
+                transparent
+            ) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | STATIC LEGACY PALETTE -> THEME TOKENS
+    |--------------------------------------------------------------------------
+    |
+    | Existing Tailwind classes remain in markup for compatibility.
+    | Within these scoped modules Theme Engine becomes authoritative.
+    |
+    */
+
+    [data-theme-module="predictions"] .bg-slate-900,
+    [data-theme-module="predictions"] .bg-slate-950,
+    [data-theme-module="prediction-detail"] .bg-slate-900,
+    [data-theme-module="prediction-detail"] .bg-slate-950,
+    [data-theme-module="live-draw"] .bg-slate-900,
+    [data-theme-module="live-draw"] .bg-slate-950 {
+        background:
+            var(--theme-surface) !important;
+    }
+
+    [data-theme-module="predictions"] .bg-slate-950\/60,
+    [data-theme-module="prediction-detail"] .bg-slate-950\/60 {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 60%,
+                transparent
+            ) !important;
+    }
+
+    [data-theme-module="predictions"] .text-white,
+    [data-theme-module="predictions"] .text-slate-100,
+    [data-theme-module="predictions"] .text-slate-200,
+    [data-theme-module="prediction-detail"] .text-white,
+    [data-theme-module="prediction-detail"] .text-slate-100,
+    [data-theme-module="prediction-detail"] .text-slate-200,
+    [data-theme-module="live-draw"] .text-white,
+    [data-theme-module="live-draw"] .text-slate-100,
+    [data-theme-module="live-draw"] .text-slate-200 {
+        color:
+            var(--theme-text) !important;
+    }
+
+    [data-theme-module="predictions"] .text-slate-300,
+    [data-theme-module="predictions"] .text-slate-400,
+    [data-theme-module="predictions"] .text-slate-500,
+    [data-theme-module="prediction-detail"] .text-slate-300,
+    [data-theme-module="prediction-detail"] .text-slate-400,
+    [data-theme-module="prediction-detail"] .text-slate-500,
+    [data-theme-module="live-draw"] .text-slate-300,
+    [data-theme-module="live-draw"] .text-slate-400,
+    [data-theme-module="live-draw"] .text-slate-500 {
+        color:
+            var(--theme-text-muted) !important;
+    }
+
+    [data-theme-module="predictions"] .text-amber-300,
+    [data-theme-module="predictions"] .text-amber-400,
+    [data-theme-module="prediction-detail"] .text-amber-300,
+    [data-theme-module="prediction-detail"] .text-amber-400,
+    [data-theme-module="live-draw"] .text-amber-300,
+    [data-theme-module="live-draw"] .text-amber-400 {
+        color:
+            var(--theme-primary) !important;
+    }
+
+    [data-theme-module="predictions"] .border-slate-600,
+    [data-theme-module="predictions"] .border-slate-700,
+    [data-theme-module="predictions"] .border-slate-800,
+    [data-theme-module="prediction-detail"] .border-slate-600,
+    [data-theme-module="prediction-detail"] .border-slate-700,
+    [data-theme-module="prediction-detail"] .border-slate-800,
+    [data-theme-module="live-draw"] .border-slate-600,
+    [data-theme-module="live-draw"] .border-slate-700,
+    [data-theme-module="live-draw"] .border-slate-800 {
+        border-color:
+            var(--theme-border) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | PREDICTION SURFACE
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-module="predictions"] [data-theme-surface],
+    [data-theme-module="prediction-detail"] [data-theme-surface] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 84%,
+                transparent
+            );
+
+        box-shadow:
+            0 16px 36px
+            color-mix(
+                in srgb,
+                var(--theme-shadow) 72%,
+                transparent
+            );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | INPUTS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-module="predictions"] select,
+    [data-theme-module="predictions"] input,
+    [data-theme-module="predictions"] [data-datepicker-trigger] {
+        background:
+            var(--theme-input-bg) !important;
+
+        color:
+            var(--theme-input-text) !important;
+
+        border-color:
+            var(--theme-input-border) !important;
+    }
+
+    [data-theme-module="predictions"] select:focus,
+    [data-theme-module="predictions"] input:focus,
+    [data-theme-module="predictions"] [data-datepicker-trigger]:focus {
+        border-color:
+            var(--theme-primary) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | DATE PICKER
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-datepicker] [data-datepicker-panel] {
+        background:
+            var(--theme-surface) !important;
+
+        color:
+            var(--theme-text) !important;
+
+        border-color:
+            var(--theme-border) !important;
+
+        box-shadow:
+            0 24px 60px
+            var(--theme-shadow) !important;
+    }
+
+    [data-theme-datepicker] [data-datepicker-prev],
+    [data-theme-datepicker] [data-datepicker-next] {
+        color:
+            var(--theme-text);
+
+        border-color:
+            var(--theme-border) !important;
+    }
+
+    [data-theme-datepicker] [data-datepicker-prev]:hover,
+    [data-theme-datepicker] [data-datepicker-next]:hover {
+        color:
+            var(--theme-primary) !important;
+
+        border-color:
+            var(--theme-primary) !important;
+    }
+
+    [data-theme-datepicker] [data-datepicker-clear],
+    [data-theme-datepicker] [data-datepicker-today] {
+        color:
+            var(--theme-primary) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | PREDICTION NUMBER PANELS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-module="predictions"] .border-amber-400\/20,
+    [data-theme-module="prediction-detail"] .border-amber-400\/20 {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-result-border) 45%,
+                transparent
+            ) !important;
+    }
+
+    [data-theme-module="predictions"] .border-b,
+    [data-theme-module="prediction-detail"] .border-b,
+    [data-theme-module="prediction-detail"] .border-t {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 78%,
+                transparent
+            );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | PRIMARY / SECONDARY ACTIONS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-module="predictions"] button[type="submit"] {
+        background:
+            var(--theme-button-primary-bg) !important;
+
+        color:
+            var(--theme-button-primary-text) !important;
+    }
+
+    [data-theme-module="predictions"] a.border-amber-400 {
+        background:
+            var(--theme-button-secondary-bg);
+
+        color:
+            var(--theme-button-secondary-text) !important;
+
+        border-color:
+            var(--theme-border-accent) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | ERROR / SEMANTIC STATES
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-module="predictions"] [role="alert"] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-danger) 12%,
+                transparent
+            ) !important;
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-danger) 45%,
+                transparent
+            ) !important;
+
+        color:
+            var(--theme-danger) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | LIVE DRAW CARDS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-live-card] {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-border) 84%,
+                transparent
+            ) !important;
+
+        box-shadow:
+            0 16px 36px
+            color-mix(
+                in srgb,
+                var(--theme-shadow) 72%,
+                transparent
+            );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Do NOT recolor Live Draw supplied media.
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-module="live-draw"] iframe,
+    [data-theme-module="live-draw"] video,
+    [data-theme-module="live-draw"] img {
+        color-scheme:
+            normal;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | LIVE STATUS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-live-status] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-surface-alt) 80%,
+                transparent
+            );
+
+        border-color:
+            var(--theme-border);
+
+        color:
+            var(--theme-text-muted);
+    }
+
+    [data-theme-live-status="live"] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-danger) 14%,
+                transparent
+            );
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-danger) 48%,
+                transparent
+            );
+
+        color:
+            var(--theme-danger);
+    }
+
+    [data-theme-live-status="scheduled"] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-warning) 14%,
+                transparent
+            );
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-warning) 48%,
+                transparent
+            );
+
+        color:
+            var(--theme-warning);
+    }
+
+    [data-theme-live-status="finished"] {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-success) 14%,
+                transparent
+            );
+
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-success) 48%,
+                transparent
+            );
+
+        color:
+            var(--theme-success);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | LIVE DRAW RESULT
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-module="live-draw"] .border-sky-400\/30,
+    [data-theme-module="live-draw"] .border-sky-400\/20 {
+        border-color:
+            color-mix(
+                in srgb,
+                var(--theme-info) 45%,
+                transparent
+            ) !important;
+    }
+
+    [data-theme-module="live-draw"] .bg-sky-950\/20 {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-info) 10%,
+                transparent
+            ) !important;
+    }
+
+    [data-theme-module="live-draw"] .text-sky-300,
+    [data-theme-module="live-draw"] .text-sky-200 {
+        color:
+            var(--theme-info) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | LIVE DRAW ALERTS
+    |--------------------------------------------------------------------------
+    */
+
+    [data-theme-module="live-draw"] .bg-amber-950\/20,
+    [data-theme-module="live-draw"] .bg-amber-950\/30 {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-warning) 10%,
+                transparent
+            ) !important;
+    }
+
+    [data-theme-module="live-draw"] .text-amber-200 {
+        color:
+            var(--theme-warning) !important;
+    }
+
+    [data-theme-module="live-draw"] .bg-emerald-950\/20 {
+        background:
+            color-mix(
+                in srgb,
+                var(--theme-success) 10%,
+                transparent
+            ) !important;
+    }
+
+    [data-theme-module="live-draw"] .text-emerald-200,
+    [data-theme-module="live-draw"] .text-emerald-300 {
+        color:
+            var(--theme-success) !important;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | RESPONSIVE
+    |--------------------------------------------------------------------------
+    */
+
+    @media (max-width: 767px) {
+        [data-theme-module="predictions"] [data-theme-surface],
+        [data-theme-module="prediction-detail"] [data-theme-surface],
+        [data-theme-live-card] {
+            border-radius:
+                0.875rem;
+        }
+
+        [data-theme-datepicker] [data-datepicker-panel] {
+            min-width:
+                min(320px, calc(100vw - 2rem)) !important;
+        }
+    }
+</style>
