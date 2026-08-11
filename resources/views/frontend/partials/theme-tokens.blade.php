@@ -90,6 +90,27 @@
         --theme-text-inverse:
             {{ $themeTokens['text_inverse'] ?? '#020617' }};
 
+        /*
+        | Page foreground is independent from surface foreground.
+        | Used for content rendered directly over page backgrounds.
+        */
+        --theme-page-foreground:
+            var(--theme-text);
+
+        --theme-page-muted:
+            color-mix(
+                in srgb,
+                var(--theme-text) 88%,
+                var(--theme-page-bg)
+            );
+
+        --theme-page-accent:
+            color-mix(
+                in srgb,
+                var(--theme-text) 92%,
+                var(--theme-primary)
+            );
+
         --theme-border:
             {{ $themeTokens['border'] ?? '#334155' }};
 
@@ -516,7 +537,7 @@
 <style id="brand-theme-homepage">
     [data-theme-home-section] {
         position: relative;
-        color: var(--theme-text);
+        color: var(--theme-page-foreground);
     }
 
     [data-theme-home-section] + [data-theme-home-section] {
@@ -565,10 +586,18 @@
     }
 
     [data-theme-home-section] [data-theme-accent] {
-        color: var(--theme-primary);
+        color: var(--theme-page-accent);
     }
 
     [data-theme-home-section] [data-theme-muted] {
+        color: var(--theme-page-muted);
+    }
+
+    [data-theme-home-section] [data-theme-surface] [data-theme-accent] {
+        color: var(--theme-primary);
+    }
+
+    [data-theme-home-section] [data-theme-surface] [data-theme-muted] {
         color: var(--theme-text-muted);
     }
 
@@ -867,7 +896,7 @@
         position: relative;
 
         color:
-            var(--theme-text);
+            var(--theme-page-foreground);
 
         background:
             transparent !important;
@@ -944,6 +973,27 @@
     [data-theme-module="live-draw"] .text-amber-400 {
         color:
             var(--theme-primary) !important;
+    }
+    /*
+    |--------------------------------------------------------------------------
+    | Direct page foreground
+    |--------------------------------------------------------------------------
+    |
+    | Legacy text-slate/text-amber mappings remain surface-oriented.
+    | These hooks apply only to text rendered directly over page backgrounds.
+    |
+    */
+
+    [data-theme-module="predictions"] [data-theme-direct-page-muted],
+    [data-theme-module="prediction-detail"] [data-theme-direct-page-muted],
+    [data-theme-module="live-draw"] [data-theme-direct-page-muted] {
+        color: var(--theme-page-muted) !important;
+    }
+
+    [data-theme-module="predictions"] [data-theme-direct-page-accent],
+    [data-theme-module="prediction-detail"] [data-theme-direct-page-accent],
+    [data-theme-module="live-draw"] [data-theme-direct-page-accent] {
+        color: var(--theme-page-accent) !important;
     }
 
     [data-theme-module="predictions"] .border-slate-600,

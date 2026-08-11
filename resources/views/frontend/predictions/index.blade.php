@@ -10,7 +10,7 @@
 @section('content')
 <section data-theme-module="predictions" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-7xl px-4 py-12 md:py-16">
-        <p class="text-sm font-semibold uppercase tracking-widest text-amber-400">
+        <p data-theme-direct-page-accent class="text-sm font-semibold uppercase tracking-widest text-amber-400">
             Prediksi Togel
         </p>
 
@@ -18,7 +18,7 @@
             Prediksi Togel Terbaru
         </h1>
 
-        <p class="mt-5 max-w-3xl text-base leading-7 text-slate-300 md:text-lg">
+        <p data-theme-direct-page-muted class="mt-5 max-w-3xl text-base leading-7 text-slate-300 md:text-lg">
             Temukan prediksi terbaru dari berbagai pasaran aktif. Gunakan filter
             pasaran dan tanggal untuk mempersempit hasil yang ditampilkan.
         </p>
@@ -224,7 +224,7 @@
 <section data-theme-module="predictions" class="bg-slate-950">
     <div class="mx-auto max-w-7xl px-4 py-12">
         <div class="mb-7 flex flex-wrap items-center justify-between gap-3">
-            <p class="text-sm text-slate-400">
+            <p data-theme-direct-page-muted class="text-sm text-slate-400">
                 Menampilkan
                 <span class="font-semibold text-white">
                     {{ $predictions->total() }}

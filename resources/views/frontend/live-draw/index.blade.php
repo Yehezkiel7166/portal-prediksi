@@ -27,7 +27,7 @@
 @section('content')
 <section data-theme-module="live-draw" class="border-b border-slate-800 bg-slate-900">
     <div class="mx-auto max-w-7xl px-4 py-12 md:py-16">
-        <p class="text-sm font-semibold uppercase tracking-widest text-amber-400">
+        <p data-theme-direct-page-accent class="text-sm font-semibold uppercase tracking-widest text-amber-400">
             Live Draw
         </p>
 
@@ -35,7 +35,7 @@
             Live Draw Togel Hari Ini
         </h1>
 
-        <p class="mt-5 max-w-3xl text-base leading-7 text-slate-300 md:text-lg">
+        <p data-theme-direct-page-muted class="mt-5 max-w-3xl text-base leading-7 text-slate-300 md:text-lg">
             Saksikan siaran live draw dari pasaran yang sedang aktif dan
             periksa jadwal draw berikutnya dalam zona waktu masing-masing.
         </p>
@@ -45,7 +45,7 @@
 <section data-theme-module="live-draw" class="bg-slate-950">
     <div class="mx-auto max-w-7xl px-4 py-12">
         <div class="mb-7">
-            <p class="text-sm text-slate-400">
+            <p data-theme-direct-page-muted class="text-sm text-slate-400">
                 Menampilkan
                 <span class="font-semibold text-white">
                     {{ $liveDraws->count() }}
