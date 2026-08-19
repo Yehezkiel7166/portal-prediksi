@@ -182,11 +182,13 @@ final class ThemeQaPreviewTest extends TestCase
         }
     }
 
-    public function test_all_four_qa_routes_exist(): void
+    public function test_all_six_qa_routes_exist(): void
     {
         foreach ([
             'theme-qa.home',
             'theme-qa.results',
+            'theme-qa.results.history',
+            'theme-qa.results.show',
             'theme-qa.predictions',
             'theme-qa.live-draw',
         ] as $routeName) {

@@ -11,11 +11,13 @@
 )
 
 @section('content')
+<div data-theme-result-workspace="history">
 <section
+    data-theme-result-context-panel
     data-theme-result-hero
     class="border-b"
 >
-    <div class="mx-auto max-w-7xl px-4 py-10 md:py-14">
+    <div class="mx-auto max-w-7xl px-4 py-7 md:py-9">
         <a
             data-theme-accent
             href="{{ route('results.index') }}"
@@ -41,7 +43,7 @@
                     History Result
                 </p>
 
-                <h1 class="mt-3 text-3xl font-bold md:text-5xl">
+                <h1 class="mt-2 text-3xl font-bold md:text-4xl">
                     {{ $market->name }}
                 </h1>
 
@@ -68,8 +70,8 @@
     </div>
 </section>
 
-<section data-theme-result-section>
-    <div class="mx-auto max-w-7xl px-4 py-10">
+<section data-theme-result-section data-theme-result-detail-panel>
+    <div class="mx-auto max-w-7xl px-4 py-8">
         <p
             data-theme-muted
             class="mb-7 text-sm"
@@ -85,19 +87,19 @@
 
         @if ($results->isNotEmpty())
             <div
-                class="
-                    grid gap-5
-                    sm:grid-cols-2
-                    xl:grid-cols-3
-                "
+                data-theme-result-history-list
+                class="space-y-3"
             >
                 @foreach ($results as $result)
                     <article
                         data-theme-result-history-card
+                        data-theme-result-history-row
                         data-theme-surface
                         class="
-                            flex min-h-full flex-col
-                            rounded-2xl border p-5
+                            rounded-xl border p-4
+                            md:grid
+                            md:grid-cols-[160px_minmax(0,1fr)_140px]
+                            md:items-center md:gap-4
                         "
                     >
                         <time
@@ -111,8 +113,8 @@
                         <div
                             data-theme-result-number-panel
                             class="
-                                mt-4 rounded-xl border
-                                px-4 py-6 text-center
+                                mt-4 rounded-lg border md:mt-0
+                                px-4 py-4 text-center
                             "
                         >
                             <p
@@ -131,7 +133,7 @@
                             <p
                                 data-theme-muted
                                 class="
-                                    mt-4 line-clamp-3
+                                    mt-4 line-clamp-3 md:col-span-3
                                     whitespace-pre-line
                                     text-sm leading-6
                                 "
@@ -140,7 +142,7 @@
                             </p>
                         @endif
 
-                        <div class="mt-auto pt-5">
+                        <div class="mt-auto pt-5 md:mt-0 md:pt-0">
                             <a
                                 data-theme-secondary-button
                                 href="{{ route('results.show', [
@@ -185,4 +187,5 @@
         @endif
     </div>
 </section>
+</div>
 @endsection

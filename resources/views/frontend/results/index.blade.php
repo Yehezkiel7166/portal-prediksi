@@ -11,354 +11,528 @@
 )
 
 @section('content')
-<section
-    data-theme-result-hero
-    class="border-b"
->
-    <div class="mx-auto max-w-7xl px-4 py-10 md:py-14">
-        <p
-            data-theme-accent
-            class="text-sm font-semibold uppercase tracking-widest"
-        >
-            Data Result
-        </p>
+<div data-theme-result-workspace="index">
+    <section
+        data-theme-result-hero
+        class="border-b"
+    >
+        <div class="mx-auto max-w-7xl px-4 py-7 md:py-9">
+            <p
+                data-theme-accent
+                class="text-sm font-semibold uppercase tracking-widest"
+            >
+                Data Result
+            </p>
 
-        <h1 class="mt-3 text-3xl font-bold md:text-5xl">
-            Result Terbaru Setiap Pasaran
-        </h1>
+            <h1 class="mt-2 text-3xl font-bold md:text-4xl">
+                Result Terbaru Setiap Pasaran
+            </h1>
 
-        <p
-            data-theme-muted
-            class="mt-4 max-w-3xl text-base leading-7 md:text-lg"
-        >
-            Satu card mewakili satu pasaran. Tekan Detail untuk
-            melihat seluruh history result pasaran tersebut.
-        </p>
-    </div>
-</section>
+            <p
+                data-theme-muted
+                class="mt-4 max-w-3xl text-base leading-7 md:text-lg"
+            >
+                Pilih pasaran untuk melihat result terbaru dan membuka
+                seluruh history result secara lengkap.
+            </p>
+        </div>
+    </section>
 
-<section data-theme-result-section>
-    <div class="mx-auto max-w-7xl px-4 py-7">
-        <form
-            data-theme-surface
-            method="GET"
-            action="{{ route('results.index') }}"
-            class="
-                flex flex-col gap-4 rounded-xl border
-                p-5 md:flex-row md:items-end
-            "
-        >
-            <div class="min-w-0 flex-1">
-                <label
-                    for="market"
-                    class="block text-sm font-medium"
-                >
-                    Pilih Pasaran
-                </label>
+    <section
+        data-theme-result-section
+        data-theme-result-filter-panel
+    >
+        <div class="mx-auto max-w-7xl px-4 pt-6">
+            <form
+                data-theme-surface
+                method="GET"
+                action="{{ route('results.index') }}"
+                class="
+                    flex flex-col gap-3 rounded-xl border p-4
+                    sm:flex-row sm:items-end
+                "
+            >
+                <div class="min-w-0 flex-1">
+                    <label
+                        for="market"
+                        class="
+                            block text-xs font-semibold
+                            uppercase tracking-wider
+                        "
+                    >
+                        Pilih Pasaran
+                    </label>
 
-                <select
-                    data-theme-input
-                    id="market"
-                    name="market"
-                    class="
-                        mt-2 block w-full rounded-lg border
-                        px-4 py-3 text-sm outline-none transition
-                    "
-                >
-                    <option value="">
-                        Semua pasaran
-                    </option>
-
-                    @foreach ($marketOptions as $marketOption)
-                        <option
-                            value="{{ $marketOption->slug }}"
-                            @selected(
-                                $filters['market']
-                                    === $marketOption->slug
-                            )
-                        >
-                            {{ $marketOption->name }}
-                            ({{ $marketOption->code }})
+                    <select
+                        data-theme-input
+                        id="market"
+                        name="market"
+                        class="
+                            mt-2 block min-h-11 w-full
+                            rounded-lg border px-3 py-2
+                            text-sm outline-none transition
+                        "
+                    >
+                        <option value="">
+                            Semua pasaran
                         </option>
-                    @endforeach
-                </select>
-            </div>
 
-            <div class="flex flex-wrap gap-3">
-                <button
-                    data-theme-primary-button
-                    type="submit"
-                    class="
-                        inline-flex min-h-11 items-center
-                        justify-center rounded-lg border
-                        px-5 py-3 text-sm font-semibold
-                        transition hover:opacity-90
-                    "
-                >
-                    Terapkan
-                </button>
+                        @foreach ($marketOptions as $marketOption)
+                            <option
+                                value="{{ $marketOption->slug }}"
+                                @selected(
+                                    $filters['market']
+                                        === $marketOption->slug
+                                )
+                            >
+                                {{ $marketOption->name }}
+                                ({{ $marketOption->code }})
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
 
-                @if ($filters['market'] !== null)
-                    <a
-                        data-theme-secondary-button
-                        href="{{ route('results.index') }}"
+                <div class="flex shrink-0 flex-wrap gap-2">
+                    <button
+                        data-theme-primary-button
+                        type="submit"
                         class="
                             inline-flex min-h-11 items-center
                             justify-center rounded-lg border
-                            px-5 py-3 text-sm font-semibold
+                            px-5 py-2 text-sm font-semibold
                             transition hover:opacity-90
                         "
                     >
-                        Reset
-                    </a>
-                @endif
-            </div>
-        </form>
-    </div>
-</section>
+                        Terapkan
+                    </button>
 
-<section data-theme-result-section>
-    <div class="mx-auto max-w-7xl px-4 pb-12 pt-4">
-        <div
-            class="
-                mb-6 flex flex-wrap
-                items-center justify-between gap-3
-            "
-        >
-            <p
-                data-theme-muted
-                class="text-sm"
-            >
-                Menampilkan
-
-                <span class="font-semibold">
-                    {{ $markets->total() }}
-                </span>
-
-                pasaran
-            </p>
-
-            @if ($filters['market'] !== null)
-                <span
-                    data-theme-accent
-                    class="text-sm font-semibold"
-                >
-                    Filter aktif
-                </span>
-            @endif
+                    @if ($filters['market'] !== null)
+                        <a
+                            data-theme-secondary-button
+                            href="{{ route('results.index') }}"
+                            class="
+                                inline-flex min-h-11 items-center
+                                justify-center rounded-lg border
+                                px-5 py-2 text-sm font-semibold
+                                transition hover:opacity-90
+                            "
+                        >
+                            Reset
+                        </a>
+                    @endif
+                </div>
+            </form>
         </div>
+    </section>
 
-        @if ($markets->isNotEmpty())
+    <section
+        data-theme-result-section
+        data-theme-result-list-panel
+    >
+        <div class="mx-auto max-w-7xl px-4 pb-12 pt-5">
             <div
-                data-theme-result-grid
                 class="
-                    grid gap-5
-                    sm:grid-cols-2
-                    xl:grid-cols-3
+                    mb-4 flex flex-wrap
+                    items-center justify-between gap-3
                 "
             >
-                @foreach ($markets as $market)
-                    @php
-                        $latestResult = $market->getRelation(
-                            'latestResult'
-                        );
+                <p data-theme-muted class="text-sm">
+                    Menampilkan
 
-                        $status = $statuses->get(
-                            $market->getKey(),
+                    <span class="font-semibold">
+                        {{ $markets->total() }}
+                    </span>
+
+                    pasaran
+                </p>
+
+                @if ($filters['market'] !== null)
+                    <span
+                        data-theme-accent
+                        class="text-sm font-semibold"
+                    >
+                        Filter aktif
+                    </span>
+                @endif
+            </div>
+
+            @if ($markets->isNotEmpty())
+                @php
+                    $primaryMarket = $markets->first();
+
+                    $primaryResult = $primaryMarket
+                        ? $primaryMarket->getRelation('latestResult')
+                        : null;
+
+                    $primaryStatus = $primaryMarket
+                        ? $statuses->get(
+                            $primaryMarket->getKey(),
                             [
                                 'key' => 'unknown',
                                 'label' => 'Status tidak tersedia',
                             ],
-                        );
-                    @endphp
+                        )
+                        : [
+                            'key' => 'unknown',
+                            'label' => 'Status tidak tersedia',
+                        ];
+                @endphp
 
-                    <article
-                        data-theme-result-card
+                <div data-theme-result-master-detail>
+                    <aside
+                        data-theme-result-master-panel
                         data-theme-surface
                         class="
-                            group flex min-h-full flex-col
-                            overflow-hidden rounded-2xl border
+                            min-w-0 overflow-hidden
+                            rounded-xl border
                         "
                     >
-                        <div
-                            class="
-                                flex items-start justify-between
-                                gap-4 p-5
-                            "
-                        >
-                            <div class="min-w-0">
-                                <p
-                                    data-theme-muted
-                                    class="
-                                        text-xs font-semibold uppercase
-                                        tracking-widest
-                                    "
-                                >
-                                    {{ $market->code }}
-                                </p>
-
-                                <h2
-                                    data-theme-accent
-                                    class="
-                                        mt-1 truncate text-xl
-                                        font-bold
-                                    "
-                                >
-                                    {{ $market->name }}
-                                </h2>
-                            </div>
-
-                            <span
-                                data-theme-market-status="{{ $status['key'] }}"
-                                class="
-                                    shrink-0 rounded-full border
-                                    px-3 py-1 text-xs font-semibold
-                                "
-                            >
-                                {{ $status['label'] }}
-                            </span>
-                        </div>
-
-                        <div
-                            data-theme-result-number-panel
-                            class="
-                                mx-5 rounded-xl border
-                                px-4 py-6 text-center
-                            "
-                        >
+                        <header class="border-b px-4 py-4">
                             <p
-                                data-theme-muted
+                                data-theme-accent
                                 class="
                                     text-xs font-semibold uppercase
-                                    tracking-wider
+                                    tracking-[0.16em]
                                 "
                             >
-                                Result Terbaru
+                                Pasaran Terbaru
                             </p>
 
-                            @if ($latestResult)
-                                <p
-                                    data-theme-result-number
+                            <h2 class="mt-1 text-lg font-bold">
+                                Data Result
+                            </h2>
+                        </header>
+
+                        <div data-theme-result-master-list>
+                            @foreach ($markets as $market)
+                                @php
+                                    $latestResult = $market->getRelation(
+                                        'latestResult'
+                                    );
+
+                                    $status = $statuses->get(
+                                        $market->getKey(),
+                                        [
+                                            'key' => 'unknown',
+                                            'label' => 'Status tidak tersedia',
+                                        ],
+                                    );
+
+                                    $isPrimary = $primaryMarket
+                                        && $primaryMarket->getKey()
+                                            === $market->getKey();
+                                @endphp
+
+                                <a
+                                    data-theme-result-master-row
+                                    @if ($isPrimary)
+                                        data-theme-result-master-active
+                                    @endif
+                                    href="{{ route('results.history', [
+                                        'marketSlug' => $market->slug,
+                                    ]) }}"
                                     class="
-                                        mt-3 break-words font-mono
-                                        text-3xl font-black
-                                        tracking-[0.12em]
-                                        md:text-4xl
+                                        block border-b px-4 py-4
+                                        transition last:border-b-0
                                     "
                                 >
-                                    {{ $latestResult->winning_numbers }}
-                                </p>
-                            @else
-                                <p
-                                    data-theme-muted
-                                    class="mt-3 text-sm"
-                                >
-                                    Belum ada result.
-                                </p>
-                            @endif
-                        </div>
-
-                        <div
-                            class="
-                                mt-auto grid grid-cols-2
-                                gap-3 p-5
-                            "
-                        >
-                            <div>
-                                <p
-                                    data-theme-muted
-                                    class="text-xs"
-                                >
-                                    Tanggal
-                                </p>
-
-                                @if ($latestResult)
-                                    <time
-                                        datetime="{{ $latestResult->result_date->format('Y-m-d') }}"
+                                    <div
                                         class="
-                                            mt-1 block text-sm
-                                            font-semibold
+                                            flex items-start
+                                            justify-between gap-3
                                         "
                                     >
-                                        {{ $latestResult->result_date->translatedFormat('d M Y') }}
-                                    </time>
-                                @else
-                                    <span
-                                        data-theme-muted
-                                        class="mt-1 block text-sm"
-                                    >
-                                        —
-                                    </span>
-                                @endif
-                            </div>
+                                        <div class="min-w-0">
+                                            <div
+                                                class="
+                                                    flex min-w-0
+                                                    items-center gap-2
+                                                "
+                                            >
+                                                <span
+                                                    data-theme-accent
+                                                    class="
+                                                        shrink-0 text-xs
+                                                        font-bold
+                                                    "
+                                                >
+                                                    {{ $market->code }}
+                                                </span>
 
-                            <div class="text-right">
-                                <p
-                                    data-theme-muted
-                                    class="text-xs"
-                                >
-                                    History
-                                </p>
+                                                <h3
+                                                    class="
+                                                        truncate text-sm
+                                                        font-bold
+                                                    "
+                                                >
+                                                    {{ $market->name }}
+                                                </h3>
+                                            </div>
 
-                                <p class="mt-1 text-sm font-semibold">
-                                    {{ $market->results_count }}
-                                    result
-                                </p>
-                            </div>
+                                            @if ($latestResult)
+                                                <p
+                                                    data-theme-result-number
+                                                    class="
+                                                        mt-2 truncate
+                                                        font-mono text-xl
+                                                        font-black
+                                                        tracking-[0.08em]
+                                                    "
+                                                >
+                                                    {{ $latestResult->winning_numbers }}
+                                                </p>
+
+                                                <time
+                                                    data-theme-muted
+                                                    datetime="{{ $latestResult->result_date->format('Y-m-d') }}"
+                                                    class="mt-1 block text-xs"
+                                                >
+                                                    {{ $latestResult->result_date->translatedFormat('d M Y') }}
+                                                </time>
+                                            @else
+                                                <p
+                                                    data-theme-muted
+                                                    class="mt-2 text-xs"
+                                                >
+                                                    Belum ada result.
+                                                </p>
+                                            @endif
+                                        </div>
+
+                                        <span
+                                            data-theme-market-status="{{ $status['key'] }}"
+                                            class="
+                                                shrink-0 rounded-full
+                                                border px-2 py-1
+                                                text-[11px] font-semibold
+                                            "
+                                        >
+                                            {{ $status['label'] }}
+                                        </span>
+                                    </div>
+                                </a>
+                            @endforeach
                         </div>
+                    </aside>
 
-                        <div class="px-5 pb-5">
-                            <a
-                                data-theme-primary-button
-                                href="{{ route('results.history', [
-                                    'marketSlug' => $market->slug,
-                                ]) }}"
+                    <div
+                        data-theme-result-primary-panel
+                        class="min-w-0"
+                    >
+                        <article
+                            data-theme-result-primary-card
+                            data-theme-surface
+                            class="overflow-hidden rounded-xl border"
+                        >
+                            <header
                                 class="
-                                    inline-flex min-h-11 w-full
-                                    items-center justify-center
-                                    rounded-lg border px-4 py-2.5
-                                    text-sm font-bold transition
-                                    hover:opacity-90
+                                    border-b px-5 py-5
+                                    md:px-6 md:py-6
                                 "
                             >
-                                Detail {{ $market->name }}
-                            </a>
-                        </div>
-                    </article>
-                @endforeach
-            </div>
-        @else
-            <div
-                data-theme-surface
-                class="
-                    rounded-2xl border border-dashed
-                    px-6 py-16 text-center
-                "
-            >
-                <h2 class="text-xl font-semibold">
-                    Belum ada pasaran aktif
-                </h2>
+                                <div
+                                    class="
+                                        flex flex-col gap-4
+                                        sm:flex-row
+                                        sm:items-start
+                                        sm:justify-between
+                                    "
+                                >
+                                    <div class="min-w-0">
+                                        <p
+                                            data-theme-accent
+                                            class="
+                                                text-xs font-semibold
+                                                uppercase
+                                                tracking-[0.18em]
+                                            "
+                                        >
+                                            Detail Result Terbaru
+                                        </p>
 
-                <p
-                    data-theme-muted
+                                        <h2
+                                            class="
+                                                mt-2 text-2xl font-black
+                                                md:text-3xl
+                                            "
+                                        >
+                                            {{ $primaryMarket->name }}
+                                        </h2>
+
+                                        <p
+                                            data-theme-muted
+                                            class="mt-2 text-sm"
+                                        >
+                                            Kode pasaran:
+                                            {{ $primaryMarket->code }}
+                                        </p>
+                                    </div>
+
+                                    <span
+                                        data-theme-market-status="{{ $primaryStatus['key'] }}"
+                                        class="
+                                            self-start rounded-full
+                                            border px-3 py-1.5
+                                            text-xs font-semibold
+                                        "
+                                    >
+                                        {{ $primaryStatus['label'] }}
+                                    </span>
+                                </div>
+                            </header>
+
+                            <div class="p-5 md:p-6">
+                                <div
+                                    data-theme-result-number-panel
+                                    class="
+                                        rounded-xl border
+                                        px-5 py-8 text-center
+                                        md:px-8 md:py-10
+                                    "
+                                >
+                                    <p
+                                        data-theme-muted
+                                        class="
+                                            text-xs font-semibold
+                                            uppercase tracking-[0.18em]
+                                        "
+                                    >
+                                        Result Terbaru
+                                    </p>
+
+                                    @if ($primaryResult)
+                                        <p
+                                            data-theme-result-number
+                                            class="
+                                                mt-4 whitespace-pre-line
+                                                break-words font-mono
+                                                text-4xl font-black
+                                                leading-tight
+                                                tracking-[0.12em]
+                                                sm:text-5xl lg:text-6xl
+                                            "
+                                        >
+                                            {{ $primaryResult->winning_numbers }}
+                                        </p>
+                                    @else
+                                        <p
+                                            data-theme-muted
+                                            class="
+                                                mt-5 text-base
+                                                font-semibold
+                                            "
+                                        >
+                                            Belum ada result.
+                                        </p>
+                                    @endif
+                                </div>
+
+                                <dl
+                                    class="
+                                        mt-4 grid gap-3
+                                        sm:grid-cols-3
+                                    "
+                                >
+                                    <div
+                                        data-theme-result-meta
+                                        class="rounded-lg border p-4"
+                                    >
+                                        <dt data-theme-muted class="text-xs">
+                                            Pasaran
+                                        </dt>
+
+                                        <dd class="mt-1 font-semibold">
+                                            {{ $primaryMarket->name }}
+                                        </dd>
+                                    </div>
+
+                                    <div
+                                        data-theme-result-meta
+                                        class="rounded-lg border p-4"
+                                    >
+                                        <dt data-theme-muted class="text-xs">
+                                            Tanggal
+                                        </dt>
+
+                                        <dd class="mt-1 font-semibold">
+                                            @if ($primaryResult)
+                                                {{ $primaryResult->result_date->translatedFormat('d M Y') }}
+                                            @else
+                                                —
+                                            @endif
+                                        </dd>
+                                    </div>
+
+                                    <div
+                                        data-theme-result-meta
+                                        class="rounded-lg border p-4"
+                                    >
+                                        <dt data-theme-muted class="text-xs">
+                                            History
+                                        </dt>
+
+                                        <dd class="mt-1 font-semibold">
+                                            {{ $primaryMarket->results_count }}
+                                            result
+                                        </dd>
+                                    </div>
+                                </dl>
+
+                                <a
+                                    data-theme-primary-button
+                                    href="{{ route('results.history', [
+                                        'marketSlug' => $primaryMarket->slug,
+                                    ]) }}"
+                                    class="
+                                        mt-5 inline-flex min-h-11
+                                        w-full items-center
+                                        justify-center rounded-lg
+                                        border px-5 py-3
+                                        text-center text-sm
+                                        font-bold transition
+                                        hover:opacity-90
+                                    "
+                                >
+                                    Lihat History
+                                    {{ $primaryMarket->name }}
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            @else
+                <div
+                    data-theme-surface
                     class="
-                        mx-auto mt-3 max-w-xl
-                        text-sm leading-6
+                        rounded-2xl border border-dashed
+                        px-6 py-16 text-center
                     "
                 >
-                    Tidak ada pasaran yang sesuai dengan filter.
-                </p>
-            </div>
-        @endif
+                    <h2 class="text-xl font-semibold">
+                        Belum ada pasaran aktif
+                    </h2>
 
-        @if ($markets->hasPages())
-            <nav
-                class="mt-10"
-                aria-label="Navigasi halaman pasaran result"
-            >
-                {{ $markets->links() }}
-            </nav>
-        @endif
-    </div>
-</section>
+                    <p
+                        data-theme-muted
+                        class="
+                            mx-auto mt-3 max-w-xl
+                            text-sm leading-6
+                        "
+                    >
+                        Tidak ada pasaran yang sesuai dengan filter.
+                    </p>
+                </div>
+            @endif
+
+            @if ($markets->hasPages())
+                <nav
+                    class="mt-8"
+                    aria-label="Navigasi halaman pasaran result"
+                >
+                    {{ $markets->links() }}
+                </nav>
+            @endif
+        </div>
+    </section>
+</div>
 @endsection

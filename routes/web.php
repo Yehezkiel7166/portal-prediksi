@@ -185,6 +185,26 @@ Route::prefix('/__theme-qa')
         )->name('theme-qa.results');
 
         Route::get(
+            '/data-result/{marketSlug}',
+            MarketResultHistoryController::class,
+        )
+            ->where(
+                'marketSlug',
+                '[a-z0-9]+(?:-[a-z0-9]+)*',
+            )
+            ->name('theme-qa.results.history');
+
+        Route::get(
+            '/data-result/{marketSlug}/{resultDate}',
+            ResultDetailController::class,
+        )
+            ->where([
+                'marketSlug' => '[a-z0-9]+(?:-[a-z0-9]+)*',
+                'resultDate' => '\d{4}-\d{2}-\d{2}',
+            ])
+            ->name('theme-qa.results.show');
+
+        Route::get(
             '/prediksi-togel',
             PredictionsController::class,
         )->name('theme-qa.predictions');

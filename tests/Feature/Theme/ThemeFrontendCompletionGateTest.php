@@ -42,7 +42,10 @@ final class ThemeFrontendCompletionGateTest extends TestCase
             ],
 
             'results/index.blade.php' => [
-                'data-theme-result-card',
+                'data-theme-result-workspace="index"',
+                'data-theme-result-master-detail',
+                'data-theme-result-master-row',
+                'data-theme-result-primary-card',
             ],
 
             'results/history.blade.php' => [

@@ -11,15 +11,11 @@ final class ResultMarketPresentationContractTest extends TestCase
     public function test_frontend_index_is_market_centric(): void
     {
         $controller = file_get_contents(
-            app_path(
-                'Http/Controllers/Frontend/ResultsController.php'
-            )
+            app_path('Http/Controllers/Frontend/ResultsController.php')
         );
 
         $view = file_get_contents(
-            resource_path(
-                'views/frontend/results/index.blade.php'
-            )
+            resource_path('views/frontend/results/index.blade.php')
         );
 
         $this->assertIsString($controller);
@@ -27,94 +23,71 @@ final class ResultMarketPresentationContractTest extends TestCase
 
         $this->assertStringContainsString(
             'Market::query()',
-            $controller,
+            $controller
         );
 
         $this->assertStringContainsString(
             'LatestResultResolver',
-            $controller,
+            $controller
         );
-
-        /*
-        |--------------------------------------------------------------------------
-        | BUSINESS CONTRACT
-        |--------------------------------------------------------------------------
-        |
-        | Result listing tetap market-centric:
-        | satu market = satu presentation card.
-        |
-        */
 
         $this->assertStringContainsString(
             '@foreach ($markets as $market)',
-            $view,
+            $view
         );
 
         $this->assertStringNotContainsString(
             '@forelse ($markets as $market)',
-            $view,
+            $view
         );
 
         $this->assertStringContainsString(
             "route('results.history'",
-            $view,
+            $view
         );
 
         $this->assertStringNotContainsString(
             '@forelse ($results as $result)',
-            $view,
+            $view
         );
 
-        /*
-        |--------------------------------------------------------------------------
-        | RESPONSIVE CARD CONTRACT
-        |--------------------------------------------------------------------------
-        */
+        foreach ([
+            'data-theme-result-master-detail',
+            'data-theme-result-master-panel',
+            'data-theme-result-master-list',
+            'data-theme-result-master-row',
+            'data-theme-result-primary-panel',
+            'data-theme-result-primary-card',
+        ] as $contract) {
+            $this->assertStringContainsString($contract, $view);
+        }
 
-        $this->assertStringContainsString(
+        foreach ([
             'data-theme-result-grid',
-            $view,
-        );
-
-        $this->assertStringContainsString(
             'data-theme-result-card',
-            $view,
-        );
-
-        $this->assertStringContainsString(
-            'sm:grid-cols-2',
-            $view,
-        );
-
-        $this->assertStringContainsString(
-            'xl:grid-cols-3',
-            $view,
-        );
-
-        $this->assertStringNotContainsString(
-            'md:grid-cols-[minmax(180px,1.5fr)',
-            $view,
-        );
-
-        /*
-        |--------------------------------------------------------------------------
-        | MARKET IDENTITY CONTRACT
-        |--------------------------------------------------------------------------
-        */
+            'Detail {{ $market->name }}',
+        ] as $legacy) {
+            $this->assertStringNotContainsString($legacy, $view);
+        }
 
         $this->assertStringContainsString(
             '{{ $market->name }}',
-            $view,
+            $view
         );
 
         $this->assertStringContainsString(
             '{{ $market->code }}',
-            $view,
+            $view
         );
 
         $this->assertStringContainsString(
-            'Detail {{ $market->name }}',
-            $view,
+            '{{ $latestResult->winning_numbers }}',
+            $view
+        );
+
+        $this->assertStringContainsString(
+            'Filter aktif',
+            $view
         );
     }
 
@@ -137,27 +110,27 @@ final class ResultMarketPresentationContractTest extends TestCase
 
         $this->assertStringContainsString(
             'protected static ?string $model = Market::class;',
-            $resource,
+            $resource
         );
 
         $this->assertStringContainsString(
             "->with('latestResult')",
-            $resource,
+            $resource
         );
 
         $this->assertStringNotContainsString(
             'latestResult:id,brand_id,market_id',
-            $resource,
+            $resource
         );
 
         $this->assertStringContainsString(
             "->withCount('results')",
-            $resource,
+            $resource
         );
 
         $this->assertStringContainsString(
             "Action::make('manage')",
-            $table,
+            $table
         );
     }
 }

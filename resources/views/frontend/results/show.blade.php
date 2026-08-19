@@ -41,11 +41,13 @@
 @endsection
 
 @section('content')
+<div data-theme-result-workspace="detail">
 <section
+    data-theme-result-context-panel
     data-theme-result-hero
     class="border-b"
 >
-    <div class="mx-auto max-w-5xl px-4 py-8 md:py-12">
+    <div class="mx-auto max-w-5xl px-4 py-6 md:py-8">
         <nav
             data-theme-muted
             class="text-sm"
@@ -78,8 +80,8 @@
     </div>
 </section>
 
-<section data-theme-result-section>
-    <div class="mx-auto max-w-5xl px-4 py-10 md:py-14">
+<section data-theme-result-section data-theme-result-detail-panel>
+    <div class="mx-auto max-w-5xl px-4 py-7 md:py-9">
         <article
             data-theme-result-detail
             data-theme-surface
@@ -295,4 +297,5 @@
         </div>
     </div>
 </section>
+</div>
 @endsection
