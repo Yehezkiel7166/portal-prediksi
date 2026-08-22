@@ -182,7 +182,68 @@ final class ThemeQaPreviewTest extends TestCase
         }
     }
 
-    public function test_all_six_qa_routes_exist(): void
+    public function test_signed_prediction_detail_preview_is_synthetic_and_database_read_only(): void
+    {
+        $writes = [];
+
+        DB::listen(
+            static function (
+                QueryExecuted $query,
+            ) use (&$writes): void {
+                $sql = ltrim(
+                    strtolower($query->sql),
+                );
+
+                if (
+                    preg_match(
+                        '/^(insert|update|delete|replace|alter|create|drop|truncate)\b/',
+                        $sql,
+                    ) === 1
+                ) {
+                    $writes[] = $query->sql;
+                }
+            },
+        );
+
+        $url = URL::temporarySignedRoute(
+            'theme-qa.predictions.show',
+            now()->addMinutes(5),
+            [
+                'marketSlug' => 'qa-singapore',
+                'predictionDate' => '2026-08-20',
+                'preset' => 'gold-black-classic',
+            ],
+        );
+
+        $response = $this->get($url);
+
+        $response
+            ->assertOk()
+            ->assertViewIs('frontend.predictions.show')
+            ->assertSee('Prediksi Qa Singapore')
+            ->assertSee('BBFS')
+            ->assertSee('209184')
+            ->assertSee('Colok Bebas')
+            ->assertSee('9-4')
+            ->assertSee('18, 91, 82')
+            ->assertSee('028, 492')
+            ->assertSee('9482, 8491')
+            ->assertSee('TIKUS')
+            ->assertSee(
+                'Fixture visual Theme-QA. Data ini tidak disimpan ke database.',
+            )
+            ->assertHeader(
+                'X-Robots-Tag',
+                'noindex, nofollow, noarchive',
+            );
+
+        $this->assertSame(
+            [],
+            $writes,
+            'Synthetic Prediction Theme-QA preview must not write to database.',
+        );
+    }
+    public function test_all_seven_qa_routes_exist(): void
     {
         foreach ([
             'theme-qa.home',
@@ -190,6 +251,7 @@ final class ThemeQaPreviewTest extends TestCase
             'theme-qa.results.history',
             'theme-qa.results.show',
             'theme-qa.predictions',
+            'theme-qa.predictions.show',
             'theme-qa.live-draw',
         ] as $routeName) {
             $this->assertTrue(

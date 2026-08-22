@@ -29,9 +29,10 @@
     <div class="mx-auto max-w-7xl px-4 py-8">
         <form
             data-theme-surface
+            data-prediction-filter-panel
             method="GET"
             action="{{ route('predictions.index') }}"
-            class="grid gap-5 rounded-xl border border-slate-800 bg-slate-900 p-6 md:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]"
+            class="grid min-w-0 w-full gap-5 rounded-xl border border-slate-800 bg-slate-900 p-6 md:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]"
         >
             <div>
                 <label
@@ -69,7 +70,8 @@
 
                 <div
                     data-dark-datepicker data-theme-datepicker
-                    class="relative mt-2"
+                    data-prediction-datepicker
+                    class="relative mt-2 min-w-0 w-full"
                 >
                     <input
                         id="date"
@@ -116,7 +118,7 @@
                         aria-label="Pilih tanggal prediksi"
                         hidden
                         class="absolute left-0 top-full z-50 mt-2 w-full overflow-hidden rounded-xl border border-slate-700 bg-slate-900 p-4 shadow-2xl"
-                        style="min-width:320px;box-shadow:0 24px 60px rgba(0,0,0,.55);"
+                        style="width:min(320px,100%);max-width:100%;box-shadow:0 24px 60px rgba(0,0,0,.55);"
                     >
                         <div class="flex items-center justify-between gap-3">
                             <button
@@ -221,7 +223,7 @@
     </div>
 </section>
 
-<section data-theme-module="predictions" class="bg-slate-950">
+<section data-theme-module="predictions" data-prediction-workspace class="min-w-0 bg-slate-950">
     <div class="mx-auto max-w-7xl px-4 py-12">
         <div class="mb-7 flex flex-wrap items-center justify-between gap-3">
             <p data-theme-direct-page-muted class="text-sm text-slate-400">
@@ -241,10 +243,10 @@
 
         @forelse ($predictions as $prediction)
             @if ($loop->first)
-                <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                <div data-prediction-list class="grid min-w-0 gap-6 md:grid-cols-2 xl:grid-cols-3">
             @endif
 
-            <article data-theme-surface class="flex h-full flex-col rounded-xl border border-slate-800 bg-slate-900 p-6">
+            <article data-theme-surface data-prediction-card class="flex min-w-0 h-full flex-col rounded-xl border border-slate-800 bg-slate-900 p-6">
                 <div class="flex flex-wrap items-start justify-between gap-3">
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">
@@ -317,7 +319,8 @@
                                             >{{ $label }}</span>
 
                                             <span
-                                                class="break-words text-right text-sm font-bold leading-5 text-amber-400"
+                                                data-prediction-number-content
+                                                class="min-w-0 break-words text-right text-sm font-bold leading-5 text-amber-400"
                                                 style="min-width:0;flex:1 1 auto;"
                                             >{{ $value }}</span>
                                         </div>
@@ -325,7 +328,10 @@
                                 @endforeach
                             </div>
                         @else
-                            <div class="whitespace-pre-line break-words rounded-lg border border-amber-400/20 bg-slate-950 p-4 font-semibold leading-7 text-white">
+                            <div
+                                data-prediction-number-content
+                                class="min-w-0 whitespace-pre-line break-words rounded-lg border border-amber-400/20 bg-slate-950 p-4 font-semibold leading-7 text-white"
+                            >
                                 {{ $prediction->predicted_numbers }}
                             </div>
                         @endif

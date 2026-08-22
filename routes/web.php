@@ -25,6 +25,7 @@ use App\Http\Controllers\Frontend\SgpNumberConverterController;
 use App\Http\Controllers\Frontend\ShioTableController;
 use App\Http\Controllers\Frontend\SitemapController;
 use App\Http\Controllers\Frontend\SlotGacorController;
+use App\Http\Controllers\ThemeQa\PredictionDetailPreviewController;
 use App\Http\Middleware\ApplyThemeQaPreview;
 use Illuminate\Support\Facades\Route;
 
@@ -208,6 +209,16 @@ Route::prefix('/__theme-qa')
             '/prediksi-togel',
             PredictionsController::class,
         )->name('theme-qa.predictions');
+
+        Route::get(
+            '/prediksi-togel/{marketSlug}/{predictionDate}',
+            PredictionDetailPreviewController::class,
+        )
+            ->where([
+                'marketSlug' => '[a-z0-9]+(?:-[a-z0-9]+)*',
+                'predictionDate' => '\d{4}-\d{2}-\d{2}',
+            ])
+            ->name('theme-qa.predictions.show');
 
         Route::get(
             '/live-draw',

@@ -55,7 +55,7 @@
 
 <section data-theme-module="prediction-detail" class="bg-slate-950">
     <div class="mx-auto max-w-5xl px-4 py-12">
-        <article data-theme-surface class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+        <article data-theme-surface data-prediction-detail-workspace class="min-w-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
             <header class="border-b border-slate-800 p-6 md:p-8">
                 <div class="flex flex-wrap items-start justify-between gap-5">
                     <div>
